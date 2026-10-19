@@ -1,0 +1,53 @@
+@import "./fonts/fonts.css";
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --color-bg: #f3efe6;
+  --color-surface: #fffcf7;
+  --color-surface-2: #f6f1e6;
+  --color-ink: #1a2820;
+  --color-muted: #5e6d64;
+  --color-primary: #1b6b48;
+  --color-primary-fg: #f4faf6;
+  --color-primary-soft: #e5f2eb;
+  --color-caution: #9a4d12;
+  --color-caution-soft: #f8edd9;
+  --color-line: #e3d9c8;
+  --radius-card: 1.25rem;
+}
+
+.dark {
+  --color-bg: #121a16;
+  --color-surface: #1b2620;
+  --color-surface-2: #24312a;
+  --color-ink: #e8f0eb;
+  --color-muted: #a3b2a9;
+  --color-primary: #8dceb0;
+  --color-primary-fg: #102117;
+  --color-primary-soft: #1c3328;
+  --color-caution: #e0a15a;
+  --color-caution-soft: #3a2c1c;
+  --color-line: #314039;
+  color-scheme: dark;
+}
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body { background: var(--color-bg); color: var(--color-ink); font-family: var(--font-sans); line-height: 1.5; }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.2; }
+  p { text-wrap: pretty; }
+  button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after { scroll-behavior: auto !important; transition: none !important; }
+  }
+}
+
+/* Bannière d’installation : superposée en bas (aucun décalage de mise en page). */
+.clr-install{bottom:calc(4.75rem + env(safe-area-inset-bottom))}
+@media (min-width:48rem){.clr-install{bottom:1rem}}
+.clr-has-install main{padding-bottom:16rem}
