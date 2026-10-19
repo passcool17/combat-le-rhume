@@ -18,7 +18,7 @@ Les données (journal, favoris, préférences) restent dans le téléphone (loca
 Le code du Mode Combat (protocole de 3 jours, gestes du jour, suivi matin et soir, « Quand arrêter et consulter »,
 précautions, Kit Combat) est dans `src/combat-plus.jsx` et `src/combat-plus.css`, en code lisible.
 
-- `src/original/` : les fichiers d'origine de l'appli Grok Build (référence).
+- `src/original/` : les fichiers d'origine de l'appli Grok Build (référence ; la page est en `index.orig.html.txt` pour ne pas être publiée).
 - `tools/build.sh` : reconstruit `index.html` et `assets/` (renomme le bundle, branche le Mode Combat, compile avec esbuild).
 - Données du Mode Combat : `localStorage` clé `combat-le-rhume-combat-v1`.
 
