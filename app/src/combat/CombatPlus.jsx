@@ -1,11 +1,10 @@
-// Combat le rhume — Mode Combat amélioré.
-// Code source lisible, compilé par tools/build.sh vers assets/combat-plus-*.js.
-// Le bundle d'origine appelle createCombatPlus(React, jsxRuntime, prefsStore) au démarrage
-// et affiche les composants exportés dans l'écran Mode Combat.
-import css from './combat-plus.css';
+// Combat le rhume — Mode Combat : protocole de 3 jours, gestes, suivi, consulter, Kit Combat.
+import * as React from 'react';
+import { usePrefs } from '../lib/stockage.js';
+import './combat.css';
 
-let h, Frag;
-let prefsAudience = () => 'adulte';
+const prefsAudience = () => usePrefs.getState().audience;
+const setStanceGlobal = v => usePrefs.getState().setStance(v);
 const KEY = 'combat-le-rhume-combat-v1';
 const DAY = 864e5;
 const PROTOCOL_DAYS = 3;
@@ -75,7 +74,6 @@ function set(fn) {
   scheduleReminders();
 }
 const subscribe = f => (subs.add(f), () => subs.delete(f));
-let React;
 const useStore = () => React.useSyncExternalStore(subscribe, get, blank0);
 const _blank = blank();
 function blank0() { return _blank; }
@@ -463,7 +461,7 @@ function ModeSwitch({ onAll, setStance }) {
   );
 }
 
-function HomeCombat({ onOpen, onAll, setStance }) {
+function HomeCombatInner({ onOpen, onAll, setStance }) {
   const s = useStore();
   const now = useNow();
   const p = s.protocol;
@@ -491,7 +489,7 @@ function HomeCombat({ onOpen, onAll, setStance }) {
 
 const WARM_ITEMS = ['Dormir au chaud', 'Rester au chaud'];
 const KEEP_ITEMS = [...WARM_ITEMS, 'Surveiller la température', 'Miel :'];
-function CombatAdvice({ consult, during, onAll, setStance }) {
+function CombatAdviceInner({ consult, during, onAll, setStance }) {
   const s = useStore();
   const a = assess(s);
   const items = (during || []).filter(t => KEEP_ITEMS.some(k => t.startsWith(k)) && !(a.noWarm && WARM_ITEMS.some(k => t.startsWith(k))));
@@ -516,19 +514,10 @@ function CombatAdvice({ consult, during, onAll, setStance }) {
   );
 }
 
-export function createCombatPlus(R, _jsx, prefs) {
-  React = R; h = R.createElement; Frag = R.Fragment;
-  if (typeof document !== 'undefined' && !document.getElementById('clr-style')) {
-    const st = document.createElement('style'); st.id = 'clr-style'; st.textContent = css; document.head.appendChild(st);
-  }
-  if (typeof window !== 'undefined') setTimeout(scheduleReminders, 0);
-  const setStance = v => prefs.getState().setStance(v);
-  prefsAudience = () => prefs.getState().audience;
-  return {
-    Subtitle, HomeWarm, GesteExtra,
-    Panel: props => <Panel {...props} setStance={setStance} />,
-    ModeSwitch: props => <ModeSwitch {...props} setStance={setStance} />,
-    HomeCombat: props => <HomeCombat {...props} setStance={setStance} />,
-    CombatAdvice: props => <CombatAdvice {...props} setStance={setStance} />,
-  };
-}
+const withStance = C => props => <C {...props} setStance={setStanceGlobal} />;
+export const CombatPanel = withStance(Panel);
+export const CombatModeSwitch = withStance(ModeSwitch);
+export const HomeCombat = withStance(HomeCombatInner);
+export const CombatAdvice = withStance(CombatAdviceInner);
+export { Subtitle as CombatSubtitle, HomeWarm, GesteExtra };
+if (typeof window !== 'undefined') setTimeout(scheduleReminders, 0);

@@ -1,9 +1,7 @@
-// Combat le rhume — service worker (offline)
-const V = 'clr-v3';
+// Généré au build — ne pas modifier à la main.
+const V = 'clr-b8d97e5705';
 const B = '/combat-le-rhume/';
-const CORE = [B, B + 'index.html', B + 'manifest.webmanifest', B + 'favicon.svg',
-  B + 'assets/index-c3.js', B + 'assets/routes-c3.js', B + 'assets/combat-plus-c3.js', B + 'assets/styles-C6UDtCL4.css',
-  B + 'icons/icon-192.png', B + 'icons/icon-512.png', B + 'icons/apple-touch-icon.png'];
+const CORE = ["/combat-le-rhume/","/combat-le-rhume/assets/fraunces-italic-latin-ext-CGbN9UgK.woff2","/combat-le-rhume/assets/fraunces-italic-latin-lSdLDfvT.woff2","/combat-le-rhume/assets/fraunces-normal-latin-DihXLNYH.woff2","/combat-le-rhume/assets/fraunces-normal-latin-ext-CJcjJNj7.woff2","/combat-le-rhume/assets/index-BniYB7b1.js","/combat-le-rhume/assets/index-DzmfjKWe.css","/combat-le-rhume/assets/outfit-normal-latin-Bc-8i84L.woff2","/combat-le-rhume/assets/outfit-normal-latin-ext-DdQaqQDo.woff2","/combat-le-rhume/favicon.svg","/combat-le-rhume/icons/apple-touch-icon.png","/combat-le-rhume/icons/icon-192.png","/combat-le-rhume/icons/icon-512.png","/combat-le-rhume/icons/icon-maskable-192.png","/combat-le-rhume/icons/icon-maskable-512.png","/combat-le-rhume/manifest.webmanifest"];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(V).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
@@ -15,20 +13,16 @@ self.addEventListener('fetch', e => {
   const r = e.request;
   if (r.method !== 'GET') return;
   const u = new URL(r.url);
-  if (r.mode === 'navigate' && u.origin === location.origin && u.pathname.startsWith(B)) {
-    // network first, fall back to cached app shell
+  if (u.origin !== location.origin || !u.pathname.startsWith(B)) return;
+  if (r.mode === 'navigate') {
     e.respondWith(fetch(r).then(res => {
       if (res.ok) { const cp = res.clone(); caches.open(V).then(c => c.put(B, cp)); }
       return res;
     }).catch(() => caches.match(B)));
     return;
   }
-  const font = u.hostname === 'fonts.googleapis.com' || u.hostname === 'fonts.gstatic.com';
-  if ((u.origin === location.origin && u.pathname.startsWith(B)) || font) {
-    // stale-while-revalidate
-    e.respondWith(caches.open(V).then(c => c.match(r).then(hit => {
-      const net = fetch(r).then(res => { if (res.ok || res.type === 'opaque') c.put(r, res.clone()); return res; }).catch(() => hit);
-      return hit || net;
-    })));
-  }
+  e.respondWith(caches.match(r, { ignoreSearch: true }).then(hit => hit || fetch(r).then(res => {
+    if (res.ok) { const cp = res.clone(); caches.open(V).then(c => c.put(r, cp)); }
+    return res;
+  })));
 });
