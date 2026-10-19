@@ -1,7 +1,7 @@
 // Généré au build — ne pas modifier à la main.
-const V = 'clr-b8d97e5705';
+const V = 'clr-a5ce7971f6';
 const B = '/combat-le-rhume/';
-const CORE = ["/combat-le-rhume/","/combat-le-rhume/assets/fraunces-italic-latin-ext-CGbN9UgK.woff2","/combat-le-rhume/assets/fraunces-italic-latin-lSdLDfvT.woff2","/combat-le-rhume/assets/fraunces-normal-latin-DihXLNYH.woff2","/combat-le-rhume/assets/fraunces-normal-latin-ext-CJcjJNj7.woff2","/combat-le-rhume/assets/index-BniYB7b1.js","/combat-le-rhume/assets/index-DzmfjKWe.css","/combat-le-rhume/assets/outfit-normal-latin-Bc-8i84L.woff2","/combat-le-rhume/assets/outfit-normal-latin-ext-DdQaqQDo.woff2","/combat-le-rhume/favicon.svg","/combat-le-rhume/icons/apple-touch-icon.png","/combat-le-rhume/icons/icon-192.png","/combat-le-rhume/icons/icon-512.png","/combat-le-rhume/icons/icon-maskable-192.png","/combat-le-rhume/icons/icon-maskable-512.png","/combat-le-rhume/manifest.webmanifest"];
+const CORE = ["/combat-le-rhume/","/combat-le-rhume/assets/fraunces-italic-latin-2HzHoaBL.woff2","/combat-le-rhume/assets/fraunces-italic-latin-ext-LzySCvBX.woff2","/combat-le-rhume/assets/fraunces-normal-latin-COa6imdZ.woff2","/combat-le-rhume/assets/fraunces-normal-latin-ext-BctPH1sx.woff2","/combat-le-rhume/assets/index-CVczsNN1.js","/combat-le-rhume/assets/index-KwZYNCXd.css","/combat-le-rhume/assets/outfit-normal-latin-Bc-8i84L.woff2","/combat-le-rhume/assets/outfit-normal-latin-ext-DdQaqQDo.woff2","/combat-le-rhume/favicon.svg","/combat-le-rhume/icons/apple-touch-icon.png","/combat-le-rhume/icons/icon-192.png","/combat-le-rhume/icons/icon-512.png","/combat-le-rhume/icons/icon-maskable-192.png","/combat-le-rhume/icons/icon-maskable-512.png","/combat-le-rhume/manifest.webmanifest"];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(V).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
 });

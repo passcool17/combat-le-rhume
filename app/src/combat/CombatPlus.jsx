@@ -1,11 +1,12 @@
 // Combat le rhume — Mode Combat : protocole de 3 jours, gestes, suivi, consulter, Kit Combat.
 import * as React from 'react';
 import { usePrefs } from '../lib/stockage.js';
+import { useSuivi } from '../lib/suivi.js';
+import { useNav } from '../lib/nav.js';
 import './combat.css';
 
 const prefsAudience = () => usePrefs.getState().audience;
 const setStanceGlobal = v => usePrefs.getState().setStance(v);
-const KEY = 'combat-le-rhume-combat-v1';
 const DAY = 864e5;
 const PROTOCOL_DAYS = 3;
 
@@ -57,26 +58,13 @@ const RED_FLAGS = [
   { id: 'sansAmelioration', label: 'Plus de 3 jours sans amélioration' },
 ];
 
-// ---------- stockage ----------
-const blank = () => ({ protocol: null, intakes: [], checks: [], intervals: {}, kit: [], reminders: false, history: [] });
-function load() {
-  if (typeof window === 'undefined') return blank();
-  try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && typeof s === 'object' ? { ...blank(), ...s } : blank(); }
-  catch { return blank(); }
-}
-let state = null;
-const subs = new Set();
-const get = () => (state ??= load());
+// ---------- stockage : données unifiées du Suivi (lib/suivi.js) ----------
+const get = () => useSuivi.getState().data;
 function set(fn) {
-  state = { ...get(), ...fn(get()) };
-  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {}
-  subs.forEach(f => f());
+  useSuivi.getState().update(fn);
   scheduleReminders();
 }
-const subscribe = f => (subs.add(f), () => subs.delete(f));
-const useStore = () => React.useSyncExternalStore(subscribe, get, blank0);
-const _blank = blank();
-function blank0() { return _blank; }
+const useStore = () => useSuivi(st => st.data);
 function useNow(ms = 30000) {
   const [now, setNow] = React.useState(() => Date.now());
   React.useEffect(() => { const t = setInterval(() => setNow(Date.now()), ms); return () => clearInterval(t); }, [ms]);
@@ -107,6 +95,14 @@ export function assess(s, now = Date.now()) {
     if (c.tete && c.tete !== 'non') flags.add('tete');
     if (c.avaler) flags.add('avaler');
     if (c.respirer) flags.add('respirer');
+  }
+  if (s.protocol) {
+    const from = dayKey(s.protocol.start);
+    for (const e of s.journal || []) {
+      if (e.date < from) continue;
+      if (e.symptoms.includes('fievre')) flags.add('fievre');
+      if (e.symptoms.includes('maux-tete')) flags.add('tete');
+    }
   }
   if (s.protocol && now - s.protocol.start > PROTOCOL_DAYS * DAY && checks.length) {
     const first = checks[0].gorge, last = checks[checks.length - 1].gorge;
@@ -179,7 +175,7 @@ function Protocol({ audience }) {
     return (
       <Card className="clr-start" data-clr="protocole">
         <Kicker>Protocole de 3 jours</Kicker>
-        <h3 className="mt-1 text-xl">Dès le premier mal de gorge</h3>
+        <h2 className="mt-1 text-xl">Dès le premier mal de gorge</h2>
         <p className="mt-2 text-sm text-muted">Les quatre gestes du jour, cochés au fur et à mesure, et un point matin et soir sur les symptômes. Tout reste dans cet appareil.</p>
         <Btn className="clr-btn-big mt-4" onClick={() => set(() => ({ protocol: { start: Date.now(), audience } }))}>J’ai mal à la gorge, je commence</Btn>
         {last ? <p className="mt-3 text-xs text-muted">Dernier protocole : commencé le {fmtDate(last.start)}, {last.status === 'termine' ? 'terminé' : 'annulé'} le {fmtDate(last.end)}.</p> : null}
@@ -195,7 +191,7 @@ function Protocol({ audience }) {
       <div className="flex items-start justify-between gap-3">
         <div>
           <Kicker>Protocole en cours</Kicker>
-          <h3 className="mt-1 text-xl">{over ? 'Les 3 jours sont passés' : `Jour ${day} sur ${PROTOCOL_DAYS}`}</h3>
+          <h2 className="mt-1 text-xl">{over ? 'Les 3 jours sont passés' : `Jour ${day} sur ${PROTOCOL_DAYS}`}</h2>
           <p className="mt-1 text-sm text-muted">Commencé le {fmtDate(p.start)} à {fmtTime(p.start)}.</p>
         </div>
         <span className="clr-days" aria-hidden="true">{[1, 2, 3].map(d => <i key={d} className={cx(d < day && 'done', d === day && 'today')} />)}</span>
@@ -309,9 +305,9 @@ function Symptoms() {
     <button type="button" aria-pressed={!!f[k]} className={cx('clr-chip', f[k] && 'on')} onClick={() => setF({ ...f, [k]: !f[k] })}>{label}</button>
   );
   return (
-    <Card data-clr="symptomes">
+    <Card data-clr="point" id="point">
       <Kicker>Suivi matin et soir</Kicker>
-      <h3 className="mt-1 text-xl">Comment ça va ?</h3>
+      <h2 className="mt-1 text-xl">Comment ça va ?</h2>
       <div className="clr-seg mt-3" role="group" aria-label="Moment">
         {['matin', 'soir'].map(v => <button key={v} type="button" aria-pressed={slot === v} className={cx(slot === v && 'on')} onClick={() => setSlot(v)}>{v === 'matin' ? 'Matin' : 'Soir'}</button>)}
       </div>
@@ -372,6 +368,14 @@ function Chart() {
 }
 
 // ---------- quand arrêter et consulter ----------
+function CallButtons({ urgent }) {
+  return (
+    <div className="clr-calls mt-2 flex flex-wrap gap-2">
+      <a className="clr-btn clr-call" href="tel:811">Appeler le 811</a>
+      {urgent ? <a className="clr-btn clr-call" href="tel:911">Appeler le 911</a> : null}
+    </div>
+  );
+}
 function Consult({ setStance }) {
   const s = useStore();
   const a = assess(s);
@@ -381,12 +385,14 @@ function Consult({ setStance }) {
       {a.urgent ? (
         <div className="clr-alert mt-2" role="alert">
           <p className="font-semibold">Consulter rapidement.</p>
-          <p className="mt-1 text-sm">Difficulté à avaler ou à respirer : appelle Info-Santé au <a href="tel:811">811</a> (Québec) ou consulte sans attendre. En cas d’urgence, fais le <a href="tel:911">911</a>.</p>
+          <p className="mt-1 text-sm">Difficulté à avaler ou à respirer : appelle Info-Santé au 811 (Québec) ou consulte sans attendre. En cas d’urgence, fais le 911.</p>
+          <CallButtons urgent />
         </div>
       ) : a.consult ? (
         <div className="clr-alert mt-2" role="alert">
           <p className="font-semibold">Il vaut mieux consulter.</p>
-          <p className="mt-1 text-sm">{[...a.flags].filter(f => f !== 'tete').map(f => RED_FLAGS.find(r => r.id === f)?.label).filter(Boolean).join(', ')} : arrête la surchauffe et la tuque, et demande un avis (Info-Santé <a href="tel:811">811</a> au Québec).</p>
+          <p className="mt-1 text-sm">{[...a.flags].filter(f => f !== 'tete').map(f => RED_FLAGS.find(r => r.id === f)?.label).filter(Boolean).join(', ')} : arrête la surchauffe et la tuque, et demande un avis (Info-Santé 811 au Québec).</p>
+          <CallButtons />
         </div>
       ) : a.noWarm ? (
         <div className="clr-alert mt-2" role="status">
@@ -411,7 +417,7 @@ function Kit() {
   return (
     <Card data-clr="kit">
       <div className="flex items-center justify-between gap-3">
-        <div><Kicker>À préparer d’avance</Kicker><h3 className="mt-1 text-xl">Kit Combat</h3></div>
+        <div><Kicker>À préparer d’avance</Kicker><h2 className="mt-1 text-xl">Kit Combat</h2></div>
         <span className="clr-count text-sm text-primary">{has.size} / {KIT.length}</span>
       </div>
       <ul className="clr-kit mt-3">
@@ -423,13 +429,29 @@ function Kit() {
   );
 }
 
+function CheckSummary() {
+  const s = useStore();
+  const setTab = useNav(n => n.setTab);
+  const last = s.checks.filter(c => c.t >= s.protocol.start).sort((a, b) => a.t - b.t).at(-1);
+  return (
+    <Card data-clr="symptomes">
+      <Kicker>Suivi matin et soir</Kicker>
+      <h2 className="mt-1 text-xl">Comment ça va ?</h2>
+      <p className="mt-2 text-sm text-muted">{last
+        ? `Dernier point : ${last.slot}, ${fmtDate(last.t)} à ${fmtTime(last.t)} · gorge ${last.gorge}/10${last.fievre ? ' · fièvre' : ''}.`
+        : 'Aucun point noté pour ce protocole.'} Le point matin et soir et le journal sont réunis dans l’onglet Suivi.</p>
+      <Btn className="mt-3" onClick={() => setTab('suivi')}>Faire le point dans Suivi</Btn>
+    </Card>
+  );
+}
+
 function Panel({ audience, setStance }) {
   const s = useStore();
   return (
     <div className="clr-panel" data-clr="panel">
       <Protocol audience={audience} />
       <Consult setStance={setStance} />
-      {s.protocol ? <Symptoms /> : null}
+      {s.protocol ? <CheckSummary /> : null}
       <Kit />
     </div>
   );
@@ -472,11 +494,11 @@ function HomeCombatInner({ onOpen, onAll, setStance }) {
       <Card>
         <Kicker>{p ? 'Protocole en cours' : 'Protocole de 3 jours'}</Kicker>
         {p ? <>
-          <h3 className="mt-1 text-xl">{protocolDay(p, now) > PROTOCOL_DAYS ? 'Les 3 jours sont passés' : `Jour ${protocolDay(p, now)} sur ${PROTOCOL_DAYS}`}</h3>
+          <h2 className="mt-1 text-xl">{protocolDay(p, now) > PROTOCOL_DAYS ? 'Les 3 jours sont passés' : `Jour ${protocolDay(p, now)} sur ${PROTOCOL_DAYS}`}</h2>
           <p className="mt-1 text-sm text-muted">Gestes faits aujourd’hui : {done} sur {total}. Commencé le {fmtDate(p.start)} à {fmtTime(p.start)}.</p>
           <Btn className="clr-btn-big mt-4" onClick={onOpen}>Ouvrir mon protocole</Btn>
         </> : <>
-          <h3 className="mt-1 text-xl">Dès le premier mal de gorge</h3>
+          <h2 className="mt-1 text-xl">Dès le premier mal de gorge</h2>
           <p className="mt-2 text-sm text-muted">Les quatre gestes du jour, un point matin et soir sur les symptômes, et le Kit Combat.</p>
           <Btn className="clr-btn-big mt-4" onClick={() => { set(() => ({ protocol: { start: Date.now(), audience: prefsAudience() } })); onOpen(); }}>J’ai mal à la gorge, je commence</Btn>
         </>}
@@ -496,16 +518,16 @@ function CombatAdviceInner({ consult, during, onAll, setStance }) {
   return (
     <div className="space-y-4" data-clr="conseils-combat">
       <div>
-        <h2 className="text-2xl">Conseils · Mode Combat</h2>
+        <h1 className="text-2xl">Conseils · Mode Combat</h1>
         <p className="mt-1 text-sm text-muted">Seulement ce qui concerne le protocole du mal de gorge.</p>
       </div>
       <Consult setStance={setStance} />
       <Card caution>
-        <h3 className="text-xl text-caution">Quand consulter</h3>
+        <h2 className="text-xl text-caution">Quand consulter</h2>
         <ul className="clr-dots mt-3">{(consult || []).map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
       </Card>
       <Card>
-        <h3 className="text-xl">Pendant le combat</h3>
+        <h2 className="text-xl">Pendant le combat</h2>
         <ul className="clr-dots mt-3">{items.map(t => <li key={t} className="text-sm text-ink">{t}</li>)}</ul>
         {a.noWarm ? <p className="mt-2 text-xs text-muted">Fièvre, frissons ou mal de tête notés : les conseils « au chaud » sont masqués.</p> : null}
       </Card>
@@ -519,5 +541,7 @@ export const CombatPanel = withStance(Panel);
 export const CombatModeSwitch = withStance(ModeSwitch);
 export const HomeCombat = withStance(HomeCombatInner);
 export const CombatAdvice = withStance(CombatAdviceInner);
-export { Subtitle as CombatSubtitle, HomeWarm, GesteExtra };
+export { Subtitle as CombatSubtitle, HomeWarm, GesteExtra, Symptoms as CombatCheck };
+export const CombatConsult = withStance(Consult);
+export { assess as assessCombat, useStore as useCombatData };
 if (typeof window !== 'undefined') setTimeout(scheduleReminders, 0);

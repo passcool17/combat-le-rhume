@@ -32,9 +32,9 @@ export function Symptomes({ onPrep, onPlants }) {
   return (
     <div className="space-y-5">
       <div>
-        <h2 className="text-2xl">Selon vos symptômes</h2>
+        <h1 className="text-2xl">Selon tes symptômes</h1>
         <p className="mt-1 text-sm text-muted">
-          Fièvre, toux et congestion d’abord. Les autres symptômes se ajoutent
+          Fièvre, toux et congestion d’abord. Les autres symptômes s’ajoutent
           en dessous.
         </p>
       </div>
@@ -79,7 +79,7 @@ export function Symptomes({ onPrep, onPlants }) {
             <SymptomeDetail symptom={t} onPrep={onPrep} key={t.id} />
           ))}
           <div className="flex flex-wrap items-center gap-3">
-            <Button onClick={d}>Noter dans le journal</Button>
+            <Button onClick={d}>Noter dans mon suivi</Button>
             {i ? (
               <p className="text-sm text-primary">
                 Enregistré pour aujourd’hui.
@@ -95,7 +95,7 @@ export function Symptomes({ onPrep, onPlants }) {
 export function SymptomeDetail({ symptom, onPrep, onPlants, title }) {
   return (
     <Card className="border-l-4 border-l-primary">
-      <h3 className="text-xl text-primary">{title ?? symptom.title}</h3>
+      <h2 className="text-xl text-primary">{title ?? symptom.title}</h2>
       <ul className="mt-3 space-y-3">
         {symptom.tips.map((e) => (
           <li key={e.lead}>
@@ -110,7 +110,7 @@ export function SymptomeDetail({ symptom, onPrep, onPlants, title }) {
               <button
                 type="button"
                 onClick={() => onPrep(e.prepId)}
-                className="mt-1 text-sm font-medium text-primary"
+                className="inline-flex min-h-11 items-center text-sm font-medium text-primary"
               >
                 Ouvrir la préparation
               </button>
@@ -122,7 +122,7 @@ export function SymptomeDetail({ symptom, onPrep, onPlants, title }) {
         <button
           type="button"
           onClick={onPlants}
-          className="mt-3 text-sm font-medium text-primary"
+          className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-primary"
         >
           Voir les plantes pour la toux
         </button>

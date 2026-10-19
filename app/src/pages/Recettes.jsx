@@ -16,7 +16,7 @@ export function Recettes({ openId }) {
     (
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl">Préparations</h2>
+          <h1 className="text-2xl">Préparations</h1>
           <p className="mt-1 text-sm text-muted">
             Recettes maison. Le miel cru ne se mélange jamais avec du métal.
           </p>
@@ -25,7 +25,7 @@ export function Recettes({ openId }) {
           let r = t === e.id;
           return (
             <Card className="scroll-mt-24 p-0" key={e.id}>
-              <h3 className="text-lg" id={`prep-${e.id}`}>
+              <h2 className="text-lg" id={`prep-${e.id}`}>
                 <button
                   type="button"
                   aria-expanded={r}
@@ -37,7 +37,7 @@ export function Recettes({ openId }) {
                     {r ? `Fermer` : `Voir`}
                   </span>
                 </button>
-              </h3>
+              </h2>
               {r ? (
                 <div className="space-y-4 border-t border-line px-5 py-4">
                   {e.intro ? (
@@ -80,14 +80,14 @@ export function Recettes({ openId }) {
                       )}
                       key={e.title}
                     >
-                      <h4
+                      <h3
                         className={cn(
                           `text-base`,
                           e.tone === `caution` ? `text-caution` : `text-ink`,
                         )}
                       >
                         {e.title}
-                      </h4>
+                      </h3>
                       <ul className="mt-2 space-y-1.5">
                         {e.items.map((e) => (
                           <li className="text-sm" key={e}>

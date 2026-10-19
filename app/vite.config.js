@@ -65,7 +65,7 @@ function preloadFonts() {
     transformIndexHtml: {
       order: "post",
       handler(html, ctx) {
-        const fonts = Object.keys(ctx.bundle || {}).filter((f) => /(outfit-normal-latin|fraunces-normal-latin)-[\w-]+\.woff2$/.test(f));
+        const fonts = Object.keys(ctx.bundle || {}).filter((f) => /(outfit-normal-latin|fraunces-normal-latin)-[\w-]+\.woff2$/.test(f) && !f.includes("-latin-ext-"));
         const tags = fonts.map((f) => ({ tag: "link", attrs: { rel: "preload", as: "font", type: "font/woff2", href: BASE + f, crossorigin: "" }, injectTo: "head-prepend" }));
         return { html, tags };
       },

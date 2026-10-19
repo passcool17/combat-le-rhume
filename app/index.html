@@ -22,6 +22,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script>addEventListener("beforeinstallprompt",function(e){e.preventDefault();window.__clrInstallPrompt=e});</script>
     <script>
       // Page source du projet (dossier app/) publiée par erreur : renvoyer vers l’appli.
       if (/\/app\/(index\.html)?$/.test(location.pathname)) location.replace("/combat-le-rhume/");

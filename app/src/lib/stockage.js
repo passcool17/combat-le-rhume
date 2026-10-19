@@ -1,34 +1,6 @@
-import { JOURNAL_KEY, PREFS_KEY } from "../data/contenu.js";
+import { PREFS_KEY } from "../data/contenu.js";
+export { useJournal, useSuivi } from "./suivi.js";
 import { create } from "zustand";
-import { dayKey, emptyEntry } from "./outils.js";
-
-export function loadJournal() {
-  if (typeof window > `u`) return [];
-  try {
-    let e = localStorage.getItem(JOURNAL_KEY);
-    if (!e) return [];
-    let t = JSON.parse(e);
-    return Array.isArray(t) ? t.filter(isEntry) : [];
-  } catch {
-    return [];
-  }
-}
-
-export function isEntry(e) {
-  if (!e || typeof e != `object`) return false;
-  let t = e;
-  return (
-    typeof t.date == `string` &&
-    typeof t.intensity == `number` &&
-    Array.isArray(t.symptoms) &&
-    typeof t.notes == `string` &&
-    Array.isArray(t.protocol)
-  );
-}
-
-export function saveJournal(e) {
-  localStorage.setItem(JOURNAL_KEY, JSON.stringify(e));
-}
 
 export function loadPrefs() {
   let e = {
@@ -36,6 +8,8 @@ export function loadPrefs() {
     favorites: [],
     theme: `clair`,
     stance: null,
+    onboarded: false,
+    installDismissed: false,
   };
   if (typeof window > `u`) return e;
   try {
@@ -51,6 +25,8 @@ export function loadPrefs() {
         : [],
       theme: r.theme === `sombre` ? `sombre` : `clair`,
       stance: r.stance === `combat` || r.stance === `soutien` ? r.stance : null,
+      onboarded: r.onboarded === true,
+      installDismissed: r.installDismissed === true,
     };
   } catch {
     return e;
@@ -68,68 +44,15 @@ export function mergePrefs(e, t) {
     favorites: t.favorites ?? n.favorites,
     theme: t.theme ?? n.theme,
     stance: t.stance === void 0 ? n.stance : t.stance,
+    onboarded: t.onboarded ?? n.onboarded,
+    installDismissed: t.installDismissed ?? n.installDismissed,
   };
 }
 
-export const useJournal = create((e, t) => ({
-  hydrated: false,
-  entries: [],
-  hydrate: () => {
-    t().hydrated ||
-      e({
-        entries: loadJournal(),
-        hydrated: true,
-      });
-  },
-  saveToday: (n) => {
-    let r = dayKey(),
-      i = t().hydrated ? t().entries : loadJournal(),
-      a = [
-        {
-          ...(i.find((e) => e.date === r) ?? emptyEntry(r)),
-          ...n,
-          date: r,
-        },
-        ...i.filter((e) => e.date !== r),
-      ].sort((e, t) => t.date.localeCompare(e.date));
-    (saveJournal(a),
-      e({
-        entries: a,
-        hydrated: true,
-      }));
-  },
-  toggleProtocol: (e) => {
-    let n = dayKey(),
-      r =
-        (t().hydrated ? t().entries : loadJournal()).find(
-          (e) => e.date === n,
-        ) ?? emptyEntry(n),
-      i = r.protocol.includes(e)
-        ? r.protocol.filter((t) => t !== e)
-        : [...r.protocol, e];
-    t().saveToday({
-      ...r,
-      protocol: i,
-    });
-  },
-  remove: (n) => {
-    let r = (t().hydrated ? t().entries : loadJournal()).filter(
-      (e) => e.date !== n,
-    );
-    (saveJournal(r),
-      e({
-        entries: r,
-        hydrated: true,
-      }));
-  },
-}));
-
 export const usePrefs = create((e, t) => ({
-  hydrated: false,
-  audience: `adulte`,
-  favorites: [],
-  theme: `clair`,
-  stance: null,
+  // Lecture synchrone : pas de « flash » de l’accueil sans mode pour les habitués.
+  ...loadPrefs(),
+  hydrated: true,
   hydrate: () => {
     t().hydrated ||
       e({
@@ -166,6 +89,14 @@ export const usePrefs = create((e, t) => ({
         ...r,
         hydrated: true,
       }));
+  },
+  setOnboarded: (v = true) => {
+    let r = mergePrefs(t, { onboarded: v });
+    (savePrefs(r), e({ ...r, hydrated: true }));
+  },
+  dismissInstall: () => {
+    let r = mergePrefs(t, { installDismissed: true });
+    (savePrefs(r), e({ ...r, hydrated: true }));
   },
   toggleFavorite: (n) => {
     let r = t().favorites,

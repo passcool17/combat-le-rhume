@@ -46,3 +46,8 @@
     *, ::before, ::after { scroll-behavior: auto !important; transition: none !important; }
   }
 }
+
+/* Bannière d’installation : superposée en bas (aucun décalage de mise en page). */
+.clr-install{bottom:calc(4.75rem + env(safe-area-inset-bottom))}
+@media (min-width:48rem){.clr-install{bottom:1rem}}
+.clr-has-install main{padding-bottom:16rem}

@@ -8,7 +8,7 @@ import {
   REMEDES,
   TOUX_CONSEIL,
 } from "../data/contenu.js";
-import { Card } from "../components/ui.jsx";
+import { Card, OnThisPage, Section } from "../components/ui.jsx";
 import { Search, Star } from "../components/icones.jsx";
 import { cn } from "../lib/cn.js";
 import { CombatModeSwitch, CombatPanel, CombatSubtitle, GesteExtra } from "../combat/CombatPlus.jsx";
@@ -53,13 +53,13 @@ export function Remedes({ filter, onFilter }) {
   return (
     <div className="space-y-5">
       <div>
-        <h2 className="text-2xl">
+        <h1 className="text-2xl">
           {stance === `combat`
             ? `Mode Combat`
             : stance === `soutien`
               ? `Mode Soutien`
               : `Remèdes`}
-        </h2>
+        </h1>
         <p className="mt-1 text-sm text-muted">
           {stance === `combat`
             ? <CombatSubtitle />
@@ -87,8 +87,7 @@ export function Remedes({ filter, onFilter }) {
             ))}
           </ul>
           <p className="mt-3 text-xs text-muted">
-            Objectif : supériorité offensive dès les premiers signes de mal de
-            gorge.
+            Objectif : agir tôt et avec régularité, dès les premiers signes de mal de gorge.
           </p>
         </Card>
       ) : null}
@@ -116,7 +115,7 @@ export function Remedes({ filter, onFilter }) {
           aria-pressed={i}
           onClick={() => a((e) => !e)}
           className={cn(
-            `inline-flex h-10 shrink-0 items-center gap-1.5 rounded-full px-4 text-sm font-medium`,
+            `inline-flex h-11 shrink-0 items-center gap-1.5 rounded-full px-4 text-sm font-medium`,
             i
               ? `bg-primary text-primary-fg`
               : `border border-line bg-surface text-ink`,
@@ -136,7 +135,7 @@ export function Remedes({ filter, onFilter }) {
               aria-pressed={r}
               onClick={() => onFilter(n.id)}
               className={cn(
-                `h-10 shrink-0 rounded-full px-4 text-sm font-medium`,
+                `h-11 shrink-0 rounded-full px-4 text-sm font-medium`,
                 r
                   ? `bg-primary text-primary-fg`
                   : `border border-line bg-surface text-ink`,
@@ -148,100 +147,74 @@ export function Remedes({ filter, onFilter }) {
           );
         })}
       </div>
+      {stance !== `combat` && d.length > 1 ? (
+        <OnThisPage items={d.map((e) => ({ id: `remede-${e.id}`, label: e.name }))} />
+      ) : null}
       {d.length === 0 ? (
         <Card>
           <p className="text-sm text-muted">
             {i
-              ? `Aucun favori pour ce filtre. Touchez l’étoile sur une fiche.`
+              ? `Aucun favori pour ce filtre. Touche l’étoile sur une fiche.`
               : `Aucun remède pour cette recherche.`}
           </p>
         </Card>
       ) : (
         <div
           className={cn(
-            `grid gap-3`,
+            `grid items-start gap-3`,
             stance === `combat` ? `mx-auto max-w-lg` : `md:grid-cols-2`,
           )}
         >
           {d.map((e) => (
-            <Card caution={e.caution} key={e.id}>
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p
-                    className={cn(
-                      `text-xs font-medium tracking-wide uppercase`,
-                      e.caution ? `text-caution` : `text-primary`,
-                    )}
-                  >
-                    {e.kicker}
-                  </p>
-                  <h3 className="mt-1 text-xl">{e.name}</h3>
-                </div>
+            <Section
+              id={`remede-${e.id}`}
+              key={e.id}
+              caution={e.caution}
+              kicker={e.kicker}
+              kickerClassName={cn(`tracking-wide`, e.caution ? `text-caution` : `text-primary`)}
+              title={e.name}
+              titleClassName="text-xl"
+              defaultOpen={stance === `combat`}
+              forceOpen={!!n.trim()}
+              aside={
                 <button
                   type="button"
                   aria-pressed={favorites.includes(e.id)}
-                  aria-label={
-                    favorites.includes(e.id)
-                      ? `Retirer ${e.name} des favoris`
-                      : `Ajouter ${e.name} aux favoris`
-                  }
+                  aria-label={favorites.includes(e.id) ? `Retirer ${e.name} des favoris` : `Ajouter ${e.name} aux favoris`}
                   onClick={() => toggleFavorite(e.id)}
                   className="flex size-11 shrink-0 items-center justify-center rounded-full border border-line"
                 >
-                  <Star
-                    className={cn(
-                      `size-5`,
-                      favorites.includes(e.id)
-                        ? `fill-current text-caution`
-                        : `text-muted`,
-                    )}
-                    aria-hidden="true"
-                  />
+                  <Star className={cn(`size-5`, favorites.includes(e.id) ? `fill-current text-caution` : `text-muted`)} aria-hidden="true" />
                 </button>
-              </div>
-              <p className="mt-2 text-sm">
-                {audience === `enfant` ? doseEnfant(e.id) : e.how}
-              </p>
+              }
+            >
+              <p className="text-sm">{audience === `enfant` ? doseEnfant(e.id) : e.how}</p>
               {audience === `enfant` ? (
                 <p className="mt-2 text-sm text-muted">
                   {"Adulte : "}
                   {e.how}
                 </p>
               ) : null}
-              {e.extra?.map((e) => (
-                <p className="mt-2 text-sm text-muted" key={e}>
-                  {e}
+              {e.extra?.map((x) => (
+                <p className="mt-2 text-sm text-muted" key={x}>
+                  {x}
                 </p>
               ))}
               {e.href ? (
-                <a
-                  href={e.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-3 inline-flex text-sm font-medium text-primary"
-                >
+                <a href={e.href} target="_blank" rel="noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-primary">
                   Voir sur Amazon
                 </a>
               ) : null}
-              <p
-                className={cn(
-                  `mt-3 inline-flex rounded-full px-3 py-1 text-xs font-medium`,
-                  e.caution
-                    ? `bg-caution-soft text-caution`
-                    : `bg-primary-soft text-primary`,
-                )}
-              >
-                {e.tag}
-              </p>
+              <p className={cn(`mt-3 inline-flex rounded-full px-3 py-1 text-xs font-medium`, e.caution ? `bg-caution-soft text-caution` : `bg-primary-soft text-primary`)}>{e.tag}</p>
               {stance === `combat` ? <GesteExtra id={e.id} audience={audience} /> : null}
-            </Card>
+            </Section>
           ))}
         </div>
       )}
       {stance === `combat` ? <CombatModeSwitch onAll={() => onFilter(`tous`)} /> : null}
       {filter === `toux` && stance !== `combat` ? (
         <Card>
-          <h3 className="text-lg">Si la toux s’installe</h3>
+          <h2 className="text-lg">Si la toux s’installe</h2>
           <p className="mt-2 text-sm text-muted">{TOUX_CONSEIL}</p>
         </Card>
       ) : null}

@@ -16,12 +16,12 @@ export const PROTOCOLE_DU_JOUR = [
   {
     id: `repos`,
     title: `Au chaud la nuit`,
-    detail: `Tuque, couvertures, pièce chauffée. Seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons. La chaleur et la transpiration aident.`,
+    detail: `Tuque, couvertures, pièce chauffée. Seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons. Arrête si tu as trop chaud ou si tu te sens moins bien.`,
   },
   {
     id: `immunite`,
     title: `Vitamine D`,
-    detail: `En priorité. La plupart des gens ont besoin d’un supplément, surtout au Québec en automne et en hiver. Adulte : souvent 2 000 à 4 000 UI/jour, selon une prise de sang. En phase aiguë : zinc 15–30 mg et vitamine C 1–2 g.`,
+    detail: `En priorité. Un supplément est souvent recommandé au Québec en automne et en hiver : demande conseil à ton pharmacien ou à ton médecin. Adulte : souvent 2 000 à 4 000 UI/jour, selon une prise de sang. En phase aiguë : zinc 15–30 mg et vitamine C 1–2 g.`,
   },
   {
     id: `cibles`,
@@ -42,11 +42,11 @@ export const PILIERS_SOUTIEN = [
   },
   {
     title: `Soutien ciblé`,
-    detail: `Vitamine D d’abord, surtout l’automne et l’hiver au Québec. Zinc et vitamine C pendant la maladie, mélange ail-vinaigre-miel. Argent colloïdal seulement avec prudence.`,
+    detail: `Vitamine D d’abord, surtout l’automne et l’hiver au Québec. Zinc et vitamine C pendant la maladie, mélange ail-vinaigre-miel. Argent colloïdal : non recommandé par voie interne (mise en garde de Santé Canada).`,
   },
   {
     title: `Hydratation & repos`,
-    detail: `Eau, tisanes, et une nuit très au chaud. La chaleur aide le système immunitaire.`,
+    detail: `Eau, tisanes, et une nuit au chaud si tu es confortable.`,
   },
 ];
 
@@ -68,7 +68,7 @@ export const PHASES = [
     lines: [
       `Protocole complet : boire, dormir, rester au chaud.`,
       `Tisanes (pin, thym, gingembre) et mélange ail-vinaigre-miel au réveil.`,
-      `Lavages de nez. Peroxyde seulement en dilution food grade, et court.`,
+      `Lavages de nez à l’eau salée.`,
     ],
     filter: `tous`,
   },
@@ -128,7 +128,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Lavage nasal`,
-        detail: `Solution saline (½ à 1 c. à café de sel dans 250 ml d’eau tiède) ou version douce au peroxyde (¼ c. à café de peroxyde 3 % food grade dans 170 ml d’eau).`,
+        detail: `Solution saline : ½ à 1 c. à café de sel dans 250 ml d’eau tiède, bouillie ou filtrée. Pas de peroxyde dans le nez.`,
         prepId: `sinus`,
       },
     ],
@@ -188,7 +188,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Oreilles`,
-        detail: `Quelques gouttes de peroxyde 3 % food grade dans l’oreille, laisser agir 5 à 10 minutes, puis secouer la tête pour vider.`,
+        detail: `Peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Seulement dilué (moitié eau, moitié peroxyde 3 %), quelques gouttes, puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
       },
     ],
   },
@@ -373,7 +373,7 @@ export const REMEDES = [
     topics: [`congestion`],
     how: `Solution saline, 1 à 3 fois par jour. Tête penchée, respirer par la bouche, ne pas forcer.`,
     extra: [
-      `La version douce est dans les recettes. Le peroxyde, seulement en dilution food grade.`,
+      `La recette est dans les préparations. Pas de peroxyde dans le nez.`,
     ],
     tag: `Nez · sinus`,
   },
@@ -410,7 +410,7 @@ export const REMEDES = [
     topics: [`fievre`],
     how: `Vitamine C : 500 mg à 1 g, 2 à 3 fois par jour pendant la phase aiguë.`,
     extra: [
-      `Vitamine D, en priorité : la plupart des adultes ont besoin d’un supplément, surtout au Québec en automne et en hiver.`,
+      `Vitamine D, en priorité : un supplément est souvent recommandé au Québec en automne et en hiver ; demande conseil à ton pharmacien ou à ton médecin.`,
       `Dose courante : 2 000 à 4 000 UI/jour. À adapter selon une prise de sang. Utile pour le système immunitaire.`,
       `Soleil : visage et bras, sans lunettes, sans brûler. 30 minutes au minimum, une heure c’est mieux, surtout en été.`,
     ],
@@ -419,26 +419,26 @@ export const REMEDES = [
   {
     id: `argent`,
     name: `Argent colloïdal`,
-    kicker: `Usage court`,
+    kicker: `Mise en garde`,
     topics: [],
     caution: true,
-    how: `Suivre strictement les indications du fabricant (gouttes, spray). Usage court uniquement.`,
+    how: `Non recommandé par voie interne. Santé Canada met en garde : pris par la bouche, l’argent colloïdal peut s’accumuler dans le corps et colorer la peau, les yeux et les ongles en gris-bleu, de façon permanente (argyrie).`,
     extra: [
-      `Ne pas l’utiliser de façon prolongée. Choisir un produit de qualité.`,
+      `Les produits non homologués n’ont pas été évalués. Un produit autorisé porte un numéro NPN ou DIN à 8 chiffres. Demande conseil à un pharmacien.`,
+      `Jamais chez l’enfant ni pendant la grossesse.`,
     ],
-    tag: `Usage prudent`,
+    tag: `Mise en garde Santé Canada`,
   },
   {
     id: `peroxyde`,
     name: `Peroxyde d’hydrogène 3 %`,
     kicker: `Food grade seulement`,
-    topics: [`gorge`, `congestion`],
+    topics: [`gorge`],
     caution: true,
     how: `Uniquement du peroxyde 3 % food grade. Ne jamais exposer la bouteille au soleil : la lumière dégrade le produit.`,
     extra: [
-      `Oreilles : quelques gouttes, laisser agir 5 à 10 minutes, puis secouer la tête pour vider.`,
+      `Oreilles : peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Seulement dilué (moitié eau, moitié peroxyde 3 %), quelques gouttes, puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
       `Gargarisme : 1 c. à soupe de peroxyde 3 % + 1 c. à soupe d’eau. Gargariser, recracher. Ne jamais avaler.`,
-      `Nez : ¼ c. à café dans 170 ml (6 oz) d’eau. Spray ou rinçage léger.`,
       `Arrêter en cas d’irritation. Usage court uniquement.`,
     ],
     tag: `Usage très prudent`,
@@ -520,7 +520,7 @@ export const REMEDES = [
     name: `Violette et herbe à chats`,
     kicker: `Toux avec fièvre`,
     topics: [`toux`, `fievre`],
-    how: `Dans la teinture « Herbal Tylenol », ou en tisane légère.`,
+    how: `Dans la teinture aux trois plantes, ou en tisane légère.`,
     extra: [
       `Apaisantes quand la toux s’accompagne de maux de tête ou de fièvre.`,
     ],
@@ -610,8 +610,8 @@ export const RECETTES = [
   },
   {
     id: `tylenol`,
-    title: `Teinture « Herbal Tylenol »`,
-    intro: `Trois plantes traditionnelles pour la douleur, l’inflammation et la fièvre : grande camomille (feverfew), violette douce et herbe à chats (catnip).`,
+    title: `Teinture aux trois plantes`,
+    intro: `Trois plantes utilisées traditionnellement contre la douleur, l’inflammation et la fièvre : grande camomille (feverfew), violette douce et herbe à chats (catnip).`,
     ingredients: [
       `Environ ⅓ de tasse de chaque herbe séchée, à parts égales : catnip, fleurs de violette, feverfew`,
       `Eau très chaude, juste assez pour faire flotter les herbes`,
@@ -626,7 +626,7 @@ export const RECETTES = [
       `Filtrer. Conserver dans un flacon compte-gouttes opaque.`,
     ],
     use: `Adultes : 60 à 90 gouttes dans un peu d’eau, selon le besoin (douleur, inflammation, fièvre, maux de tête). Enfants dès 2 ans : commencer par 10 à 15 gouttes et ajuster selon le poids. Attendre au moins 20 minutes entre les prises.`,
-    caution: `Usage éducatif uniquement. Consulter un professionnel avant utilisation, surtout chez les enfants, les femmes enceintes, ou en cas de traitement. Arrêter en cas de réaction inhabituelle.`,
+    caution: `Usage éducatif uniquement. Ne remplace pas un médicament contre la fièvre ni un avis médical. Consulter un professionnel avant utilisation, surtout chez les enfants, les femmes enceintes, ou en cas de traitement. Arrêter en cas de réaction inhabituelle.`,
   },
   {
     id: `sinus`,
@@ -643,21 +643,11 @@ export const RECETTES = [
         note: `Dissoudre. Pot neti, seringue ou flacon spray. Incliner la tête, faire passer d’une narine à l’autre, puis se moucher doucement.`,
       },
       {
-        title: `Peroxyde 3 % food grade, dilution douce`,
-        tone: `caution`,
-        items: [
-          `170 ml (6 oz) d’eau tiède`,
-          `¼ c. à café de peroxyde d’hydrogène 3 % food grade`,
-        ],
-        note: `Mélanger juste avant. Spray nasal léger ou rinçage très doux, sans forcer. Maximum 1 à 2 fois par jour. Bouteille de peroxyde à l’abri de la lumière. Arrêter si ça irrite. Food grade 3 % seulement.`,
-      },
-      {
         title: `Conseils d’usage`,
         items: [
           `Toujours de l’eau propre : bouillie puis refroidie, ou filtrée.`,
           `Se moucher doucement après le rinçage.`,
           `Éviter le lavage juste avant de dormir s’il reste un écoulement.`,
-          `Commencer par la saline pure avant la version au peroxyde.`,
           `Si la congestion est forte, une inhalation vapeur d’abord pour ouvrir les voies.`,
         ],
       },
@@ -676,7 +666,7 @@ export const QUAND_CONSULTER = [
 export const MODE_SOUTIEN = {
   title: `Tout est une histoire de système immunitaire`,
   detail: `Les soins naturels aident ton système à se défendre.`,
-  choice: `Dès les premiers signes, frapper fort le mal de gorge infecté. On lance une attaque forte contre l’arrivée du virus. Il nous faut la supériorité offensive.`,
+  choice: `Dès les premiers signes, agir tôt sur le mal de gorge, avec des gestes simples et réguliers.`,
 };
 
 export const A_FAIRE = [
@@ -763,7 +753,7 @@ export const GORGE_GESTES = [
 ];
 
 export const PREVENTION = [
-  `Vitamine D en supplément pour la plupart des gens, surtout au Québec en automne et en hiver`,
+  `Vitamine D : supplément souvent recommandé au Québec en hiver, demande conseil`,
   `Frapper fort dès le mal de gorge`,
   `Sommeil de qualité et repos`,
   `Humidifier l’air en saison froide`,
@@ -781,7 +771,7 @@ export const PENDANT_MALADIE = [
   `Limiter les contacts rapprochés pendant la phase contagieuse.`,
   `Miel : jamais d’instrument en métal (cuillère, mixeur). Bois, plastique ou verre, pour préserver les enzymes du miel cru.`,
   `Éviter l’alcool pendant la phase aiguë : il déshydrate et peut affaiblir les défenses.`,
-  `Nicotine : certaines recherches évoquent des effets neuroprotecteurs potentiels, surtout sur les neurones. Pendant un rhume ou une grippe, les formes non inhalées (patch, gomme) sont préférables à la fumée.`,
+  `Nicotine et tabac : ceci n’est pas une recommandation. La nicotine est nocive et crée une dépendance. Pendant un rhume ou une grippe, la fumée irrite des voies déjà enflammées : à éviter.`,
   `Vapotage : moins agressif que la cigarette, faute de combustion, mais la vapeur peut irriter des voies déjà enflammées. À éviter ou à limiter fortement pendant la phase aiguë.`,
 ];
 

@@ -17,7 +17,7 @@ export function Plantes({ onPrep }) {
   return (
     <div className="space-y-4">
       <div>
-        <h2 className="text-2xl">Plantes pour la toux</h2>
+        <h1 className="text-2xl">Plantes pour la toux</h1>
         <p className="mt-1 text-sm text-muted">
           Toux grasse ou gorge irritée. Commencer doux, et observer la réaction.
         </p>
@@ -30,7 +30,7 @@ export function Plantes({ onPrep }) {
               <p className="text-xs font-medium tracking-widest text-primary uppercase">
                 {n.kicker}
               </p>
-              <h3 className="mt-1 text-xl">{n.name}</h3>
+              <h2 className="mt-1 text-xl">{n.name}</h2>
               <p className="mt-2 text-sm">
                 {audience === `enfant` ? doseEnfant(n.id) : n.how}
               </p>
@@ -49,7 +49,7 @@ export function Plantes({ onPrep }) {
                 <button
                   type="button"
                   onClick={() => onPrep(r)}
-                  className={cn(`mt-3 text-sm font-medium text-primary`)}
+                  className={cn(`mt-2 inline-flex min-h-11 items-center text-sm font-medium text-primary`)}
                 >
                   Voir la préparation
                 </button>
@@ -59,7 +59,7 @@ export function Plantes({ onPrep }) {
         })}
       </div>
       <Card>
-        <h3 className="text-lg">Si la toux s’installe</h3>
+        <h2 className="text-lg">Si la toux s’installe</h2>
         <p className="mt-2 text-sm text-muted">{TOUX_CONSEIL}</p>
       </Card>
     </div>

@@ -28,7 +28,7 @@ export function protocoleSelonSymptomes(e) {
   let t = [
     `Frapper fort dès les premiers signes, surtout le mal de gorge.`,
     `Hydratation 2,5 à 3 L. Très au chaud la nuit, tuque comprise, s’il n’y a pas de fièvre, de mal de tête ou de frissons.`,
-    `Vitamine D en priorité. La plupart des gens en ont besoin, surtout au Québec en automne et en hiver.`,
+    `Vitamine D en priorité : souvent recommandée au Québec en automne et en hiver, demande conseil.`,
   ];
   return (
     e.includes(`fievre`) &&
