@@ -2,7 +2,7 @@
 À lancer après tools/patch.py (voir tools/build.sh). Les fichiers sont renommés avec V
 pour que les anciens caches (service worker, navigateur) ne servent pas l'ancienne version."""
 import os, re
-V = 'c2'
+V = 'c3'
 def rep(s, a, b, n=1):
     c = s.count(a); assert c == n, (a[:80], c); return s.replace(a, b)
 IDX, RTS = 'assets/index-DQN6feKR.js', 'assets/routes-BZb6ezsO.js'
@@ -25,6 +25,22 @@ s = rep(s, 'return r&&!a||', 'return r&&!a||r&&o===`enfant`&&n.id===`peroxyde`||
 s = rep(s, '},[c,i,e,n,s]);', '},[c,i,e,n,s,o]);')
 # précautions sur chaque fiche geste du Mode Combat
 s = rep(s, 'children:e.tag})]},e.id))', 'children:e.tag}),s===`combat`?(0,W.jsx)(__clr.GesteExtra,{id:e.id,audience:o}):null]},e.id))')
+# --- Mode Combat concentré : en Combat, ne montrer que ce qui concerne le Combat ---
+HID = 'var __hid=[`symptomes`,`plantes`,`recettes`,`journal`],__nav=e=>e===`combat`?Dr.filter(e=>!__hid.includes(e.id)):Dr,Dr=['
+s = rep(s, 'var Dr=[', HID)
+s = rep(s, 'Dr.map(', '__nav(__st).map(', 2)
+s = rep(s, 'className:`grid grid-cols-5`', 'className:__st===`combat`?`grid grid-cols-2`:`grid grid-cols-5`')
+s = rep(s, '[s,u]=(0,v.useState)(`accueil`)', '__st=k(e=>e.stance),[s,u]=(0,v.useState)(`accueil`)')
+s = rep(s, '(0,v.useEffect)(()=>{window.scrollTo(0,0)},[s]);', '(0,v.useEffect)(()=>{window.scrollTo(0,0)},[s]),(0,v.useEffect)(()=>{__st===`combat`&&__hid.includes(s)&&u(`remedes`)},[__st,s]);')
+for a, comp in (('symptomes', 'Tr'), ('plantes', 'br'), ('recettes', 'xr'), ('journal', 'hr')):
+    s = rep(s, f's===`{a}`?(0,W.jsx)({comp}', f's===`{a}`&&__st!==`combat`?(0,W.jsx)({comp}')
+s = rep(s, 's===`remedes`?(0,W.jsx)(Cr', 's===`remedes`||__st===`combat`&&__hid.includes(s)?(0,W.jsx)(Cr')
+s = rep(s, 's===`conseils`?(0,W.jsx)(Yt,{}):', 's===`conseils`?__st===`combat`?(0,W.jsx)(__clr.CombatAdvice,{consult:pe,during:xe,onAll:()=>b(`tous`)}):(0,W.jsx)(Yt,{}):')
+# Accueil : en Combat, remplacer les sections générales par le résumé Combat
+s = rep(s, 'y&&g?(0,W.jsxs)(W.Fragment,{children:[g===`soutien`?', 'y&&g===`combat`?(0,W.jsx)(__clr.HomeCombat,{onOpen:()=>e(`gorge`),onAll:()=>e(`tous`)}):y&&g?(0,W.jsxs)(W.Fragment,{children:[g===`soutien`?')
+# Remèdes en Combat : pas de recherche, pas de « Si la toux s’installe », bouton pour changer de mode
+s = rep(s, '(0,W.jsxs)(`label`,{className:`flex h-12 items-center gap-2 rounded-full border border-line bg-surface px-4`', 's!==`combat`&&(0,W.jsxs)(`label`,{className:`flex h-12 items-center gap-2 rounded-full border border-line bg-surface px-4`')
+s = rep(s, 'e===`toux`?(0,W.jsxs)(q,{children:[(0,W.jsx)(`h3`,{className:`text-lg`,children:`Si la toux', 's===`combat`?(0,W.jsx)(__clr.ModeSwitch,{onAll:()=>t(`tous`)}):null,e===`toux`&&s!==`combat`?(0,W.jsxs)(q,{children:[(0,W.jsx)(`h3`,{className:`text-lg`,children:`Si la toux')
 open('assets/' + NRTS, 'w').write(s); os.remove(RTS)
 s = open(IDX).read()
 s = rep(s, './routes-BZb6ezsO.js', './' + NRTS)
