@@ -5,6 +5,7 @@
 import css from './combat-plus.css';
 
 let h, Frag;
+let prefsAudience = () => 'adulte';
 const KEY = 'combat-le-rhume-combat-v1';
 const DAY = 864e5;
 const PROTOCOL_DAYS = 3;
@@ -447,6 +448,74 @@ function GesteExtra({ id, audience }) {
   );
 }
 
+
+// ---------- Mode Combat concentré ----------
+function ModeSwitch({ onAll, setStance }) {
+  return (
+    <Card data-clr="changer-mode">
+      <Kicker>Changer de mode</Kicker>
+      <p className="mt-1 text-sm text-muted">Le Mode Combat ne montre que le protocole du mal de gorge. Plantes, vitamines et recettes sont dans le Mode Soutien ou dans la liste complète.</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Btn onClick={() => setStance('soutien')}>Passer au Mode Soutien</Btn>
+        <Btn variant="ghost" onClick={() => { setStance(null); onAll?.(); }}>Voir tous les remèdes</Btn>
+      </div>
+    </Card>
+  );
+}
+
+function HomeCombat({ onOpen, onAll, setStance }) {
+  const s = useStore();
+  const now = useNow();
+  const p = s.protocol;
+  const done = p ? new Set(s.intakes.filter(i => i.t >= p.start && dayKey(i.t) === dayKey(now)).map(i => i.g)).size : 0;
+  const total = p && p.audience === 'enfant' ? 3 : 4;
+  return (
+    <div className="clr-panel" data-clr="accueil-combat">
+      <Card>
+        <Kicker>{p ? 'Protocole en cours' : 'Protocole de 3 jours'}</Kicker>
+        {p ? <>
+          <h3 className="mt-1 text-xl">{protocolDay(p, now) > PROTOCOL_DAYS ? 'Les 3 jours sont passés' : `Jour ${protocolDay(p, now)} sur ${PROTOCOL_DAYS}`}</h3>
+          <p className="mt-1 text-sm text-muted">Gestes faits aujourd’hui : {done} sur {total}. Commencé le {fmtDate(p.start)} à {fmtTime(p.start)}.</p>
+          <Btn className="clr-btn-big mt-4" onClick={onOpen}>Ouvrir mon protocole</Btn>
+        </> : <>
+          <h3 className="mt-1 text-xl">Dès le premier mal de gorge</h3>
+          <p className="mt-2 text-sm text-muted">Les quatre gestes du jour, un point matin et soir sur les symptômes, et le Kit Combat.</p>
+          <Btn className="clr-btn-big mt-4" onClick={() => { set(() => ({ protocol: { start: Date.now(), audience: prefsAudience() } })); onOpen(); }}>J’ai mal à la gorge, je commence</Btn>
+        </>}
+      </Card>
+      <Consult setStance={setStance} />
+      <ModeSwitch onAll={onAll} setStance={setStance} />
+    </div>
+  );
+}
+
+const WARM_ITEMS = ['Dormir au chaud', 'Rester au chaud'];
+const KEEP_ITEMS = [...WARM_ITEMS, 'Surveiller la température', 'Miel :'];
+function CombatAdvice({ consult, during, onAll, setStance }) {
+  const s = useStore();
+  const a = assess(s);
+  const items = (during || []).filter(t => KEEP_ITEMS.some(k => t.startsWith(k)) && !(a.noWarm && WARM_ITEMS.some(k => t.startsWith(k))));
+  return (
+    <div className="space-y-4" data-clr="conseils-combat">
+      <div>
+        <h2 className="text-2xl">Conseils · Mode Combat</h2>
+        <p className="mt-1 text-sm text-muted">Seulement ce qui concerne le protocole du mal de gorge.</p>
+      </div>
+      <Consult setStance={setStance} />
+      <Card caution>
+        <h3 className="text-xl text-caution">Quand consulter</h3>
+        <ul className="clr-dots mt-3">{(consult || []).map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
+      </Card>
+      <Card>
+        <h3 className="text-xl">Pendant le combat</h3>
+        <ul className="clr-dots mt-3">{items.map(t => <li key={t} className="text-sm text-ink">{t}</li>)}</ul>
+        {a.noWarm ? <p className="mt-2 text-xs text-muted">Fièvre, frissons ou mal de tête notés : les conseils « au chaud » sont masqués.</p> : null}
+      </Card>
+      <ModeSwitch onAll={onAll} setStance={setStance} />
+    </div>
+  );
+}
+
 export function createCombatPlus(R, _jsx, prefs) {
   React = R; h = R.createElement; Frag = R.Fragment;
   if (typeof document !== 'undefined' && !document.getElementById('clr-style')) {
@@ -454,8 +523,12 @@ export function createCombatPlus(R, _jsx, prefs) {
   }
   if (typeof window !== 'undefined') setTimeout(scheduleReminders, 0);
   const setStance = v => prefs.getState().setStance(v);
+  prefsAudience = () => prefs.getState().audience;
   return {
     Subtitle, HomeWarm, GesteExtra,
     Panel: props => <Panel {...props} setStance={setStance} />,
+    ModeSwitch: props => <ModeSwitch {...props} setStance={setStance} />,
+    HomeCombat: props => <HomeCombat {...props} setStance={setStance} />,
+    CombatAdvice: props => <CombatAdvice {...props} setStance={setStance} />,
   };
 }

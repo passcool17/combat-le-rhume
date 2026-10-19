@@ -1,8 +1,8 @@
 // Combat le rhume — service worker (offline)
-const V = 'clr-v2';
+const V = 'clr-v3';
 const B = '/combat-le-rhume/';
 const CORE = [B, B + 'index.html', B + 'manifest.webmanifest', B + 'favicon.svg',
-  B + 'assets/index-c2.js', B + 'assets/routes-c2.js', B + 'assets/combat-plus-c2.js', B + 'assets/styles-C6UDtCL4.css',
+  B + 'assets/index-c3.js', B + 'assets/routes-c3.js', B + 'assets/combat-plus-c3.js', B + 'assets/styles-C6UDtCL4.css',
   B + 'icons/icon-192.png', B + 'icons/icon-512.png', B + 'icons/apple-touch-icon.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(V).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));

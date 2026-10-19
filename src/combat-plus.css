@@ -47,3 +47,6 @@
 .clr-prec{border-radius:.9rem;background:var(--color-caution-soft);padding:.65rem .8rem}
 .clr-prec ul{margin:.25rem 0 0;padding-left:1rem;list-style:disc;color:var(--color-ink)}
 .clr-prec li+li{margin-top:.2rem}
+.clr-dots{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.clr-dots li{position:relative;padding-left:1rem}
+.clr-dots li:before{content:"";position:absolute;left:0;top:.55rem;width:.375rem;height:.375rem;border-radius:9999px;background:var(--color-caution)}

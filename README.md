@@ -23,3 +23,9 @@ précautions, Kit Combat) est dans `src/combat-plus.jsx` et `src/combat-plus.css
 - Données du Mode Combat : `localStorage` clé `combat-le-rhume-combat-v1`.
 
 Après une modification : `./tools/build.sh`, puis augmenter `V` dans `sw.js` et `tools/patch_combat.py` si les noms de fichiers changent.
+
+## Mode Combat concentré
+
+En Mode Combat, l'appli ne montre que ce qui concerne le protocole du mal de gorge : onglets Accueil et Remèdes seulement,
+accueil et Conseils réduits au Combat, et un bloc « Changer de mode » (Mode Soutien ou « Voir tous les remèdes »).
+Le Mode Soutien et la vue sans mode ne changent pas.
