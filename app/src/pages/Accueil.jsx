@@ -10,7 +10,7 @@ import {
   MODE_SOUTIEN,
   PHASES,
   PILIERS_SOUTIEN,
-  PREVENTION,
+  preventionPour,
   PROTOCOLE_DU_JOUR,
   SYMPTOMES_PROTOCOLE,
   SYMPTOMES_TYPIQUES,
@@ -368,8 +368,8 @@ export function Accueil() {
           ) : null}
           <Section id="prevention" kicker="Avant d’être malade" title="Prévention">
             <ul className="space-y-2">
-              {PREVENTION.map((e) => (
-                <li className="flex gap-2 text-sm text-ink" key={e}>
+              {preventionPour(enfant).map((e) => (
+                <li className="flex gap-2 text-sm text-ink" key={e} data-prevention={e.startsWith(`Oreilles`) ? `oreilles` : undefined}>
                   <Puce />
                   <span>{e}</span>
                 </li>

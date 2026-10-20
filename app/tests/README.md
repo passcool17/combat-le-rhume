@@ -9,7 +9,7 @@ node tests/clr-v5-focus.js  http://localhost:4173/combat-le-rhume/ local        
 node tests/clr-v5-new.js    http://localhost:4173/combat-le-rhume/ local               # accueil, Suivi, replis, installation, partage, axe, 44 px, h1, hauteurs
 node tests/clr-accueil-refs.cjs http://localhost:4173/combat-le-rhume/                     # Accueil : bloc Références (148 vérifications, 3 modes, clair/sombre)
 node tests/clr-sinus-forte.cjs  http://localhost:4173/combat-le-rhume/                     # Recettes : sinus « La plus forte » (60 vérifications)
-node tests/clr-oreilles.cjs     http://localhost:4173/combat-le-rhume/                     # Oreilles : 5 minutes maximum (10 vérifications)
+node tests/clr-oreilles.cjs     http://localhost:4173/combat-le-rhume/                     # Oreilles : mélange 50/50, 5 minutes maximum, prévention (22 vérifications)
 ```
 
 `SHOTS=/chemin/prefixe_` change l’emplacement des captures.
