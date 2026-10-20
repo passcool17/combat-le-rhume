@@ -1,4 +1,4 @@
-// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json combat-le-rhume-argent-final.json combat-le-rhume-refs-grippe-final.json et combat-le-rhume-quercetine-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
+// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json combat-le-rhume-argent-final.json combat-le-rhume-refs-grippe-final.json et combat-le-rhume-quercetine-final.json et combat-le-rhume-girofle-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
 export const REFERENCES = [
  {
   "n": 1,
@@ -1754,6 +1754,102 @@ export const REFERENCES = [
   "level": "partiel",
   "supportNote": "appuie en partie (analyse en laboratoire, grippe aviaire)",
   "note": null
+ },
+ {
+  "n": 116,
+  "name": "Dr. Alvina Jalil",
+  "handle": "@AlvinaJ88",
+  "credential": "MBBS (médecin) et radiologie (DMRD), 6 ans en médecine de la reproduction à Lahore, selon Genova Fertility ; même nom et même domaine (fertilité) que la bio X.",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Mâcher 1 à 2 clous de girofle ou gargariser, plusieurs fois par jour, pour le mal de gorge",
+  "quote": "Cloves — Use to relieve toothache, manage sore throat symptoms […] Chew on 1 to 2 cloves or gargle with clove-infused water several times a day.",
+  "gist": "Le clou de girofle soulage le mal de dents et les symptômes du mal de gorge : mâcher 1 à 2 clous, ou gargariser avec de l’eau infusée de clous, plusieurs fois par jour.",
+  "date": "2024-02-02T11:50:09Z",
+  "url": "https://x.com/AlvinaJ88/status/1753385311021797642",
+  "level": "direct",
+  "supportNote": "appuie directement (mal de gorge, dose)",
+  "note": null
+ },
+ {
+  "n": 117,
+  "name": "Dr. Joseph Mercola",
+  "handle": "@mercola",
+  "credential": "D.O. (médecin ostéopathe, É.-U.)",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Le clou de girofle en bain de bouche et contre le mal de dents",
+  "quote": "There are plenty of ways cloves can be used, such as a mouthwash, acne buster, toothache remedy and more.",
+  "gist": "Le clou de girofle peut s’utiliser de bien des façons, notamment en bain de bouche et contre le mal de dents.",
+  "date": "2019-03-03T11:00:38Z",
+  "url": "https://x.com/mercola/status/1102161855353634817",
+  "level": "partiel",
+  "supportNote": "appuie en partie (bain de bouche, bouche et dents)",
+  "note": null
+ },
+ {
+  "n": 118,
+  "name": "Pharm. Oluoma",
+  "handle": "@zizelle_",
+  "credential": "Pharmacienne clinicienne (bio).",
+  "notPhysician": true,
+  "notPhysicianLabel": "Pharmacienne, pas médecin",
+  "claim": "Une tisane de clou de girofle pour soutenir l’immunité",
+  "quote": "Boost immune system — Cloves have antibacterial properties […] It gives your immune system an extra boost. Next time you feel down, remember to sip some clove tea.",
+  "gist": "Le clou de girofle est antibactérien et donne un coup de pouce à l’immunité : quand tu ne te sens pas bien, bois une tisane de clou de girofle.",
+  "date": "2024-12-05T18:49:03Z",
+  "url": "https://x.com/zizelle_/status/1864743805137625550",
+  "level": "partiel",
+  "supportNote": "appuie en partie (immunité en général)",
+  "note": null
+ },
+ {
+  "n": 119,
+  "name": "Avinash",
+  "handle": "@dravinash23",
+  "credential": "Se dit « Ayurvedic Doctor » (bio) : médecine ayurvédique, titre non vérifié.",
+  "notPhysician": true,
+  "notPhysicianLabel": "Praticien ayurvédique, pas médecin",
+  "claim": "Tisane de clou de girofle : 2 c. à thé dans 2 tasses d’eau chaude, 10 minutes",
+  "quote": "Clove tea 4 strengthening the immune system […] Steep 2 tsp cloves in 2 cups of hot water for 10 minutes",
+  "gist": "Tisane de clou de girofle pour renforcer l’immunité : infuser 2 c. à thé de clous dans 2 tasses d’eau chaude pendant 10 minutes.",
+  "date": "2014-05-06T10:46:55Z",
+  "url": "https://x.com/dravinash23/status/463630987298340864",
+  "level": "partiel",
+  "supportNote": "appuie en partie (immunité, dose de la tisane)",
+  "note": null
+ },
+ {
+  "n": 120,
+  "name": "Dr. Kamakshi Memorial Hospital",
+  "handle": "@drkmhpvtltd",
+  "credential": "Hôpital de 300 lits à Chennai, Inde (bio).",
+  "notPhysician": true,
+  "notPhysicianLabel": "Hôpital, pas un médecin",
+  "claim": "L’eugénol du clou de girofle, antibactérien et anti-inflammatoire, soutient l’immunité",
+  "quote": "Clove is packed with nutrients & antioxidants that makes it a great immunity booster. It has substantial amounts of Eugenol that has antibacterial & anti-inflammatory properties that support the immune system",
+  "gist": "Le clou de girofle est riche en antioxydants et soutient l’immunité ; son eugénol est antibactérien et anti-inflammatoire.",
+  "date": "2020-07-10T09:57:51Z",
+  "url": "https://x.com/drkmhpvtltd/status/1281528050148990977",
+  "level": "partiel",
+  "supportNote": "appuie en partie (immunité en général)",
+  "note": null
+ },
+ {
+  "n": 121,
+  "name": "Dr. Josh Axe",
+  "handle": "@drjoshaxe",
+  "credential": "D.C. (chiropraticien), D.N.M. — pas médecin",
+  "notPhysician": true,
+  "notPhysicianLabel": "Chiropraticien, pas médecin",
+  "claim": "Le clou de girofle parmi les antibiotiques naturels",
+  "quote": "Consider these natural antibiotics […] Clove",
+  "gist": "Il range le clou de girofle parmi les antibiotiques naturels.",
+  "date": "2024-06-17T17:27:13Z",
+  "url": "https://x.com/drjoshaxe/status/1802754887026917492",
+  "level": "partiel",
+  "supportNote": "appuie en partie (antibactérien, en général)",
+  "note": null
  }
 ];
 
@@ -1802,6 +1898,18 @@ export const REF_GROUPS = [
    113,
    114,
    115
+  ]
+ },
+ {
+  "id": "girofle",
+  "title": "Clou de girofle",
+  "items": [
+   116,
+   117,
+   118,
+   119,
+   120,
+   121
   ]
  },
  {
@@ -3683,6 +3791,160 @@ export const ETUDES = [
   "level": "partiel",
   "supportNote": "appuie en partie (patients hospitalisés)",
   "group": "quercetine"
+ },
+ {
+  "n": 125,
+  "authors": "Dai JP, Zhao XF, Zeng J, Wan QY, Yang JC, Li WZ, Chen XX, Wang GF, Li KS.",
+  "title": "Drug screening for autophagy inhibitors based on the dissociation of Beclin1-Bcl2 complex using BiFC technique and mechanism of eugenol on anti-influenza A virus activity.",
+  "journal": "PLoS One",
+  "year": "2013",
+  "doi": "10.1371/journal.pone.0061026",
+  "doiUrl": "https://doi.org/10.1371/journal.pone.0061026",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/23613775/",
+  "finding": "Parmi 86 plantes de la médecine chinoise, le clou de girofle a eu la meilleure activité ; son eugénol freine la multiplication du virus de la grippe A dans les cellules.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "girofle"
+ },
+ {
+  "n": 126,
+  "authors": "Gab-Allah GE, Abouelwafa AE, Hassan SWM.",
+  "title": "Biological activities (antimicrobial, anti-inflammatory, anti-coronavirus (229E)) and chemical composition of some essential oils.",
+  "journal": "Sci Rep",
+  "year": "2026",
+  "doi": "10.1038/s41598-026-48032-1",
+  "doiUrl": "https://doi.org/10.1038/s41598-026-48032-1",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42031843/",
+  "finding": "En laboratoire, l’huile essentielle de girofle bloque le coronavirus 229E, un virus du rhume (CI50 4,6 µg/mL), et freine plusieurs bactéries et champignons.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "girofle"
+ },
+ {
+  "n": 127,
+  "authors": "Benencia F, Courrèges MC.",
+  "title": "In vitro and in vivo activity of eugenol on human herpesvirus.",
+  "journal": "Phytother Res",
+  "year": "2000",
+  "doi": "10.1002/1099-1573(200011)14:7<495::aid-ptr650>3.0.co;2-8",
+  "doiUrl": "https://doi.org/10.1002/1099-1573(200011)14:7%3C495::aid-ptr650%3E3.0.co;2-8",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/11054837/",
+  "finding": "L’eugénol freine les virus de l’herpès HSV-1 et HSV-2 en laboratoire, sans toxicité pour les cellules, et agit en synergie avec l’acyclovir ; chez la souris, il retarde la kératite due à l’herpès.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire et chez la souris)",
+  "group": "girofle"
+ },
+ {
+  "n": 128,
+  "authors": "Alqareer A, Alyahya A, Andersson L.",
+  "title": "The effect of clove and benzocaine versus placebo as topical anesthetics.",
+  "journal": "J Dent",
+  "year": "2006",
+  "doi": "10.1016/j.jdent.2006.01.009",
+  "doiUrl": "https://doi.org/10.1016/j.jdent.2006.01.009",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/16530911/",
+  "finding": "Essai randomisé chez 73 adultes : un gel de clou de girofle sur la muqueuse de la bouche diminue la douleur d’une piqûre autant qu’un gel de benzocaïne 20 %, et mieux qu’un placebo.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (effet anesthésiant dans la bouche)",
+  "group": "girofle"
+ },
+ {
+  "n": 129,
+  "authors": "Chaieb K, Hajlaoui H, Zmantar T, Kahla-Nakbi AB, Rouabhia M, Mahdouani K, Bakhrouf A.",
+  "title": "The chemical composition and biological activity of clove essential oil, Eugenia caryophyllata (Syzigium aromaticum L. Myrtaceae): a short review.",
+  "journal": "Phytother Res",
+  "year": "2007",
+  "doi": "10.1002/ptr.2124",
+  "doiUrl": "https://doi.org/10.1002/ptr.2124",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/17380552/",
+  "finding": "Revue : l’huile essentielle de girofle est antibactérienne, antivirale (herpès, hépatite C), anti-inflammatoire et anesthésiante ; elle s’applique localement pour soulager la douleur.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue)",
+  "group": "girofle"
+ },
+ {
+  "n": 130,
+  "authors": "Cortés-Rojas DF, de Souza CR, Oliveira WP.",
+  "title": "Clove (Syzygium aromaticum): a precious spice.",
+  "journal": "Asian Pac J Trop Biomed",
+  "year": "2014",
+  "doi": "10.1016/s2221-1691(14)60215-x",
+  "doiUrl": "https://doi.org/10.1016/s2221-1691(14)60215-x",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25182278/",
+  "finding": "Revue : le clou de girofle est l’une des plus riches sources d’eugénol ; son activité antioxydante et antimicrobienne dépasse celle de beaucoup de fruits, légumes et autres épices.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue)",
+  "group": "girofle"
+ },
+ {
+  "n": 131,
+  "authors": "Batiha GE, Alkazmi LM, Wasef LG, Beshbishy AM, Nadwa EH, Rashwan EK.",
+  "title": "Syzygium aromaticum L. (Myrtaceae): Traditional Uses, Bioactive Chemical Constituents, Pharmacological and Toxicological Activities.",
+  "journal": "Biomolecules",
+  "year": "2020",
+  "doi": "10.3390/biom10020202",
+  "doiUrl": "https://doi.org/10.3390/biom10020202",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32019140/",
+  "finding": "Revue : l’eugénol du clou de girofle est analgésique, antiseptique, anti-inflammatoire, antiviral (herpès, hépatite C) et antibactérien, notamment contre Staphylococcus aureus.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue)",
+  "group": "girofle"
+ },
+ {
+  "n": 132,
+  "authors": "Chen M, Nie YK, Liu XY, Liu Y, Guo DY.",
+  "title": "Antiviral properties of the natural product eugenol: A review.",
+  "journal": "Fitoterapia",
+  "year": "2025",
+  "doi": "10.1016/j.fitote.2025.106674",
+  "doiUrl": "https://doi.org/10.1016/j.fitote.2025.106674",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40513765/",
+  "finding": "Revue : l’eugénol, tiré surtout de l’huile de girofle, freine bactéries, champignons et virus ; il peut empêcher l’entrée des virus et calme l’inflammation (voie NF-κB). Il sert à désinfecter la bouche.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue)",
+  "group": "girofle"
+ },
+ {
+  "n": 133,
+  "authors": "Kayıran SD, Özdaş T, Güven Bölgen UM, Çevikelli T, Şahan MN, Ertuğrul H, Işıldaklı A, Özkurt S, Acar Y, Demirkıran E.",
+  "title": "Medicinal plants as alternative and adjunct antimicrobial agents in ear, nose, and throat (ENT) Infections.",
+  "journal": "Inflammopharmacology",
+  "year": "2026",
+  "doi": "10.1007/s10787-026-02251-0",
+  "doiUrl": "https://doi.org/10.1007/s10787-026-02251-0",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42043716/",
+  "finding": "Revue (2020 à 2025) des plantes contre les infections ORL (pharyngite, laryngite) : le clou de girofle fait partie des plantes les plus utilisées ; plusieurs de ces plantes freinent en laboratoire des bactéries de la gorge et des voies respiratoires, y compris des bactéries résistantes.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue)",
+  "group": "girofle"
+ },
+ {
+  "n": 134,
+  "authors": "Chniguir A, Saguem MH, Dang PM, El-Benna J, Bachoual R.",
+  "title": "Eugenol Inhibits Neutrophils Myeloperoxidase In Vitro and Attenuates LPS-Induced Lung Inflammation in Mice.",
+  "journal": "Pharmaceuticals (Basel)",
+  "year": "2024",
+  "doi": "10.3390/ph17040504",
+  "doiUrl": "https://doi.org/10.3390/ph17040504",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38675465/",
+  "finding": "L’eugénol freine une enzyme inflammatoire des globules blancs (myéloperoxydase) et, chez la souris, réduit l’inflammation des poumons.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire et chez la souris)",
+  "group": "girofle"
+ },
+ {
+  "n": 135,
+  "authors": "Seukep AJ, Ojong OCG, Mbuntcha HG, Matieta VY, Zeuko'o EM, Kouam AF, Kuete V, Ndip LA.",
+  "title": "In Vitro Antibacterial Potential of Herbal Beverage Extracts From Cinnamon, Clove, and Thyme and Their Interactive Antimicrobial Profile With Selected Antibiotics Against Drug-Resistant Clinical Pathogens.",
+  "journal": "J Trop Med",
+  "year": "2025",
+  "doi": "10.1155/jotm/9916282",
+  "doiUrl": "https://doi.org/10.1155/jotm/9916282",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40432982/",
+  "finding": "Des infusions de clou de girofle freinent en laboratoire 14 bactéries résistantes, dont Staphylococcus aureus ; le clou a été le plus actif des trois plantes testées (avec cannelle et thym).",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "girofle"
  }
 ];
 
@@ -3713,6 +3975,11 @@ export const NUANCES = {
   "Quercétine (adulte seulement) : 500 mg 2 fois par jour avec un repas, avec les pastilles de zinc. Santé Canada : pas plus de 600 mg par prise ni 1 200 mg par jour ; au-delà de 12 semaines, demander avis.",
   "Utilisée sans problème jusqu’à 1 g par jour pendant 12 semaines. Pas pendant la grossesse ni l’allaitement. Pas en cas de problème de reins : elle pourrait l’aggraver.",
   "Interactions possibles : certains antibiotiques (quinolones), cyclosporine, anticoagulants comme la warfarine, et d’autres médicaments transformés par le foie. Si tu prends des médicaments, demande au pharmacien."
+ ],
+ "girofle": [
+  "Clou de girofle (adulte) : mâcher lentement 1 à 2 clous entiers, ou gargariser avec une infusion de clous, plusieurs fois par jour, puis recracher. Bain de bouche du commerce à l’huile de girofle (1 à 5 %) : 1 semaine maximum (Agence européenne du médicament).",
+  "Huile essentielle : jamais pure dans la bouche ni avalée. Avalée, elle peut atteindre gravement le foie, surtout chez l’enfant (MedlinePlus). Toujours hors de portée des enfants ; pas avant 18 ans.",
+  "Pas avec un anticoagulant ou de l’acétaminophène, ni en cas de maladie du foie (Santé Canada). Pas pendant la grossesse ni l’allaitement."
  ],
  "miel": [
   "Miel : jamais avant 1 an. De 1 à 5 ans : 2 c. à thé ; adulte : 1 c. à soupe, 30 min avant le coucher pour la toux de nuit."
@@ -3771,6 +4038,24 @@ export const SOURCES_OFFICIELLES = {
   {
    "label": "Memorial Sloan Kettering : quercétine, interactions (warfarine, médicaments du foie)",
    "url": "https://www.mskcc.org/cancer-care/integrative-medicine/herbs/quercetin"
+  }
+ ],
+ "girofle": [
+  {
+   "label": "Agence européenne du médicament : monographie de l’huile de girofle (bain de bouche 1 à 5 %, plusieurs fois par jour, 1 semaine maximum, pas avant 18 ans)",
+   "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-syzygium-aromaticum-l-merill-et-l-m-perry-floris-aetheroleum_en.pdf"
+  },
+  {
+   "label": "Santé Canada : monographie Aromathérapie (huile de girofle pour le rhume et la toux, adulte, usage externe, hors de portée des enfants)",
+   "url": "https://webprod.hc-sc.gc.ca/nhpid-bdipsn/atReq?atid=aromatherap2&lang=eng"
+  },
+  {
+   "label": "Santé Canada : produit homologué au clou de girofle (NPN 80029855) : foie, anticoagulants, acétaminophène, grossesse",
+   "url": "https://health-products.canada.ca/lnhpd-bdpsnh/info?licence=80029855"
+  },
+  {
+   "label": "MedlinePlus : surdose d’huile de girofle (eugénol) : foie, convulsions, surtout chez l’enfant",
+   "url": "https://medlineplus.gov/ency/article/002647.htm"
   }
  ]
 };

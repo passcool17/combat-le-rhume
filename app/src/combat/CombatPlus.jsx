@@ -57,6 +57,7 @@ const KIT = [
   { id: 'eau', label: 'De quoi boire 2,5 à 3 L par jour' },
   { id: 'argent', label: 'Optionnel (adulte) : argent colloïdal environ 15 ppm, avec numéro NPN ou DIN, pour le gargarisme ou le nez' },
   { id: 'quercetine', label: 'Optionnel (adulte) : quercétine 500 mg, avec numéro NPN, à prendre avec le zinc' },
+  { id: 'girofle', label: 'Optionnel (adulte) : clous de girofle entiers, à mâcher ou en infusion pour la gorge' },
 ];
 
 const RED_FLAGS = [
@@ -476,7 +477,7 @@ function Kit() {
   const s = useStore();
   const has = new Set(s.kit);
   const enfant = usePrefs(e => e.audience) === 'enfant';
-  const items = KIT.filter(k => !(enfant && (k.id === 'argent' || k.id === 'quercetine')));
+  const items = KIT.filter(k => !(enfant && (k.id === 'argent' || k.id === 'quercetine' || k.id === 'girofle')));
   const tog = id => set(s0 => ({ kit: s0.kit.includes(id) ? s0.kit.filter(k => k !== id) : [...s0.kit, id] }));
   return (
     <Card data-clr="kit">
@@ -538,7 +539,7 @@ export function ZincAvertissement() {
 const ARGENT = REMEDES.find(r => r.id === 'argent');
 export function SecuriteBox({ id, items }) {
   return (
-    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine' })[id] || id}`}>
+    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine', girofle: 'clou de girofle' })[id] || id}`}>
       <p className="text-xs font-medium text-caution uppercase tracking-wide">Sécurité</p>
       <ul>{items.map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
     </div>
@@ -578,6 +579,24 @@ function QuercetineRenfort({ audience }) {
   );
 }
 
+// ---------- renfort optionnel : clou de girofle pour la gorge (adulte seulement, caché en profil Enfant) ----------
+const GIROFLE = REMEDES.find(r => r.id === 'girofle');
+function GirofleRenfort({ audience }) {
+  if (audience === 'enfant') return null;
+  const g = REF_GROUP_META.find(x => x.id === 'girofle');
+  return (
+    <Card caution data-clr="girofle-combat">
+      <Kicker><span aria-hidden="true">🛡️ </span>Renfort optionnel · gorge</Kicker>
+      <h2 className="mt-1 text-xl">Clou de girofle</h2>
+      <p className="mt-2 text-sm text-ink" data-clr="girofle-dose">{GIROFLE.how}</p>
+      <p className="mt-2 text-sm text-ink" data-clr="girofle-gargarisme">{GIROFLE.extra[0]}</p>
+      <p className="mt-2 text-sm text-muted">Optionnel : ne remplace pas les cinq gestes. Adulte seulement.</p>
+      <SecuriteBox id="girofle" items={GIROFLE.securite} />
+      <p><button type="button" className="clr-ref-cta mt-2" data-ref-link="girofle" onClick={() => useNav.getState().openReferences('girofle')}>Références : {g.title} ({g.count})</button></p>
+    </Card>
+  );
+}
+
 function Panel({ audience, setStance }) {
   const s = useStore();
   return (
@@ -586,6 +605,7 @@ function Panel({ audience, setStance }) {
       <ZincRenfort audience={audience} />
       <QuercetineRenfort audience={audience} />
       <ArgentRenfort audience={audience} />
+      <GirofleRenfort audience={audience} />
       <Consult setStance={setStance} />
       {s.protocol ? <CheckSummary /> : null}
       <Kit />
