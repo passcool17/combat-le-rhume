@@ -91,6 +91,7 @@ export function Recettes({ openId }) {
                       >
                         {e.title}
                       </h3>
+                      {e.intro ? <p className="mt-1 text-sm text-muted">{e.intro}</p> : null}
                       <ul className="mt-2 space-y-1.5">
                         {e.items.map((e) => (
                           <li className="text-sm" key={e}>
