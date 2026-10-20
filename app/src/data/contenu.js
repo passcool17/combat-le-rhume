@@ -16,7 +16,7 @@ export const PROTOCOLE_DU_JOUR = [
   {
     id: `repos`,
     title: `Au chaud la nuit`,
-    detail: `Tuque, couvertures, bas : faire monter la chaleur du corps. Seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons. Arrête si tu as trop chaud ou si tu te sens moins bien.`,
+    detail: `Tuque, couvertures, bas : garder toute la chaleur de ton corps. Seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons. Arrête si tu as trop chaud ou si tu te sens moins bien.`,
   },
   {
     id: `immunite`,

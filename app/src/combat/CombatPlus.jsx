@@ -189,18 +189,20 @@ function NightWarm({ day, audience, compact }) {
   }
   const title = enfant
     ? (first ? 'Nuit 1 : la plus importante — garder le corps bien au chaud, sans surchauffer' : `Nuit ${day} : garder le corps bien au chaud`)
-    : (first ? 'Nuit 1 : la plus importante — faire monter la chaleur du corps' : `Nuit ${day} : encore faire monter la chaleur du corps`);
+    : (first ? 'Nuit 1 : la plus importante — garder toute la chaleur de ton corps' : `Nuit ${day} : continuer de garder toute la chaleur`);
   return (
     <div className={cx('clr-night mt-4', first && 'first')} data-clr="nuit-chaude" data-nuit={day} data-etat="chaud">
       <p className="clr-night-k">{first ? <><span aria-hidden="true">🔥 </span>L’assaut de chaleur</> : `Nuit ${day} sur ${PROTOCOL_DAYS} · chaleur maintenue`}</p>
       <p className="clr-night-t">{title}</p>
-      <p className="clr-night-why mt-1 text-sm">Une température du corps plus élevée aide le système immunitaire à éliminer l’infection.</p>
+      <p className="clr-night-why mt-1 text-sm">{enfant
+        ? 'Le corps de l’enfant produit de la chaleur : bien le couvrir pour qu’il ne la perde pas, sans surchauffer.'
+        : 'Ton corps produit de la chaleur : fais ce qu’il faut pour ne pas la perdre. S’il monte en température, c’est exactement ce dont ton système immunitaire a besoin pour éliminer l’infection.'}</p>
       {first ? null : <p className="mt-1 text-sm font-medium">Si tu ne fais toujours pas de température (fièvre de 38 °C ou plus). Aucune fièvre notée depuis le début du protocole.</p>}
       {compact ? null : <>
         <ul className="clr-night-l mt-2">
           {(enfant
             ? ['Bien couvrir l’enfant : couvertures, sans surchauffer', 'Bas']
-            : ['Bien se couvrir : couvertures, tuque', 'Bas']
+            : ['Bien se couvrir : couvertures, tuque, pour ne pas perdre de chaleur', 'Bas']
           ).map(t => <li key={t} className="text-sm">{t}</li>)}
         </ul>
         <p className="clr-night-s mt-2 text-xs">{enfant
@@ -225,7 +227,7 @@ function Protocol({ audience }) {
         <Kicker><span aria-hidden="true">🎯 </span>Plan d’attaque · 3 jours</Kicker>
         <h2 className="mt-1 text-xl">Dès le premier mal de gorge, on attaque</h2>
         <p className="mt-2 text-sm text-muted">Tes cinq armes du jour, cochées au fur et à mesure, et un point matin et soir sur les symptômes. Tout reste dans cet appareil.</p>
-        <p className="clr-night-hint mt-2 text-sm" data-clr="nuit-1-annonce">Nuit 1 : la plus importante — faire monter la chaleur du corps, s’il n’y a pas de fièvre.</p>
+        <p className="clr-night-hint mt-2 text-sm" data-clr="nuit-1-annonce">Nuit 1 : la plus importante — garder toute la chaleur de ton corps, s’il n’y a pas de fièvre.</p>
         <Btn className="clr-btn-big clr-pulse mt-4" onClick={() => set(() => ({ protocol: { start: Date.now(), audience } }))}>J’ai mal à la gorge, je commence</Btn>
         {last ? <p className="mt-3 text-xs text-muted">Dernier protocole : commencé le {fmtDate(last.start)}, {last.status === 'termine' ? 'terminé' : 'annulé'} le {fmtDate(last.end)}.</p> : null}
       </Card>
