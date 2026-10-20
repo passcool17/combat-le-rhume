@@ -64,3 +64,8 @@
 .clr-night-l li{padding:.3rem .7rem;border-radius:9999px;background:var(--color-surface);border:1px solid var(--color-line)}
 .clr-night-s{color:var(--color-muted)}
 .clr-night-hint{font-weight:600;color:var(--color-caution)}
+
+/* Ton « mission » du Mode Combat */
+.clr-phase{margin-top:.2rem;font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--color-primary)}
+.clr-arms-t{font-size:.95rem;font-weight:600;color:var(--color-ink)}
+html.mode-combat .clr-start{border-width:2px;border-color:var(--color-primary)}

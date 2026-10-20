@@ -52,19 +52,24 @@ export function Remedes({ filter, onFilter }) {
     }, [favorites, i, filter, n, stance, audience]);
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl">
+      <div className={cn(stance === `combat` ? `clr-hero-combat` : stance === `soutien` ? `clr-hero-soutien rounded-[var(--radius-card)] px-4 py-4` : ``)} data-clr={stance === `combat` ? `hero-combat` : stance === `soutien` ? `hero-soutien` : undefined}>
+        {stance === `combat` ? (
+          <p className="clr-hero-k"><span aria-hidden="true">⚔️ </span>On part à la guerre contre la zone infectée</p>
+        ) : stance === `soutien` ? (
+          <p className="text-xs font-medium tracking-widest text-primary uppercase">L’équipe de soutien de ton système immunitaire</p>
+        ) : null}
+        <h1 className={stance === `combat` ? `clr-hero-t` : `text-2xl`}>
           {stance === `combat`
             ? `Mode Combat`
             : stance === `soutien`
               ? `Mode Soutien`
               : `Remèdes`}
         </h1>
-        <p className="mt-1 text-sm text-muted">
+        <p className={stance === `combat` ? `clr-hero-s` : `mt-1 text-sm text-muted`}>
           {stance === `combat`
             ? <CombatSubtitle />
             : stance === `soutien`
-              ? `Plantes, vitamines et le reste. Les cinq gestes du mal de gorge sont dans le mode Combat.`
+              ? `Renforts, ravitaillement et récupération : plantes, vitamines et le reste. Les cinq gestes du mal de gorge sont dans le mode Combat.`
               : audience === `enfant`
                 ? `Doses réduites. Ce n’est pas une ordonnance : en cas de doute, demander un avis.`
                 : `Doses, durée et précautions. Les fiches ambre demandent plus de retenue.`}
@@ -72,7 +77,8 @@ export function Remedes({ filter, onFilter }) {
       </div>
       {stance === `combat` ? (
         <Card className="p-4">
-          <p className="text-sm font-medium">
+          <p className="text-xs font-semibold tracking-widest text-primary uppercase"><span aria-hidden="true">🎯 </span>Ordres de mission</p>
+          <p className="mt-1 text-sm font-medium">
             Logique des remèdes prioritaires
           </p>
           <ul className="mt-3 space-y-2">
@@ -87,7 +93,7 @@ export function Remedes({ filter, onFilter }) {
             ))}
           </ul>
           <p className="mt-3 text-xs text-muted">
-            Objectif : agir tôt et avec régularité, dès les premiers signes de mal de gorge.
+            Objectif : frapper tôt et sans relâche, dès les premiers signes de mal de gorge.
           </p>
         </Card>
       ) : null}

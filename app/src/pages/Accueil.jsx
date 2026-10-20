@@ -45,12 +45,14 @@ export function Onboarding({ onStart }) {
         ))}
       </ul>
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-2xl border border-line bg-surface-2 px-4 py-3">
-          <p className="font-medium text-ink">Mode Combat</p>
-          <p className="mt-1 text-sm text-muted">Dès le premier mal de gorge : cinq gestes, un point matin et soir, pendant 3 jours.</p>
+        <div className="clr-card-combat rounded-2xl px-4 py-4" data-mode-card="combat">
+          <p className="clr-card-k"><span aria-hidden="true">⚔️ </span>On part à la guerre contre la zone infectée</p>
+          <p className="clr-card-t">Mode Combat</p>
+          <p className="mt-1 text-sm">Dès le premier mal de gorge : cinq gestes, un point matin et soir, pendant 3 jours.</p>
         </div>
-        <div className="rounded-2xl border border-primary/30 bg-primary-soft px-4 py-3">
-          <p className="font-medium text-primary">Mode Soutien</p>
+        <div className="clr-card-soutien rounded-2xl px-4 py-3" data-mode-card="soutien">
+          <p className="clr-card-k">L’équipe de soutien de ton système immunitaire</p>
+          <p className="clr-card-t">Mode Soutien</p>
           <p className="mt-1 text-sm text-ink">Pour la suite : vitamine D, zinc, plantes, hydratation et repos.</p>
         </div>
       </div>
@@ -115,32 +117,34 @@ export function Accueil() {
         <h1 ref={chooserRef} tabIndex={-1} className="mt-1 text-2xl outline-none">
           Choisis ton mode
         </h1>
-        <div className="mt-4 grid grid-cols-2 gap-2">
-          <button
-            type="button"
-            aria-pressed={stance === `combat`}
-            onClick={() => {
-              setStance(`combat`);
-              openRemedies(`gorge`);
-            }}
-            className={cn(
-              `min-h-12 rounded-2xl px-3 text-sm font-semibold`,
-              stance === `combat` ? `bg-primary text-primary-fg` : `border border-line bg-surface text-ink`,
-            )}
-          >
-            Mode Combat
-          </button>
-          <button
-            type="button"
-            aria-pressed={stance === `soutien`}
-            onClick={() => setStance(`soutien`)}
-            className={cn(
-              `min-h-12 rounded-2xl px-3 text-sm font-semibold`,
-              stance === `soutien` ? `bg-primary text-primary-fg` : `border border-primary text-primary`,
-            )}
-          >
-            Mode Soutien
-          </button>
+        <div className="mt-4 grid grid-cols-2 gap-2" data-clr="choix-mode">
+          <div className={cn(`clr-choice clr-choice-combat`, stance === `combat` && `on`)}>
+            <button
+              type="button"
+              aria-pressed={stance === `combat`}
+              aria-describedby="choix-combat-d"
+              onClick={() => {
+                setStance(`combat`);
+                openRemedies(`gorge`);
+              }}
+              className="clr-choice-btn"
+            >
+              <span aria-hidden="true">⚔️ </span>Mode Combat
+            </button>
+            <p id="choix-combat-d" className={cn(`clr-choice-d`, stance === `soutien` && `sr-only`)}>On part à la guerre contre la zone infectée.</p>
+          </div>
+          <div className={cn(`clr-choice clr-choice-soutien`, stance === `soutien` && `on`)}>
+            <button
+              type="button"
+              aria-pressed={stance === `soutien`}
+              aria-describedby="choix-soutien-d"
+              onClick={() => setStance(`soutien`)}
+              className="clr-choice-btn"
+            >
+              Mode Soutien
+            </button>
+            <p id="choix-soutien-d" className={cn(`clr-choice-d`, stance === `soutien` && `sr-only`)}>L’équipe de soutien de ton système immunitaire.</p>
+          </div>
         </div>
         {stance === `combat` ? (
           <>
@@ -148,7 +152,8 @@ export function Accueil() {
               <HomeWarm />
             </p>
             <div className="mt-4 rounded-2xl border border-line bg-surface px-4 py-3 text-left">
-              <p className="text-sm font-medium text-ink">Logique des remèdes prioritaires</p>
+              <p className="text-xs font-semibold tracking-widest text-primary uppercase"><span aria-hidden="true">🎯 </span>Ordres de mission</p>
+              <p className="mt-1 text-sm font-medium text-ink">Logique des remèdes prioritaires</p>
               <ul className="mt-2 space-y-2">
                 {LOGIQUE_COMBAT.map((e) => (
                   <li className="text-sm text-ink" key={e.lead}>
@@ -157,7 +162,7 @@ export function Accueil() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 text-xs text-muted">Objectif : agir tôt et avec régularité, dès les premiers signes de mal de gorge.</p>
+              <p className="mt-3 text-xs text-muted">Objectif : frapper tôt et sans relâche, dès les premiers signes de mal de gorge.</p>
             </div>
             <button type="button" onClick={() => openRemedies(`gorge`)} className={BTN_LINK}>
               Voir les remèdes du mode Combat
@@ -174,7 +179,7 @@ export function Accueil() {
       ) : stance ? (
         <>
           {stance === `soutien` ? (
-            <div className="rounded-[var(--radius-card)] border border-primary/30 bg-primary-soft px-4 py-4">
+            <div className="clr-hero-soutien rounded-[var(--radius-card)] px-4 py-4" data-clr="soutien-equipe">
               <p className="font-medium text-primary">{MODE_SOUTIEN.title}</p>
               <p className="mt-1 text-sm text-ink">{MODE_SOUTIEN.detail}</p>
             </div>
@@ -348,7 +353,7 @@ export function Accueil() {
             </button>
           </Section>
           {stance === `soutien` ? (
-            <Section id="piliers" kicker="Mode Soutien" title="Les trois piliers">
+            <Section id="piliers" kicker="L’équipe de soutien" title="Les trois piliers">
               <div className="grid gap-3 sm:grid-cols-3">
                 {PILIERS_SOUTIEN.map((e) => (
                   <div className="rounded-2xl border border-line bg-surface-2 p-4" key={e.title}>

@@ -677,7 +677,7 @@ export const QUAND_CONSULTER = [
 ];
 
 export const MODE_SOUTIEN = {
-  title: `Tout est une histoire de système immunitaire`,
+  title: `L’équipe de soutien de ton système immunitaire`,
   detail: `Les soins naturels aident ton système à se défendre.`,
   choice: `Dès les premiers signes, agir tôt sur le mal de gorge, avec des gestes simples et réguliers.`,
 };
