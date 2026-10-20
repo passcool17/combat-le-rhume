@@ -51,3 +51,68 @@
 .clr-install{bottom:calc(4.75rem + env(safe-area-inset-bottom))}
 @media (min-width:48rem){.clr-install{bottom:1rem}}
 .clr-has-install main{padding-bottom:16rem}
+
+/* ---------- Identité des modes ----------
+   Combat : offensive contre la zone infectée (rouge profond, typo plus lourde).
+   Soutien : l’équipe de soutien du système immunitaire (sarcelle, ton doux). */
+:root{
+  --combat-900:#2a0b07; --combat-700:#6e170e; --combat-600:#a8261b; --combat-100:#fbe5df; --combat-ink:#fff7f2; --combat-k:#ffd2c4;
+  --soutien-700:#0f6a68; --soutien-100:#e1f2f0; --soutien-line:#a9d6d1;
+}
+html.mode-combat:not(.dark){
+  --color-primary:#a8261b; --color-primary-fg:#fff7f2; --color-primary-soft:#fbe5df; --color-bg:#f5ede7;
+}
+html.dark.mode-combat{
+  --color-primary:#ff9c82; --color-primary-fg:#2b0a04; --color-primary-soft:#3a1a14;
+}
+html.mode-soutien:not(.dark){
+  --color-primary:#0f6a68; --color-primary-fg:#f2fbfa; --color-primary-soft:#e1f2f0;
+}
+html.dark.mode-soutien{
+  --color-primary:#7fd3cc; --color-primary-fg:#0a2220; --color-primary-soft:#173230;
+}
+html.mode-combat main h1, html.mode-combat main h2{font-weight:650;letter-spacing:-.01em}
+
+/* Hero Combat (onglet Remèdes) */
+.clr-hero-combat{position:relative;overflow:hidden;border-radius:var(--radius-card);padding:1.4rem 1.25rem 1.3rem;color:var(--combat-ink);
+  background:repeating-linear-gradient(135deg,rgb(255 255 255/.04) 0 10px,transparent 10px 22px),linear-gradient(135deg,var(--combat-900),var(--combat-700) 55%,var(--combat-600));
+  box-shadow:0 10px 30px -12px rgb(110 23 14/.55)}
+.clr-hero-k{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--combat-k)}
+.clr-hero-t{margin-top:.25rem;font-size:2.25rem;line-height:1.05;font-weight:650;color:#fff;letter-spacing:-.015em}
+.clr-hero-s{margin-top:.6rem;font-size:.9rem;color:var(--combat-ink)}
+@media (min-width:48rem){.clr-hero-t{font-size:2.75rem}.clr-hero-combat{padding:1.8rem 1.75rem}}
+
+/* Soutien : bandeau calme */
+.clr-hero-soutien{background:var(--soutien-100);border:1px solid var(--soutien-line)}
+.dark .clr-hero-soutien{background:#173230;border-color:#2c5350}
+
+/* Accueil : cartes et choix des modes */
+.clr-card-combat{color:var(--combat-ink);background:linear-gradient(135deg,var(--combat-900),var(--combat-700) 60%,var(--combat-600));box-shadow:0 8px 22px -12px rgb(110 23 14/.6)}
+.clr-card-combat .clr-card-k{color:var(--combat-k)}
+.clr-card-combat .clr-card-t{font-family:var(--font-display);font-weight:650;font-size:1.35rem;color:#fff}
+.clr-card-soutien{background:var(--soutien-100);border:1px solid var(--soutien-line);color:#123b39}
+.clr-card-soutien .clr-card-k{color:var(--soutien-700)}
+.clr-card-soutien .clr-card-t{font-weight:500;color:var(--soutien-700)}
+.dark .clr-card-soutien{background:#173230;border-color:#2c5350;color:#e3f4f2}
+.dark .clr-card-soutien .clr-card-k,.dark .clr-card-soutien .clr-card-t{color:#9fe0da}
+.clr-card-k{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+
+.clr-choice{display:flex;flex-direction:column;border-radius:1rem;overflow:hidden}
+.clr-choice-btn{min-height:2.75rem;padding:.35rem .75rem;font-weight:600;text-align:left;line-height:1.15}
+.clr-choice-d{padding:0 .75rem .55rem;font-size:.75rem;line-height:1.3}
+.clr-choice-combat{color:var(--combat-ink);background:linear-gradient(135deg,var(--combat-900),var(--combat-700) 60%,var(--combat-600))}
+.clr-choice-combat .clr-choice-btn{font-family:var(--font-display);font-size:1.05rem;font-weight:650;color:#fff}
+.clr-choice-combat .clr-choice-d{color:var(--combat-k)}
+.clr-choice-soutien{background:var(--soutien-100);border:1px solid var(--soutien-line)}
+.clr-choice-soutien .clr-choice-btn{font-size:.95rem;color:var(--soutien-700)}
+.clr-choice-soutien .clr-choice-d{color:#24504d}
+.dark .clr-choice-soutien{background:#173230;border-color:#2c5350}
+.dark .clr-choice-soutien .clr-choice-btn{color:#9fe0da}
+.dark .clr-choice-soutien .clr-choice-d{color:#cfe9e6}
+.clr-choice.on{outline:3px solid var(--color-ink);outline-offset:2px}
+.clr-choice-btn:focus-visible{outline:2px solid currentColor;outline-offset:-4px}
+
+/* Bouton d’attaque principal : pulsation discrète */
+@keyframes clr-pulse{0%{box-shadow:0 0 0 0 rgb(168 38 27/.45)}70%{box-shadow:0 0 0 14px rgb(168 38 27/0)}100%{box-shadow:0 0 0 0 rgb(168 38 27/0)}}
+html.mode-combat .clr-pulse{animation:clr-pulse 2.2s ease-out infinite}
+@media (prefers-reduced-motion:reduce){html.mode-combat .clr-pulse{animation:none}}

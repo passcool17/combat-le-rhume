@@ -24,7 +24,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await click('Accueil');t=await main();
  const gone=['Symptômes typiques','Protocole recommandé','Protocole du jour','Vitamine D et soleil','Quoi faire, quoi éviter','Où en es-tu','Plantes pour la toux','Prévention','Frapper fort dès le début'];
  ok('accueil: general sections hidden',gone.filter(x=>t.includes(x)).length===0||gone.filter(x=>t.includes(x)).join(','));
- ok('accueil: keeps disclaimer, chooser, logique, warm, protocol, consult',t.includes('Avertissement')&&t.includes('Choisis ton mode')&&t.includes('Logique des remèdes prioritaires')&&t.includes('avoir très chaud, même avec une tuque')&&t.includes('PROTOCOLE DE 3 JOURS')&&t.includes('QUAND ARRÊTER ET CONSULTER'));
+ ok('accueil: keeps disclaimer, chooser, logique, warm, protocol, consult',t.includes('Avertissement')&&t.includes('Choisis ton mode')&&t.includes('Logique des remèdes prioritaires')&&t.includes('avoir très chaud, même avec une tuque')&&t.includes('PLAN D’ATTAQUE · 3 JOURS')&&t.includes('QUAND ARRÊTER ET CONSULTER'));
  await full('2-accueil');
  await click('Conseils');t=await main();
  ok('conseils combat focused',t.includes('Conseils · Mode Combat')&&!t.includes('Prévention')&&!t.includes('Nicotine')&&!t.includes('Vapotage')&&t.includes('Dormir au chaud')&&t.includes('Miel : jamais'));

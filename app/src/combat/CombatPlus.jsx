@@ -9,6 +9,7 @@ const prefsAudience = () => usePrefs.getState().audience;
 const setStanceGlobal = v => usePrefs.getState().setStance(v);
 const DAY = 864e5;
 const PROTOCOL_DAYS = 3;
+const PHASE_NAMES = ['Frappe immédiate', 'Pression constante', 'On tient la ligne'];
 
 export const GESTES = [
   { id: 'betadine', short: 'Spray povidone-iode 0,45 %', act: '1 vaporisation au fond de la gorge', every: 8,
@@ -190,7 +191,7 @@ function NightWarm({ day, audience, compact }) {
     : (first ? 'Nuit 1 : la plus importante — avoir très chaud' : `Nuit ${day} : encore très chaud`);
   return (
     <div className={cx('clr-night mt-4', first && 'first')} data-clr="nuit-chaude" data-nuit={day} data-etat="chaud">
-      <p className="clr-night-k">{first ? 'Priorité de la nuit' : `Nuit ${day} sur ${PROTOCOL_DAYS}`}</p>
+      <p className="clr-night-k">{first ? <><span aria-hidden="true">🔥 </span>L’assaut de chaleur</> : `Nuit ${day} sur ${PROTOCOL_DAYS} · chaleur maintenue`}</p>
       <p className="clr-night-t">{title}</p>
       {first ? null : <p className="mt-1 text-sm font-medium">Si tu ne fais toujours pas de température (fièvre de 38 °C ou plus). Aucune fièvre notée depuis le début du protocole.</p>}
       {compact ? null : <>
@@ -218,11 +219,11 @@ function Protocol({ audience }) {
     const last = s.history.at(-1);
     return (
       <Card className="clr-start" data-clr="protocole">
-        <Kicker>Protocole de 3 jours</Kicker>
-        <h2 className="mt-1 text-xl">Dès le premier mal de gorge</h2>
-        <p className="mt-2 text-sm text-muted">Les cinq gestes du jour, cochés au fur et à mesure, et un point matin et soir sur les symptômes. Tout reste dans cet appareil.</p>
+        <Kicker><span aria-hidden="true">🎯 </span>Plan d’attaque · 3 jours</Kicker>
+        <h2 className="mt-1 text-xl">Dès le premier mal de gorge, on attaque</h2>
+        <p className="mt-2 text-sm text-muted">Tes cinq armes du jour, cochées au fur et à mesure, et un point matin et soir sur les symptômes. Tout reste dans cet appareil.</p>
         <p className="clr-night-hint mt-2 text-sm" data-clr="nuit-1-annonce">Nuit 1 : la plus importante — avoir très chaud, s’il n’y a pas de fièvre.</p>
-        <Btn className="clr-btn-big mt-4" onClick={() => set(() => ({ protocol: { start: Date.now(), audience } }))}>J’ai mal à la gorge, je commence</Btn>
+        <Btn className="clr-btn-big clr-pulse mt-4" onClick={() => set(() => ({ protocol: { start: Date.now(), audience } }))}>J’ai mal à la gorge, je commence</Btn>
         {last ? <p className="mt-3 text-xs text-muted">Dernier protocole : commencé le {fmtDate(last.start)}, {last.status === 'termine' ? 'terminé' : 'annulé'} le {fmtDate(last.end)}.</p> : null}
       </Card>
     );
@@ -235,8 +236,9 @@ function Protocol({ audience }) {
     <Card data-clr="protocole">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <Kicker>Protocole en cours</Kicker>
+          <Kicker><span aria-hidden="true">🎯 </span>Plan d’attaque en cours</Kicker>
           <h2 className="mt-1 text-xl">{over ? 'Les 3 jours sont passés' : `Jour ${day} sur ${PROTOCOL_DAYS}`}</h2>
+          {over ? null : <p className="clr-phase" data-clr="phase">Jour {day} : {PHASE_NAMES[day - 1]}</p>}
           <p className="mt-1 text-sm text-muted">Commencé le {fmtDate(p.start)} à {fmtTime(p.start)}.</p>
         </div>
         <span className="clr-days" aria-hidden="true">{[1, 2, 3].map(d => <i key={d} className={cx(d < day && 'done', d === day && 'today')} />)}</span>
@@ -264,7 +266,7 @@ function Checklist({ audience, now }) {
   return (
     <div className="mt-4">
       <div className="flex items-center justify-between gap-3">
-        <p className="text-sm font-medium">Les gestes d’aujourd’hui</p>
+        <p className="clr-arms-t"><span aria-hidden="true">⚔️ </span>Tes armes du jour</p>
         <button type="button" className="clr-link" aria-expanded={edit} onClick={() => setEdit(e => !e)}>{edit ? 'Fermer les réglages' : 'Intervalles et rappels'}</button>
       </div>
       {audience === 'enfant' ? <p className="mt-1 text-xs text-muted">Profil Enfant : le gargarisme au peroxyde est retiré.</p> : null}
@@ -464,7 +466,7 @@ function Kit() {
   return (
     <Card data-clr="kit">
       <div className="flex items-center justify-between gap-3">
-        <div><Kicker>À préparer d’avance</Kicker><h2 className="mt-1 text-xl">Kit Combat</h2></div>
+        <div><Kicker><span aria-hidden="true">🛡️ </span>Arsenal · à préparer d’avance</Kicker><h2 className="mt-1 text-xl">Kit Combat</h2></div>
         <span className="clr-count text-sm text-primary">{has.size} / {KIT.length}</span>
       </div>
       <ul className="clr-kit mt-3">
@@ -539,16 +541,17 @@ function HomeCombatInner({ onOpen, onAll, setStance }) {
   return (
     <div className="clr-panel" data-clr="accueil-combat">
       <Card>
-        <Kicker>{p ? 'Protocole en cours' : 'Protocole de 3 jours'}</Kicker>
+        <Kicker><span aria-hidden="true">🎯 </span>{p ? 'Plan d’attaque en cours' : 'Plan d’attaque · 3 jours'}</Kicker>
         {p ? <>
           <h2 className="mt-1 text-xl">{protocolDay(p, now) > PROTOCOL_DAYS ? 'Les 3 jours sont passés' : `Jour ${protocolDay(p, now)} sur ${PROTOCOL_DAYS}`}</h2>
+          {protocolDay(p, now) > PROTOCOL_DAYS ? null : <p className="clr-phase">Jour {protocolDay(p, now)} : {PHASE_NAMES[protocolDay(p, now) - 1]}</p>}
           <p className="mt-1 text-sm text-muted">Gestes faits aujourd’hui : {done} sur {total}. Commencé le {fmtDate(p.start)} à {fmtTime(p.start)}.</p>
           <NightWarm day={protocolDay(p, now)} audience={p.audience} compact />
           <Btn className="clr-btn-big mt-4" onClick={onOpen}>Ouvrir mon protocole</Btn>
         </> : <>
-          <h2 className="mt-1 text-xl">Dès le premier mal de gorge</h2>
-          <p className="mt-2 text-sm text-muted">Les cinq gestes du jour, un point matin et soir sur les symptômes, et le Kit Combat.</p>
-          <Btn className="clr-btn-big mt-4" onClick={() => { set(() => ({ protocol: { start: Date.now(), audience: prefsAudience() } })); onOpen(); }}>J’ai mal à la gorge, je commence</Btn>
+          <h2 className="mt-1 text-xl">Dès le premier mal de gorge, on attaque</h2>
+          <p className="mt-2 text-sm text-muted">Tes cinq armes du jour, un point matin et soir sur les symptômes, et le Kit Combat.</p>
+          <Btn className="clr-btn-big clr-pulse mt-4" onClick={() => { set(() => ({ protocol: { start: Date.now(), audience: prefsAudience() } })); onOpen(); }}>J’ai mal à la gorge, je commence</Btn>
         </>}
       </Card>
       <Consult setStance={setStance} />

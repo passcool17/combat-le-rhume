@@ -25,6 +25,12 @@ export function App() {
     document.documentElement.classList.toggle(`dark`, theme === `sombre`);
   }, [theme]);
   useEffect(() => {
+    // Identité visuelle par mode : Combat (offensive, rouge) et Soutien (équipe de soutien, sarcelle).
+    const h = document.documentElement;
+    h.classList.toggle(`mode-combat`, stance === `combat`);
+    h.classList.toggle(`mode-soutien`, stance === `soutien`);
+  }, [stance]);
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [tab]);
   useEffect(() => {
