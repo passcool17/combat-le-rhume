@@ -1,4 +1,5 @@
 import { Card } from "../components/ui.jsx";
+import { RefCard } from "./RefCard.jsx";
 import {
   PENDANT_MALADIE,
   PREVENTION,
@@ -48,6 +49,7 @@ export function Conseils() {
           ))}
         </ul>
       </Card>
+      <RefCard />
     </div>
   );
 }

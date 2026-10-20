@@ -10,6 +10,7 @@ import { Plantes } from "./pages/Plantes.jsx";
 import { Recettes } from "./pages/Recettes.jsx";
 import { Conseils } from "./pages/Conseils.jsx";
 import { Suivi } from "./pages/Suivi.jsx";
+import { References } from "./pages/References.jsx";
 import { CombatAdvice } from "./combat/CombatPlus.jsx";
 import { InstallBanner, ShareButton } from "./components/Installer.jsx";
 import { PENDANT_MALADIE, QUAND_CONSULTER } from "./data/contenu.js";
@@ -20,7 +21,7 @@ export function App() {
   const theme = usePrefs((e) => e.theme);
   const setTheme = usePrefs((e) => e.setTheme);
   const stance = usePrefs((e) => e.stance);
-  const { tab, setTab, filter, setFilter, recipeId, recipeKey, openRecipe, openRemedies } = useNav();
+  const { tab, setTab, filter, setFilter, recipeId, recipeKey, openRecipe, openRemedies, openReferences } = useNav();
   useEffect(() => {
     document.documentElement.classList.toggle(`dark`, theme === `sombre`);
   }, [theme]);
@@ -110,7 +111,15 @@ export function App() {
           )
         ) : null}
         {tab === `suivi` ? <Suivi /> : null}
-        <p className="mt-8 text-center text-xs text-muted">Guide éducatif. Ton suivi ne quitte pas cet appareil.</p>
+        {tab === `references` ? <References /> : null}
+        <p className="mt-3 flex flex-wrap items-center justify-center gap-x-2 text-center text-xs text-muted">
+          <span>Guide éducatif. Ton suivi ne quitte pas cet appareil.</span>
+          {tab === `references` ? null : (
+            <button type="button" className="clr-ref-cta text-xs" data-clr="lien-references" onClick={() => openReferences(null)}>
+              Références
+            </button>
+          )}
+        </p>
       </main>
       <nav
         className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/95 backdrop-blur-md md:hidden"
