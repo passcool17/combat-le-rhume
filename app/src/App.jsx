@@ -61,7 +61,7 @@ export function App() {
   useEffect(() => {
     // Titre par vue + couleur de la barre du navigateur selon le mode.
     const t = tab === `remedes` && stance ? (stance === `combat` ? `Mode Combat` : `Mode Soutien`) : TITLES[tab];
-    document.title = t ? `${t} · Combat le rhume` : `Combat le rhume — guide pratique contre le rhume et la grippe`;
+    document.title = t ? `${t} · Combat le rhume et la grippe` : `Combat le rhume et la grippe — guide pratique`;
     document.querySelector(`meta[name=theme-color]`)?.setAttribute(`content`, THEME[stance] ?? `#1B6B48`);
   }, [tab, stance]);
   useEffect(() => {
@@ -94,6 +94,8 @@ export function App() {
               <p className="font-display text-lg leading-none text-ink">
                 {"Combat le "}
                 <span className="italic text-primary">rhume</span>
+                {" et la "}
+                <span className="italic text-primary">grippe</span>
               </p>
               <p className="mt-1 text-xs leading-snug text-muted">Aider son système immunitaire à se défendre</p>
             </div>

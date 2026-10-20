@@ -13,7 +13,7 @@ import { Search, Star } from "../components/icones.jsx";
 import { cn } from "../lib/cn.js";
 import { useNav } from "../lib/nav.js";
 import { REF_FOR_REMEDE, REF_GROUP_META } from "../data/refs-meta.js";
-import { CombatModeSwitch, CombatPanel, CombatSubtitle, GesteExtra, ZincAvertissement } from "../combat/CombatPlus.jsx";
+import { CombatModeSwitch, CombatPanel, CombatSubtitle, GesteExtra, SecuriteBox, ZincAvertissement } from "../combat/CombatPlus.jsx";
 
 export function Remedes({ filter, onFilter }) {
   let [n, r] = useState(``),
@@ -29,6 +29,7 @@ export function Remedes({ filter, onFilter }) {
           let a = GESTES_COMBAT.includes(n.id);
           return (r && !a) ||
             (r && audience === `enfant` && n.id === `peroxyde`) ||
+            (audience === `enfant` && n.id === `argent`) ||
             (stance === `soutien` && a) ||
             (i && !favorites.includes(n.id)) ||
             (!r && filter === `prudence` && !n.caution) ||
@@ -71,7 +72,7 @@ export function Remedes({ filter, onFilter }) {
           {stance === `combat`
             ? <CombatSubtitle />
             : stance === `soutien`
-              ? `Renforts, ravitaillement et récupération : plantes, vitamines et le reste. Les cinq gestes du mal de gorge sont dans le mode Combat.`
+              ? `Renforts, ravitaillement et récupération contre le rhume et la grippe : plantes, vitamines et le reste. Les cinq gestes du mal de gorge sont dans le mode Combat.`
               : audience === `enfant`
                 ? `Doses réduites. Ce n’est pas une ordonnance : en cas de doute, demander un avis.`
                 : `Doses, durée et précautions. Les fiches ambre demandent plus de retenue.`}
@@ -209,6 +210,7 @@ export function Remedes({ filter, onFilter }) {
                   {x}
                 </p>
               ))}
+              {e.securite && audience !== `enfant` ? <SecuriteBox id={e.id} items={e.securite} /> : null}
               {e.href ? (
                 <a href={e.href} target="_blank" rel="noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-primary">
                   Voir sur Amazon

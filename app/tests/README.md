@@ -11,6 +11,7 @@ node tests/clr-accueil-refs.cjs http://localhost:4173/combat-le-rhume/          
 node tests/clr-sinus-forte.cjs  http://localhost:4173/combat-le-rhume/                     # Recettes : sinus « La plus forte » (60 vérifications)
 node tests/clr-oreilles.cjs     http://localhost:4173/combat-le-rhume/                     # Oreilles : mélange 50/50, 5 minutes maximum, prévention (22 vérifications)
 node tests/clr-doses.cjs        http://localhost:4173/combat-le-rhume/                     # Doses selon les références : chaque dose, aucune ancienne dose, zinc (Avertissement, caché en Enfant), Sécurité (103 vérifications)
+node tests/clr-argent.cjs       http://localhost:4173/combat-le-rhume/                     # Argent colloïdal : gargarisme/nez ~15 ppm, jamais avalé, Sécurité, caché en Enfant, Combat (renfort optionnel + kit), Références ; titre « Combat le rhume et la grippe » (88 vérifications)
 ```
 
 `SHOTS=/chemin/prefixe_` change l’emplacement des captures.

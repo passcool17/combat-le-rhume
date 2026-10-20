@@ -1,4 +1,4 @@
-// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json et combat-le-rhume-refs-new2.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
+// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json et combat-le-rhume-argent-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
 export const REFERENCES = [
  {
   "n": 1,
@@ -1402,6 +1402,70 @@ export const REFERENCES = [
   "level": "direct",
   "supportNote": "appuie directement (hygiène du nez et de la bouche)",
   "note": null
+ },
+ {
+  "n": 94,
+  "name": "Dr. Syed Haider",
+  "handle": "@DrSyedHaider",
+  "credential": "MD, interniste selon son site mygotodoc.com (bio X : « 20k+ acute COVID patients recovered »). Titre non vérifié dans un registre de médecins.",
+  "notPhysician": true,
+  "notPhysicianLabel": "MD non vérifié",
+  "claim": "Argent colloïdal en bouche, puis recracher, dès les premiers signes",
+  "quote": "Colloidal silver is a cheap, convenient tool that can be used in various situations if needed. […] Colloidal silver can be used without swallowing if that’s a concern by spitting it out after leaving it under the tongue for a couple minutes, which addresses microbes in the mouth […]. I wouldn’t use colloidal silver daily as a preventive especially given the skin staining that can occur within 10-20 years of regular use",
+  "gist": "L’argent colloïdal est un outil peu coûteux et pratique. On peut l’utiliser sans l’avaler : le garder quelques minutes en bouche, puis le recracher, pour agir sur les microbes de la bouche. Pas tous les jours en prévention : l’usage régulier peut colorer la peau.",
+  "date": "2025-12-23T14:50:10Z",
+  "url": "https://x.com/DrSyedHaider/status/2003478242276118578",
+  "level": "direct",
+  "supportNote": "appuie directement (en bouche, puis recracher)",
+  "note": null
+ },
+ {
+  "n": 95,
+  "name": "NOLA doctor",
+  "handle": "@BrawnyDoc",
+  "credential": "Compte anonyme ; bio : « Physician, Princeton & USC ».",
+  "notPhysician": true,
+  "notPhysicianLabel": "Anonyme, MD non vérifié",
+  "claim": "Argent colloïdal contre le rhume et la grippe",
+  "quote": "Colloidal silver will prevent colds & flu and can resolve them quickly. I use it.",
+  "gist": "L’argent colloïdal préviendrait le rhume et la grippe et aiderait à s’en remettre vite ; il l’utilise lui-même.",
+  "date": "2016-01-10T11:44:34Z",
+  "url": "https://x.com/BrawnyDoc/status/686151645047066624",
+  "level": "direct",
+  "supportNote": "appuie directement (rhume et grippe)",
+  "note": null
+ },
+ {
+  "n": 96,
+  "name": "Chiroguy",
+  "handle": "@chiroohio44685",
+  "credential": "Chiropraticien (bio), Ohio.",
+  "notPhysician": true,
+  "notPhysicianLabel": "Chiropraticien, pas médecin",
+  "claim": "Gargarisme à l’argent colloïdal",
+  "quote": "go to the health food store get colloidal silver and gargle with it. It kills anything throat or sinus...then get fluids",
+  "gist": "Se gargariser avec de l’argent colloïdal : il s’attaque aux microbes de la gorge et des sinus. Puis bien s’hydrater.",
+  "date": "2013-10-31T12:44:31Z",
+  "url": "https://x.com/chiroohio44685/status/395894047832674304",
+  "level": "direct",
+  "supportNote": "appuie directement (gargarisme)",
+  "note": null
+ },
+ {
+  "n": 97,
+  "name": "FrecklesXX20",
+  "handle": "@FrecklesXX20",
+  "credential": "Compte anonyme ; bio : « RN, M.Ed » (infirmière).",
+  "notPhysician": true,
+  "notPhysicianLabel": "Infirmière (RN), pas médecin",
+  "claim": "Vaporisation nasale d’argent colloïdal",
+  "quote": "As an old wound care nurse, I've used LOTS of colloidal silver & it works really well. I've used colloidal silver nasal spray & it does work. Finally wiped our my chronic MRSA with it.",
+  "gist": "Ancienne infirmière en soins des plaies : l’argent colloïdal fonctionne très bien. Le vaporisateur nasal d’argent colloïdal fonctionne : il a eu raison de son SARM (staphylocoque résistant) chronique.",
+  "date": "2020-01-30T01:10:57Z",
+  "url": "https://x.com/FrecklesXX20/status/1222688615429394436",
+  "level": "partiel",
+  "supportNote": "appuie en partie (vaporisateur nasal, contre un staphylocoque)",
+  "note": null
  }
 ];
 
@@ -1579,6 +1643,16 @@ export const REF_GROUPS = [
    19,
    20,
    57
+  ]
+ },
+ {
+  "id": "argent",
+  "title": "Argent colloïdal",
+  "items": [
+   94,
+   95,
+   96,
+   97
   ]
  }
 ];
@@ -2648,6 +2722,118 @@ export const ETUDES = [
   "finding": "In vitro : le spray gorge à la povidone-iode 0,45 % (et le gargarisme 1 %) a éliminé 99,99 % du virus SARS-CoV-2 en 30 secondes.",
   "level": "partiel",
   "supportNote": "appuie en partie (en laboratoire)"
+ },
+ {
+  "n": 79,
+  "authors": "Almanza-Reyes H, Moreno S, Plascencia-López I, Alvarado-Vera M, Patrón-Romero L, Borrego B, Reyes-Escamilla A, Valencia-Manzo D, Brun A, Pestryakov A, Bogdanchikova N.",
+  "title": "Evaluation of silver nanoparticles for the prevention of SARS-CoV-2 infection in health workers: In vitro and in vivo.",
+  "journal": "PLoS One",
+  "year": "2021",
+  "doi": "10.1371/journal.pone.0256401",
+  "doiUrl": "https://doi.org/10.1371/journal.pone.0256401",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34411199/",
+  "finding": "Essai prospectif randomisé chez 231 travailleurs de la santé (Mexique), 9 semaines : gargarisme de 15 à 30 secondes au moins 3 fois par jour (4 à 6 vaporisations de nanoparticules d’argent dans 20 ml d’eau) et application dans le nez 2 fois par jour. Infection au SARS-CoV-2 : 1,8 % contre 28,2 % dans le groupe témoin. Aucun effet indésirable.",
+  "level": "direct",
+  "supportNote": "appuie directement (gargarisme et nez)",
+  "group": "argent"
+ },
+ {
+  "n": 80,
+  "authors": "Jeremiah SS, Miyakawa K, Morita T, Yamaoka Y, Ryo A.",
+  "title": "Potent antiviral effect of silver nanoparticles on SARS-CoV-2.",
+  "journal": "Biochem Biophys Res Commun",
+  "year": "2020",
+  "doi": "10.1016/j.bbrc.2020.09.018",
+  "doiUrl": "https://doi.org/10.1016/j.bbrc.2020.09.018",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32958250/",
+  "finding": "En laboratoire : des nanoparticules d’argent d’environ 10 nm, à 1 à 10 ppm, bloquent l’infection des cellules par le SARS-CoV-2.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "argent"
+ },
+ {
+  "n": 81,
+  "authors": "Xiang D, Zheng Y, Duan W, Li X, Yin J, Shigdar S, O'Connor ML, Marappan M, Zhao X, Miao Y, Xiang B, Zheng C.",
+  "title": "Inhibition of A/Human/Hubei/3/2005 (H3N2) influenza virus infection by silver nanoparticles in vitro and in vivo.",
+  "journal": "Int J Nanomedicine",
+  "year": "2013",
+  "doi": "10.2147/ijn.s53622",
+  "doiUrl": "https://doi.org/10.2147/ijn.s53622",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/24204140/",
+  "finding": "Grippe H3N2 : en laboratoire et chez la souris, les nanoparticules d’argent données par le nez ont amélioré la survie et réduit le virus dans les poumons.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire et chez la souris)",
+  "group": "argent"
+ },
+ {
+  "n": 82,
+  "authors": "Mori Y, Ono T, Miyahira Y, Nguyen VQ, Matsui T, Ishihara M.",
+  "title": "Antiviral activity of silver nanoparticle/chitosan composites against H1N1 influenza A virus.",
+  "journal": "Nanoscale Res Lett",
+  "year": "2013",
+  "doi": "10.1186/1556-276x-8-93",
+  "doiUrl": "https://doi.org/10.1186/1556-276x-8-93",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/23421446/",
+  "finding": "Grippe H1N1 : en laboratoire, des composites de nanoparticules d’argent et de chitosane ont une activité antivirale.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "argent"
+ },
+ {
+  "n": 83,
+  "authors": "Galdiero S, Falanga A, Vitiello M, Cantisani M, Marra V, Galdiero M.",
+  "title": "Silver nanoparticles as potential antiviral agents.",
+  "journal": "Molecules",
+  "year": "2011",
+  "doi": "10.3390/molecules16108894",
+  "doiUrl": "https://doi.org/10.3390/molecules16108894",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/22024958/",
+  "finding": "Revue : les nanoparticules d’argent agissent contre plusieurs virus, dont le virus respiratoire syncytial, l’herpès, l’hépatite B et le VIH.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue d’études en laboratoire)",
+  "group": "argent"
+ },
+ {
+  "n": 84,
+  "authors": "Goggin R, Jardeleza C, Wormald PJ, Vreugde S.",
+  "title": "Colloidal silver: a novel treatment for Staphylococcus aureus biofilms?",
+  "journal": "Int Forum Allergy Rhinol",
+  "year": "2014",
+  "doi": "10.1002/alr.21259",
+  "doiUrl": "https://doi.org/10.1002/alr.21259",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/24431107/",
+  "finding": "En laboratoire : l’argent colloïdal a réduit de 98,9 à 99,8 % le biofilm de staphylocoque doré prélevé dans des sinusites chroniques.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "argent"
+ },
+ {
+  "n": 85,
+  "authors": "Rajiv S, Drilling A, Bassiouni A, James C, Vreugde S, Wormald PJ.",
+  "title": "Topical colloidal silver as an anti-biofilm agent in a Staphylococcus aureus chronic rhinosinusitis sheep model.",
+  "journal": "Int Forum Allergy Rhinol",
+  "year": "2015",
+  "doi": "10.1002/alr.21459",
+  "doiUrl": "https://doi.org/10.1002/alr.21459",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25643830/",
+  "finding": "Sinusite chez le mouton : des rinçages des sinus à l’argent colloïdal (5 à 30 ppm, 5 jours) ont fortement réduit le biofilm. À 30 ppm pendant 14 jours : aucun dommage aux tissus, analyses sanguines normales.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (chez l’animal)",
+  "group": "argent"
+ },
+ {
+  "n": 86,
+  "authors": "Ooi ML, Richter K, Bennett C, Macias-Valle L, Vreugde S, Psaltis AJ, Wormald PJ.",
+  "title": "Topical Colloidal Silver for the Treatment of Recalcitrant Chronic Rhinosinusitis.",
+  "journal": "Front Microbiol",
+  "year": "2018",
+  "doi": "10.3389/fmicb.2018.00720",
+  "doiUrl": "https://doi.org/10.3389/fmicb.2018.00720",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/29696011/",
+  "finding": "22 patients avec une sinusite chronique rebelle : rinçage du nez à l’argent colloïdal à 15 ppm, 2 fois par jour pendant 10 jours. Symptômes améliorés comme avec les antibiotiques par la bouche, sans perte de l’odorat.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (sinusite chronique)",
+  "group": "argent"
  }
 ];
 
@@ -2673,5 +2859,23 @@ export const NUANCES = {
  ],
  "vitamine-d": [
   "Vitamine D : 1 000 à 2 000 UI tous les jours, pas de grosses doses espacées. Plafond : 4 000 UI par jour. Enfant : selon l’âge, avec un avis."
+ ],
+ "argent": [
+  "Argent colloïdal : gargarisme ou nez seulement, environ 15 ppm, adulte. Ne jamais avaler : pris par la bouche de façon prolongée, l’argent s’accumule et colore la peau, les yeux et les ongles en bleu-gris, de façon permanente (argyrie).",
+  "Choisir un produit avec un numéro NPN ou DIN à 8 chiffres : Santé Canada a rappelé des produits d’argent colloïdal non autorisés.",
+  "Peut nuire à l’absorption de certains antibiotiques et de la thyroxine (lévothyroxine) : si tu prends des médicaments, demande au pharmacien.",
+  "Jamais pour les enfants, ni pendant la grossesse ou l’allaitement : selon Santé Canada, les enfants et les femmes enceintes sont particulièrement à risque, et l’argent colloïdal traverse le placenta.",
+  "En laboratoire, les nanoparticules d’argent sont toxiques pour les cellules à 20 ppm et plus (Jeremiah 2020) : rester à environ 15 ppm."
+ ]
+};
+
+// Sources officielles affichées dans l’encadré Sécurité (liens vérifiés).
+export const SOURCES_OFFICIELLES = {
+ "argent": [
+  {"label": "Santé Canada : rappel de Panasilver (argyrie ; enfants et grossesse)", "url": "https://recalls-rappels.canada.ca/en/alert-recall/unauthorized-panasilver-product-children-and-adults-may-pose-serious-health-risk"},
+  {"label": "Santé Canada : rappel de produits colloïdaux non autorisés (2019)", "url": "https://recalls-rappels.canada.ca/en/alert-recall/unauthorized-colloidal-solutions-colloidal-metal-health-products-recalled-because-they"},
+  {"label": "NCCIH (NIH) : argyrie, antibiotiques et thyroxine", "url": "https://www.nccih.nih.gov/health/colloidal-silver"},
+  {"label": "FDA : règle de 1999 sur l’argent colloïdal sans ordonnance (Federal Register)", "url": "https://www.govinfo.gov/content/pkg/FR-1999-08-17/pdf/99-21253.pdf"},
+  {"label": "Mayo Clinic : argent colloïdal, argyrie et interactions", "url": "https://www.mayoclinic.org/healthy-lifestyle/consumer-health/expert-answers/colloidal-silver/faq-20058061"}
  ]
 };

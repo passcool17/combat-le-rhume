@@ -12,17 +12,17 @@ const ZAV=['Dépasse la limite usuelle de 40 mg par jour : seulement pour une co
 const CARDS={
  zinc:[ZDOSE,...ZAV],
  vitamines:['Vitamine C en soutien : 1 g par jour (par ex. 500 mg, 2 fois par jour). Au-delà de 2 g par jour : risque de diarrhée et de calculs rénaux.','Vitamine D : 1 000 à 2 000 UI tous les jours, pas de grosses doses espacées. Plafond : 4 000 UI par jour.'],
- 'vitamine-c-double':['Dès les premiers symptômes, doubler la dose : 2 g par jour (1 g → 2 g), en 2 à 3 prises avec de l’eau, pendant la durée du rhume.','Ne pas dépasser 2 g par jour chez l’adulte : au-delà, risque de diarrhée et de calculs rénaux.','hémochromatose'],
+ 'vitamine-c-double':['Dès les premiers symptômes, doubler la dose : 2 g par jour (1 g → 2 g), en 2 à 3 prises avec de l’eau, pendant la durée du rhume ou de la grippe.','Ne pas dépasser 2 g par jour chez l’adulte : au-delà, risque de diarrhée et de calculs rénaux.','hémochromatose'],
  sureau:['Sirop (adulte) : 1 c. à soupe (15 ml), 4 fois par jour pendant 5 jours, à commencer dans les 48 premières heures.'],
  miel:['1 cuillère à soupe de miel seul','Pas dans une tisane, pas de citron.','Ne pas rincer la gorge ni boire juste après','Pour la toux de nuit : 1 c. à soupe de miel seul, 30 min avant le coucher.'],
  peroxyde:['Gargarisme : 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. 30 s en bouche + 30 s en gorge, puis recracher. 3 fois par jour, jusqu’à 5 jours. Ne jamais avaler.','Laisser agir 5 minutes maximum'],
  lavage:['Solution saline : jusqu’à 6 fois par jour les 2 premiers jours, puis 1 à 3 fois par jour.'],
- echinacee:['extrait selon l’étiquette, avec des prises augmentées pendant le rhume','Jusqu’à 10 jours.'],
+ echinacee:['extrait selon l’étiquette, avec des prises augmentées pendant le rhume ou la grippe','Jusqu’à 10 jours.'],
  ail:['Option : ail vieilli en gélules (2,56 g par jour dans une étude), selon l’étiquette.'],
  probiotiques:['ou un complément, selon l’étiquette.'],
  thym:['Sirop : 1 c. à café, 3 à 4 fois par jour.'],
 };
-const SYMP=['200 à 350 mg le soir, si besoin. Pas plus de 350 mg en supplément.','Adulte : 1 000 à 2 000 UI tous les jours en hiver, plafond 4 000 UI.','Adulte : 1 g par jour en soutien ; 2 g par jour en 2 à 3 prises dès les premiers symptômes. Pas plus de 2 g par jour.','Selon l’étiquette, prises augmentées pendant le rhume, jusqu’à 10 jours.','Sureau (adulte) : 1 c. à soupe 4 fois par jour pendant 5 jours, dans les 48 premières heures.','1 c. à soupe de miel seul, 30 min avant le coucher. Enfant de 1 à 5 ans : 2 c. à thé. Jamais avant 1 an.','3 à 4 fois par jour, et jusqu’à 6 fois par jour les 2 premiers jours.','30 s en bouche + 30 s en gorge, puis recracher. 3 fois par jour, jusqu’à 5 jours.','jusqu’à 6 fois par jour les 2 premiers jours. Peroxyde'];
+const SYMP=['200 à 350 mg le soir, si besoin. Pas plus de 350 mg en supplément.','Adulte : 1 000 à 2 000 UI tous les jours en hiver, plafond 4 000 UI.','Adulte : 1 g par jour en soutien ; 2 g par jour en 2 à 3 prises dès les premiers symptômes. Pas plus de 2 g par jour.','Selon l’étiquette, prises augmentées pendant le rhume ou la grippe, jusqu’à 10 jours.','Sureau (adulte) : 1 c. à soupe 4 fois par jour pendant 5 jours, dans les 48 premières heures.','1 c. à soupe de miel seul, 30 min avant le coucher. Enfant de 1 à 5 ans : 2 c. à thé. Jamais avant 1 an.','3 à 4 fois par jour, et jusqu’à 6 fois par jour les 2 premiers jours.','30 s en bouche + 30 s en gorge, puis recracher. 3 fois par jour, jusqu’à 5 jours.','jusqu’à 6 fois par jour les 2 premiers jours. Peroxyde'];
 (async()=>{const b=await chromium.launch({executablePath:'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
  {const ok=(k,v)=>{n++;console.log(v===true?'ok  ':'FAIL','src',k,v===true?'':JSON.stringify(v).slice(0,300));if(v!==true)fail++;};
   const left=OLD.filter(r=>r.test(NB(SRC)));ok('sources : aucune ancienne dose',left.length===0||left.map(String));
@@ -69,7 +69,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('combat : Avertissement zinc complet',ZAV.every(x=>zt.includes(x))&&zt.includes('AVERTISSEMENT')||zt);
  ok('combat : zinc → Références',await zc.locator('[data-ref-link=zinc]').count()===1);
  const cb=await main();
- ok('combat : logique vitamine C 2 g',cb.includes('5. Double dose de vitamine C. Dès les premiers symptômes, doubler la dose : 2 g par jour, en 2 à 3 prises, pendant la durée du rhume.'));
+ ok('combat : logique vitamine C 2 g',cb.includes('5. Double dose de vitamine C. Dès les premiers symptômes, doubler la dose : 2 g par jour, en 2 à 3 prises, pendant la durée du rhume ou de la grippe.'));
  ok('combat : logique peroxyde 30 s + 30 s',cb.includes('en gargarisme : 30 s en bouche + 30 s en gorge, 3 fois par jour, jusqu’à 5 jours. Recracher, ne pas avaler.'));
  ok('combat : logique miel inchangée',cb.includes('4. Miel cru. Miel seul : 1 c. à soupe, cuillère pas en métal. Ne pas boire juste après : laisser agir.'));
  ok('combat : cinq gestes (zinc en renfort, pas un 6e geste)',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel seul|Double dose de vitamine C/}).count()===5);

@@ -42,7 +42,7 @@ export const PILIERS_SOUTIEN = [
   },
   {
     title: `Soutien ciblé`,
-    detail: `Vitamine D d’abord, surtout l’automne et l’hiver au Québec. Zinc et vitamine C pendant la maladie, mélange ail-vinaigre-miel. Argent colloïdal : non recommandé par voie interne (mise en garde de Santé Canada).`,
+    detail: `Vitamine D d’abord, surtout l’automne et l’hiver au Québec. Zinc et vitamine C pendant la maladie, mélange ail-vinaigre-miel. Argent colloïdal : en gargarisme ou dans le nez seulement (environ 15 ppm, adulte), jamais avalé.`,
   },
   {
     title: `Hydratation & repos`,
@@ -148,7 +148,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Échinacée`,
-        detail: `Selon l’étiquette, prises augmentées pendant le rhume, jusqu’à 10 jours.`,
+        detail: `Selon l’étiquette, prises augmentées pendant le rhume ou la grippe, jusqu’à 10 jours.`,
       },
       {
         lead: `Produits laitiers`,
@@ -352,7 +352,7 @@ export const REMEDES = [
     name: `Échinacée`,
     kicker: `Dès les premiers signes`,
     topics: [`fievre`],
-    how: `Tisane, 1 à 2 tasses par jour, ou extrait selon l’étiquette, avec des prises augmentées pendant le rhume. Commencer dès les premiers symptômes.`,
+    how: `Tisane, 1 à 2 tasses par jour, ou extrait selon l’étiquette, avec des prises augmentées pendant le rhume ou la grippe. Commencer dès les premiers symptômes.`,
     extra: [`Jusqu’à 10 jours.`],
     tag: `Immunité · prévention`,
   },
@@ -430,7 +430,7 @@ export const REMEDES = [
     name: `Double dose de vitamine C`,
     kicker: `Dès les premiers symptômes`,
     topics: [`fievre`, `gorge`],
-    how: `Dès les premiers symptômes, doubler la dose : 2 g par jour (1 g → 2 g), en 2 à 3 prises avec de l’eau, pendant la durée du rhume.`,
+    how: `Dès les premiers symptômes, doubler la dose : 2 g par jour (1 g → 2 g), en 2 à 3 prises avec de l’eau, pendant la durée du rhume ou de la grippe.`,
     extra: [
       `Ne pas dépasser 2 g par jour chez l’adulte : au-delà, risque de diarrhée et de calculs rénaux.`,
       `Prudence en cas de calculs rénaux ou d’hémochromatose. Si tu prends des médicaments, demande à ton pharmacien.`,
@@ -440,15 +440,22 @@ export const REMEDES = [
   {
     id: `argent`,
     name: `Argent colloïdal`,
-    kicker: `Mise en garde`,
-    topics: [],
+    kicker: `Gorge et nez · adulte`,
+    topics: [`gorge`, `congestion`],
     caution: true,
-    how: `Non recommandé par voie interne. Santé Canada met en garde : pris par la bouche, l’argent colloïdal peut s’accumuler dans le corps et colorer la peau, les yeux et les ongles en gris-bleu, de façon permanente (argyrie).`,
+    adulteSeulement: true,
+    how: `Gargarisme : argent colloïdal à environ 15 ppm, 15 à 30 secondes, puis recracher. Jusqu’à 3 fois par jour. Ne jamais avaler.`,
     extra: [
-      `Les produits non homologués n’ont pas été évalués. Un produit autorisé porte un numéro NPN ou DIN à 8 chiffres. Demande conseil à un pharmacien.`,
-      `Jamais chez l’enfant ni pendant la grossesse.`,
+      `Nez : rinçage ou vaporisation à environ 15 ppm, 2 fois par jour, jusqu’à 10 jours. Ne jamais avaler.`,
+      `Adulte seulement.`,
     ],
-    tag: `Mise en garde Santé Canada`,
+    securite: [
+      `Pas par la bouche : avalé de façon prolongée, l’argent s’accumule et colore la peau en bleu-gris, de façon permanente (argyrie).`,
+      `Choisir un produit avec un numéro NPN ou DIN à 8 chiffres : Santé Canada a rappelé des produits non autorisés.`,
+      `Peut nuire à l’absorption de certains antibiotiques et de la thyroxine. Si tu prends des médicaments, demande au pharmacien.`,
+      `Jamais pour les enfants, ni pendant la grossesse ou l’allaitement.`,
+    ],
+    tag: `Gargarisme · nez · ne jamais avaler`,
   },
   {
     id: `peroxyde`,
@@ -701,7 +708,7 @@ export const QUAND_CONSULTER = [
 
 export const MODE_SOUTIEN = {
   title: `L’équipe de soutien de ton système immunitaire`,
-  detail: `Les soins naturels aident ton système à se défendre.`,
+  detail: `Les soins naturels aident ton système à se défendre contre le rhume et la grippe.`,
   choice: `Dès les premiers signes, agir tôt sur le mal de gorge, avec des gestes simples et réguliers.`,
 };
 
@@ -768,7 +775,7 @@ export const LOGIQUE_COMBAT = [
     detail: `Miel seul : 1 c. à soupe, cuillère pas en métal. Ne pas boire juste après : laisser agir. Un complément, pas la première ligne.`,
   },  {
     lead: `5. Double dose de vitamine C`,
-    detail: `Dès les premiers symptômes, doubler la dose : 2 g par jour, en 2 à 3 prises, pendant la durée du rhume.`,
+    detail: `Dès les premiers symptômes, doubler la dose : 2 g par jour, en 2 à 3 prises, pendant la durée du rhume ou de la grippe.`,
   },
 ];
 

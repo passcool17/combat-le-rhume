@@ -32,7 +32,7 @@ export function Onboarding({ onStart }) {
   return (
     <Card className="p-6" data-onboarding>
       <Kicker>Bienvenue</Kicker>
-      <h1 className="mt-1 text-3xl">Combat le rhume, en bref</h1>
+      <h1 className="mt-1 text-3xl">Combat le rhume et la grippe, en bref</h1>
       <ul className="mt-4 space-y-2">
         {[
           `Un guide éducatif pour traverser un rhume ou une grippe, du premier mal de gorge à la convalescence.`,
@@ -49,7 +49,7 @@ export function Onboarding({ onStart }) {
         <div className="clr-card-combat rounded-2xl px-4 py-4" data-mode-card="combat">
           <p className="clr-card-k"><span aria-hidden="true">⚔️ </span>On part à la guerre contre la zone infectée</p>
           <p className="clr-card-t">Mode Combat</p>
-          <p className="mt-1 text-sm">Dès le premier mal de gorge : cinq gestes, un point matin et soir, pendant 3 jours.</p>
+          <p className="mt-1 text-sm">Rhume ou grippe, dès le premier mal de gorge : cinq gestes, un point matin et soir, pendant 3 jours.</p>
         </div>
         <div className="clr-card-soutien rounded-2xl px-4 py-3" data-mode-card="soutien">
           <p className="clr-card-k">L’équipe de soutien de ton système immunitaire</p>
@@ -320,7 +320,7 @@ export function Accueil() {
                 </li>
               ))}
             </ul>
-            {enfant ? <p className="mt-3 text-sm text-caution">Chez l’enfant : pas de peroxyde, et pas de miel avant 1 an. Le spray Betadine, pas avant 6 ans.</p> : null}
+            {enfant ? <p className="mt-3 text-sm text-caution">Chez l’enfant : pas de peroxyde ni d’argent colloïdal, et pas de miel avant 1 an. Le spray Betadine, pas avant 6 ans.</p> : null}
             <button type="button" onClick={() => openRemedies(`gorge`)} className={BTN_LINK}>
               Voir les remèdes pour la gorge
             </button>
@@ -413,7 +413,7 @@ export function Avertissement() {
       </p>
       {e ? (
         <p className="mt-2 text-muted">
-          Consulte si les symptômes persistent, s’aggravent, ou en cas de fièvre élevée — surtout chez les enfants, les personnes âgées ou les personnes fragiles. L’argent colloïdal n’est pas recommandé par voie interne (mise en garde de Santé Canada). Le peroxyde d’hydrogène demande une utilisation très prudente : jamais avalé ; dans le nez, seulement très dilué (recette « La plus forte », adulte).
+          Consulte si les symptômes persistent, s’aggravent, ou en cas de fièvre élevée — surtout chez les enfants, les personnes âgées ou les personnes fragiles. L’argent colloïdal : en gargarisme ou dans le nez seulement, chez l’adulte, jamais avalé (pris par la bouche, il peut causer une argyrie : mise en garde de Santé Canada). Le peroxyde d’hydrogène demande une utilisation très prudente : jamais avalé ; dans le nez, seulement très dilué (recette « La plus forte », adulte).
         </p>
       ) : null}
       <button
