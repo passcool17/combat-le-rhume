@@ -1,4 +1,4 @@
-// Généré à partir de combat-le-rhume-refs.json et combat-le-rhume-refs-new.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
+// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json et combat-le-rhume-refs-new2.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
 export const REFERENCES = [
  {
   "n": 1,
@@ -1101,6 +1101,307 @@ export const REFERENCES = [
   "level": "partiel",
   "supportNote": "appuie en partie (pas médecin ; liste sans doses)",
   "note": null
+ },
+ {
+  "n": 74,
+  "name": "Dr. Joseph Mercola",
+  "handle": "@mercola",
+  "credential": "D.O. (médecin ostéopathe, É.-U.)",
+  "notPhysician": false,
+  "claim": "Zinc dès les premiers signes",
+  "quote": "There is evidence zinc can shorten a cold",
+  "gist": "Il existe des preuves que le zinc peut raccourcir un rhume.",
+  "date": "2020-11-02T20:00:32Z",
+  "url": "https://x.com/mercola/status/1323354326023041024",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 75,
+  "name": "Medical Wisdom with Dr. Haque, M.D., Ph.D.",
+  "handle": "@medicalwisdom_",
+  "credential": "M.D., Ph.D. (bio du compte, médecin peu connu)",
+  "notPhysician": false,
+  "claim": "Pastilles de zinc dans les 24 premières heures",
+  "quote": "Zinc lozenges expose your mucosal membranes for a long time to the zinc, appear to have the largest potential benefit on shortening cold duration, and they're gonna reduce the illness by about 2 to two and a half days when they're started early, only in the first 24 hours.",
+  "gist": "Les pastilles de zinc, commencées tôt (dans les 24 premières heures), raccourcissent le rhume d’environ 2 à 2,5 jours.",
+  "date": "2026-07-15T15:01:39Z",
+  "url": "https://x.com/medicalwisdom_/status/2077408255983177971",
+  "level": "direct",
+  "supportNote": "appuie directement (pastilles dans les 24 premières heures)",
+  "note": null
+ },
+ {
+  "n": 76,
+  "name": "Dr. Joseph Mercola",
+  "handle": "@mercola",
+  "credential": "D.O. (médecin ostéopathe, É.-U.)",
+  "notPhysician": false,
+  "claim": "Vitamine C pendant l’infection",
+  "quote": "A landmark review recommends the use of vitamin C as an adjunctive therapy for respiratory infections",
+  "gist": "Une revue majeure recommande la vitamine C en appoint contre les infections respiratoires.",
+  "date": "2021-01-07T14:01:03Z",
+  "url": "https://x.com/mercola/status/1347181455617650694",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 77,
+  "name": "Suneel Dhand MD",
+  "handle": "@DrSuneelDhand",
+  "credential": "MD (interniste, É.-U.)",
+  "notPhysician": false,
+  "claim": "Vitamine C en soutien immunitaire",
+  "quote": "Vitamin C → essential for immune signaling, antioxidant defense, and cortisol modulation",
+  "gist": "En période de stress (voyage, nuits courtes), il choisit la vitamine C pour soutenir l’immunité.",
+  "date": "2026-01-14T16:06:00Z",
+  "url": "https://x.com/DrSuneelDhand/status/2011469859519926769",
+  "level": "partiel",
+  "supportNote": "appuie en partie (soutien immunitaire)",
+  "note": null
+ },
+ {
+  "n": 78,
+  "name": "Dr. Joseph Mercola",
+  "handle": "@mercola",
+  "credential": "D.O. (médecin ostéopathe, É.-U.)",
+  "notPhysician": false,
+  "claim": "Vitamine D, en priorité",
+  "quote": "Do you often find yourself battling colds or the flu? Low vitamin D levels might be the cause.",
+  "gist": "Rhumes et grippes à répétition ? Un taux bas de vitamine D pourrait en être la cause.",
+  "date": "2024-08-23T18:00:00Z",
+  "url": "https://x.com/mercola/status/1827043125673783299",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 79,
+  "name": "Dr. Joseph Mercola",
+  "handle": "@mercola",
+  "credential": "D.O. (médecin ostéopathe, É.-U.)",
+  "notPhysician": false,
+  "claim": "Vitamine D, en priorité",
+  "quote": "Restore your vitamin D levels with these strategies to support respiratory health.",
+  "gist": "Rétablir son taux de vitamine D pour soutenir la santé respiratoire.",
+  "date": "2026-03-02T20:01:10Z",
+  "url": "https://x.com/mercola/status/2028561271579394249",
+  "level": "partiel",
+  "supportNote": "appuie en partie (santé respiratoire)",
+  "note": null
+ },
+ {
+  "n": 80,
+  "name": "Mark Hyman, M.D.",
+  "handle": "@drmarkhyman",
+  "credential": "M.D. (médecine fonctionnelle, É.-U.)",
+  "notPhysician": false,
+  "claim": "Vitamine D, en priorité",
+  "quote": "Vitamin D enhances innate immunity and modulates the adaptive immune response. Low vitamin D levels have been associated with increased susceptibility to infections",
+  "gist": "La vitamine D renforce l’immunité innée ; un taux bas est associé à plus d’infections. Facile à corriger.",
+  "date": "2025-04-09T02:54:01Z",
+  "url": "https://x.com/drmarkhyman/status/1909801949496541657",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 81,
+  "name": "Suneel Dhand MD",
+  "handle": "@DrSuneelDhand",
+  "credential": "MD (interniste, É.-U.)",
+  "notPhysician": false,
+  "claim": "Supplément de vitamine D en automne et en hiver",
+  "quote": "Taking vitamin D supplements during the winter, helped transform my physical and mental health",
+  "gist": "Prendre de la vitamine D l’hiver a transformé sa santé ; dans un pays froid, faire vérifier son taux au moins une fois par an.",
+  "date": "2025-06-08T12:03:54Z",
+  "url": "https://x.com/DrSuneelDhand/status/1931683604406354391",
+  "level": "direct",
+  "supportNote": "appuie directement (supplément l’hiver, pays froid)",
+  "note": null
+ },
+ {
+  "n": 82,
+  "name": "Suneel Dhand MD",
+  "handle": "@DrSuneelDhand",
+  "credential": "MD (interniste, É.-U.)",
+  "notPhysician": false,
+  "claim": "Vitamine D, en priorité",
+  "quote": "vitamin D is crucial for IMMUNE and METABOLIC health— and make regular sunlight and supplementation if needed— a core part of their life.",
+  "gist": "La vitamine D est essentielle à l’immunité : soleil et supplément au besoin.",
+  "date": "2025-10-26T13:51:13Z",
+  "url": "https://x.com/DrSuneelDhand/status/1982444910025302151",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 83,
+  "name": "Andrew Weil, M.D.",
+  "handle": "@DrWeil",
+  "credential": "M.D. (médecine intégrative, É.-U.)",
+  "notPhysician": false,
+  "claim": "Supplément de vitamine D en hiver",
+  "quote": "Stay healthy this winter with vitamin D supplements! Recent British investigation found they may protect against colds, flu, bronchitis & pneumonia",
+  "gist": "Des suppléments de vitamine D l’hiver pourraient protéger contre le rhume, la grippe, la bronchite et la pneumonie.",
+  "date": "2024-02-29T17:00:22Z",
+  "url": "https://x.com/DrWeil/status/1763247852795335099",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 84,
+  "name": "Andrew Weil, M.D.",
+  "handle": "@DrWeil",
+  "credential": "M.D. (médecine intégrative, É.-U.)",
+  "notPhysician": false,
+  "claim": "Vitamine D (et C) en soutien",
+  "quote": "Vitamin D – 10/10: Many people are low, and it’s critical for immune health, mood, and bone strength.",
+  "gist": "Vitamine D : 10/10, essentielle à l’immunité ; vitamine C : 8/10 pour l’immunité.",
+  "date": "2025-11-17T22:00:09Z",
+  "url": "https://x.com/DrWeil/status/1990540488919654864",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 85,
+  "name": "Dr Philippa Kaye",
+  "handle": "@drphilippakaye",
+  "credential": "Médecin généraliste (GP, Royaume-Uni)",
+  "notPhysician": false,
+  "claim": "Vitamine D contre toux et rhumes",
+  "quote": "New study suggests vitamin D could help prevent coughs and colds.",
+  "gist": "Une nouvelle étude suggère que la vitamine D pourrait aider à prévenir toux et rhumes.",
+  "date": "2017-02-16T11:04:37Z",
+  "url": "https://x.com/drphilippakaye/status/832183897869918209",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 86,
+  "name": "Dr. Joseph Mercola",
+  "handle": "@mercola",
+  "credential": "D.O. (médecin ostéopathe, É.-U.)",
+  "notPhysician": false,
+  "claim": "Sureau noir dès les premiers signes",
+  "quote": "One study suggested that elderberry extract could shorten flu duration by up to three days.",
+  "gist": "Une étude suggère que l’extrait de sureau pourrait raccourcir la grippe jusqu’à 3 jours.",
+  "date": "2019-01-10T23:02:00Z",
+  "url": "https://x.com/mercola/status/1083499225474916354",
+  "level": "direct",
+  "supportNote": "appuie directement (grippe)",
+  "note": null
+ },
+ {
+  "n": 87,
+  "name": "Dr. Joseph Mercola",
+  "handle": "@mercola",
+  "credential": "D.O. (médecin ostéopathe, É.-U.)",
+  "notPhysician": false,
+  "claim": "Sureau, gingembre, échinacée",
+  "quote": "Herbs like elderberry, ginger, and echinacea may offer immune support during flu season.",
+  "gist": "Sureau, gingembre et échinacée peuvent soutenir l’immunité pendant la saison de la grippe.",
+  "date": "2025-10-17T19:00:00Z",
+  "url": "https://x.com/mercola/status/1979261127315091813",
+  "level": "partiel",
+  "supportNote": "appuie en partie",
+  "note": null
+ },
+ {
+  "n": 88,
+  "name": "Dr. Eric Berg DC",
+  "handle": "@dr_ericberg",
+  "credential": "D.C. (chiropraticien) — se présente « not a medical doctor »",
+  "notPhysician": true,
+  "notPhysicianLabel": "Chiropraticien, pas médecin",
+  "claim": "Sureau noir dès les premiers signes",
+  "quote": "Black elderberry may help support a healthy immune response, especially when taken around the first signs of a respiratory infection.",
+  "gist": "Le sureau noir pourrait soutenir la réponse immunitaire, surtout pris aux premiers signes d’une infection respiratoire.",
+  "date": "2026-10-11T14:59:00Z",
+  "url": "https://x.com/dr_ericberg/status/2109297724298273278",
+  "level": "direct",
+  "supportNote": "appuie directement (premiers signes)",
+  "note": null
+ },
+ {
+  "n": 89,
+  "name": "Dr. Joseph Mercola",
+  "handle": "@mercola",
+  "credential": "D.O. (médecin ostéopathe, É.-U.)",
+  "notPhysician": false,
+  "claim": "Miel pour la toux",
+  "quote": "Why you should reach for #honey BEFORE otc medicines if you have a #cough",
+  "gist": "Pourquoi prendre du miel AVANT les médicaments en vente libre en cas de toux.",
+  "date": "2018-08-26T22:25:05Z",
+  "url": "https://x.com/mercola/status/1033842798586421248",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 90,
+  "name": "Dr. Joseph Mercola",
+  "handle": "@mercola",
+  "credential": "D.O. (médecin ostéopathe, É.-U.)",
+  "notPhysician": false,
+  "claim": "Sommeil régulier",
+  "quote": "Your circadian rhythm may shape how severe your flu symptoms are.",
+  "gist": "Le rythme circadien pourrait influencer la sévérité des symptômes de la grippe.",
+  "date": "2026-01-09T21:00:01Z",
+  "url": "https://x.com/mercola/status/2009731913506865597",
+  "level": "partiel",
+  "supportNote": "appuie en partie (grippe)",
+  "note": null
+ },
+ {
+  "n": 91,
+  "name": "Dr Philippa Kaye",
+  "handle": "@drphilippakaye",
+  "credential": "Médecin généraliste (GP, Royaume-Uni)",
+  "notPhysician": false,
+  "claim": "Lavage nasal + gargarisme à l’eau salée",
+  "quote": "Washing your nose by inhaling salt water+then gurgling with salt water shortened cold symptoms by 2 days in this trial.",
+  "gist": "Se laver le nez à l’eau salée puis se gargariser à l’eau salée a raccourci le rhume de 2 jours dans un essai.",
+  "date": "2019-02-01T09:23:41Z",
+  "url": "https://x.com/drphilippakaye/status/1091265822780215296",
+  "level": "direct",
+  "supportNote": "appuie directement (essai ELVIS)",
+  "note": null
+ },
+ {
+  "n": 92,
+  "name": "Dr Sumit Sharma",
+  "handle": "@dr_sumit_sharma",
+  "credential": "MD (bio du compte, médecin peu connu)",
+  "notPhysician": false,
+  "claim": "Lavage nasal salin",
+  "quote": "Nasal irrigation Saline rinse twice daily. Mechanically clears viruses + reduces inflammation. Shortens colds significantly.",
+  "gist": "Rinçage salin deux fois par jour : élimine les virus, réduit l’inflammation, raccourcit nettement le rhume.",
+  "date": "2025-09-27T12:30:11Z",
+  "url": "https://x.com/dr_sumit_sharma/status/1971915270710026597",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 93,
+  "name": "Peter A. McCullough, MD, MPH®",
+  "handle": "@P_McCulloughMD",
+  "credential": "MD, MPH (interniste/cardiologue, É.-U.)",
+  "notPhysician": false,
+  "claim": "Hygiène nez/bouche (rinçages, sprays, gargarismes)",
+  "quote": "Oral Nasal Hygiene Works to Reduce the Risk of Viral Upper Respiratory Tract Infections",
+  "gist": "L’hygiène du nez et de la bouche réduit le risque d’infections virales des voies respiratoires supérieures.",
+  "date": "2026-01-11T11:51:47Z",
+  "url": "https://x.com/P_McCulloughMD/status/2010318721642893719",
+  "level": "direct",
+  "supportNote": "appuie directement (hygiène du nez et de la bouche)",
+  "note": null
  }
 ];
 
@@ -1112,7 +1413,9 @@ export const REF_GROUPS = [
    1,
    12,
    66,
-   67
+   67,
+   76,
+   77
   ]
  },
  {
@@ -1125,7 +1428,9 @@ export const REF_GROUPS = [
    36,
    37,
    38,
-   65
+   65,
+   74,
+   75
   ]
  },
  {
@@ -1140,14 +1445,18 @@ export const REF_GROUPS = [
    61,
    62,
    63,
-   64
+   64,
+   89
   ]
  },
  {
   "id": "sureau",
   "title": "Sureau",
   "items": [
-   9
+   9,
+   86,
+   87,
+   88
   ]
  },
  {
@@ -1158,13 +1467,26 @@ export const REF_GROUPS = [
   ]
  },
  {
+  "id": "thym",
+  "title": "Thym",
+  "items": []
+ },
+ {
   "id": "vitamine-d",
   "title": "Vitamine D",
   "items": [
    4,
    13,
    17,
-   39
+   39,
+   78,
+   79,
+   80,
+   81,
+   82,
+   83,
+   84,
+   85
   ]
  },
  {
@@ -1175,7 +1497,8 @@ export const REF_GROUPS = [
    21,
    40,
    41,
-   71
+   71,
+   90
   ]
  },
  {
@@ -1216,6 +1539,11 @@ export const REF_GROUPS = [
   ]
  },
  {
+  "id": "probiotiques",
+  "title": "Probiotiques",
+  "items": []
+ },
+ {
   "id": "peroxyde",
   "title": "Peroxyde",
   "items": [
@@ -1238,7 +1566,10 @@ export const REF_GROUPS = [
    53,
    54,
    55,
-   56
+   56,
+   91,
+   92,
+   93
   ]
  },
  {
@@ -1434,7 +1765,7 @@ export const ETUDES = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/28353648/",
   "finding": "Revue : deux essais contrôlés montrent un effet dose-réponse sur la durée du rhume jusqu'à 6-8 g/jour ; les essais négatifs pourraient s'expliquer par des doses trop faibles (3-4 g/jour).",
   "level": "partiel",
-  "supportNote": "partiel (appuie l'idée de doses plus fortes pendant le rhume ; ces doses dépassent le maximum de 2000 mg de l'app)"
+  "supportNote": "partiel (appuie l'idée de doses plus fortes pendant le rhume ; ces doses dépassent le maximum de 2 g par jour de l'appli)"
  },
  {
   "n": 14,
@@ -2023,6 +2354,300 @@ export const ETUDES = [
   "finding": "Boire du liquide chaud (eau ou soupe au poulet) accélère l’évacuation du mucus nasal ; la soupe au poulet fait encore mieux.",
   "level": "partiel",
   "supportNote": "appuie en partie (liquides et bouillons dans la journée ; pas une boisson au coucher)"
+ },
+ {
+  "n": 58,
+  "group": "vitamine-c",
+  "authors": "Gorton HC, Jarvis K.",
+  "title": "The effectiveness of vitamin C in preventing and relieving the symptoms of virus-induced respiratory infections.",
+  "journal": "J Manipulative Physiol Ther",
+  "year": 1999,
+  "doi": "10.1016/s0161-4754(99)70005-9",
+  "doiUrl": "https://doi.org/10.1016/s0161-4754(99)70005-9",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/10543583/",
+  "finding": "Étudiants (252 traités) : vitamine C 1 000 mg toutes les heures pendant 6 h dès les symptômes, puis 1 000 mg 3 fois par jour : 85 % moins de symptômes de rhume et de grippe que le groupe témoin.",
+  "level": "direct",
+  "supportNote": "appuie directement (étude non randomisée)"
+ },
+ {
+  "n": 59,
+  "group": "vitamine-c",
+  "authors": "Hemilä H.",
+  "title": "Vitamin C supplementation and common cold symptoms: factors affecting the magnitude of the benefit.",
+  "journal": "Med Hypotheses",
+  "year": 1999,
+  "doi": "10.1054/mehy.1997.0639",
+  "doiUrl": "https://doi.org/10.1054/mehy.1997.0639",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/10340298/",
+  "finding": "Analyse de 23 essais (≥ 1 g/jour) : la vitamine C réduit la durée et la sévérité du rhume ; 2 g/jour ou plus font mieux que 1 g/jour.",
+  "level": "direct",
+  "supportNote": "appuie directement (2 g/jour ou plus)"
+ },
+ {
+  "n": 60,
+  "group": "vitamine-c",
+  "authors": "Hemilä H.",
+  "title": "Does vitamin C alleviate the symptoms of the common cold?--a review of current evidence.",
+  "journal": "Scand J Infect Dis",
+  "year": 1994,
+  "doi": "10.3109/00365549409008582",
+  "doiUrl": "https://doi.org/10.3109/00365549409008582",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/8191227/",
+  "finding": "21 essais contre placebo (≥ 1 g/jour) : dans chacun, la vitamine C a réduit la durée et la sévérité des symptômes du rhume, de 23 % en moyenne.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 61,
+  "group": "zinc",
+  "authors": "Hemilä H.",
+  "title": "Zinc lozenges may shorten the duration of colds: a systematic review.",
+  "journal": "Open Respir Med J",
+  "year": 2011,
+  "doi": "10.2174/1874306401105010051",
+  "doiUrl": "https://doi.org/10.2174/1874306401105010051",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/21769305/",
+  "finding": "13 essais de pastilles de zinc : au-delà de 75 mg de zinc par jour, rhume 42 % plus court avec l’acétate de zinc et 20 % plus court avec les autres sels.",
+  "level": "direct",
+  "supportNote": "appuie directement (plus de 75 mg/jour)"
+ },
+ {
+  "n": 62,
+  "group": "zinc",
+  "authors": "Hemilä H, Petrus EJ, Fitzgerald JT, Prasad A.",
+  "title": "Zinc acetate lozenges for treating the common cold: an individual patient data meta-analysis.",
+  "journal": "Br J Clin Pharmacol",
+  "year": 2016,
+  "doi": "10.1111/bcp.13057",
+  "doiUrl": "https://doi.org/10.1111/bcp.13057",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/27378206/",
+  "finding": "3 essais, 199 patients : les pastilles d’acétate de zinc ont raccourci le rhume d’environ 2,7 à 2,9 jours (sur 7 jours en moyenne), quel que soit le profil du patient.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 63,
+  "group": "zinc",
+  "authors": "Eby GA, Davis DR, Halcomb WW.",
+  "title": "Reduction in duration of common colds by zinc gluconate lozenges in a double-blind study.",
+  "journal": "Antimicrob Agents Chemother",
+  "year": 1984,
+  "doi": "10.1128/aac.25.1.20",
+  "doiUrl": "https://doi.org/10.1128/aac.25.1.20",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/6367635/",
+  "finding": "Pastilles de gluconate de zinc 23 mg toutes les 2 heures d’éveil (double dose au départ) : après 7 jours, 86 % guéris contre 46 % sous placebo.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 64,
+  "group": "zinc",
+  "authors": "Prasad AS, Fitzgerald JT, Bao B, Beck FW, Chandrasekar PH.",
+  "title": "Duration of symptoms and plasma cytokine levels in patients with the common cold treated with zinc acetate. A randomized, double-blind, placebo-controlled trial.",
+  "journal": "Ann Intern Med",
+  "year": 2000,
+  "doi": "10.7326/0003-4819-133-4-200008150-00006",
+  "doiUrl": "https://doi.org/10.7326/0003-4819-133-4-200008150-00006",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/10929163/",
+  "finding": "50 adultes, zinc dans les 24 h : 1 pastille d’acétate de zinc 12,8 mg toutes les 2 à 3 heures d’éveil : rhume de 4,5 jours au lieu de 8,1 ; toux 3,1 jours au lieu de 6,3.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 65,
+  "group": "miel",
+  "authors": "Ayazi P, Mahyar A, Yousef-Zanjani M, Allami A, Esmailzadehha N, Beyhaghi T.",
+  "title": "Comparison of the Effect of Two Kinds of Iranian Honey and Diphenhydramine on Nocturnal Cough and the Sleep Quality in Coughing Children and Their Parents.",
+  "journal": "PLoS One",
+  "year": 2017,
+  "doi": "10.1371/journal.pone.0170277",
+  "doiUrl": "https://doi.org/10.1371/journal.pone.0170277",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/28103276/",
+  "finding": "87 enfants qui toussent la nuit : deux sortes de miel ont mieux soulagé la toux que la diphenhydramine et amélioré le sommeil des enfants et des parents.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 66,
+  "group": "vitamine-d",
+  "authors": "Urashima M, Segawa T, Okazaki M, Kurihara M, Wada Y, Ida H.",
+  "title": "Randomized trial of vitamin D supplementation to prevent seasonal influenza A in schoolchildren.",
+  "journal": "Am J Clin Nutr",
+  "year": 2010,
+  "doi": "10.3945/ajcn.2009.29094",
+  "doiUrl": "https://doi.org/10.3945/ajcn.2009.29094",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/20219962/",
+  "finding": "Essai randomisé en double aveugle, écoliers, hiver : vitamine D3 1 200 UI/jour : 42 % moins de grippe A (10,8 % contre 18,6 %), et moins de crises d’asthme.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 67,
+  "group": "vitamine-d",
+  "authors": "Ginde AA, Mansbach JM, Camargo CA.",
+  "title": "Association between serum 25-hydroxyvitamin D level and upper respiratory tract infection in the Third National Health and Nutrition Examination Survey.",
+  "journal": "Arch Intern Med",
+  "year": 2009,
+  "doi": "10.1001/archinternmed.2008.560",
+  "doiUrl": "https://doi.org/10.1001/archinternmed.2008.560",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/19237723/",
+  "finding": "18 883 personnes (NHANES III) : plus le taux de vitamine D est bas, plus les infections des voies respiratoires supérieures récentes sont fréquentes.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (étude d’observation)"
+ },
+ {
+  "n": 68,
+  "group": "vitamine-d",
+  "authors": "Camargo CA, Ganmaa D, Frazier AL, Kirchberg FF, Stuart JJ, Kleinman K, Sumberzul N, Rich-Edwards JW.",
+  "title": "Randomized trial of vitamin D supplementation and risk of acute respiratory infection in Mongolia.",
+  "journal": "Pediatrics",
+  "year": 2012,
+  "doi": "10.1542/peds.2011-3029",
+  "doiUrl": "https://doi.org/10.1542/peds.2011-3029",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/22908115/",
+  "finding": "Essai randomisé en double aveugle, 247 enfants carencés en Mongolie, hiver : lait enrichi de 300 UI de vitamine D par jour : risque d’infection respiratoire réduit de moitié.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 69,
+  "group": "sureau",
+  "authors": "Zakay-Rones Z, Thom E, Wollan T, Wadstein J.",
+  "title": "Randomized study of the efficacy and safety of oral elderberry extract in the treatment of influenza A and B virus infections.",
+  "journal": "J Int Med Res",
+  "year": 2004,
+  "doi": "10.1177/147323000403200205",
+  "doiUrl": "https://doi.org/10.1177/147323000403200205",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/15080016/",
+  "finding": "60 adultes grippés depuis 48 h ou moins : sirop de sureau 15 ml 4 fois par jour pendant 5 jours : symptômes soulagés en moyenne 4 jours plus tôt, moins de médicaments.",
+  "level": "direct",
+  "supportNote": "appuie directement (grippe)"
+ },
+ {
+  "n": 70,
+  "group": "sureau",
+  "authors": "Zakay-Rones Z, Varsano N, Zlotnik M, Manor O, Regev L, Schlesinger M, Mumcuoglu M.",
+  "title": "Inhibition of several strains of influenza virus in vitro and reduction of symptoms by an elderberry extract (Sambucus nigra L.) during an outbreak of influenza B Panama.",
+  "journal": "J Altern Complement Med",
+  "year": 1995,
+  "doi": "10.1089/acm.1995.1.361",
+  "doiUrl": "https://doi.org/10.1089/acm.1995.1.361",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/9395631/",
+  "finding": "Épidémie de grippe B : avec l’extrait de sureau, amélioration nette des symptômes (dont la fièvre) en 2 jours chez 93 % des patients contre 6 jours sous placebo.",
+  "level": "direct",
+  "supportNote": "appuie directement (grippe B)"
+ },
+ {
+  "n": 71,
+  "group": "echinacee",
+  "authors": "Jawad M, Schoop R, Suter A, Klein P, Eccles R.",
+  "title": "Safety and Efficacy Profile of Echinacea purpurea to Prevent Common Cold Episodes: A Randomized, Double-Blind, Placebo-Controlled Trial.",
+  "journal": "Evid Based Complement Alternat Med",
+  "year": 2012,
+  "doi": "10.1155/2012/841315",
+  "doiUrl": "https://doi.org/10.1155/2012/841315",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/23024696/",
+  "finding": "755 adultes, 4 mois : l’échinacée (Echinacea purpurea) a réduit le nombre de rhumes, les jours de rhume et les rhumes confirmés par virus, avec une tolérance égale au placebo.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 72,
+  "group": "echinacee",
+  "authors": "Schapowal A, Klein P, Johnston SL.",
+  "title": "Echinacea reduces the risk of recurrent respiratory tract infections and complications: a meta-analysis of randomized controlled trials.",
+  "journal": "Adv Ther",
+  "year": 2015,
+  "doi": "10.1007/s12325-015-0194-4",
+  "doiUrl": "https://doi.org/10.1007/s12325-015-0194-4",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25784510/",
+  "finding": "Méta-analyse de 6 essais (2 458 personnes) : l’échinacée réduit le risque d’infections respiratoires à répétition (RR 0,65) et leurs complications ; doses plus fortes pendant l’épisode aigu encore plus efficaces.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 73,
+  "group": "echinacee",
+  "authors": "Gancitano G, Mucci N, Stange R, Ogal M, Vimalanathan S, Sreya M, Booker A, Hadj-Cherif B, Albrich WC, Woelkart-Ardjomand K, Kreft S, Vanden Berghe W, Hoexter G, Schapowal A, Johnston SL.",
+  "title": "Echinacea Reduces Antibiotics by Preventing Respiratory Infections: A Meta-Analysis (ERA-PRIMA).",
+  "journal": "Antibiotics (Basel)",
+  "year": 2024,
+  "doi": "10.3390/antibiotics13040364",
+  "doiUrl": "https://doi.org/10.3390/antibiotics13040364",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38667040/",
+  "finding": "Méta-analyse de 30 essais (5 652 personnes) : l’échinacée réduit les infections respiratoires, les complications et le besoin d’antibiotiques, sans plus d’effets indésirables que le placebo.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 74,
+  "group": "thym",
+  "authors": "Kemmerich B, Eberhardt R, Stammer H.",
+  "title": "Efficacy and tolerability of a fluid extract combination of thyme herb and ivy leaves and matched placebo in adults suffering from acute bronchitis with productive cough. A prospective, double-blind, placebo-controlled clinical trial.",
+  "journal": "Arzneimittelforschung",
+  "year": 2006,
+  "doi": "10.1055/s-0031-1296767",
+  "doiUrl": "https://doi.org/10.1055/s-0031-1296767",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/17063641/",
+  "finding": "361 adultes avec bronchite et toux grasse : sirop thym + lierre 5,4 ml 3 fois par jour pendant 11 jours : 68,7 % de quintes de toux en moins contre 47,6 % sous placebo ; toux réduite de moitié 2 jours plus tôt.",
+  "level": "direct",
+  "supportNote": "appuie directement (sirop thym-lierre)"
+ },
+ {
+  "n": 75,
+  "group": "gingembre",
+  "authors": "Nantz MP, Rowe CA, Muller CE, Creasy RA, Stanilka JM, Percival SS.",
+  "title": "Supplementation with aged garlic extract improves both NK and γδ-T cell function and reduces the severity of cold and flu symptoms: a randomized, double-blind, placebo-controlled nutrition intervention.",
+  "journal": "Clin Nutr",
+  "year": 2012,
+  "doi": "10.1016/j.clnu.2011.11.019",
+  "doiUrl": "https://doi.org/10.1016/j.clnu.2011.11.019",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/22280901/",
+  "finding": "120 adultes, 90 jours d’extrait d’ail vieilli (2,56 g/jour) : rhumes et grippes moins sévères (21 % de symptômes en moins, 58 % de jours d’absence en moins).",
+  "level": "partiel",
+  "supportNote": "appuie en partie (ail vieilli en gélules)"
+ },
+ {
+  "n": 76,
+  "group": "probiotiques",
+  "authors": "King S, Glanville J, Sanders ME, Fitzgerald A, Varley D.",
+  "title": "Effectiveness of probiotics on the duration of illness in healthy children and adults who develop common acute respiratory infectious conditions: a systematic review and meta-analysis.",
+  "journal": "Br J Nutr",
+  "year": 2014,
+  "doi": "10.1017/s0007114514000075",
+  "doiUrl": "https://doi.org/10.1017/s0007114514000075",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/24780623/",
+  "finding": "Méta-analyse de 20 essais : avec les probiotiques (Lactobacillus, Bifidobacterium), moins de jours de maladie, épisodes plus courts d’environ 1 jour et moins d’absences.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 77,
+  "group": "sprays",
+  "authors": "Eggers M, Koburger-Janssen T, Eickmann M, Zorn J.",
+  "title": "In Vitro Bactericidal and Virucidal Efficacy of Povidone-Iodine Gargle/Mouthwash Against Respiratory and Oral Tract Pathogens.",
+  "journal": "Infect Dis Ther",
+  "year": 2018,
+  "doi": "10.1007/s40121-018-0200-7",
+  "doiUrl": "https://doi.org/10.1007/s40121-018-0200-7",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/29633177/",
+  "finding": "In vitro : le gargarisme à la povidone-iode dilué à 0,23 % inactive en 15 secondes les virus de la grippe A (H1N1), SARS-CoV, MERS-CoV et rotavirus, et tue les bactéries de la gorge.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)"
+ },
+ {
+  "n": 78,
+  "group": "sprays",
+  "authors": "Anderson DE, Sivalingam V, Kang AEZ, Ananthanarayanan A, Arumugam H, Jenkins TM, Hadjiat Y, Eggers M.",
+  "title": "Povidone-Iodine Demonstrates Rapid In Vitro Virucidal Activity Against SARS-CoV-2, The Virus Causing COVID-19 Disease.",
+  "journal": "Infect Dis Ther",
+  "year": 2020,
+  "doi": "10.1007/s40121-020-00316-3",
+  "doiUrl": "https://doi.org/10.1007/s40121-020-00316-3",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32643111/",
+  "finding": "In vitro : le spray gorge à la povidone-iode 0,45 % (et le gargarisme 1 %) a éliminé 99,99 % du virus SARS-CoV-2 en 30 secondes.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)"
  }
 ];
 
@@ -2033,7 +2658,20 @@ export const NUANCES = {
   "Enfants (AAP 2011) : traiter pour le confort, surveiller l'état général, bien hydrater ; ne pas surchauffer un enfant (risque de coup de chaleur). Bébé < 3 mois avec fièvre = consulter.",
   "Consulter si fièvre ≥ 39-40 °C qui persiste, difficulté à respirer, raideur de nuque, confusion, convulsion, déshydratation, ou fièvre > 3 jours (811 / 911)."
  ],
+ "vitamine-c": [
+  "Vitamine C : 1 g par jour en soutien ; 2 g par jour en 2 à 3 prises en combat (double dose). Au-delà de 2 g par jour : risque de diarrhée et de calculs rénaux.",
+  "Prudence en cas de calculs rénaux ou d’hémochromatose. Enfant : dose selon l’âge, avec le pharmacien."
+ ],
  "zinc": [
-  "Zinc : effets indésirables (goût, nausées) ; pas de bénéfice au-delà de 100 mg/jour ; ne pas prendre longtemps."
+  "Zinc, dose des études (adulte seulement) : pastilles d’environ 13 mg toutes les 2 à 3 heures éveillé (≈ 75 à 90 mg par jour), dans les 24 heures des premiers symptômes, 5 à 7 jours maximum.",
+  "Cette dose dépasse la limite usuelle de 40 mg par jour : seulement pour une courte durée. Peut causer nausées et goût métallique ; carence en cuivre si prolongé. Jamais plus de 100 mg par jour : aucun bénéfice de plus.",
+  "Demander avis au pharmacien si tu prends des médicaments ou en cas de grossesse. Jamais de zinc dans le nez (spray ou gel nasal) : risque de perte de l’odorat.",
+  "Enfant : pas la dose des études ; selon le poids, avec un avis du pharmacien."
+ ],
+ "miel": [
+  "Miel : jamais avant 1 an. De 1 à 5 ans : 2 c. à thé ; adulte : 1 c. à soupe, 30 min avant le coucher pour la toux de nuit."
+ ],
+ "vitamine-d": [
+  "Vitamine D : 1 000 à 2 000 UI tous les jours, pas de grosses doses espacées. Plafond : 4 000 UI par jour. Enfant : selon l’âge, avec un avis."
  ]
 };

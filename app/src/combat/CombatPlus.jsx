@@ -5,6 +5,8 @@ import { useSuivi } from '../lib/suivi.js';
 import { useNav } from '../lib/nav.js';
 import './combat.css';
 import { RefCard } from '../pages/RefCard.jsx';
+import { REMEDES } from '../data/contenu.js';
+import { REF_GROUP_META } from '../data/refs-meta.js';
 
 const prefsAudience = () => usePrefs.getState().audience;
 const setStanceGlobal = v => usePrefs.getState().setStance(v);
@@ -15,14 +17,14 @@ const PHASE_NAMES = ['Frappe immédiate', 'Pression constante', 'On tient la lig
 export const GESTES = [
   { id: 'betadine', short: 'Spray povidone-iode 0,45 %', act: '1 vaporisation au fond de la gorge', every: 8,
     hint: 'L’appli indique jusqu’à 3 fois par jour. Suivre l’étiquette.' },
-  { id: 'peroxyde', short: 'Gargarisme au peroxyde 3 % Food Grade', act: '1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau · gargariser, recracher, ne pas avaler', every: 8,
-    hint: 'Usage court. Suivre l’étiquette.' },
+  { id: 'peroxyde', short: 'Gargarisme au peroxyde 3 % Food Grade', act: '1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau · 30 s en bouche + 30 s en gorge, recracher, ne pas avaler', every: 8,
+    hint: '3 fois par jour, jusqu’à 5 jours. Suivre l’étiquette.' },
   { id: 'pastilles', short: 'Pastilles antiseptiques', act: '1 pastille', every: 3,
     hint: 'Suivre le nombre indiqué sur le produit.' },
   { id: 'miel', short: 'Miel cru', act: '1 c. à soupe de miel seul, cuillère pas en métal · ne pas boire juste après', every: 3,
-    hint: 'Miel seul, sans tisane ni citron. Plusieurs fois par jour.' },
-  { id: 'vitamine-c-double', short: 'Double dose de vitamine C', act: '1 prise avec de l’eau, 2 fois par jour', every: 12,
-    hint: 'Doubler sa dose habituelle (par ex. 500 mg → 1000 mg par jour), en 2 prises. Max 2000 mg par jour chez l’adulte.' },
+    hint: 'Miel seul, sans tisane ni citron. Plusieurs fois par jour. La nuit : 30 min avant le coucher.' },
+  { id: 'vitamine-c-double', short: 'Double dose de vitamine C', act: '1 prise avec de l’eau, 2 à 3 fois par jour (2 g par jour au total)', every: 8,
+    hint: 'Doubler la dose : 2 g par jour (1 g → 2 g), en 2 à 3 prises. Au-delà de 2 g : risque de diarrhée et de calculs rénaux.' },
 ];
 
 const PRECAUTIONS = {
@@ -36,7 +38,7 @@ const PRECAUTIONS = {
     betadine: ['Pas avant 6 ans. À partir de 6 ans, sous surveillance : 1 vaporisation, jusqu’à 3 fois par jour.', 'À éviter en cas d’allergie à l’iode ou de problème de thyroïde.'],
     peroxyde: ['Pas pour les jeunes enfants : retiré du profil Enfant.'],
     pastilles: ['Selon l’âge indiqué sur la boîte. Pas les pastilles fortes d’adulte.', 'Attention au risque d’étouffement chez les petits.'],
-    miel: ['Jamais avant 1 an.'],
+    miel: ['Jamais avant 1 an. De 1 à 5 ans : 2 c. à thé, 30 min avant le coucher pour la toux de nuit.'],
     'vitamine-c-double': ['Chez l’enfant, la dose dépend de l’âge : demander au pharmacien avant de doubler.', 'Prudence en cas de calculs rénaux ou d’hémochromatose. Si l’enfant prend des médicaments, demande au pharmacien.'],
   },
 };
@@ -503,11 +505,36 @@ function CheckSummary() {
   );
 }
 
+// ---------- renfort : zinc des 24 premières heures (adulte seulement, caché en profil Enfant) ----------
+const ZINC = REMEDES.find(r => r.id === 'zinc');
+function ZincRenfort({ audience }) {
+  if (audience === 'enfant') return null;
+  const g = REF_GROUP_META.find(x => x.id === 'zinc');
+  return (
+    <Card caution data-clr="zinc-combat">
+      <Kicker><span aria-hidden="true">🛡️ </span>Renfort · 24 premières heures</Kicker>
+      <h2 className="mt-1 text-xl">Zinc en pastilles</h2>
+      <p className="mt-2 text-sm text-ink" data-clr="zinc-dose">{ZINC.how}</p>
+      <ZincAvertissement />
+      <p><button type="button" className="clr-ref-cta mt-2" data-ref-link="zinc" onClick={() => useNav.getState().openReferences('zinc')}>Références : {g.title} ({g.count})</button></p>
+    </Card>
+  );
+}
+export function ZincAvertissement() {
+  return (
+    <div className="clr-prec mt-3" data-clr="zinc-avertissement" role="note" aria-label="Avertissement zinc">
+      <p className="text-xs font-medium text-caution uppercase tracking-wide">Avertissement</p>
+      <ul>{ZINC.avertissement.map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
+    </div>
+  );
+}
+
 function Panel({ audience, setStance }) {
   const s = useStore();
   return (
     <div className="clr-panel" data-clr="panel">
       <Protocol audience={audience} />
+      <ZincRenfort audience={audience} />
       <Consult setStance={setStance} />
       {s.protocol ? <CheckSummary /> : null}
       <Kit />

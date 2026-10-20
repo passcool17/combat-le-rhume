@@ -278,8 +278,8 @@ export function Accueil() {
             <p className="text-sm text-ink">Un supplément est souvent recommandé au Québec en automne et en hiver : demande conseil à ton pharmacien ou à ton médecin. Elle compte pour le système immunitaire.</p>
             <p className="mt-2 text-sm text-muted">
               {enfant
-                ? `Chez l’enfant, la dose dépend de l’âge. Ne pas reprendre 2 000 à 4 000 UI sans avis.`
-                : `Dose courante chez l’adulte : 2 000 à 4 000 UI par jour, à adapter selon une prise de sang.`}
+                ? `Chez l’enfant, la dose dépend de l’âge. Ne pas donner la dose adulte sans avis.`
+                : `Dose courante chez l’adulte : 1 000 à 2 000 UI tous les jours, pas de grosses doses espacées. Plafond : 4 000 UI par jour.`}
             </p>
             <p className="mt-3 text-sm text-ink">
               Soleil : visage et bras, sans lunettes de soleil, sans brûler. Au moins 30 minutes, une heure c’est mieux, surtout en été. Les lunettes réduisent l’apport en UV.

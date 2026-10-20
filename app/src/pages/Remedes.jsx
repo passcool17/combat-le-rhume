@@ -13,7 +13,7 @@ import { Search, Star } from "../components/icones.jsx";
 import { cn } from "../lib/cn.js";
 import { useNav } from "../lib/nav.js";
 import { REF_FOR_REMEDE, REF_GROUP_META } from "../data/refs-meta.js";
-import { CombatModeSwitch, CombatPanel, CombatSubtitle, GesteExtra } from "../combat/CombatPlus.jsx";
+import { CombatModeSwitch, CombatPanel, CombatSubtitle, GesteExtra, ZincAvertissement } from "../combat/CombatPlus.jsx";
 
 export function Remedes({ filter, onFilter }) {
   let [n, r] = useState(``),
@@ -197,13 +197,14 @@ export function Remedes({ filter, onFilter }) {
               }
             >
               <p className="text-sm">{audience === `enfant` ? doseEnfant(e.id) : e.how}</p>
-              {audience === `enfant` ? (
+              {audience === `enfant` && !e.adulteSeulement ? (
                 <p className="mt-2 text-sm text-muted">
                   {"Adulte : "}
                   {e.how}
                 </p>
               ) : null}
-              {e.extra?.map((x) => (
+              {e.avertissement && audience !== `enfant` ? <ZincAvertissement /> : null}
+              {(audience === `enfant` && e.extraEnfant ? e.extraEnfant : e.extra)?.map((x) => (
                 <p className="mt-2 text-sm text-muted" key={x}>
                   {x}
                 </p>

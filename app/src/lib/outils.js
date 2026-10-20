@@ -35,7 +35,7 @@ export function protocoleSelonSymptomes(e) {
       t.push(`Zinc, plus sureau ou échinacée. Surveiller la température.`),
     e.includes(`toux`) && t.push(`Thym et miel-citron. Repos de la voix.`),
     e.includes(`congestion`) &&
-      t.push(`Lavage nasal salin, 1 à 3 fois par jour.`),
+      t.push(`Lavage nasal salin : jusqu’à 6 fois par jour les 2 premiers jours, puis 1 à 3 fois.`),
     e.includes(`gorge`) &&
       t.push(`Gargarismes et miel. Jamais d’ustensile en métal.`),
     e.includes(`fatigue`) &&
