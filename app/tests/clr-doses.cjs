@@ -12,6 +12,7 @@ const ZAV=['Dépasse la limite usuelle de 40 mg par jour : seulement pour une co
 // remède → textes attendus sur la fiche (liste complète, sans mode)
 const CARDS={
  zinc:[ZDOSE,...ZAV],
+ girofle:['Mal de gorge : mâcher lentement 1 à 2 clous de girofle entiers, plusieurs fois par jour, puis les recracher. Adulte seulement.','Bain de bouche du commerce à l’huile essentielle de girofle (1 à 5 %) : plusieurs fois par jour, 1 semaine maximum (Agence européenne du médicament).'],
  quercetine:['Dose des études : 500 mg de quercétine, 2 fois par jour avec un repas (1 000 mg par jour), en même temps que les pastilles de zinc, pendant 5 à 7 jours. Adulte seulement.','Pas plus de 600 mg par prise ni 1 200 mg par jour, avec un repas. Au-delà de 12 semaines, demande avis (Santé Canada).'],
  vitamines:['Vitamine C en soutien : 1 g par jour (par ex. 500 mg, 2 fois par jour). Au-delà de 2 g par jour : risque de diarrhée et de calculs rénaux.','Vitamine D : 1 000 à 2 000 UI tous les jours, pas de grosses doses espacées. Plafond : 4 000 UI par jour.'],
  'vitamine-c-double':['Dès les premiers symptômes, doubler la dose : 2 g par jour (1 g → 2 g), en 2 à 3 prises avec de l’eau, pendant la durée du rhume ou de la grippe.','Ne pas dépasser 2 g par jour chez l’adulte : au-delà, risque de diarrhée et de calculs rénaux.','hémochromatose'],
