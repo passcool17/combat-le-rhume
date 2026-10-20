@@ -11,6 +11,8 @@ import {
 import { Card, OnThisPage, Section } from "../components/ui.jsx";
 import { Search, Star } from "../components/icones.jsx";
 import { cn } from "../lib/cn.js";
+import { useNav } from "../lib/nav.js";
+import { REF_FOR_REMEDE, REF_GROUPS } from "../data/references.js";
 import { CombatModeSwitch, CombatPanel, CombatSubtitle, GesteExtra } from "../combat/CombatPlus.jsx";
 
 export function Remedes({ filter, onFilter }) {
@@ -212,6 +214,13 @@ export function Remedes({ filter, onFilter }) {
                 </a>
               ) : null}
               <p className={cn(`mt-3 inline-flex rounded-full px-3 py-1 text-xs font-medium`, e.caution ? `bg-caution-soft text-caution` : `bg-primary-soft text-primary`)}>{e.tag}</p>
+              {REF_FOR_REMEDE[e.id] ? (
+                <p>
+                  <button type="button" className="clr-ref-cta mt-1" data-ref-link={REF_FOR_REMEDE[e.id]} onClick={() => useNav.getState().openReferences(REF_FOR_REMEDE[e.id])}>
+                    Références : {REF_GROUPS.find((g) => g.id === REF_FOR_REMEDE[e.id]).title} ({REF_GROUPS.find((g) => g.id === REF_FOR_REMEDE[e.id]).items.length})
+                  </button>
+                </p>
+              ) : null}
               {stance === `combat` ? <GesteExtra id={e.id} audience={audience} /> : null}
             </Section>
           ))}

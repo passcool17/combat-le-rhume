@@ -4,6 +4,7 @@ import { usePrefs } from '../lib/stockage.js';
 import { useSuivi } from '../lib/suivi.js';
 import { useNav } from '../lib/nav.js';
 import './combat.css';
+import { RefCard } from '../pages/RefCard.jsx';
 
 const prefsAudience = () => usePrefs.getState().audience;
 const setStanceGlobal = v => usePrefs.getState().setStance(v);
@@ -582,6 +583,7 @@ function CombatAdviceInner({ consult, during, onAll, setStance }) {
         <ul className="clr-dots mt-3">{items.map(t => <li key={t} className="text-sm text-ink">{t}</li>)}</ul>
         {a.noWarm ? <p className="mt-2 text-xs text-muted">Fièvre, frissons ou mal de tête notés : les conseils « au chaud » sont masqués.</p> : null}
       </Card>
+      <RefCard />
       <ModeSwitch onAll={onAll} setStance={setStance} />
     </div>
   );
