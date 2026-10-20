@@ -27,9 +27,9 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  let [c,p]=await mk();let h=H(p);
  await p.goto(url,{waitUntil:'networkidle'});
  let t=await h.main();
- ok('onboarding h1',JSON.stringify(await h.h1s())==='["Combat le rhume, en bref"]');
+ ok('onboarding h1',JSON.stringify(await h.h1s())==='["Combat le rhume et la grippe, en bref"]');
  ok('onboarding 3 lines',await p.locator('[data-onboarding] ul li').count()===3);
- ok('onboarding 2 modes + 1 sentence each',t.includes('Mode Combat Dès le premier mal de gorge : cinq gestes, un point matin et soir, pendant 3 jours.')&&t.includes('Mode Soutien Pour la suite : vitamine D, zinc, plantes, hydratation et repos.'));
+ ok('onboarding 2 modes + 1 sentence each',t.includes('Mode Combat Rhume ou grippe, dès le premier mal de gorge : cinq gestes, un point matin et soir, pendant 3 jours.')&&t.includes('Mode Soutien Pour la suite : vitamine D, zinc, plantes, hydratation et repos.'));
  ok('onboarding: chooser not yet shown',!t.includes('Choisis ton mode'));
  await audit(h,'onboarding');
  if(dn==='iphone13')await p.locator('[data-install] button[aria-label^=Masquer]').click().catch(()=>{});
@@ -37,7 +37,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await h.click('Commencer');
  ok('Commencer -> chooser h1 focused',await p.evaluate(()=>document.activeElement?.tagName==='H1'&&document.activeElement.innerText.trim()==='Choisis ton mode'));
  await audit(h,'chooser');
- await p.reload({waitUntil:'networkidle'});ok('onboarding remembered',!(await h.main()).includes('Combat le rhume, en bref')&&(await h.main()).includes('Choisis ton mode'));
+ await p.reload({waitUntil:'networkidle'});ok('onboarding remembered',!(await h.main()).includes('Combat le rhume et la grippe, en bref')&&(await h.main()).includes('Choisis ton mode'));
 
  // ---------- 2. sections repliables + Sur cette page ----------
  await h.click('Mode Soutien');
@@ -95,12 +95,12 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('migration: journal kept (valid entries)',JSON.stringify(u.journal)===JSON.stringify(seed.journal.slice(0,2).sort((a,b)=>b.date.localeCompare(a.date))));
  ok('migration: combat kept',JSON.stringify([u.protocol,u.intakes,u.checks,u.intervals,u.kit,u.reminders,u.history])===JSON.stringify([seed.combat.protocol,seed.combat.intakes,seed.combat.checks,seed.combat.intervals,seed.combat.kit,seed.combat.reminders,seed.combat.history]));
  ok('migration: old keys left as backup',!!(await h.ls('remedes-naturels-journal-v1'))&&!!(await h.ls('combat-le-rhume-combat-v1')));
- ok('existing user: no onboarding',!(await h.main()).includes('Combat le rhume, en bref'));
+ ok('existing user: no onboarding',!(await h.main()).includes('Combat le rhume et la grippe, en bref'));
  await h.click('Remèdes');
  t=(await p.locator('[data-clr=consulter]').first().innerText()).replace(/\s+/g,' ');
  ok('combat logic reads unified data (fièvre du journal)',t.includes('Il vaut mieux consulter')&&t.includes('Fièvre'));
  ok('combat warm advice off from journal fever',(await p.locator('main h1 + p').innerText()).includes('pas de surchauffe ni de bonnet'));
- ok('kit migrated in UI',(await p.locator('[data-clr=kit]').innerText()).includes('2 / 11'));
+ ok('kit migrated in UI',(await p.locator('[data-clr=kit]').innerText()).includes('2 / 12'));
  await h.click('Suivi');t=await h.main();
  ok('Suivi always reachable in Combat',JSON.stringify(await h.h1s())==='["Suivi"]');
  ok('Suivi merges journal + checks',t.includes('Note A')&&t.includes('Note B')&&t.includes('Matin : gorge 6/10')&&t.includes('Soir : gorge 4/10')&&await p.locator('[data-clr=point]').isVisible());
@@ -167,7 +167,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('hidden when installed (standalone)',await p.locator('[data-install]').count()===0);
  // ---------- 5. partage ----------
  h=H(p);await p.evaluate(()=>{navigator.share=async d=>{window.__shared=d}});
- await h.click('Partager l’appli');ok('Web Share API used',await p.evaluate(u=>window.__shared?.url===u&&window.__shared.title==='Combat le rhume',new URL(url).href));
+ await h.click('Partager l’appli');ok('Web Share API used',await p.evaluate(u=>window.__shared?.url===u&&window.__shared.title==='Combat le rhume et la grippe',new URL(url).href));
  await p.evaluate(()=>{navigator.share=undefined});await h.click('Partager l’appli');await p.waitForTimeout(200);
  ok('copy-link fallback',(await p.locator('[role=status]',{hasText:'Lien copié'}).count())===1&&await p.evaluate(()=>navigator.clipboard.readText())===new URL(url).href);
  await c.close();

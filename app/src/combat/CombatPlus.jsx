@@ -1,4 +1,4 @@
-// Combat le rhume — Mode Combat : protocole de 3 jours, gestes, suivi, consulter, Kit Combat.
+// Combat le rhume et la grippe — Mode Combat : protocole de 3 jours, gestes, suivi, consulter, Kit Combat.
 import * as React from 'react';
 import { usePrefs } from '../lib/stockage.js';
 import { useSuivi } from '../lib/suivi.js';
@@ -55,6 +55,7 @@ const KIT = [
   { id: 'thermometre', label: 'Thermomètre' },
   { id: 'tuque', label: 'Double couverture, bas et bonnet pour la nuit' },
   { id: 'eau', label: 'De quoi boire 2,5 à 3 L par jour' },
+  { id: 'argent', label: 'Optionnel (adulte) : argent colloïdal environ 15 ppm, avec numéro NPN ou DIN, pour le gargarisme ou le nez' },
 ];
 
 const RED_FLAGS = [
@@ -139,7 +140,7 @@ function scheduleReminders() {
   }
 }
 async function notify(g) {
-  const title = 'Combat le rhume';
+  const title = 'Combat le rhume et la grippe';
   const opts = { body: `${g.short} : possible maintenant. Suivre l’étiquette.`, icon: '/combat-le-rhume/icons/icon-192.png', tag: 'clr-' + g.id };
   try { const r = await navigator.serviceWorker?.getRegistration(); if (r) return r.showNotification(title, opts); } catch {}
   try { new Notification(title, opts); } catch {}
@@ -473,15 +474,17 @@ function Consult({ setStance }) {
 function Kit() {
   const s = useStore();
   const has = new Set(s.kit);
+  const enfant = usePrefs(e => e.audience) === 'enfant';
+  const items = KIT.filter(k => !(enfant && k.id === 'argent'));
   const tog = id => set(s0 => ({ kit: s0.kit.includes(id) ? s0.kit.filter(k => k !== id) : [...s0.kit, id] }));
   return (
     <Card data-clr="kit">
       <div className="flex items-center justify-between gap-3">
         <div><Kicker><span aria-hidden="true">🛡️ </span>Arsenal · à préparer d’avance</Kicker><h2 className="mt-1 text-xl">Kit Combat</h2></div>
-        <span className="clr-count text-sm text-primary">{has.size} / {KIT.length}</span>
+        <span className="clr-count text-sm text-primary">{items.filter(k => has.has(k.id)).length} / {items.length}</span>
       </div>
       <ul className="clr-kit mt-3">
-        {KIT.map(k => (
+        {items.map(k => (
           <li key={k.id}><label><input type="checkbox" checked={has.has(k.id)} onChange={() => tog(k.id)} /> <span className="text-sm">{k.label}</span></label></li>
         ))}
       </ul>
@@ -529,12 +532,39 @@ export function ZincAvertissement() {
   );
 }
 
+// ---------- renfort optionnel : argent colloïdal en gargarisme ou dans le nez (adulte seulement, caché en profil Enfant) ----------
+const ARGENT = REMEDES.find(r => r.id === 'argent');
+export function SecuriteBox({ id, items }) {
+  return (
+    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${id === 'argent' ? 'argent colloïdal' : id}`}>
+      <p className="text-xs font-medium text-caution uppercase tracking-wide">Sécurité</p>
+      <ul>{items.map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
+    </div>
+  );
+}
+function ArgentRenfort({ audience }) {
+  if (audience === 'enfant') return null;
+  const g = REF_GROUP_META.find(x => x.id === 'argent');
+  return (
+    <Card caution data-clr="argent-combat">
+      <Kicker><span aria-hidden="true">🛡️ </span>Renfort optionnel · gorge et nez</Kicker>
+      <h2 className="mt-1 text-xl">Argent colloïdal</h2>
+      <p className="mt-2 text-sm text-ink" data-clr="argent-dose">{ARGENT.how}</p>
+      <p className="mt-2 text-sm text-ink" data-clr="argent-nez">{ARGENT.extra[0]}</p>
+      <p className="mt-2 text-sm text-muted">Optionnel : ne remplace pas les cinq gestes. Adulte seulement.</p>
+      <SecuriteBox id="argent" items={ARGENT.securite} />
+      <p><button type="button" className="clr-ref-cta mt-2" data-ref-link="argent" onClick={() => useNav.getState().openReferences('argent')}>Références : {g.title} ({g.count})</button></p>
+    </Card>
+  );
+}
+
 function Panel({ audience, setStance }) {
   const s = useStore();
   return (
     <div className="clr-panel" data-clr="panel">
       <Protocol audience={audience} />
       <ZincRenfort audience={audience} />
+      <ArgentRenfort audience={audience} />
       <Consult setStance={setStance} />
       {s.protocol ? <CheckSummary /> : null}
       <Kit />

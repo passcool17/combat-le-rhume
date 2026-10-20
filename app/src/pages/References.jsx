@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { usePrefs } from "../lib/stockage.js";
 import { useNav } from "../lib/nav.js";
-import { ETUDES, NUANCES, REFERENCES, REF_GROUPS } from "../data/references.js";
+import { ETUDES, NUANCES, REFERENCES, REF_GROUPS, SOURCES_OFFICIELLES } from "../data/references.js";
 import { Card, OnThisPage } from "../components/ui.jsx";
 import { cn } from "../lib/cn.js";
 
@@ -104,6 +104,14 @@ function GroupExtra({ id }) {
           <ul className="mt-2 list-disc space-y-1.5 pl-5">
             {nuances.map((t) => <li key={t}>{t}</li>)}
           </ul>
+          {SOURCES_OFFICIELLES[id] ? (
+            <div className="mt-3" data-clr="sources-officielles">
+              <p className="font-semibold">Sources officielles</p>
+              {SOURCES_OFFICIELLES[id].map((o) => (
+                <p key={o.url} className="mt-1"><a href={o.url} target="_blank" rel="noopener noreferrer" className="clr-ref-a" aria-label={`${o.label} (nouvel onglet)`}>{o.label}</a></p>
+              ))}
+            </div>
+          ) : null}
         </div>
       ) : null}
       {etudes.length ? <>

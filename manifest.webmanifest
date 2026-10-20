@@ -1,7 +1,7 @@
 {
-  "name": "Combat le rhume",
-  "short_name": "Combat le rhume",
-  "description": "Guide pratique pour le rhume et la grippe : protocole, plantes, préparations et suivi des symptômes.",
+  "name": "Combat le rhume et la grippe",
+  "short_name": "Rhume et grippe",
+  "description": "Guide pratique contre le rhume et la grippe : protocole, plantes, préparations et suivi des symptômes.",
   "lang": "fr-CA",
   "dir": "ltr",
   "categories": ["health", "medical", "lifestyle"],

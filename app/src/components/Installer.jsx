@@ -98,7 +98,7 @@ export function ShareButton({ className }) {
   }, [msg]);
   async function share() {
     const url = new URL(import.meta.env.BASE_URL, location.origin).href;
-    const data = { title: `Combat le rhume`, text: `Guide pratique pour le rhume et la grippe.`, url };
+    const data = { title: `Combat le rhume et la grippe`, text: `Guide pratique contre le rhume et la grippe.`, url };
     if (navigator.share) {
       try {
         await navigator.share(data);
