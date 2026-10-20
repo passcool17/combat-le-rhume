@@ -51,7 +51,7 @@ const KIT = [
   { id: 'vitamine-c', label: 'Vitamine C (comprimés)' },
   { id: 'citron', label: 'Citrons et tisanes' },
   { id: 'thermometre', label: 'Thermomètre' },
-  { id: 'tuque', label: 'Tuque et bas pour la nuit' },
+  { id: 'tuque', label: 'Double couverture, bas et bonnet pour la nuit' },
   { id: 'eau', label: 'De quoi boire 2,5 à 3 L par jour' },
 ];
 
@@ -116,7 +116,7 @@ export function assess(s, now = Date.now()) {
   }
   const urgent = flags.has('avaler') || flags.has('respirer');
   const consult = urgent || ['fievre', 'frissons', 'teteIntense', 'sansAmelioration'].some(f => flags.has(f));
-  // fièvre, frissons ou mal de tête (même léger) : pas de surchauffe ni de tuque
+  // fièvre, frissons ou mal de tête (même léger) : pas de surchauffe ni de bonnet
   const noWarm = flags.has('fievre') || flags.has('frissons') || flags.has('tete');
   return { flags, urgent, consult, noWarm };
 }
@@ -154,19 +154,19 @@ function Btn({ children, variant = 'primary', className, ...rest }) {
   return <button type="button" {...rest} className={cx('clr-btn', v, className)}>{children}</button>;
 }
 
-const WARM_HOME = 'Combattre dès les premiers signes. La nuit, avoir très chaud, même avec une tuque — seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons.';
-const WARM_COMBAT = 'Les cinq gestes, dans l’ordre. La nuit, très chaud, même une tuque — seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons.';
+const WARM_HOME = 'Combattre dès les premiers signes. La nuit, avoir très chaud, même avec un bonnet — seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons.';
+const WARM_COMBAT = 'Les cinq gestes, dans l’ordre. La nuit, très chaud, même un bonnet — seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons.';
 
 function Subtitle() {
   const s = useStore();
   return assess(s).noWarm
-    ? 'Les cinq gestes, dans l’ordre. Fièvre, frissons ou mal de tête notés : pas de surchauffe ni de tuque la nuit. Voir « Quand arrêter et consulter ».'
+    ? 'Les cinq gestes, dans l’ordre. Fièvre, frissons ou mal de tête notés : pas de surchauffe ni de bonnet la nuit. Voir « Quand arrêter et consulter ».'
     : WARM_COMBAT;
 }
 function HomeWarm() {
   const s = useStore();
   return assess(s).noWarm
-    ? 'Combattre dès les premiers signes. Fièvre, frissons ou mal de tête notés : pas de surchauffe ni de tuque la nuit. Voir « Quand arrêter et consulter ».'
+    ? 'Combattre dès les premiers signes. Fièvre, frissons ou mal de tête notés : pas de surchauffe ni de bonnet la nuit. Voir « Quand arrêter et consulter ».'
     : WARM_HOME;
 }
 
@@ -182,7 +182,7 @@ function NightWarm({ day, audience, compact }) {
     return (
       <div className="clr-night off mt-4" data-clr="nuit-chaude" data-nuit={day} data-etat="pas-de-surchauffe" role="status">
         <p className="clr-night-k">Nuit {day} sur {PROTOCOL_DAYS}</p>
-        <p className="clr-night-t">{fever ? 'Fièvre notée' : 'Frissons ou mal de tête notés'} : pas de surchauffe ni de tuque cette nuit.</p>
+        <p className="clr-night-t">{fever ? 'Fièvre notée' : 'Frissons ou mal de tête notés'} : pas de surchauffe ni de bonnet cette nuit.</p>
         {compact ? null : <p className="mt-1 text-sm">Couvre-toi normalement, bois de l’eau. Voir « Quand arrêter et consulter ».</p>}
       </div>
     );
@@ -199,16 +199,20 @@ function NightWarm({ day, audience, compact }) {
         : 'Ton corps produit de la chaleur : fais ce qu’il faut pour ne pas la perdre. S’il monte en température, c’est exactement ce dont ton système immunitaire a besoin pour éliminer l’infection.'}</p>
       {first ? null : <p className="mt-1 text-sm font-medium">Si tu ne fais toujours pas de température (fièvre de 38 °C ou plus). Aucune fièvre notée depuis le début du protocole.</p>}
       {compact ? null : <>
-        <ul className="clr-night-l mt-2">
+        {enfant ? null : <p className="mt-2 text-sm font-medium" data-clr="nuit-gear-intro">Pour ne pas perdre de chaleur :</p>}
+        <ul className={cx('clr-night-l', enfant ? 'mt-2' : 'mt-1')}>
           {(enfant
-            ? ['Bien couvrir l’enfant : couvertures, sans surchauffer', 'Bas']
-            : ['Bien se couvrir : couvertures, tuque, pour ne pas perdre de chaleur', 'Bas']
+            ? ['Bien couvrir l’enfant, sans surchauffer', 'Bas']
+            : ['Double couverture', 'Bas', 'Bonnet']
           ).map(t => <li key={t} className="text-sm">{t}</li>)}
         </ul>
         <p className="clr-night-s mt-2 text-xs">{enfant
           ? 'Ne pas surchauffer un enfant, jamais un bébé. Faire boire de l’eau. Le découvrir s’il a de la fièvre, s’il est étourdi ou s’il ne va pas bien.'
           : 'Bois bien de l’eau. Découvre-toi si fièvre de 39 °C ou plus, étourdissements ou malaise. Pas pour les bébés ni les jeunes enfants.'}</p>
-        <button type="button" className="clr-ref-cta" data-ref-link="chaleur" onClick={() => useNav.getState().openReferences('chaleur')}>Références : Chaleur du corps</button>
+        <p className="flex flex-wrap gap-x-4">
+          <button type="button" className="clr-ref-cta" data-ref-link="chaleur" onClick={() => useNav.getState().openReferences('chaleur')}>Références : Chaleur du corps</button>
+          <button type="button" className="clr-ref-cta" data-ref-link="etude-33" onClick={() => useNav.getState().openReferences('etude-33')}>Étude : pieds refroidis et rhume</button>
+        </p>
       </>}
     </div>
   );
@@ -445,12 +449,12 @@ function Consult({ setStance }) {
       ) : a.consult ? (
         <div className="clr-alert mt-2" role="alert">
           <p className="font-semibold">Il vaut mieux consulter.</p>
-          <p className="mt-1 text-sm">{[...a.flags].filter(f => f !== 'tete').map(f => RED_FLAGS.find(r => r.id === f)?.label).filter(Boolean).join(', ')} : arrête la surchauffe et la tuque, et demande un avis (Info-Santé 811 au Québec).</p>
+          <p className="mt-1 text-sm">{[...a.flags].filter(f => f !== 'tete').map(f => RED_FLAGS.find(r => r.id === f)?.label).filter(Boolean).join(', ')} : arrête la surchauffe et le bonnet, et demande un avis (Info-Santé 811 au Québec).</p>
           <CallButtons />
         </div>
       ) : a.noWarm ? (
         <div className="clr-alert mt-2" role="status">
-          <p className="font-semibold">Mal de tête noté : pas de surchauffe ni de tuque la nuit.</p>
+          <p className="font-semibold">Mal de tête noté : pas de surchauffe ni de bonnet la nuit.</p>
           <p className="mt-1 text-sm">S’il devient intense, ou avec fièvre ou frissons, consulte.</p>
         </div>
       ) : null}

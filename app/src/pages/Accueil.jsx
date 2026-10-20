@@ -170,7 +170,7 @@ export function Accueil() {
           </>
         ) : stance === `soutien` ? null : (
           <p className="mt-4 text-sm text-muted">
-            Combat : frapper dès le mal de gorge, et rester très au chaud la nuit, tuque comprise, s’il n’y a pas de fièvre, de mal de tête ou de frissons. Soutien : vitamine D, zinc, plantes, hydratation.
+            Combat : frapper dès le mal de gorge, et rester très au chaud la nuit, bonnet compris, s’il n’y a pas de fièvre, de mal de tête ou de frissons. Soutien : vitamine D, zinc, plantes, hydratation.
           </p>
         )}
       </Card>

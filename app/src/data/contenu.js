@@ -16,7 +16,7 @@ export const PROTOCOLE_DU_JOUR = [
   {
     id: `repos`,
     title: `Au chaud la nuit`,
-    detail: `Tuque, couvertures, bas : garder toute la chaleur de ton corps. Seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons. Arrête si tu as trop chaud ou si tu te sens moins bien.`,
+    detail: `Double couverture, bas, bonnet : garder toute la chaleur de ton corps. Seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons. Arrête si tu as trop chaud ou si tu te sens moins bien.`,
   },
   {
     id: `immunite`,
@@ -228,7 +228,7 @@ export const SYMPTOMES = [
     tips: [
       {
         lead: `Repos total`,
-        detail: `Sommeil prioritaire. En cas de fièvre, de mal de tête ou de frissons, ne pas forcer la tuque ni la surchauffe.`,
+        detail: `Sommeil prioritaire. En cas de fièvre, de mal de tête ou de frissons, ne pas forcer le bonnet ni la surchauffe.`,
       },
       {
         lead: `Hydratation`,
@@ -684,7 +684,7 @@ export const MODE_SOUTIEN = {
 
 export const A_FAIRE = [
   `Frapper fort dès le mal de gorge`,
-  `Très chaud la nuit, tuque comprise, sans fièvre, mal de tête ni frissons`,
+  `Très chaud la nuit, bonnet compris, sans fièvre, mal de tête ni frissons`,
   `Vitamine D en supplément`,
   `Zinc dès le début`,
   `Hydratation et sommeil`,

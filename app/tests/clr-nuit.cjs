@@ -15,10 +15,11 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('night 1 callout visible',await night().isVisible());
  ok('night 1 emphasised + title',await night().getAttribute('data-nuit')==='1'&&(await night().getAttribute('class')).includes('first')&&(await night().innerText()).includes('Nuit 1 : la plus importante — garder toute la chaleur de ton corps'));
  const t1=(await night().innerText()).replace(/\s+/g,' ');
- ok('night 1 items + safety',['Bien se couvrir : couvertures, tuque','Bas','Ton corps produit de la chaleur : fais ce qu’il faut pour ne pas la perdre. S’il monte en température, c’est exactement ce dont ton système immunitaire a besoin pour éliminer l’infection.','pour ne pas perdre de chaleur','Références : Chaleur du corps','39 °C ou plus','Pas pour les bébés'].every(x=>t1.includes(x))&&!/chambre|boisson chaude|vêtements chauds|avant le coucher/i.test(t1));
+ ok('night 1 items + safety',['Pour ne pas perdre de chaleur :','Double couverture','Bas','Bonnet','Ton corps produit de la chaleur : fais ce qu’il faut pour ne pas la perdre. S’il monte en température, c’est exactement ce dont ton système immunitaire a besoin pour éliminer l’infection.','Références : Chaleur du corps','39 °C ou plus','Pas pour les bébés'].every(x=>t1.includes(x))&&!/chambre|boisson chaude|vêtements chauds|avant le coucher|tuque/i.test(t1));
+ ok('kit: double couverture, bas et bonnet',(await p.locator('[data-clr=kit]').innerText()).includes('Double couverture, bas et bonnet pour la nuit')&&!/tuque|vêtements chauds/i.test(await p.locator('[data-clr=kit]').innerText()));
  await night().evaluate(e=>e.scrollIntoView({block:'center'}));await p.waitForTimeout(200);
  await p.screenshot({path:S+(dn==='iphone13'?'nuit-chaude.png':'nuit-chaude-desktop.png')});
- if(dn==='iphone13'){await night().evaluate(e=>e.scrollIntoView({block:'start'}));await p.evaluate(()=>window.scrollBy(0,-(document.querySelector('header').offsetHeight+48)));await p.waitForTimeout(300);await p.screenshot({path:S+'chaleur-nuit1.png'});}
+ if(dn==='iphone13'){await night().evaluate(e=>e.scrollIntoView({block:'start'}));await p.evaluate(()=>window.scrollBy(0,-(document.querySelector('header').offsetHeight+48)));await p.waitForTimeout(300);await p.screenshot({path:S+'chaleur-nuit1.png'});await night().locator('[data-clr=nuit-gear-intro]').evaluate(e=>e.scrollIntoView({block:'center'}));await p.waitForTimeout(300);await p.screenshot({path:S+'optim-nuit1.png'});}
  await edit('d.protocol.start-=D;d.intakes=[];');
  ok('night 2 no fever: reminder + condition',await night().getAttribute('data-nuit')==='2'&&await night().getAttribute('data-etat')==='chaud'&&(await night().innerText()).includes('Nuit 2 : continuer de garder toute la chaleur')&&(await night().innerText()).includes('Si tu ne fais toujours pas de température'));
  await night().evaluate(e=>e.scrollIntoView({block:'center'}));await p.waitForTimeout(200);await p.screenshot({path:S+'nuit-chaude-nuit2-'+dn+'.png'});
@@ -38,10 +39,13 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  // Enfant
  await clk('Remèdes');await clk('Annuler le protocole');await clk('Oui, annuler et effacer');await clk('Enfant');await clk('J’ai mal à la gorge, je commence');
  const te=(await night().innerText()).replace(/\s+/g,' ');
- ok('enfant night 1 wording',te.includes('garder le corps bien au chaud, sans surchauffer')&&te.includes('bien le couvrir pour qu’il ne la perde pas, sans surchauffer')&&!te.includes('S’il monte en température')&&te.includes('Ne pas surchauffer un enfant')&&!te.includes('tuque')&&!/chambre|pyjama|boisson|tiède/i.test(te));
+ ok('enfant night 1 wording',te.includes('garder le corps bien au chaud, sans surchauffer')&&te.includes('bien le couvrir pour qu’il ne la perde pas, sans surchauffer')&&!te.includes('S’il monte en température')&&te.includes('Ne pas surchauffer un enfant')&&!/tuque|bonnet|double couverture/i.test(te)&&te.includes('Bien couvrir l’enfant, sans surchauffer')&&!/chambre|pyjama|boisson|tiède/i.test(te));
  await p.locator('[data-clr=protocole] [data-ref-link=chaleur]').click();await p.waitForTimeout(600);
  const tp=await p.locator('#ref-chaleur').evaluate(e=>e.getBoundingClientRect().top);
  ok('night link → Chaleur du corps refs',(await p.locator('main h1').first().innerText())==='Références'&&tp>=0&&tp<400||tp);
+ await clk('Remèdes');await p.locator('[data-clr=protocole] [data-ref-link="etude-33"]').click();await p.waitForTimeout(700);
+ const je=await p.locator('#ref-etude-33').evaluate(e=>({top:e.getBoundingClientRect().top,h:document.querySelector('header').getBoundingClientRect().bottom,t:e.innerText}));
+ ok('night link → Johnson & Eccles 2005, not under header',je.t.includes('Johnson')&&je.t.includes('10.1093/fampra/cmi072')&&je.top>=je.h&&je.top<je.h+200||je);
  ok('0 console errors',errs.length===0||errs.join(' | '));
  await ctx.close();}
 await b.close();console.log('checks',n,'failures',fail);})().catch(e=>{console.error(e);process.exit(1)});

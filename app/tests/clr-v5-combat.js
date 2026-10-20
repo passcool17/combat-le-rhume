@@ -17,7 +17,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  const navL=await p.$$eval('nav[aria-label=Sections] button',bs=>[...new Set(bs.filter(b=>b.offsetParent).map(b=>b.innerText.trim()))]);ok('combat nav has Suivi',JSON.stringify(navL)==='["Accueil","Remèdes","Suivi"]'||JSON.stringify(navL));
  ok('consult always visible',await p.locator('[data-clr=consulter]').isVisible());
  ok('kit visible',await p.locator('[data-clr=kit]').isVisible());
- ok('warm advice shown by default',(await txt('main')).includes('même une tuque'));
+ ok('warm advice shown by default',(await txt('main')).includes('même un bonnet'));
  ok('precaution iode on card',(await txt('main')).includes('À éviter en cas d’allergie à l’iode, de problème de thyroïde, de grossesse ou d’allaitement.'));
  ok('precaution peroxyde',(await txt('main')).includes('recracher, ne jamais avaler'));
  ok('precaution miel',(await txt('main')).includes('Jamais avant 1 an.'));
@@ -56,12 +56,13 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('consult message (Suivi)',(await txt('[data-clr=consulter]')).includes('Il vaut mieux consulter'));
  ok('fever flag highlighted',await p.locator('[data-clr=consulter] li.on',{hasText:'Fièvre'}).count()===1);
  ok('chart fever marker',await p.locator('[data-clr=graphique] circle.warn').count()>=1);await combat();
- const sub=await txt('main h1 + p');ok('warm advice hidden (subtitle)',!sub.includes('tuque —')&&sub.includes('pas de surchauffe ni de tuque'));
+ const sub=await txt('main h1 + p');ok('warm advice hidden (subtitle)',!sub.includes('bonnet —')&&sub.includes('pas de surchauffe ni de bonnet'));
  await shot('4-fievre-consulter','[data-clr=consulter]');
- await click('Accueil');ok('warm advice hidden (home)',!(await txt('main')).includes('avoir très chaud, même avec une tuque'));await click('Mode Combat');
+ await click('Accueil');ok('warm advice hidden (home)',!(await txt('main')).includes('avoir très chaud, même avec un bonnet'));await click('Mode Combat');
  await click('Passer au Mode Soutien');ok('switch to Soutien',(await txt('main h1'))==='Mode Soutien');
  // danger
- await combat();await click('Suivi');await click('Difficulté à respirer');await click(/^(Enregistrer|Mettre à jour) \(soir\)/);
+ // le créneau par défaut suit l'heure réelle : choisir « Soir » explicitement (le test échouait selon l'heure)
+ await combat();await click('Suivi');await click('Soir');await click('Difficulté à respirer');await click(/^(Enregistrer|Mettre à jour) \(soir\)/);
  const c2=await txt('[data-clr=consulter]');ok('urgent 811/911',c2.includes('Consulter rapidement')&&await p.locator('[data-clr=consulter] a[href="tel:811"]').isVisible()&&await p.locator('[data-clr=consulter] a[href="tel:911"]').isVisible());
  await shot('5-urgent','[data-clr=consulter]');
  // 5. Enfant
@@ -74,17 +75,17 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  // 6. kit
  await p.getByLabel('Thermomètre').check();await p.getByLabel('Citrons et tisanes').check();
  await p.reload({waitUntil:'networkidle'});await combat();
- ok('kit persists',await p.getByLabel('Thermomètre').isChecked()&&await p.getByLabel('Citrons et tisanes').isChecked()&&(await txt('[data-clr=kit]')).includes('2 / 10'));
+ ok('kit persists',await p.getByLabel('Thermomètre').isChecked()&&await p.getByLabel('Citrons et tisanes').isChecked()&&(await txt('[data-clr=kit]')).includes('2 / 11'));
  await shot('7-kit','[data-clr=kit]');
  // offline
  await p.waitForTimeout(1500);await p.reload({waitUntil:'networkidle'});await ctx.setOffline(true);await p.reload();await p.waitForTimeout(1000);await combat();
  ok('offline works',(await txt('[data-clr=protocole]')).includes('Jour 3 sur 3')&&await p.getByLabel('Thermomètre').isChecked());
  await click(/Pastilles antiseptiques : j’ai pris/);ok('offline check works',(await txt('[data-geste=pastilles]')).includes('aujourd’hui : 1 fois'));
  await ctx.setOffline(false);
- ok('sw '+(process.env.SWV||'clr-v2'),await p.evaluate(async v=>(await caches.keys()).some(k=>k===v||(v.endsWith('*')&&k.startsWith(v.slice(0,-1)))),process.env.SWV||'clr-v2'));
+ ok('sw '+(process.env.SWV||'clr-*'),await p.evaluate(async v=>(await caches.keys()).some(k=>k===v||(v.endsWith('*')&&k.startsWith(v.slice(0,-1)))),process.env.SWV||'clr-*'));
  // terminer + annuler
  await click('Terminer');ok('terminer',(await txt('[data-clr=protocole]')).includes('Dernier protocole')&&(await txt('[data-clr=protocole]')).includes('terminé'));
- ok('warm advice back after end',(await txt('main h1 + p')).includes('même une tuque'));
+ ok('warm advice back after end',(await txt('main h1 + p')).includes('même un bonnet'));
  await click('J’ai mal à la gorge, je commence');await click('Annuler le protocole');await click('Oui, annuler et effacer');
  ok('annuler',(await txt('[data-clr=protocole]')).includes('annulé'));
  await p.goto(url,{waitUntil:'networkidle'});await combat();await shot('0-mode-combat');

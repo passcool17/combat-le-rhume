@@ -12,7 +12,7 @@ import { Card, OnThisPage, Section } from "../components/ui.jsx";
 import { Search, Star } from "../components/icones.jsx";
 import { cn } from "../lib/cn.js";
 import { useNav } from "../lib/nav.js";
-import { REF_FOR_REMEDE, REF_GROUPS } from "../data/references.js";
+import { REF_FOR_REMEDE, REF_GROUP_META } from "../data/refs-meta.js";
 import { CombatModeSwitch, CombatPanel, CombatSubtitle, GesteExtra } from "../combat/CombatPlus.jsx";
 
 export function Remedes({ filter, onFilter }) {
@@ -217,7 +217,7 @@ export function Remedes({ filter, onFilter }) {
               {REF_FOR_REMEDE[e.id] ? (
                 <p>
                   <button type="button" className="clr-ref-cta mt-1" data-ref-link={REF_FOR_REMEDE[e.id]} onClick={() => useNav.getState().openReferences(REF_FOR_REMEDE[e.id])}>
-                    Références : {REF_GROUPS.find((g) => g.id === REF_FOR_REMEDE[e.id]).title} ({REF_GROUPS.find((g) => g.id === REF_FOR_REMEDE[e.id]).items.length})
+                    Références : {REF_GROUP_META.find((g) => g.id === REF_FOR_REMEDE[e.id]).title} ({REF_GROUP_META.find((g) => g.id === REF_FOR_REMEDE[e.id]).count})
                   </button>
                 </p>
               ) : null}
