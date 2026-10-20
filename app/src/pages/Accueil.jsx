@@ -19,6 +19,7 @@ import { Button, Card, Kicker, OnThisPage, Section } from "../components/ui.jsx"
 import { cn } from "../lib/cn.js";
 import { Check } from "../components/icones.jsx";
 import { HomeCombat, HomeWarm } from "../combat/CombatPlus.jsx";
+import { HomeRefs } from "./HomeRefs.jsx";
 
 const BTN_LINK = `mt-3 inline-flex min-h-11 items-center text-sm font-medium text-primary`;
 
@@ -174,6 +175,7 @@ export function Accueil() {
           </p>
         )}
       </Card>
+      <HomeRefs />
       {stance === `combat` ? (
         <HomeCombat onOpen={() => openRemedies(`gorge`)} onAll={() => openRemedies(`tous`)} />
       ) : stance ? (

@@ -46,7 +46,8 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('soutien: collapsed by default',await p.$$eval('main [data-section] > div button[aria-expanded]',bs=>bs.every(b=>b.getAttribute('aria-expanded')==='false')));
  ok('soutien: content hidden',!(await h.main()).includes('Dose courante chez l’adulte'));
  M.soutienHeight=await p.evaluate(()=>[document.documentElement.scrollHeight,innerHeight,+(document.documentElement.scrollHeight/innerHeight).toFixed(2)]);
- ok('soutien home ≤ 3 screens',M.soutienHeight[2]<=3||M.soutienHeight);
+ // budget relevé de 3 à 4,5 écrans : bloc Références mis en avant sur l’accueil (≈ 740 px sur iPhone), ajouté à la demande de l’utilisateur
+ ok('soutien home ≤ 4.5 screens',M.soutienHeight[2]<=4.5||M.soutienHeight);
  await p.screenshot({path:S+`${dn}-soutien-accueil-replie.png`,fullPage:true});
  await audit(h,'soutien-collapsed');
  await p.locator('#vitamine-d button[aria-expanded]').click();await p.waitForTimeout(200);

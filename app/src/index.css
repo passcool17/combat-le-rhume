@@ -133,3 +133,19 @@ html.mode-combat .clr-pulse{animation:clr-pulse 2.2s ease-out infinite}
 html{scroll-padding-top:calc(var(--clr-header,9rem) + .75rem)}
 .clr-update{bottom:calc(4.75rem + env(safe-area-inset-bottom))}
 @media (min-width:48rem){.clr-update{bottom:1rem}}
+
+/* Accueil : bloc Références mis en avant */
+.clr-refs-home{border:2px solid var(--color-primary);border-radius:var(--radius-card);padding:1.25rem;background:linear-gradient(160deg,var(--color-primary-soft),var(--color-surface) 70%);box-shadow:0 10px 26px -16px rgb(0 0 0/.35)}
+.clr-refs-home-k{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--color-primary)}
+.clr-refs-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.clr-refs-stats li{display:flex;flex-direction:column;align-items:center;text-align:center;padding:.7rem .35rem;border-radius:1rem;background:var(--color-surface);border:1px solid var(--color-line)}
+.clr-refs-stat-n{font-family:var(--font-display);font-size:2rem;font-weight:700;line-height:1;color:var(--color-primary)}
+.clr-refs-stat-l{margin-top:.3rem;font-size:.72rem;line-height:1.25;color:var(--color-muted)}
+.clr-refs-quotes{display:flex;gap:.6rem;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-1.25rem;padding:0 1.25rem .35rem;scroll-padding-inline:1.25rem;scrollbar-width:thin}
+.clr-refs-quotes>li{flex:0 0 86%;scroll-snap-align:start;display:flex;flex-direction:column}
+@media (min-width:768px){.clr-refs-quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0}.clr-refs-quotes>li{flex:none}}
+.clr-refs-quote{padding:.85rem 1rem .4rem;border-radius:1rem;background:var(--color-surface);border:1px solid var(--color-line);border-left:4px solid var(--color-primary)}
+.clr-refs-av{flex:none;display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:9999px;background:var(--color-primary);color:var(--color-primary-fg);font-weight:700;font-size:.9rem}
+.clr-refs-quote .clr-ref-cta{text-align:left;justify-content:flex-start}
+.clr-refs-home-btn{display:flex;width:100%;align-items:center;justify-content:center;gap:.4rem;min-height:3rem;border-radius:9999px;background:var(--color-primary);color:var(--color-primary-fg);font-weight:650;font-size:1rem}
+.clr-refs-home-btn:hover{filter:brightness(1.08)}
