@@ -6,6 +6,7 @@ const NB=x=>x.replace(/[\u00a0\u202f]/g,' ').replace(/\s+/g,' ');
 // Anciennes doses : plus nulle part (sources et pages)
 const OLD=[/15\s*[–-]\s*30 mg/,/15 à 30 mg/,/2 000 à 4 000/,/500 mg → 1000 mg/,/2000 mg/,/200 à 400 mg/,/500 mg à 1 g, 2 à 3 fois/,/1 c\. à café à 1 c\. à soupe, 2 à 4 fois/,/7 à 10 jours (maximum|continus)/,/Ne pas dépasser 40 mg/,/vitamine C 1\s*[–-]\s*2 g/,/Gargariser quelques minutes/,/1 c\. à café avant de dormir/,/1 c\. à café pure/,/selon une prise de sang/,/Selon le dosage, pendant/];
 const SRC=['data/contenu.js','data/references.js','combat/CombatPlus.jsx','pages/Accueil.jsx','lib/outils.js','pages/Remedes.jsx'].map(f=>fs.readFileSync(path.join(__dirname,'..','src',f),'utf8')).join('\n');
+const ZCU='Cure courte (5 à 7 jours) : le zinc à forte dose bloque l’absorption du cuivre seulement s’il est pris pendant des semaines. Ensuite, mange des aliments riches en cuivre (noix, graines, cacao, fruits de mer, légumineuses).';
 const ZDOSE='Dose des études : pastilles de zinc d’environ 13 mg, 1 pastille toutes les 2 à 3 heures éveillé (≈ 75 à 90 mg par jour), dans les 24 heures des premiers symptômes. 5 à 7 jours maximum. Adulte seulement.';
 const ZAV=['Dépasse la limite usuelle de 40 mg par jour : seulement pour une courte durée (5 à 7 jours maximum).','Peut causer nausées et goût métallique. Carence en cuivre si prolongé.','Jamais plus de 100 mg par jour : aucun bénéfice de plus.','Demande avis au pharmacien si tu prends des médicaments ou en cas de grossesse.','Jamais de zinc dans le nez (spray ou gel nasal) : risque de perte de l’odorat.'];
 // remède → textes attendus sur la fiche (liste complète, sans mode)
@@ -43,7 +44,8 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await clk('Remèdes');await hide();await openAll();
  for(const [id,xs] of Object.entries(CARDS)){const c=p.locator('#remede-'+id);const t=(await c.count())?NB(await c.innerText()):'';const miss=xs.filter(x=>!t.includes(x));ok('fiche '+id,miss.length===0||miss);}
  const za=await p.locator('#remede-zinc [data-clr=zinc-avertissement] li').allInnerTexts();ok('fiche zinc : Avertissement (5 lignes)',JSON.stringify(za.map(NB))===JSON.stringify(ZAV)||za);
- ok('fiche zinc : lien Références Zinc (19)',(await p.locator('#remede-zinc [data-ref-link=zinc]').innerText()).includes('Zinc (19)'));
+ ok('fiche zinc : lien Références Zinc (21)',(await p.locator('#remede-zinc [data-ref-link=zinc]').innerText()).includes('Zinc (21)'));
+ ok('fiche zinc : ligne cuivre (cure courte, aliments riches en cuivre)',NB(await p.locator('#remede-zinc [data-clr=zinc-cuivre]').innerText()).includes(ZCU));
  ok('fiche thym : lien Références Thym',await p.locator('#remede-thym [data-ref-link=thym]').count()===1);
  noOld('remèdes',await main());
  await clk('Symptômes');await hide();
@@ -67,6 +69,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  const zc=p.locator('[data-clr=zinc-combat]');ok('combat : carte zinc visible',await zc.isVisible());
  const zt=NB(await zc.innerText());ok('combat : dose zinc des études',zt.includes(ZDOSE)||zt);
  ok('combat : Avertissement zinc complet',ZAV.every(x=>zt.includes(x))&&zt.includes('AVERTISSEMENT')||zt);
+ ok('combat : ligne cuivre dans la carte zinc',NB(await zc.locator('[data-clr=zinc-cuivre]').innerText()).includes(ZCU));
  ok('combat : zinc → Références',await zc.locator('[data-ref-link=zinc]').count()===1);
  const cb=await main();
  ok('combat : logique vitamine C 2 g',cb.includes('5. Double dose de vitamine C. Dès les premiers symptômes, doubler la dose : 2 g par jour, en 2 à 3 prises, pendant la durée du rhume ou de la grippe.'));
@@ -74,7 +77,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('combat : logique miel inchangée',cb.includes('4. Miel cru. Miel seul : 1 c. à soupe, cuillère pas en métal. Ne pas boire juste après : laisser agir.'));
  ok('combat : cinq gestes (zinc en renfort, pas un 6e geste)',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel seul|Double dose de vitamine C/}).count()===5);
  noOld('combat',cb);
- if(dn==='iphone13'){const st=await p.addStyleTag({content:'header,nav.fixed,[data-clr=install]{visibility:hidden!important}'});await zc.evaluate(e=>e.scrollIntoView({block:'start'}));await p.evaluate(()=>window.scrollBy(0,-12));await p.waitForTimeout(250);await p.screenshot({path:S+'doses-zinc.png'});await st.evaluate(e=>e.remove());await p.evaluate(()=>window.scrollTo(0,0));}
+ if(dn==='iphone13'){const st=await p.addStyleTag({content:'header,nav.fixed,[data-clr=install]{visibility:hidden!important}'});await zc.evaluate(e=>e.scrollIntoView({block:'start'}));await p.evaluate(()=>window.scrollBy(0,-12));await p.waitForTimeout(250);await p.screenshot({path:S+'doses-zinc.png'});const zq=zc.locator('[data-clr=zinc-cuivre]');await zq.evaluate(e=>e.scrollIntoView({block:'center'}));await p.waitForTimeout(250);await p.screenshot({path:S+'zinc-cuivre.png'});await st.evaluate(e=>e.remove());await p.evaluate(()=>window.scrollTo(0,0));}
  await clk('J’ai mal à la gorge, je commence');
  const gv=NB(await p.locator('[data-clr=protocole] [data-geste=vitamine-c-double]').innerText());ok('checklist vitamine C : 2 à 3 fois, 2 g',gv.includes('1 prise avec de l’eau, 2 à 3 fois par jour (2 g par jour au total)')||gv);
  const gp=NB(await p.locator('[data-clr=protocole] [data-geste=peroxyde]').innerText());ok('checklist peroxyde : 30 s + 30 s',gp.includes('30 s en bouche + 30 s en gorge, recracher, ne pas avaler')||gp);
@@ -83,12 +86,13 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  // Profil Enfant : zinc des études caché
  await clk('Enfant');await p.waitForTimeout(300);await openAll();
  ok('enfant : carte zinc Combat cachée',await p.locator('[data-clr=zinc-combat]').count()===0);
+ ok('enfant : aucune ligne cuivre du zinc (Combat)',await p.locator('[data-clr=zinc-cuivre]').count()===0);
  const me=NB(await p.locator('#remede-miel').innerText());ok('enfant : miel 1-5 ans 2 c. à thé, jamais avant 1 an',me.includes('De 1 à 5 ans : 2 c. à thé')&&me.includes('Jamais avant 1 an')||me);
  await clk('Annuler le protocole');await clk('Oui, annuler et effacer');
  await clk('Accueil');await clk('Mode Soutien');await hide();await clk('Remèdes');await hide();
  const fz=p.locator('#remede-zinc');if(await fz.count()){const bt=fz.locator('button[aria-expanded=false]');if(await bt.count())await bt.first().click();await p.waitForTimeout(200);}
  const ze=(await fz.count())?NB(await fz.innerText()):'';
- ok('enfant : fiche zinc sans la dose des études ni Avertissement adulte',!!ze&&!ze.includes('13 mg')&&!ze.includes('75 à 90 mg')&&!/Adulte :/.test(ze)&&await fz.locator('[data-clr=zinc-avertissement]').count()===0&&ze.includes('Pas la dose des études (réservée à l’adulte)')&&ze.includes('Jamais de zinc dans le nez')||ze);
+ ok('enfant : fiche zinc sans la dose des études ni Avertissement adulte',!!ze&&!ze.includes('13 mg')&&!ze.includes('75 à 90 mg')&&!/Adulte :/.test(ze)&&await fz.locator('[data-clr=zinc-avertissement]').count()===0&&await fz.locator('[data-clr=zinc-cuivre]').count()===0&&ze.includes('Pas la dose des études (réservée à l’adulte)')&&ze.includes('Jamais de zinc dans le nez')||ze);
  await clk('Adulte');await p.waitForTimeout(200);
  // Références : boîtes Sécurité
  await clk('Accueil');await p.locator('[data-clr=accueil-references-btn]').click();await p.waitForTimeout(600);

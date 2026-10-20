@@ -56,7 +56,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('fiche : Sécurité (4 lignes exactes)',JSON.stringify(sc)===JSON.stringify(SEC)||sc);
  ok('fiche : titre Sécurité',NB(await card.locator('[data-clr=argent-securite]').innerText()).toUpperCase().startsWith('SÉCURITÉ'));
  ok('fiche : plus de « non recommandé »',!OLDTXT.test(ct)&&!/Mise en garde/.test(ct));
- ok('fiche : lien Références Argent colloïdal (12)',(await card.locator('[data-ref-link=argent]').innerText()).includes('Argent colloïdal (12)'));
+ ok('fiche : lien Références Argent colloïdal (14)',(await card.locator('[data-ref-link=argent]').innerText()).includes('Argent colloïdal (14)'));
  if(dn==='iphone13'){const st=await p.addStyleTag({content:'nav.fixed,[data-clr=install]{visibility:hidden!important}'});await shotAt(card,'argent-fiche.png');await st.evaluate(e=>e.remove());await p.evaluate(()=>window.scrollTo(0,0));}
  for(const f of ['Gorge','Congestion','Prudence']){await clk(f);ok('filtre '+f+' : fiche argent',await p.locator('#remede-argent').count()===1);}
  await clk('Toux');ok('filtre Toux : pas de fiche argent',await p.locator('#remede-argent').count()===0);await clk('Tous');
@@ -77,17 +77,17 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await ac.locator('[data-ref-link=argent]').click();await p.waitForTimeout(600);
  const top=await p.locator('#ref-argent').evaluate(e=>e.getBoundingClientRect().top);ok('combat : renfort → Références Argent colloïdal',(await p.locator('main h1').first().innerText())==='Références'&&top>=0&&top<400||top);
  // Références
- ok('références : groupe Argent colloïdal',(await p.locator('#ref-argent-t').innerText())==='Argent colloïdal'&&await p.locator('#ref-argent [data-ref]').count()===4&&await p.locator('#ref-argent [data-etude]').count()===8);
+ ok('références : groupe Argent colloïdal',(await p.locator('#ref-argent-t').innerText())==='Argent colloïdal'&&await p.locator('#ref-argent [data-ref]').count()===4&&await p.locator('#ref-argent [data-etude]').count()===10);
  const rs=await p.locator('#ref-argent [data-ref]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.ref,h:l.querySelector('a[href*="x.com"]').getAttribute('href'),lb:l.querySelector('[data-clr=pas-medecin]')?.textContent,t:l.innerText})));
  ok('références : 4 publications X, étiquettes honnêtes',rs.length===4&&rs.every(r=>{const x=N3.posts.find(y=>y.n===r.n);return x&&r.h===x.url&&r.lb===LBL[r.n]&&NB(r.t).includes(NB(x.quote))&&NB(r.t).includes(NB(x.gist));})||rs.map(r=>[r.n,r.lb]));
  ok('références : rien sur avaler, dioxyde de chlore, vaccin, Scott 2017',!BAD.test(NB(await p.locator('#ref-argent').innerText())));
  const es=await p.locator('#ref-argent [data-etude]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.etude,doi:l.querySelector('[data-doi]')?.getAttribute('href'),pm:l.querySelector('[data-pubmed]').getAttribute('href'),b:l.querySelector('[data-badge]').dataset.badge,t:l.innerText})));
- ok('références : 8 études, DOI + PubMed + résumé',es.length===8&&N3.etudes.every(x=>{const e=es.find(y=>y.n===x.n);return e&&e.doi===x.doiUrl&&e.pm===x.pubmed&&e.b===x.level&&NB(e.t).includes(NB(x.finding))&&e.t.includes(x.title);})||es.map(e=>e.n));
+ ok('références : 10 études (8 + 2 grippe), DOI + PubMed + résumé',es.length===10&&N3.etudes.every(x=>{const e=es.find(y=>y.n===x.n);return e&&e.doi===x.doiUrl&&e.pm===x.pubmed&&e.b===x.level&&NB(e.t).includes(NB(x.finding))&&e.t.includes(x.title);})||es.map(e=>e.n));
  ok('références : Almanza-Reyes 2021 appuie directement',es.find(e=>e.t.includes('Almanza-Reyes'))?.b==='direct');
  const sx=(await p.locator('[data-securite=argent] li').allInnerTexts()).map(NB);ok('références : Sécurité argent',JSON.stringify(sx)===JSON.stringify(N3.nuances.map(NB))||sx);
  const of=await p.locator('[data-securite=argent] [data-clr=sources-officielles] a').evaluateAll(as=>as.map(a=>[a.getAttribute('href'),a.target,a.rel]));
  ok('références : 5 sources officielles, nouvel onglet',JSON.stringify(of.map(x=>x[0]))===JSON.stringify(OFF)&&of.every(x=>x[1]==='_blank'&&x[2].includes('noopener'))||of);
- ok('références : sommaire Argent colloïdal (12)',(await p.locator('[data-otp]').textContent()).includes('Argent colloïdal (12)'));
+ ok('références : sommaire Argent colloïdal (14)',(await p.locator('[data-otp]').textContent()).includes('Argent colloïdal (14)'));
  if(dn==='iphone13'){await shotAt(p.locator('#ref-argent'),'argent-refs.png');}
  // Profil Enfant : tout est caché, la dose enfant reste « à éviter »
  await clk('Accueil');await clk('Mode Combat');await hide();await clk('Enfant');await p.waitForTimeout(300);

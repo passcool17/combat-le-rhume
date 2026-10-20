@@ -528,6 +528,7 @@ export function ZincAvertissement() {
     <div className="clr-prec mt-3" data-clr="zinc-avertissement" role="note" aria-label="Avertissement zinc">
       <p className="text-xs font-medium text-caution uppercase tracking-wide">Avertissement</p>
       <ul>{ZINC.avertissement.map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
+      <p className="mt-2 text-sm" data-clr="zinc-cuivre"><span aria-hidden="true">🥜 </span>{ZINC.cuivre}</p>
     </div>
   );
 }

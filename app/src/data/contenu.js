@@ -396,6 +396,7 @@ export const REMEDES = [
       `Les pastilles sont utiles pour le mal de gorge.`,
     ],
     extraEnfant: [`Jamais de zinc dans le nez (spray ou gel nasal).`],
+    cuivre: `Cure courte (5 à 7 jours) : le zinc à forte dose bloque l’absorption du cuivre seulement s’il est pris pendant des semaines. Ensuite, mange des aliments riches en cuivre (noix, graines, cacao, fruits de mer, légumineuses).`,
     tag: `Immunité · premiers symptômes`,
   },
   {

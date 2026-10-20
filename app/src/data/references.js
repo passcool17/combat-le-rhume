@@ -1,4 +1,4 @@
-// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json et combat-le-rhume-argent-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
+// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json combat-le-rhume-argent-final.json et combat-le-rhume-refs-grippe-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
 export const REFERENCES = [
  {
   "n": 1,
@@ -1466,6 +1466,198 @@ export const REFERENCES = [
   "level": "partiel",
   "supportNote": "appuie en partie (vaporisateur nasal, contre un staphylocoque)",
   "note": null
+ },
+ {
+  "n": 98,
+  "name": "Dr. Dennis Walker",
+  "handle": "@drdenwalker",
+  "credential": "Se dit médecin dans sa bio (« physician ») ; titre non vérifié dans un registre de médecins.",
+  "notPhysician": true,
+  "notPhysicianLabel": "MD non vérifié",
+  "claim": "Sureau après l’infection : moins de propagation du virus",
+  "quote": "Elderberries taken after infection keeps the virus from spreading, and reduces the duration of symptoms. #Elderberry #Influenza #Flu",
+  "gist": "Le sureau pris après l’infection empêche le virus de se propager et raccourcit les symptômes de la grippe.",
+  "date": "2025-08-28T21:55:47Z",
+  "url": "https://x.com/drdenwalker/status/1961185970826719285",
+  "level": "direct",
+  "supportNote": "appuie directement (sureau contre la grippe)",
+  "note": null
+ },
+ {
+  "n": 99,
+  "name": "Tim Connelly, MD, MBA, FACP",
+  "handle": "@TimConnellyMD",
+  "credential": "MD, certifié en médecine interne (FACP) ; professeur associé, directeur associé d’un programme de résidence (bio).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Le sureau aide à combattre la grippe",
+  "quote": "Elderberry fruit may help fight the flu. Researchers at the University of Sydney have determined exactly how a popular ancient remedy, the elderberry fruit, can help the fight against influenza.",
+  "gist": "Le fruit du sureau aide à combattre la grippe : des chercheurs de l’Université de Sydney ont montré comment.",
+  "date": "2019-04-24T14:23:22Z",
+  "url": "https://x.com/TimConnellyMD/status/1121057047318020096",
+  "level": "direct",
+  "supportNote": "appuie directement (sureau contre la grippe)",
+  "note": null
+ },
+ {
+  "n": 100,
+  "name": "Dr Dave Cartland",
+  "handle": "@CartlandDavid",
+  "credential": "Ancien médecin généraliste (BMedSc, MBChB, ex-MRCGP), aujourd’hui coach santé (bio).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Sureau contre la grippe A et B : guérison en 2 à 3 jours",
+  "quote": "an elderberry randomised study showed rigorous activity against influenza A & B strains in the lab, plus clinically seen: a complete cure of flu within 2/3 days for 90% of elder extract group vs 6 days placebo group.",
+  "gist": "Un essai randomisé sur le sureau : forte activité contre la grippe A et B en laboratoire et, chez les patients, guérison complète en 2 à 3 jours pour 90 % du groupe sureau, contre 6 jours avec le placebo.",
+  "date": "2026-09-25T13:16:17Z",
+  "url": "https://x.com/CartlandDavid/status/2103473667447337418",
+  "level": "direct",
+  "supportNote": "appuie directement (sirop de sureau, grippe A et B)",
+  "note": null
+ },
+ {
+  "n": 101,
+  "name": "Jennifer R Bitner ND",
+  "handle": "@drjenbnd",
+  "credential": "Naturopathe (ND), coach santé (bio).",
+  "notPhysician": true,
+  "notPhysicianLabel": "Naturopathe (ND), pas médecin",
+  "claim": "Le sureau agit sur la grippe H3N2",
+  "quote": "Great news,per Dr. Peter D'Adamo,ND, Influenza H3N2 is responsive to elderberry (sambucus)!",
+  "gist": "La grippe H3N2 répond au sureau (Sambucus).",
+  "date": "2015-01-05T15:40:52Z",
+  "url": "https://x.com/drjenbnd/status/552127600941105153",
+  "level": "partiel",
+  "supportNote": "appuie en partie (cite un autre naturopathe)",
+  "note": null
+ },
+ {
+  "n": 102,
+  "name": "Jeffrey Dach MD",
+  "handle": "@jeffreydachmd",
+  "credential": "MD, médecin et auteur (bio).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "La vitamine D3 prévient la grippe et le rhume",
+  "quote": "Vitamin D3 Prevents Flu and Colds. […] This study suggests that vitamin D3 supplementation during the winter may reduce the incidence of influenza A, especially in specific subgroups of schoolchildren.",
+  "gist": "La vitamine D3 prévient la grippe et le rhume. Il cite un essai : la vitamine D3 en hiver réduit la grippe A chez les écoliers.",
+  "date": "2026-10-05T13:36:14Z",
+  "url": "https://x.com/jeffreydachmd/status/2107102565204717634",
+  "level": "direct",
+  "supportNote": "appuie directement (vitamine D3 en hiver)",
+  "note": null
+ },
+ {
+  "n": 103,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "Interniste et pneumologue, 4 certifications (médecine interne, pneumologie, sommeil, soins intensifs) ; professeur à Loma Linda (bio).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Sortir au soleil pour réduire la grippe",
+  "quote": "I say to get outside into the sunshine to reduce your chances of the flu. […] They compared week-by-week changes in sunlight across U.S. states and found that more sunlight lined up with fewer flu cases.",
+  "gist": "Sortir au soleil réduit les risques de grippe : une étude de Harvard a trouvé moins de grippe quand il y avait plus de soleil que d’habitude.",
+  "date": "2026-01-19T02:52:36Z",
+  "url": "https://x.com/RogerSeheult/status/2013082135088025722",
+  "level": "direct",
+  "supportNote": "appuie directement (soleil et vitamine D)",
+  "note": null
+ },
+ {
+  "n": 104,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "Interniste et pneumologue, 4 certifications (médecine interne, pneumologie, sommeil, soins intensifs) ; professeur à Loma Linda (bio).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Plus de soleil, moins de grippe",
+  "quote": "More sunlight than average meant less influenza on average. Get outside.",
+  "gist": "Plus de soleil que la moyenne, c’est moins de grippe en moyenne. Sortez dehors.",
+  "date": "2025-12-24T07:35:31Z",
+  "url": "https://x.com/RogerSeheult/status/2003731246346830226",
+  "level": "direct",
+  "supportNote": "appuie directement (soleil)",
+  "note": null
+ },
+ {
+  "n": 105,
+  "name": "Dr. Frank Aieta, ND",
+  "handle": "@draieta",
+  "credential": "Naturopathe (ND) au Connecticut (bio).",
+  "notPhysician": true,
+  "notPhysicianLabel": "Naturopathe (ND), pas médecin",
+  "claim": "Vitamine D3 contre la grippe en hiver",
+  "quote": "In a randomized trial, kids on D3 had ~42% LOWER risk of influenza A! […] Soak up sunshine! […] Eat fatty fish like salmon […] Or chat with your doc about vitamin D3 supplements!",
+  "gist": "Dans un essai randomisé, les enfants sous vitamine D3 avaient environ 42 % moins de grippe A. Prendre du soleil, manger du poisson gras, ou parler d’un supplément de D3 avec son médecin.",
+  "date": "2025-12-30T16:12:14Z",
+  "url": "https://x.com/draieta/status/2006035611170267303",
+  "level": "direct",
+  "supportNote": "appuie directement (vitamine D3, grippe A)",
+  "note": null
+ },
+ {
+  "n": 106,
+  "name": "Dr. Tanya R. Altmann",
+  "handle": "@DrTanyaAltmann",
+  "credential": "Pédiatre, fondatrice de Calabasas Pediatrics (bio).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Grippe A : repos, liquides, vitamines D et C, échinacée",
+  "quote": "First Flu A of the season. […] Rest, fluids, good nutrition, antivirals, vit D, vit C, echinacea, cover cough, stay home",
+  "gist": "Premier cas de grippe A de la saison : repos, liquides, bonne alimentation, vitamine D, vitamine C, échinacée, rester à la maison.",
+  "date": "2018-12-31T05:53:56Z",
+  "url": "https://x.com/DrTanyaAltmann/status/1079616626968879104",
+  "level": "direct",
+  "supportNote": "appuie directement (vitamines C et D, échinacée, repos)",
+  "note": null
+ },
+ {
+  "n": 107,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "Interniste et pneumologue, 4 certifications (médecine interne, pneumologie, sommeil, soins intensifs) ; professeur à Loma Linda (bio).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Pastilles de zinc : symptômes plus courts",
+  "quote": "[Zinc] could shorten symptoms by two days. […] One 23-mg zinc lozenge […] was dissolved in the mouth every 2 wakeful h after an initial double dose. After 7 days, 86% of 37 zinc-treated subjects were asymptomatic, compared with only 46% of 28 placebo-treated subjects",
+  "gist": "Le zinc raccourcit les symptômes d’environ deux jours. Dans un essai, une pastille toutes les 2 heures éveillé : après 7 jours, 86 % des personnes sous zinc n’avaient plus de symptômes, contre 46 % avec le placebo.",
+  "date": "2025-12-14T16:52:44Z",
+  "url": "https://x.com/RogerSeheult/status/2000247597714596322",
+  "level": "direct",
+  "supportNote": "appuie directement (pastilles de zinc)",
+  "note": null
+ },
+ {
+  "n": 108,
+  "name": "Brenda Fairchild, DC",
+  "handle": "@brendafairchild",
+  "credential": "Chiropraticienne pédiatrique (DC, CACCP) (bio).",
+  "notPhysician": true,
+  "notPhysicianLabel": "Chiropraticienne, pas médecin",
+  "claim": "La fièvre aide à combattre l’infection",
+  "quote": "It's cold and flu season once again. Fevers are our body's way of fighting off infections. Fever is a good...",
+  "gist": "Saison du rhume et de la grippe : la fièvre est la façon dont le corps combat l’infection.",
+  "date": "2015-09-25T10:08:45Z",
+  "url": "https://x.com/brendafairchild/status/647352026662223872",
+  "level": "direct",
+  "supportNote": "appuie directement (fièvre utile)",
+  "note": null
+ },
+ {
+  "n": 109,
+  "name": "Southern Doc",
+  "handle": "@cognac62",
+  "credential": "Compte anonyme ; bio : « Retired MD ».",
+  "notPhysician": true,
+  "notPhysicianLabel": "Anonyme, MD non vérifié",
+  "claim": "Grippe : liquides et repos",
+  "quote": "As a physician, we are seeing lots of flu. Really need fluids and rest.",
+  "gist": "Beaucoup de grippe en ce moment : il faut vraiment des liquides et du repos.",
+  "date": "2014-02-11T00:30:04Z",
+  "url": "https://x.com/cognac62/status/433035171563315200",
+  "level": "direct",
+  "supportNote": "appuie directement (repos et liquides)",
+  "note": null
  }
 ];
 
@@ -1479,7 +1671,8 @@ export const REF_GROUPS = [
    66,
    67,
    76,
-   77
+   77,
+   106
   ]
  },
  {
@@ -1494,8 +1687,14 @@ export const REF_GROUPS = [
    38,
    65,
    74,
-   75
+   75,
+   107
   ]
+ },
+ {
+  "id": "cuivre",
+  "title": "Cuivre",
+  "items": []
  },
  {
   "id": "miel",
@@ -1520,7 +1719,11 @@ export const REF_GROUPS = [
    9,
    86,
    87,
-   88
+   88,
+   98,
+   99,
+   100,
+   101
   ]
  },
  {
@@ -1550,7 +1753,11 @@ export const REF_GROUPS = [
    82,
    83,
    84,
-   85
+   85,
+   102,
+   103,
+   104,
+   105
   ]
  },
  {
@@ -1562,7 +1769,8 @@ export const REF_GROUPS = [
    40,
    41,
    71,
-   90
+   90,
+   109
   ]
  },
  {
@@ -1588,7 +1796,8 @@ export const REF_GROUPS = [
    35,
    68,
    69,
-   70
+   70,
+   108
   ]
  },
  {
@@ -2834,6 +3043,398 @@ export const ETUDES = [
   "level": "partiel",
   "supportNote": "appuie en partie (sinusite chronique)",
   "group": "argent"
+ },
+ {
+  "n": 87,
+  "authors": "Kinoshita E, Hayashi K, Katayama H, Hayashi T, Obata A.",
+  "title": "Anti-influenza virus effects of elderberry juice and its fractions.",
+  "journal": "Biosci Biotechnol Biochem",
+  "year": "2012",
+  "doi": "10.1271/bbb.120112",
+  "doiUrl": "https://doi.org/10.1271/bbb.120112",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/22972323/",
+  "finding": "Le jus concentré de sureau donné par la bouche a freiné le virus de la grippe A chez la souris et augmenté les anticorps neutralisants et les IgA. Conclusion : effet bénéfique en stimulant la réponse immunitaire et en prévenant l’infection.",
+  "level": "direct",
+  "supportNote": "appuie directement (en laboratoire)",
+  "group": "sureau"
+ },
+ {
+  "n": 88,
+  "authors": "Zhu Z, Zhu X, Gu L, Zhan Y, Chen L, Li X.",
+  "title": "Association Between Vitamin D and Influenza: Meta-Analysis and Systematic Review of Randomized Controlled Trials.",
+  "journal": "Front Nutr",
+  "year": "2021",
+  "doi": "10.3389/fnut.2021.799709",
+  "doiUrl": "https://doi.org/10.3389/fnut.2021.799709",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/35071300/",
+  "finding": "La vitamine D réduit significativement le risque de grippe (RR 0,78). Conclusion : la vitamine D a un effet préventif sur la grippe.",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "group": "vitamine-d"
+ },
+ {
+  "n": 89,
+  "authors": "Liao S, Huang Y, Zhang J, Xiong Q, Chi M, Yang L, Zhang J, Li L, Fan Y.",
+  "title": "Vitamin D promotes epithelial tissue repair and host defense responses against influenza H1N1 virus and Staphylococcus aureus infections.",
+  "journal": "Respir Res",
+  "year": "2023",
+  "doi": "10.1186/s12931-023-02477-4",
+  "doiUrl": "https://doi.org/10.1186/s12931-023-02477-4",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37407993/",
+  "finding": "La vitamine D a favorisé la réparation de l’épithélium des voies respiratoires et la défense contre le virus grippal H1N1.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "vitamine-d"
+ },
+ {
+  "n": 90,
+  "authors": "Kim Y, Kim H, Bae S, Choi J, Lim SY, Lee N, Kong JM, Hwang YI, Kang JS, Lee WJ.",
+  "title": "Vitamin C Is an Essential Factor on the Anti-viral Immune Responses through the Production of Interferon-α/β at the Initial Stage of Influenza A Virus (H3N2) Infection.",
+  "journal": "Immune Netw",
+  "year": "2013",
+  "doi": "10.4110/in.2013.13.2.70",
+  "doiUrl": "https://doi.org/10.4110/in.2013.13.2.70",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/23700397/",
+  "finding": "Sans assez de vitamine C, les souris avaient plus de virus grippal dans les poumons et moins d’interféron α/β. La vitamine C soutient la réponse antivirale au début de la grippe.",
+  "level": "direct",
+  "supportNote": "appuie directement (chez l’animal)",
+  "group": "vitamine-c"
+ },
+ {
+  "n": 91,
+  "authors": "Li W, Maeda N, Beck MA.",
+  "title": "Vitamin C deficiency increases the lung pathology of influenza virus-infected gulo-/- mice.",
+  "journal": "J Nutr",
+  "year": "2006",
+  "doi": "10.1093/jn/136.10.2611",
+  "doiUrl": "https://doi.org/10.1093/jn/136.10.2611",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/16988135/",
+  "finding": "Conclusion des auteurs : la vitamine C est nécessaire à une réponse immunitaire adéquate pour limiter les lésions des poumons après la grippe.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (chez l’animal)",
+  "group": "vitamine-c"
+ },
+ {
+  "n": 92,
+  "authors": "Jeong AY, Gopal V, Te Velthuis AJW.",
+  "title": "Zinc Ions Inactivate Influenza Virus Hemagglutinin and Prevent Receptor Binding.",
+  "journal": "Biomedicines",
+  "year": "2025",
+  "doi": "10.3390/biomedicines13081843",
+  "doiUrl": "https://doi.org/10.3390/biomedicines13081843",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40868099/",
+  "finding": "Les ions zinc bloquent l’hémagglutinine du virus de la grippe A en 1 minute, pendant au moins 24 h, sans que le virus devienne résistant.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "zinc"
+ },
+ {
+  "n": 93,
+  "authors": "Husseini RH, Sweet C, Collie MH, Smith H.",
+  "title": "Elevation of nasal viral levels by suppression of fever in ferrets infected with influenza viruses of differing virulence.",
+  "journal": "J Infect Dis",
+  "year": "1982",
+  "doi": "10.1093/infdis/145.4.520",
+  "doiUrl": "https://doi.org/10.1093/infdis/145.4.520",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/7069233/",
+  "finding": "Quand la fièvre était réduite (furets rasés pour perdre leur chaleur, ou salicylate), ils rejetaient beaucoup plus de virus par le nez, et le virus baissait moins vite.",
+  "level": "direct",
+  "supportNote": "appuie directement (chez l’animal)",
+  "group": "chaleur"
+ },
+ {
+  "n": 94,
+  "authors": "Nagai M, Moriyama M, Ishii C, Mori H, Watanabe H, Nakahara T, Yamada T, Ishikawa D, Ishikawa T, Hirayama A, Kimura I, Nagahara A, Naito T, Fukuda S, Ichinohe T.",
+  "title": "High body temperature increases gut microbiota-dependent host resistance to influenza A virus and SARS-CoV-2 infection.",
+  "journal": "Nat Commun",
+  "year": "2023",
+  "doi": "10.1038/s41467-023-39569-0",
+  "doiUrl": "https://doi.org/10.1038/s41467-023-39569-0",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37391427/",
+  "finding": "Une température du corps au-dessus de 38 °C a augmenté la résistance au virus de la grippe A (moins de virus, moins de lésions). Les auteurs concluent que la fièvre aide l’hôte à résister à la grippe.",
+  "level": "direct",
+  "supportNote": "appuie directement (chez l’animal)",
+  "group": "chaleur"
+ },
+ {
+  "n": 95,
+  "authors": "Jones SE, Maisha FI, Strausz SJ, Lammi V, Cade BE, Tervi A, Helaakoski V, Broberg ME, FinnGen, Lane JM, Redline S, Saxena R, Ollila HM.",
+  "title": "The public health impact of poor sleep on severe COVID-19, influenza and upper respiratory infections.",
+  "journal": "EBioMedicine",
+  "year": "2023",
+  "doi": "10.1016/j.ebiom.2023.104630",
+  "doiUrl": "https://doi.org/10.1016/j.ebiom.2023.104630",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37301713/",
+  "finding": "L’insomnie augmente le risque de grippe (HR jusqu’à 4,34) et, par randomisation mendélienne, en est une cause (OR 1,65).",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "group": "sommeil"
+ },
+ {
+  "n": 96,
+  "authors": "Guan M, Gu W, Gileles-Hillel A, Khalyfa A, Balamalaliyage P, Tunterak W, Li M, Huang Y, Wen Y, Driver J, Gozal D, Wan XF.",
+  "title": "Poor sleep impairs immune responses and influenza vaccine protection.",
+  "journal": "Nat Commun",
+  "year": "2026",
+  "doi": "10.1038/s41467-026-72212-2",
+  "doiUrl": "https://doi.org/10.1038/s41467-026-72212-2",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42014403/",
+  "finding": "Le sommeil fragmenté affaiblit la réponse immunitaire contre la grippe ; l’apnée du sommeil est associée à plus de grippe (RR 1,70).",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "group": "sommeil"
+ },
+ {
+  "n": 97,
+  "authors": "Watanabe K, Rahmasari R, Matsunaga A, Haruyama T, Kobayashi N.",
+  "title": "Anti-influenza viral effects of honey in vitro: potent high activity of manuka honey.",
+  "journal": "Arch Med Res",
+  "year": "2014",
+  "doi": "10.1016/j.arcmed.2014.05.006",
+  "doiUrl": "https://doi.org/10.1016/j.arcmed.2014.05.006",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/24880005/",
+  "finding": "Le miel, surtout le miel de manuka, a une forte activité contre le virus de la grippe.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "miel"
+ },
+ {
+  "n": 98,
+  "authors": "Kwon EB, Kim SG, Kim YS, Kim B, Han SM, Lee HJ, Choi HM, Choi JG.",
+  "title": "Castanea crenata honey reduces influenza infection by activating the innate immune response.",
+  "journal": "Front Immunol",
+  "year": "2023",
+  "doi": "10.3389/fimmu.2023.1157506",
+  "doiUrl": "https://doi.org/10.3389/fimmu.2023.1157506",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37711616/",
+  "finding": "Le miel de châtaignier a augmenté la survie de 60 % et réduit le virus dans les poumons des souris grippées.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "miel"
+ },
+ {
+  "n": 99,
+  "authors": "Sriwilaijaroen N, Wilairat P, Hiramatsu H, Takahashi T, Suzuki T, Ito M, Ito Y, Tashiro M, Suzuki Y.",
+  "title": "Mechanisms of the action of povidone-iodine against human and avian influenza A viruses: its effects on hemagglutination and sialidase activities.",
+  "journal": "Virol J",
+  "year": "2009",
+  "doi": "10.1186/1743-422x-6-124",
+  "doiUrl": "https://doi.org/10.1186/1743-422x-6-124",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/19678928/",
+  "finding": "La povidone iodée bloque l’attachement et la sortie des virus de la grippe humaine et aviaire ; utile pour prévenir l’infection et limiter sa propagation.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "rincage"
+ },
+ {
+  "n": 100,
+  "authors": "Ito H, Ito T, Hikida M, Yashiro J, Otsuka A, Kida H, Otsuki K.",
+  "title": "Outbreak of highly pathogenic avian influenza in Japan and anti-influenza virus activity of povidone-iodine products.",
+  "journal": "Dermatology",
+  "year": "2006",
+  "doi": "10.1159/000089210",
+  "doiUrl": "https://doi.org/10.1159/000089210",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/16490988/",
+  "finding": "Des produits à la povidone iodée, dont un gargarisme, ont réduit les virus de la grippe aviaire sous le seuil de détection en seulement 10 secondes.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "rincage"
+ },
+ {
+  "n": 101,
+  "authors": "de Gabory L, Vallet S, Naelten G, Raherison-Semjen C.",
+  "title": "Seawater nasal wash to reduce symptom duration and viral load in COVID-19 and upper respiratory tract infections: a randomized controlled multicenter trial.",
+  "journal": "Eur Arch Otorhinolaryngol",
+  "year": "2024",
+  "doi": "10.1007/s00405-024-08518-y",
+  "doiUrl": "https://doi.org/10.1007/s00405-024-08518-y",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38376591/",
+  "finding": "Lavage nasal à l’eau de mer : dans les infections des voies respiratoires hautes, le nez qui coule, l’écoulement dans la gorge et la sensation d’être malade ont disparu 3,5 à 4,3 jours plus tôt.",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "group": "rincage"
+ },
+ {
+  "n": 102,
+  "authors": "Xiang DX, Chen Q, Pang L, Zheng CL.",
+  "title": "Inhibitory effects of silver nanoparticles on H1N1 influenza A virus in vitro.",
+  "journal": "J Virol Methods",
+  "year": "2011",
+  "doi": "10.1016/j.jviromet.2011.09.003",
+  "doiUrl": "https://doi.org/10.1016/j.jviromet.2011.09.003",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/21945220/",
+  "finding": "Les nanoparticules d’argent ont une activité contre le virus grippal H1N1 ; piste pour prévenir l’infection au début.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "argent"
+ },
+ {
+  "n": 103,
+  "authors": "Seyfi M, Letafati A, Edalat F, Malekshahi SS, Pirbonyeh N, Moattari A.",
+  "title": "Antiviral activity of silver nanoparticles against H1N1 influenza virus.",
+  "journal": "BMC Res Notes",
+  "year": "2025",
+  "doi": "10.1186/s13104-025-07143-0",
+  "doiUrl": "https://doi.org/10.1186/s13104-025-07143-0",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39966976/",
+  "finding": "Les nanoparticules d’argent ont inhibé le H1N1 selon la dose, surtout quand elles étaient présentes en même temps que le virus.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "argent"
+ },
+ {
+  "n": 104,
+  "authors": "Rauš K, Pleschka S, Klein P, Schoop R, Fisher P.",
+  "title": "Effect of an Echinacea-Based Hot Drink Versus Oseltamivir in Influenza Treatment: A Randomized, Double-Blind, Double-Dummy, Multicenter, Noninferiority Clinical Trial.",
+  "journal": "Curr Ther Res Clin Exp",
+  "year": "2015",
+  "doi": "10.1016/j.curtheres.2015.04.001",
+  "doiUrl": "https://doi.org/10.1016/j.curtheres.2015.04.001",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/26265958/",
+  "finding": "La boisson chaude à l’échinacée (Echinaforce Hotdrink) a été aussi efficace que l’oseltamivir (Tamiflu) contre la grippe, avec moins de complications et moins de nausées.",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "group": "echinacee"
+ },
+ {
+  "n": 105,
+  "authors": "Fusco D, Liu X, Savage C, Taur Y, Xiao W, Kennelly E, Yuan J, Cassileth B, Salvatore M, Papanicolaou GA.",
+  "title": "Echinacea purpurea aerial extract alters course of influenza infection in mice.",
+  "journal": "Vaccine",
+  "year": "2010",
+  "doi": "10.1016/j.vaccine.2010.03.047",
+  "doiUrl": "https://doi.org/10.1016/j.vaccine.2010.03.047",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/20382242/",
+  "finding": "L’échinacée a réduit la perte de poids des souris grippées en modulant les cytokines.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (chez l’animal)",
+  "group": "echinacee"
+ },
+ {
+  "n": 106,
+  "authors": "Vimalanathan S, Sreya M, Nandanavanam R, Schoop R, Gancitano G, Saberi S, Malikovskaia A, Hudson J.",
+  "title": "Respiratory virus-induced bacterial dysregulation in pediatric airway tissue and the dual actions of Echinacea in reducing complications.",
+  "journal": "Front Pharmacol",
+  "year": "2025",
+  "doi": "10.3389/fphar.2025.1579551",
+  "doiUrl": "https://doi.org/10.3389/fphar.2025.1579551",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40520162/",
+  "finding": "L’échinacée (Echinaforce) a bloqué l’accrochage des bactéries provoqué par les virus respiratoires (VRS, parainfluenza), ce qui explique moins de complications.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "echinacee"
+ },
+ {
+  "n": 107,
+  "authors": "Chang JS, Wang KC, Yeh CF, Shieh DE, Chiang LC.",
+  "title": "Fresh ginger (Zingiber officinale) has anti-viral activity against human respiratory syncytial virus in human respiratory tract cell lines.",
+  "journal": "J Ethnopharmacol",
+  "year": "2013",
+  "doi": "10.1016/j.jep.2012.10.043",
+  "doiUrl": "https://doi.org/10.1016/j.jep.2012.10.043",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/23123794/",
+  "finding": "Le gingembre frais (pas séché) a bloqué le virus respiratoire syncytial (VRS, virus du rhume) et stimulé l’interféron bêta.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "gingembre"
+ },
+ {
+  "n": 108,
+  "authors": "Mostafa-Hedeab G, Hegazy A, Mostafa I, Eissa IH, Metwaly AM, Elhady HA, Eledrdery AY, Alruwaili SH, Alibrahim AOE, Alenazy FO, Alruwaili MFA, Marghel TA, Alruwaili M, Saad AM, Bayoumi M, El-Shazly AM, Martinez-Sobrido L, Mostafa A.",
+  "title": "In vitro antiviral activities of thymol and Limonin against influenza a viruses and SARS-CoV-2.",
+  "journal": "Sci Rep",
+  "year": "2025",
+  "doi": "10.1038/s41598-025-06967-x",
+  "doiUrl": "https://doi.org/10.1038/s41598-025-06967-x",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40596436/",
+  "finding": "Le thymol (substance du thym) a bloqué les virus de la grippe A (H5N1, H1N1) en freinant leur réplication.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "thym"
+ },
+ {
+  "n": 109,
+  "authors": "Lei WT, Shih PC, Liu SJ, Lin CY, Yeh TL.",
+  "title": "Effect of Probiotics and Prebiotics on Immune Response to Influenza Vaccination in Adults: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+  "journal": "Nutrients",
+  "year": "2017",
+  "doi": "10.3390/nu9111175",
+  "doiUrl": "https://doi.org/10.3390/nu9111175",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/29077061/",
+  "finding": "Les probiotiques/prébiotiques ont amélioré la protection après le vaccin contre la grippe (H1N1 RC 1,83 ; H3N2 RC 2,85 ; B RC 2,11).",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "group": "probiotiques"
+ },
+ {
+  "n": 110,
+  "authors": "Yeh TL, Shih PC, Liu SJ, Lin CH, Liu JM, Lei WT, Lin CY.",
+  "title": "The influence of prebiotic or probiotic supplementation on antibody titers after influenza vaccination: a systematic review and meta-analysis of randomized controlled trials.",
+  "journal": "Drug Des Devel Ther",
+  "year": "2018",
+  "doi": "10.2147/dddt.s155110",
+  "doiUrl": "https://doi.org/10.2147/dddt.s155110",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/29416317/",
+  "finding": "Les probiotiques/prébiotiques ont augmenté les anticorps contre la grippe de 14 à 20 % après le vaccin.",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "group": "probiotiques"
+ },
+ {
+  "n": 111,
+  "authors": "Percival SS.",
+  "title": "Copper and immunity.",
+  "journal": "Am J Clin Nutr",
+  "year": "1998",
+  "doi": "10.1093/ajcn/67.5.1064s",
+  "doiUrl": "https://doi.org/10.1093/ajcn/67.5.1064s",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/9587153/",
+  "finding": "Le système immunitaire a besoin de cuivre : même un léger manque réduit l’interleukine 2, la multiplication des lymphocytes T et la capacité des neutrophiles à tuer les microbes.",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "group": "cuivre"
+ },
+ {
+  "n": 112,
+  "authors": "Noyce JO, Michels H, Keevil CW.",
+  "title": "Inactivation of influenza A virus on copper versus stainless steel surfaces.",
+  "journal": "Appl Environ Microbiol",
+  "year": "2007",
+  "doi": "10.1128/aem.01139-06",
+  "doiUrl": "https://doi.org/10.1128/aem.01139-06",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/17259354/",
+  "finding": "Grippe A : après 24 h sur l’acier inoxydable, 500 000 particules étaient encore infectieuses ; après 6 h sur le cuivre, il en restait 500.",
+  "level": "direct",
+  "supportNote": "appuie directement (en laboratoire)",
+  "group": "cuivre"
+ },
+ {
+  "n": 113,
+  "authors": "Warnes SL, Little ZR, Keevil CW.",
+  "title": "Human Coronavirus 229E Remains Infectious on Common Touch Surface Materials.",
+  "journal": "mBio",
+  "year": "2015",
+  "doi": "10.1128/mbio.01697-15",
+  "doiUrl": "https://doi.org/10.1128/mbio.01697-15",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/26556276/",
+  "finding": "Le coronavirus du rhume 229E reste infectieux 5 jours sur le plastique, le verre ou l’acier, mais il est détruit en quelques minutes sur les alliages de cuivre.",
+  "level": "direct",
+  "supportNote": "appuie directement (en laboratoire)",
+  "group": "cuivre"
+ },
+ {
+  "n": 114,
+  "authors": "Cortes AA, Zuñiga JM.",
+  "title": "The use of copper to help prevent transmission of SARS-coronavirus and influenza viruses. A general review.",
+  "journal": "Diagn Microbiol Infect Dis",
+  "year": "2020",
+  "doi": "10.1016/j.diagmicrobio.2020.115176",
+  "doiUrl": "https://doi.org/10.1016/j.diagmicrobio.2020.115176",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/33069048/",
+  "finding": "Le cuivre détruit la capacité de réplication des virus de la grippe, des coronavirus et d’autres virus respiratoires ; stratégie complémentaire peu coûteuse pour réduire la transmission.",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "group": "cuivre"
  }
 ];
 
@@ -2851,8 +3452,14 @@ export const NUANCES = {
  "zinc": [
   "Zinc, dose des études (adulte seulement) : pastilles d’environ 13 mg toutes les 2 à 3 heures éveillé (≈ 75 à 90 mg par jour), dans les 24 heures des premiers symptômes, 5 à 7 jours maximum.",
   "Cette dose dépasse la limite usuelle de 40 mg par jour : seulement pour une courte durée. Peut causer nausées et goût métallique ; carence en cuivre si prolongé. Jamais plus de 100 mg par jour : aucun bénéfice de plus.",
+  "Cure courte (5 à 7 jours) : le zinc à forte dose bloque l’absorption du cuivre seulement s’il est pris pendant des semaines. Ensuite, mange des aliments riches en cuivre (noix, graines, cacao, fruits de mer, légumineuses).",
   "Demander avis au pharmacien si tu prends des médicaments ou en cas de grossesse. Jamais de zinc dans le nez (spray ou gel nasal) : risque de perte de l’odorat.",
   "Enfant : pas la dose des études ; selon le poids, avec un avis du pharmacien."
+ ],
+ "cuivre": [
+  "Besoin en cuivre (adulte) : 0,9 mg par jour (1 mg pendant la grossesse, 1,3 mg pendant l’allaitement). Aliments les plus riches en cuivre : fruits de mer, graines et noix, abats, céréales de son, produits à grains entiers et chocolat.",
+  "Limite supérieure (adulte) : 10 mg de cuivre par jour, tout compris (aliments et suppléments).",
+  "Beaucoup de zinc pendant des semaines peut baisser le cuivre (dès environ 60 mg de zinc par jour pendant jusqu’à 10 semaines). La cure courte de zinc de l’appli (5 à 7 jours) reste bien en deçà."
  ],
  "miel": [
   "Miel : jamais avant 1 an. De 1 à 5 ans : 2 c. à thé ; adulte : 1 c. à soupe, 30 min avant le coucher pour la toux de nuit."
@@ -2872,10 +3479,31 @@ export const NUANCES = {
 // Sources officielles affichées dans l’encadré Sécurité (liens vérifiés).
 export const SOURCES_OFFICIELLES = {
  "argent": [
-  {"label": "Santé Canada : rappel de Panasilver (argyrie ; enfants et grossesse)", "url": "https://recalls-rappels.canada.ca/en/alert-recall/unauthorized-panasilver-product-children-and-adults-may-pose-serious-health-risk"},
-  {"label": "Santé Canada : rappel de produits colloïdaux non autorisés (2019)", "url": "https://recalls-rappels.canada.ca/en/alert-recall/unauthorized-colloidal-solutions-colloidal-metal-health-products-recalled-because-they"},
-  {"label": "NCCIH (NIH) : argyrie, antibiotiques et thyroxine", "url": "https://www.nccih.nih.gov/health/colloidal-silver"},
-  {"label": "FDA : règle de 1999 sur l’argent colloïdal sans ordonnance (Federal Register)", "url": "https://www.govinfo.gov/content/pkg/FR-1999-08-17/pdf/99-21253.pdf"},
-  {"label": "Mayo Clinic : argent colloïdal, argyrie et interactions", "url": "https://www.mayoclinic.org/healthy-lifestyle/consumer-health/expert-answers/colloidal-silver/faq-20058061"}
+  {
+   "label": "Santé Canada : rappel de Panasilver (argyrie ; enfants et grossesse)",
+   "url": "https://recalls-rappels.canada.ca/en/alert-recall/unauthorized-panasilver-product-children-and-adults-may-pose-serious-health-risk"
+  },
+  {
+   "label": "Santé Canada : rappel de produits colloïdaux non autorisés (2019)",
+   "url": "https://recalls-rappels.canada.ca/en/alert-recall/unauthorized-colloidal-solutions-colloidal-metal-health-products-recalled-because-they"
+  },
+  {
+   "label": "NCCIH (NIH) : argyrie, antibiotiques et thyroxine",
+   "url": "https://www.nccih.nih.gov/health/colloidal-silver"
+  },
+  {
+   "label": "FDA : règle de 1999 sur l’argent colloïdal sans ordonnance (Federal Register)",
+   "url": "https://www.govinfo.gov/content/pkg/FR-1999-08-17/pdf/99-21253.pdf"
+  },
+  {
+   "label": "Mayo Clinic : argent colloïdal, argyrie et interactions",
+   "url": "https://www.mayoclinic.org/healthy-lifestyle/consumer-health/expert-answers/colloidal-silver/faq-20058061"
+  }
+ ],
+ "cuivre": [
+  {
+   "label": "NIH Office of Dietary Supplements : cuivre (besoins, limite de 10 mg, zinc)",
+   "url": "https://ods.od.nih.gov/factsheets/Copper-HealthProfessional/"
+  }
  ]
 };
