@@ -18,13 +18,13 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  let t=await main();
  ok('remedes: no search',await p.getByPlaceholder('Rechercher un remède ou un symptôme…').count()===0);
  ok('remedes: 5 gestes cards',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel seul|Double dose de vitamine C/}).count()===5);
- ok('remedes: keeps panel/consult/kit/warm',t.includes('J’ai mal à la gorge, je commence')&&t.includes('QUAND ARRÊTER ET CONSULTER')&&t.includes('Kit Combat')&&t.includes('même une tuque'));
+ ok('remedes: keeps panel/consult/kit/warm',t.includes('J’ai mal à la gorge, je commence')&&t.includes('QUAND ARRÊTER ET CONSULTER')&&t.includes('Kit Combat')&&t.includes('même un bonnet'));
  ok('remedes: mode switch',t.includes('CHANGER DE MODE')&&t.includes('Voir tous les remèdes'));
  await full('1-remedes');
  await click('Accueil');t=await main();
  const gone=['Symptômes typiques','Protocole recommandé','Protocole du jour','Vitamine D et soleil','Quoi faire, quoi éviter','Où en es-tu','Plantes pour la toux','Prévention','Frapper fort dès le début'];
  ok('accueil: general sections hidden',gone.filter(x=>t.includes(x)).length===0||gone.filter(x=>t.includes(x)).join(','));
- ok('accueil: keeps disclaimer, chooser, logique, warm, protocol, consult',t.includes('Avertissement')&&t.includes('Choisis ton mode')&&t.includes('Logique des remèdes prioritaires')&&t.includes('avoir très chaud, même avec une tuque')&&t.includes('PLAN D’ATTAQUE · 3 JOURS')&&t.includes('QUAND ARRÊTER ET CONSULTER'));
+ ok('accueil: keeps disclaimer, chooser, logique, warm, protocol, consult',t.includes('Avertissement')&&t.includes('Choisis ton mode')&&t.includes('Logique des remèdes prioritaires')&&t.includes('avoir très chaud, même avec un bonnet')&&t.includes('PLAN D’ATTAQUE · 3 JOURS')&&t.includes('QUAND ARRÊTER ET CONSULTER'));
  await full('2-accueil');
  await click('Conseils');t=await main();
  ok('conseils combat focused',t.includes('Conseils · Mode Combat')&&!t.includes('Prévention')&&!t.includes('Nicotine')&&!t.includes('Vapotage')&&t.includes('Dormir au chaud')&&t.includes('Miel : jamais'));

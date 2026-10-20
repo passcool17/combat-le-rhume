@@ -20,7 +20,7 @@ function serviceWorker() {
     name: "clr-service-worker",
     apply: "build",
     generateBundle(_, bundle) {
-      const files = [...Object.keys(bundle), ...listPublic("public")].filter((f) => !f.endsWith(".map") && f !== "og.jpg");
+      const files = [...Object.keys(bundle), ...listPublic("public")].filter((f) => !f.endsWith(".map") && !["og.jpg", "robots.txt", "sitemap.xml"].includes(f));
       const version = createHash("sha256").update(files.sort().join("|")).digest("hex").slice(0, 10);
       const urls = ["", ...files.filter((f) => f !== "index.html")].map((f) => BASE + f);
       const code = `// Généré au build — ne pas modifier à la main.

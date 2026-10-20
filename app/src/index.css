@@ -128,3 +128,8 @@ html.mode-combat .clr-pulse{animation:clr-pulse 2.2s ease-out infinite}
 .clr-ref-link{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 1rem;border-radius:9999px;border:1px solid var(--color-primary);color:var(--color-primary);font-size:.85rem;font-weight:600;text-decoration:none}
 .clr-ref-a{color:var(--color-primary);font-weight:600;text-decoration:underline}
 .clr-ref-cta{display:inline-flex;align-items:center;min-height:2.75rem;font-size:.85rem;font-weight:600;color:var(--color-primary);text-decoration:underline;text-underline-offset:2px}
+
+/* Ancres sous l’en-tête collant ; bannière de mise à jour */
+html{scroll-padding-top:calc(var(--clr-header,9rem) + .75rem)}
+.clr-update{bottom:calc(4.75rem + env(safe-area-inset-bottom))}
+@media (min-width:48rem){.clr-update{bottom:1rem}}

@@ -103,7 +103,7 @@ export const REFERENCES = [
   "url": "https://x.com/mercola/status/1305612570708119552",
   "level": "direct",
   "supportNote": "appuie directement",
-  "note": "À savoir : la FDA lui a envoyé une lettre d’avertissement en 2021 au sujet de produits de vitamines C et D présentés contre la COVID-19. Il vend des suppléments."
+  "note": null
  },
  {
   "n": 8,
@@ -118,7 +118,7 @@ export const REFERENCES = [
   "url": "https://x.com/mercola/status/285140664214249473",
   "level": "direct",
   "supportNote": "appuie directement",
-  "note": "À savoir : la FDA lui a envoyé une lettre d’avertissement en 2021 au sujet de produits de vitamines C et D présentés contre la COVID-19. Il vend des suppléments."
+  "note": null
  },
  {
   "n": 9,
@@ -133,7 +133,7 @@ export const REFERENCES = [
   "url": "https://x.com/mercola/status/1125543337438711808",
   "level": "direct",
   "supportNote": "appuie directement",
-  "note": "À savoir : la FDA lui a envoyé une lettre d’avertissement en 2021 au sujet de produits de vitamines C et D présentés contre la COVID-19. Il vend des suppléments."
+  "note": null
  },
  {
   "n": 10,
@@ -148,7 +148,7 @@ export const REFERENCES = [
   "url": "https://x.com/mercola/status/644395083576557570",
   "level": "partiel",
   "supportNote": "partiel (prévention, pas traitement)",
-  "note": "À savoir : la FDA lui a envoyé une lettre d’avertissement en 2021 au sujet de produits de vitamines C et D présentés contre la COVID-19. Il vend des suppléments."
+  "note": null
  },
  {
   "n": 11,
@@ -163,7 +163,7 @@ export const REFERENCES = [
   "url": "https://x.com/mercola/status/279654711228002304",
   "level": "lien",
   "supportNote": "lié",
-  "note": "À savoir : la FDA lui a envoyé une lettre d’avertissement en 2021 au sujet de produits de vitamines C et D présentés contre la COVID-19. Il vend des suppléments."
+  "note": null
  },
  {
   "n": 12,
@@ -218,11 +218,11 @@ export const REFERENCES = [
   "notPhysician": false,
   "claim": "Nuit très chaude (chaleur pour aider l'immunité)",
   "quote": "Heat jump starts the immune system.  Has always.  Its why we get fevers.",
-  "gist": "La chaleur « démarre » le système immunitaire ; c’est pourquoi on fait de la fièvre. Ne parle pas du rhume ni de se couvrir la nuit.",
+  "gist": "La chaleur « démarre » le système immunitaire ; c’est pourquoi on fait de la fièvre.",
   "date": "2024-02-05T05:58:52Z",
   "url": "https://x.com/RogerSeheult/status/1754384074012274700",
   "level": "lien",
-  "supportNote": "lié (principe de la chaleur ; ne parle pas du rhume ni de se couvrir la nuit)",
+  "supportNote": "lié (principe de la chaleur)",
   "note": null
  },
  {
@@ -283,7 +283,7 @@ export const REFERENCES = [
   "url": "https://x.com/P_McCulloughMD/status/1876958652810093019",
   "level": "partiel",
   "supportNote": "partiel (grippe, prévention ; promeut des produits de sa compagnie)",
-  "note": "À savoir : ses certifications ABIM (médecine interne, cardiologie) sont indiquées comme révoquées selon MedPage Today (2025). Il est lié à The Wellness Company, l’entreprise qui vend ces sprays et trousses."
+  "note": null
  },
  {
   "n": 20,
@@ -298,7 +298,7 @@ export const REFERENCES = [
   "url": "https://x.com/P_McCulloughMD/status/1872256970150801706",
   "level": "partiel",
   "supportNote": "partiel",
-  "note": "À savoir : ses certifications ABIM (médecine interne, cardiologie) sont indiquées comme révoquées selon MedPage Today (2025). Il est lié à The Wellness Company, l’entreprise qui vend ces sprays et trousses."
+  "note": null
  },
  {
   "n": 21,
@@ -524,6 +524,111 @@ export const REFERENCES = [
   "level": "partiel",
   "supportNote": "partiel (cite un conseil ; insiste sur l'hydratation)",
   "note": null
+ },
+ {
+  "n": 36,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "MD, 4 spécialités (IM, pneumo, sommeil, soins intensifs)",
+  "notPhysician": false,
+  "claim": "Zinc",
+  "quote": "Zinc reduced time of cold symptoms in adults but not children:  (2.63 days)",
+  "gist": "Le zinc a réduit la durée des symptômes du rhume chez l’adulte (2,63 jours), mais pas chez l’enfant.",
+  "date": "2023-12-07T03:45:40Z",
+  "url": "https://x.com/RogerSeheult/status/1732607279827193872",
+  "level": "direct",
+  "supportNote": "appuie directement (adultes)",
+  "note": null
+ },
+ {
+  "n": 37,
+  "name": "David Perlmutter, MD",
+  "handle": "@DavidPerlmutter",
+  "credential": "Neurologue certifié (bio)",
+  "notPhysician": false,
+  "claim": "Zinc",
+  "quote": "A cure for the common #cold? Yes, and it’s called #zinc.",
+  "gist": "« Un remède contre le rhume ? Oui, le zinc. » Formulation exagérée : le zinc raccourcit le rhume, il ne le guérit pas.",
+  "date": "2014-06-26T17:41:06Z",
+  "url": "https://x.com/DavidPerlmutter/status/482217000526024705",
+  "level": "partiel",
+  "supportNote": "appuie (formulation exagérée : le zinc raccourcit le rhume, ne le « guérit » pas)",
+  "note": null
+ },
+ {
+  "n": 38,
+  "name": "David Perlmutter, MD",
+  "handle": "@DavidPerlmutter",
+  "credential": "Neurologue certifié (bio)",
+  "notPhysician": false,
+  "claim": "Zinc",
+  "quote": "My latest video: #zinc as treatment for the common #cold.",
+  "gist": "Sa vidéo sur le zinc comme traitement du rhume (contenu de la vidéo non vérifié).",
+  "date": "2014-05-13T15:04:07Z",
+  "url": "https://x.com/DavidPerlmutter/status/466232427665293313",
+  "level": "partiel",
+  "supportNote": "partiel (vidéo non vérifiée)",
+  "note": null
+ },
+ {
+  "n": 39,
+  "name": "Ken D Berry MD",
+  "handle": "@KenDBerryMD",
+  "credential": "Board-Certified MD (bio)",
+  "notPhysician": false,
+  "claim": "Vitamine D",
+  "quote": "I've found that keeping Vitamin D levels in my patients between 50-75 really decreases their risk of contracting URI's and the flu...",
+  "gist": "Selon son expérience avec ses patients, garder la vitamine D entre 50 et 75 diminue nettement le risque d’infections respiratoires et de grippe.",
+  "date": "2018-12-28T13:12:35Z",
+  "url": "https://x.com/KenDBerryMD/status/1078639849907863553",
+  "level": "partiel",
+  "supportNote": "appuie (expérience clinique, pas une étude)",
+  "note": null
+ },
+ {
+  "n": 40,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "MD, 4 spécialités (IM, pneumo, sommeil, soins intensifs)",
+  "notPhysician": false,
+  "claim": "Sommeil et repos",
+  "quote": "In no particular order: ~Sunlight (see above) ~Sleep (see below) ~Flu shot (see below)",
+  "gist": "Pour prévenir la grippe, entre autres : le soleil, le sommeil et le vaccin.",
+  "date": "2024-12-27T14:59:14Z",
+  "url": "https://x.com/RogerSeheult/status/1872658506383540679",
+  "level": "partiel",
+  "supportNote": "partiel (réponse sur la prévention de la grippe)",
+  "note": null
+ },
+ {
+  "n": 41,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "MD, 4 spécialités (IM, pneumo, sommeil, soins intensifs)",
+  "notPhysician": false,
+  "claim": "Sommeil et repos",
+  "quote": "It’s somewhere between a cold and a flu so making sure that you’re getting plenty of sleep, sunshine etc. is a good idea.",
+  "gist": "Entre un rhume et une grippe : bien dormir, prendre du soleil, etc., c’est une bonne idée.",
+  "date": "2024-04-29T16:37:42Z",
+  "url": "https://x.com/RogerSeheult/status/1784985420130071017",
+  "level": "partiel",
+  "supportNote": "partiel",
+  "note": null
+ },
+ {
+  "n": 42,
+  "name": "Andrew Weil, M.D.",
+  "handle": "@DrWeil",
+  "credential": "M.D., médecine intégrative",
+  "notPhysician": false,
+  "claim": "Gingembre/ail/liquides",
+  "quote": "Feeling under the weather? Could chicken soup be your cozy remedy for colds? Discover the warm comfort that may just help you heal!",
+  "gist": "La soupe au poulet, un remède réconfortant contre le rhume qui pourrait aider à guérir.",
+  "date": "2024-12-15T17:15:11Z",
+  "url": "https://x.com/DrWeil/status/1868344065139306718",
+  "level": "lien",
+  "supportNote": "en lien (bouillon chaud)",
+  "note": null
  }
 ];
 
@@ -542,7 +647,10 @@ export const REF_GROUPS = [
   "items": [
    2,
    8,
-   22
+   22,
+   36,
+   37,
+   38
   ]
  },
  {
@@ -573,7 +681,8 @@ export const REF_GROUPS = [
   "items": [
    4,
    13,
-   17
+   17,
+   39
   ]
  },
  {
@@ -581,7 +690,9 @@ export const REF_GROUPS = [
   "title": "Sommeil et repos",
   "items": [
    10,
-   21
+   21,
+   40,
+   41
   ]
  },
  {
@@ -612,8 +723,14 @@ export const REF_GROUPS = [
   "title": "Gingembre, ail et liquides",
   "items": [
    5,
-   6
+   6,
+   42
   ]
+ },
+ {
+  "id": "rincage",
+  "title": "Rinçage et gargarisme",
+  "items": []
  },
  {
   "id": "sprays",
@@ -625,8 +742,8 @@ export const REF_GROUPS = [
  }
 ];
 
-// Études scientifiques (groupe « Chaleur du corps et fièvre »).
-export const ETUDES_CHALEUR = [
+// Études scientifiques, rangées par groupe.
+export const ETUDES = [
  {
   "n": 1,
   "authors": "Evans SS, Repasky EA, Fisher DT.",
@@ -638,7 +755,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25976513/",
   "finding": "Revue : la fièvre est conservée depuis plus de 600 millions d'années, donne un avantage de survie pendant l'infection, et la chaleur stimule les réponses immunitaires innée et adaptative.",
   "level": "direct",
-  "supportNote": "appuie directement (référence principale)"
+  "supportNote": "appuie directement (référence principale)",
+  "group": "chaleur"
  },
  {
   "n": 2,
@@ -651,7 +769,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/8698984/",
   "finding": "Revue : « preuves écrasantes » que la fièvre est une réponse adaptative ; supprimer la fièvre augmente probablement la morbidité et la mortalité dans la plupart des infections.",
   "level": "direct",
-  "supportNote": "appuie directement"
+  "supportNote": "appuie directement",
+  "group": "chaleur"
  },
  {
   "n": 3,
@@ -664,7 +783,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25561542/",
   "finding": "Cellules de voies respiratoires de souris : le virus du rhume se multiplie mieux à 33-35 °C (nez) qu'à 37 °C ; à 37 °C la réponse antivirale (interférons) est bien plus forte.",
   "level": "partiel",
-  "supportNote": "appuie (température normale du corps vs nez froid ; pas une étude de fièvre ; in vitro, souris)"
+  "supportNote": "appuie (température normale du corps vs nez froid ; pas une étude de fièvre ; in vitro, souris)",
+  "group": "chaleur"
  },
  {
   "n": 4,
@@ -677,7 +797,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/27402752/",
   "finding": "Cellules humaines : à 37 °C, deux autres défenses (mort des cellules infectées, RNase L) freinent davantage le virus du rhume qu'à température plus fraîche.",
   "level": "partiel",
-  "supportNote": "appuie (in vitro)"
+  "supportNote": "appuie (in vitro)",
+  "group": "chaleur"
  },
  {
   "n": 5,
@@ -690,7 +811,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/2172402/",
   "finding": "Essai randomisé, 60 volontaires infectés par un rhinovirus : aspirine et acétaminophène ont diminué les anticorps neutralisants et augmenté les symptômes nasaux ; tendance (non significative) à une excrétion virale plus longue.",
   "level": "direct",
-  "supportNote": "appuie directement (rhume chez l'humain)"
+  "supportNote": "appuie directement (rhume chez l'humain)",
+  "group": "chaleur"
  },
  {
   "n": 6,
@@ -703,7 +825,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/163931/",
   "finding": "Deux essais en double aveugle : l'aspirine n'a pas réduit significativement le rhume mais a nettement augmenté l'excrétion du virus.",
   "level": "direct",
-  "supportNote": "appuie (contre la suppression par aspirine)"
+  "supportNote": "appuie (contre la suppression par aspirine)",
+  "group": "chaleur"
  },
  {
   "n": 7,
@@ -716,7 +839,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/2656959/",
   "finding": "Essai randomisé, 72 enfants avec varicelle : sous acétaminophène, les croûtes mettent plus longtemps à se former (6,7 vs 5,6 jours), sans soulager les symptômes.",
   "level": "partiel",
-  "supportNote": "appuie (varicelle, pas rhume)"
+  "supportNote": "appuie (varicelle, pas rhume)",
+  "group": "chaleur"
  },
  {
   "n": 8,
@@ -729,7 +853,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/11130213/",
   "finding": "Volontaires : l'usage d'antipyrétiques était associé à une maladie plus longue dans la grippe A expérimentale.",
   "level": "partiel",
-  "supportNote": "partiel (étude rétrospective observationnelle)"
+  "supportNote": "partiel (étude rétrospective observationnelle)",
+  "group": "chaleur"
  },
  {
   "n": 9,
@@ -742,7 +867,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/20929891/",
   "finding": "Méta-analyse : chez l'animal grippé, les antipyrétiques augmentent le risque de décès (OR 1,34) ; aucune donnée humaine.",
   "level": "partiel",
-  "supportNote": "partiel (animaux seulement)"
+  "supportNote": "partiel (animaux seulement)",
+  "group": "chaleur"
  },
  {
   "n": 10,
@@ -755,7 +881,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/24452021/",
   "finding": "Modèle : couper la fièvre augmenterait la transmission de la grippe (environ +5 % de cas et décès en saison grippale aux É.-U.).",
   "level": "lien",
-  "supportNote": "lié (modélisation, données incomplètes)"
+  "supportNote": "lié (modélisation, données incomplètes)",
+  "group": "chaleur"
  },
  {
   "n": 11,
@@ -768,7 +895,8 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/16433601/",
   "finding": "Essai randomisé en soins intensifs (trauma) : 7 décès dans le groupe « traitement agressif de la fièvre » vs 1 dans le groupe « permissif » (traitement seulement > 40 °C) ; p = 0,06, étude arrêtée tôt.",
   "level": "partiel",
-  "supportNote": "partiel (non significatif, patients très malades)"
+  "supportNote": "partiel (non significatif, patients très malades)",
+  "group": "chaleur"
  },
  {
   "n": 12,
@@ -781,31 +909,313 @@ export const ETUDES_CHALEUR = [
   "pubmed": "https://pubmed.ncbi.nlm.nih.gov/21357332/",
   "finding": "Recommandation officielle de l'Académie américaine de pédiatrie : la fièvre est un mécanisme qui a des effets bénéfiques contre l'infection ; traiter pour le confort de l'enfant, pas pour normaliser la température ; bien hydrater.",
   "level": "direct",
-  "supportNote": "appuie (source officielle grand public)"
+  "supportNote": "appuie (source officielle grand public)",
+  "group": "chaleur"
  },
  {
   "n": 13,
-  "authors": "Young P, Saxena M, Bellomo R, Freebairn R, Hammond N, van Haren F, Holliday M, Henderson S, Mackle D, McArthur C, McGuinness S, Myburgh J, Weatherall M, Webb S, Beasley R, HEAT Investigators, Australian and New Zealand Intensive Care Society Clinical Trials Group.",
-  "title": "Acetaminophen for Fever in Critically Ill Patients with Suspected Infection.",
-  "journal": "N Engl J Med",
+  "group": "vitamine-c",
+  "authors": "Hemilä H.",
+  "title": "Vitamin C and Infections.",
+  "journal": "Nutrients",
+  "year": "2017",
+  "doi": "10.3390/nu9040339",
+  "doiUrl": "https://doi.org/10.3390/nu9040339",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/28353648/",
+  "finding": "Revue : deux essais contrôlés montrent un effet dose-réponse sur la durée du rhume jusqu'à 6-8 g/jour ; les essais négatifs pourraient s'expliquer par des doses trop faibles (3-4 g/jour).",
+  "level": "partiel",
+  "supportNote": "partiel (appuie l'idée de doses plus fortes pendant le rhume ; ces doses dépassent le maximum de 2000 mg de l'app)"
+ },
+ {
+  "n": 14,
+  "group": "vitamine-c",
+  "authors": "Hemilä H, Chalker E.",
+  "title": "Vitamin C reduces the severity of common colds: a meta-analysis.",
+  "journal": "BMC Public Health",
+  "year": "2023",
+  "doi": "10.1186/s12889-023-17229-8",
+  "doiUrl": "https://doi.org/10.1186/s12889-023-17229-8",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38082300/",
+  "finding": "Méta-analyse de 10 essais randomisés en double aveugle : la vitamine C réduit la sévérité du rhume de 15 %, surtout sur les symptômes sévères.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 15,
+  "group": "miel",
+  "authors": "Abuelgasim H, Albury C, Lee J.",
+  "title": "Effectiveness of honey for symptomatic relief in upper respiratory tract infections: a systematic review and meta-analysis.",
+  "journal": "BMJ Evid Based Med",
+  "year": "2021",
+  "doi": "10.1136/bmjebm-2020-111336",
+  "doiUrl": "https://doi.org/10.1136/bmjebm-2020-111336",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32817011/",
+  "finding": "Méta-analyse de 14 études : le miel améliore les symptômes, la fréquence et la sévérité de la toux des infections des voies respiratoires supérieures mieux que les soins habituels.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 16,
+  "group": "miel",
+  "authors": "Oduwole O, Udoh EE, Oyo-Ita A, Meremikwu MM.",
+  "title": "Honey for acute cough in children.",
+  "journal": "Cochrane Database Syst Rev",
+  "year": "2018",
+  "doi": "10.1002/14651858.cd007094.pub5",
+  "doiUrl": "https://doi.org/10.1002/14651858.cd007094.pub5",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/29633783/",
+  "finding": "Cochrane, 6 essais/899 enfants : le miel réduit probablement la fréquence de la toux mieux que rien ou un placebo (preuve modérée), et à peu près autant que le dextrométhorphane.",
+  "level": "direct",
+  "supportNote": "appuie directement (enfants > 1 an)"
+ },
+ {
+  "n": 17,
+  "group": "miel",
+  "authors": "Paul IM, Beiler J, McMonagle A, Shaffer ML, Duda L, Berlin CM.",
+  "title": "Effect of honey, dextromethorphan, and no treatment on nocturnal cough and sleep quality for coughing children and their parents.",
+  "journal": "Arch Pediatr Adolesc Med",
+  "year": "2007",
+  "doi": "10.1001/archpedi.161.12.1140",
+  "doiUrl": "https://doi.org/10.1001/archpedi.161.12.1140",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/18056558/",
+  "finding": "Essai chez des enfants : le miel a été le mieux noté par les parents contre la toux nocturne et pour le sommeil ; le dextrométhorphane n'a pas fait mieux que rien.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 18,
+  "group": "zinc",
+  "authors": "Hemilä H.",
+  "title": "Zinc lozenges and the common cold: a meta-analysis comparing zinc acetate and zinc gluconate, and the role of zinc dosage.",
+  "journal": "JRSM Open",
+  "year": "2017",
+  "doi": "10.1177/2054270417694291",
+  "doiUrl": "https://doi.org/10.1177/2054270417694291",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/28515951/",
+  "finding": "Méta-analyse de 7 essais : les pastilles de zinc raccourcissent le rhume de 33 % en moyenne (acétate 40 %, gluconate 28 %) ; plus de 100 mg/jour n'apporte rien de plus.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 19,
+  "group": "zinc",
+  "authors": "Nault D, Machingo TA, Shipper AG, Antiporta DA, Hamel C, Nourouzpour S, Konstantinidis M, Phillips E, Lipski EA, Wieland LS.",
+  "title": "Zinc for prevention and treatment of the common cold.",
+  "journal": "Cochrane Database Syst Rev",
+  "year": "2024",
+  "doi": "10.1002/14651858.cd014914.pub2",
+  "doiUrl": "https://doi.org/10.1002/14651858.cd014914.pub2",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38719213/",
+  "finding": "Cochrane 2024, 34 études/8526 personnes : le zinc pourrait réduire la durée du rhume.",
+  "level": "partiel",
+  "supportNote": "partiel"
+ },
+ {
+  "n": 20,
+  "group": "sureau",
+  "authors": "Hawkins J, Baker C, Cherry L, Dunne E.",
+  "title": "Black elderberry (Sambucus nigra) supplementation effectively treats upper respiratory symptoms: A meta-analysis of randomized, controlled clinical trials.",
+  "journal": "Complement Ther Med",
+  "year": "2019",
+  "doi": "10.1016/j.ctim.2018.12.004",
+  "doiUrl": "https://doi.org/10.1016/j.ctim.2018.12.004",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/30670267/",
+  "finding": "Méta-analyse de 180 participants : le sureau noir réduit nettement les symptômes respiratoires (rhume et grippe).",
+  "level": "direct",
+  "supportNote": "appuie directement (petit nombre de participants)"
+ },
+ {
+  "n": 21,
+  "group": "sureau",
+  "authors": "Tiralongo E, Wee SS, Lea RA.",
+  "title": "Elderberry Supplementation Reduces Cold Duration and Symptoms in Air-Travellers: A Randomized, Double-Blind Placebo-Controlled Clinical Trial.",
+  "journal": "Nutrients",
+  "year": "2016",
+  "doi": "10.3390/nu8040182",
+  "doiUrl": "https://doi.org/10.3390/nu8040182",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/27023596/",
+  "finding": "Essai randomisé en double aveugle, 312 voyageurs en avion : avec le sureau, les rhumes ont duré moins longtemps (57 vs 117 jours au total) et ont été moins sévères ; pas de différence significative sur le nombre de rhumes.",
+  "level": "direct",
+  "supportNote": "appuie (durée et sévérité)"
+ },
+ {
+  "n": 22,
+  "group": "echinacee",
+  "authors": "Shah SA, Sander S, White CM, Rinaldi M, Coleman CI.",
+  "title": "Evaluation of echinacea for the prevention and treatment of the common cold: a meta-analysis.",
+  "journal": "Lancet Infect Dis",
+  "year": "2007",
+  "doi": "10.1016/s1473-3099(07)70160-3",
+  "doiUrl": "https://doi.org/10.1016/s1473-3099(07)70160-3",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/17597571/",
+  "finding": "Méta-analyse de 14 études : l'échinacée diminue le risque de rhume de 58 % et sa durée de 1,4 jour.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 23,
+  "group": "vitamine-d",
+  "authors": "Martineau AR, Jolliffe DA, Hooper RL, Greenberg L, Aloia JF, Bergman P, Dubnov-Raz G, Esposito S, Ganmaa D, Ginde AA, Goodall EC, Grant CC, Griffiths CJ, Janssens W, Laaksi I, Manaseki-Holland S, Mauger D, Murdoch DR, Neale R, Rees JR, Simpson S, Stelmach I, Kumar GT, Urashima M, Camargo CA.",
+  "title": "Vitamin D supplementation to prevent acute respiratory tract infections: systematic review and meta-analysis of individual participant data.",
+  "journal": "BMJ",
+  "year": "2017",
+  "doi": "10.1136/bmj.i6583",
+  "doiUrl": "https://doi.org/10.1136/bmj.i6583",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/28202713/",
+  "finding": "Méta-analyse de données individuelles (25 essais, 11 321 personnes) : la vitamine D protège contre les infections respiratoires aiguës (OR 0,88), surtout chez les personnes très carencées et en prise quotidienne/hebdomadaire plutôt qu'en grosses doses espacées.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 24,
+  "group": "vitamine-d",
+  "authors": "Jolliffe DA, Camargo CA, Sluyter JD, Aglipay M, Aloia JF, Ganmaa D, Bergman P, Bischoff-Ferrari HA, Borzutzky A, Damsgaard CT, Dubnov-Raz G, Esposito S, Gilham C, Ginde AA, Golan-Tripto I, Goodall EC, Grant CC, Griffiths CJ, Hibbs AM, Janssens W, Khadilkar AV, Laaksi I, Lee MT, Loeb M, Maguire JL, Majak P, Mauger DT, Manaseki-Holland S, Murdoch DR, Nakashima A, Neale RE, Pham H, Rake C, Rees JR, Rosendahl J, Scragg R, Shah D, Shimizu Y, Simpson-Yap S, Trilok-Kumar G, Urashima M, Martineau AR.",
+  "title": "Vitamin D supplementation to prevent acute respiratory infections: a systematic review and meta-analysis of aggregate data from randomised controlled trials.",
+  "journal": "Lancet Diabetes Endocrinol",
+  "year": "2021",
+  "doi": "10.1016/s2213-8587(21)00051-6",
+  "doiUrl": "https://doi.org/10.1016/s2213-8587(21)00051-6",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/33798465/",
+  "finding": "Mise à jour (46 essais, ~48 500 personnes) : un peu moins d'infections respiratoires avec la vitamine D (OR 0,92) ; effet modeste.",
+  "level": "partiel",
+  "supportNote": "appuie (effet modeste)"
+ },
+ {
+  "n": 25,
+  "group": "sommeil",
+  "authors": "Prather AA, Janicki-Deverts D, Hall MH, Cohen S.",
+  "title": "Behaviorally Assessed Sleep and Susceptibility to the Common Cold.",
+  "journal": "Sleep",
   "year": "2015",
-  "doi": "10.1056/nejmoa1508375",
-  "doiUrl": "https://doi.org/10.1056/nejmoa1508375",
-  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/26436473/",
-  "finding": "NUANCE : essai HEAT, 700 patients en soins intensifs avec fièvre et infection : l'acétaminophène n'a ni aidé ni nui (jours hors soins intensifs et mortalité inchangés).",
-  "level": "nuance",
-  "supportNote": "nuance / neutre"
+  "doi": "10.5665/sleep.4968",
+  "doiUrl": "https://doi.org/10.5665/sleep.4968",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/26118561/",
+  "finding": "164 adultes exposés au virus du rhume : ceux qui dormaient le moins (mesuré au bracelet) attrapaient plus souvent le rhume ; 6 à 7 h n'augmentait pas le risque par rapport à plus de 7 h.",
+  "level": "direct",
+  "supportNote": "appuie directement (prévention)"
+ },
+ {
+  "n": 26,
+  "group": "sommeil",
+  "authors": "Cohen S, Doyle WJ, Alper CM, Janicki-Deverts D, Turner RB.",
+  "title": "Sleep habits and susceptibility to the common cold.",
+  "journal": "Arch Intern Med",
+  "year": "2009",
+  "doi": "10.1001/archinternmed.2008.505",
+  "doiUrl": "https://doi.org/10.1001/archinternmed.2008.505",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/19139325/",
+  "finding": "Moins de sommeil et un sommeil moins efficace dans les semaines avant l'exposition au rhinovirus = moins de résistance au rhume.",
+  "level": "direct",
+  "supportNote": "appuie directement (prévention)"
+ },
+ {
+  "n": 27,
+  "group": "rincage",
+  "authors": "King D, Mitchell B, Williams CP, Spurling GK.",
+  "title": "Saline nasal irrigation for acute upper respiratory tract infections.",
+  "journal": "Cochrane Database Syst Rev",
+  "year": "2015",
+  "doi": "10.1002/14651858.cd006821.pub3",
+  "doiUrl": "https://doi.org/10.1002/14651858.cd006821.pub3",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25892369/",
+  "finding": "Cochrane : le rinçage nasal salin a peut-être des bénéfices (moins de sécrétions et de nez bouché chez l'enfant dans un essai plus grand).",
+  "level": "partiel",
+  "supportNote": "partiel"
+ },
+ {
+  "n": 28,
+  "group": "rincage",
+  "authors": "Ramalingam S, Graham C, Dove J, Morrice L, Sheikh A.",
+  "title": "A pilot, open labelled, randomised controlled trial of hypertonic saline nasal irrigation and gargling for the common cold.",
+  "journal": "Sci Rep",
+  "year": "2019",
+  "doi": "10.1038/s41598-018-37703-3",
+  "doiUrl": "https://doi.org/10.1038/s41598-018-37703-3",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/30705369/",
+  "finding": "Essai pilote randomisé (66 adultes) : rinçage nasal + gargarisme à l'eau salée hypertonique dès les 48 premières heures : maladie plus courte de 1,9 jour, 36 % moins de médicaments, moins de transmission dans la maison.",
+  "level": "direct",
+  "supportNote": "appuie directement (essai pilote, non aveugle)"
+ },
+ {
+  "n": 29,
+  "group": "rincage",
+  "authors": "Satomura K, Kitamura T, Kawamura T, Shimbo T, Watanabe M, Kamei M, Takano Y, Tamakoshi A, Great Cold Investigators-I.",
+  "title": "Prevention of upper respiratory tract infections by gargling: a randomized trial.",
+  "journal": "Am J Prev Med",
+  "year": "2005",
+  "doi": "10.1016/j.amepre.2005.06.013",
+  "doiUrl": "https://doi.org/10.1016/j.amepre.2005.06.013",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/16242593/",
+  "finding": "Essai randomisé au Japon : se gargariser à l'eau a réduit les infections des voies respiratoires supérieures d'environ 36 %.",
+  "level": "direct",
+  "supportNote": "appuie le gargarisme à l'eau"
+ },
+ {
+  "n": 30,
+  "group": "gingembre",
+  "authors": "Lissiman E, Bhasale AL, Cohen M.",
+  "title": "Garlic for the common cold.",
+  "journal": "Cochrane Database Syst Rev",
+  "year": "2014",
+  "doi": "10.1002/14651858.cd006206.pub4",
+  "doiUrl": "https://doi.org/10.1002/14651858.cd006206.pub4",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25386977/",
+  "finding": "Cochrane : un seul essai (146 personnes) — moins de rhumes avec l'ail (24 vs 65).",
+  "level": "partiel",
+  "supportNote": "partiel (prévention)"
+ },
+ {
+  "n": 31,
+  "group": "gingembre",
+  "authors": "Sanu A, Eccles R.",
+  "title": "The effects of a hot drink on nasal airflow and symptoms of common cold and flu.",
+  "journal": "Rhinology",
+  "year": "2008",
+  "doi": null,
+  "doiUrl": null,
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/19145994/",
+  "finding": "30 personnes enrhumées : une boisson chaude soulage tout de suite et durablement le nez qui coule, la toux, les éternuements, le mal de gorge, les frissons et la fatigue ; à température ambiante, seulement une partie des symptômes.",
+  "level": "direct",
+  "supportNote": "appuie directement (boisson chaude)"
+ },
+ {
+  "n": 32,
+  "group": "gingembre",
+  "authors": "Wardani RS, Schellack N, Govender T, Dhulap AN, Utami P, Malve V, Wong YC.",
+  "title": "Treatment of the common cold with herbs used in Ayurveda and Jamu: monograph review and the science of ginger, liquorice, turmeric and peppermint.",
+  "journal": "Drugs Context",
+  "year": "2023",
+  "doi": "10.7573/dic.2023-2-12",
+  "doiUrl": "https://doi.org/10.7573/dic.2023-2-12",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37342461/",
+  "finding": "Revue (table ronde d'experts) sur le gingembre, la réglisse, le curcuma et la menthe : usage traditionnel et monographies officielles pour soulager le rhume ; pas un essai clinique.",
+  "level": "lien",
+  "supportNote": "en lien"
+ },
+ {
+  "n": 33,
+  "group": "chaleur",
+  "authors": "Johnson C, Eccles R.",
+  "title": "Acute cooling of the feet and the onset of common cold symptoms.",
+  "journal": "Fam Pract",
+  "year": "2005",
+  "doi": "10.1093/fampra/cmi072",
+  "doiUrl": "https://doi.org/10.1093/fampra/cmi072",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/16286463/",
+  "finding": "Essai randomisé, 180 personnes en bonne santé : après un refroidissement des pieds, 13/90 ont eu un rhume dans les 4-5 jours contre 5/90 sans refroidissement ; plus de symptômes ensuite.",
+  "level": "direct",
+  "supportNote": "appuie directement (rester au chaud, bas : éviter le refroidissement)"
  }
 ];
 
-export const NUANCES_CHALEUR = [
- "Ces études parlent de la fièvre produite par le corps (ou de 37 °C vs nez plus froid). Aucune ne teste le fait de se couvrir très chaudement la nuit pour un rhume : c'est une extrapolation.",
- "Seuils de sécurité : Seheult fixe ~40 °C comme limite ; l'essai Schulman traitait à > 40 °C ; l'app dit déjà de se découvrir à ≥ 39 °C. Garder cette prudence.",
- "Enfants (AAP 2011) : traiter pour le confort, surveiller l'état général, bien hydrater ; ne pas surchauffer un enfant (risque de coup de chaleur). Bébé < 3 mois avec fièvre = consulter.",
- "Couper la fièvre ne change pas toujours l'issue : essai HEAT (NEJM 2015) neutre en soins intensifs.",
- "Foxman 2015/2016 : cellules de souris/humaines en laboratoire, pas des personnes.",
- "Consulter si fièvre ≥ 39-40 °C qui persiste, difficulté à respirer, raideur de nuque, confusion, convulsion, déshydratation, ou fièvre > 3 jours (811 / 911)."
-];
-
-// Fiches remèdes → groupe de références
-export const REF_FOR_REMEDE = { 'vitamine-c-double': 'vitamine-c', zinc: 'zinc', miel: 'miel', sureau: 'sureau', echinacee: 'echinacee', vitamines: 'vitamine-d', betadine: 'sprays' };
+// Rappels de sécurité par groupe (aucune contradiction avec les conseils de l’appli).
+export const NUANCES = {
+ "chaleur": [
+  "Seuils de sécurité : Seheult fixe ~40 °C comme limite ; l'essai Schulman traitait à > 40 °C ; l'app dit déjà de se découvrir à ≥ 39 °C. Garder cette prudence.",
+  "Enfants (AAP 2011) : traiter pour le confort, surveiller l'état général, bien hydrater ; ne pas surchauffer un enfant (risque de coup de chaleur). Bébé < 3 mois avec fièvre = consulter.",
+  "Consulter si fièvre ≥ 39-40 °C qui persiste, difficulté à respirer, raideur de nuque, confusion, convulsion, déshydratation, ou fièvre > 3 jours (811 / 911)."
+ ],
+ "zinc": [
+  "Zinc : effets indésirables (goût, nausées) ; pas de bénéfice au-delà de 100 mg/jour ; ne pas prendre longtemps."
+ ]
+};

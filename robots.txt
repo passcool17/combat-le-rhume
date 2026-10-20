@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://passcool17.github.io/combat-le-rhume/sitemap.xml

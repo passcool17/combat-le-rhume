@@ -3,7 +3,7 @@ import { cpSync, rmSync, existsSync, writeFileSync, readFileSync } from "node:fs
 import { join } from "node:path";
 const root = new URL("../../", import.meta.url).pathname;
 const dist = new URL("../dist/", import.meta.url).pathname;
-for (const p of ["assets", "icons", "index.html", "404.html", "sw.js", "manifest.webmanifest", "favicon.svg", "og.jpg"]) {
+for (const p of ["assets", "icons", "index.html", "404.html", "sw.js", "manifest.webmanifest", "favicon.svg", "og.jpg", "robots.txt", "sitemap.xml"]) {
   if (existsSync(join(root, p))) rmSync(join(root, p), { recursive: true, force: true });
 }
 cpSync(dist, root, { recursive: true });

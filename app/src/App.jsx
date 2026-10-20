@@ -1,16 +1,43 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { usePrefs } from "./lib/stockage.js";
 import { useNav } from "./lib/nav.js";
 import { Activity, BookOpen, ClipboardList, House, Leaf, Moon, Sprout, Stethoscope, Sun } from "./components/icones.jsx";
 import { cn } from "./lib/cn.js";
 import { Accueil } from "./pages/Accueil.jsx";
-import { Symptomes } from "./pages/Symptomes.jsx";
 import { Remedes } from "./pages/Remedes.jsx";
-import { Plantes } from "./pages/Plantes.jsx";
-import { Recettes } from "./pages/Recettes.jsx";
 import { Conseils } from "./pages/Conseils.jsx";
-import { Suivi } from "./pages/Suivi.jsx";
-import { References } from "./pages/References.jsx";
+import { UpdateToast } from "./components/UpdateToast.jsx";
+
+// Vues moins fréquentes : chargées à la demande (puis préchargées au repos, et toutes en cache hors ligne).
+const loaders = {
+  symptomes: () => import("./pages/Symptomes.jsx").then((m) => ({ default: m.Symptomes })),
+  plantes: () => import("./pages/Plantes.jsx").then((m) => ({ default: m.Plantes })),
+  recettes: () => import("./pages/Recettes.jsx").then((m) => ({ default: m.Recettes })),
+  suivi: () => import("./pages/Suivi.jsx").then((m) => ({ default: m.Suivi })),
+  references: () => import("./pages/References.jsx").then((m) => ({ default: m.References })),
+};
+// Une fois préchargée, la vue s’affiche directement (pas de suspension ni de délai « Chargement… »).
+function lazyPage(load) {
+  let Loaded = null;
+  const get = () => load().then((m) => (Loaded = m.default, m));
+  const Lazy = lazy(get);
+  const Page = (props) => (Loaded ? <Loaded {...props} /> : <Lazy {...props} />);
+  Page.preload = () => get().catch(() => {});
+  return Page;
+}
+const Symptomes = lazyPage(loaders.symptomes);
+const Plantes = lazyPage(loaders.plantes);
+const Recettes = lazyPage(loaders.recettes);
+const Suivi = lazyPage(loaders.suivi);
+const References = lazyPage(loaders.references);
+if (typeof window !== `undefined`) {
+  const warm = () => [Symptomes, Plantes, Recettes, Suivi, References].forEach((P) => P.preload());
+  if (document.readyState === `complete`) setTimeout(warm, 1500);
+  else addEventListener(`load`, () => (window.requestIdleCallback ? requestIdleCallback(warm, { timeout: 2000 }) : setTimeout(warm, 1500)));
+}
+
+const TITLES = { accueil: ``, symptomes: `Symptômes`, remedes: `Remèdes`, plantes: `Plantes`, recettes: `Recettes`, conseils: `Conseils`, suivi: `Suivi`, references: `Références` };
+const THEME = { combat: `#a8261b`, soutien: `#0f6a68` };
 import { CombatAdvice } from "./combat/CombatPlus.jsx";
 import { InstallBanner, ShareButton } from "./components/Installer.jsx";
 import { PENDANT_MALADIE, QUAND_CONSULTER } from "./data/contenu.js";
@@ -32,6 +59,21 @@ export function App() {
     h.classList.toggle(`mode-soutien`, stance === `soutien`);
   }, [stance]);
   useEffect(() => {
+    // Titre par vue + couleur de la barre du navigateur selon le mode.
+    const t = tab === `remedes` && stance ? (stance === `combat` ? `Mode Combat` : `Mode Soutien`) : TITLES[tab];
+    document.title = t ? `${t} · Combat le rhume` : `Combat le rhume — guide pratique contre le rhume et la grippe`;
+    document.querySelector(`meta[name=theme-color]`)?.setAttribute(`content`, THEME[stance] ?? `#1B6B48`);
+  }, [tab, stance]);
+  useEffect(() => {
+    // Hauteur réelle de l’en-tête collant, pour que les ancres ne passent pas dessous.
+    if (`scrollRestoration` in history) history.scrollRestoration = `manual`;
+    const h = document.querySelector(`header`);
+    if (!h || !window.ResizeObserver) return;
+    const ro = new ResizeObserver(() => document.documentElement.style.setProperty(`--clr-header`, `${h.offsetHeight}px`));
+    ro.observe(h);
+    return () => ro.disconnect();
+  }, []);
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [tab]);
   useEffect(() => {
@@ -42,7 +84,7 @@ export function App() {
   const sections = sectionsFor(stance);
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-30 border-b border-line bg-bg/90 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-line bg-bg">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
           <div className="flex items-center gap-3">
             <span className="flex size-10 items-center justify-center rounded-2xl bg-primary text-primary-fg">
@@ -98,6 +140,8 @@ export function App() {
       </header>
       <main className="mx-auto max-w-5xl px-4 pt-5 pb-28 md:pb-16">
         <InstallBanner />
+        <UpdateToast />
+        <Suspense fallback={<p className="py-10 text-center text-sm text-muted" role="status">Chargement…</p>}>
         {tab === `accueil` ? <Accueil /> : null}
         {tab === `symptomes` && !combatHidden ? <Symptomes onPrep={openRecipe} onPlants={() => setTab(`plantes`)} /> : null}
         {tab === `remedes` || combatHidden ? <Remedes filter={filter} onFilter={setFilter} /> : null}
@@ -112,6 +156,7 @@ export function App() {
         ) : null}
         {tab === `suivi` ? <Suivi /> : null}
         {tab === `references` ? <References /> : null}
+        </Suspense>
         <p className="mt-3 flex flex-wrap items-center justify-center gap-x-2 text-center text-xs text-muted">
           <span>Guide éducatif. Ton suivi ne quitte pas cet appareil.</span>
           {tab === `references` ? null : (

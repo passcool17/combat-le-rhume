@@ -98,7 +98,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await h.click('Remèdes');
  t=(await p.locator('[data-clr=consulter]').first().innerText()).replace(/\s+/g,' ');
  ok('combat logic reads unified data (fièvre du journal)',t.includes('Il vaut mieux consulter')&&t.includes('Fièvre'));
- ok('combat warm advice off from journal fever',(await p.locator('main h1 + p').innerText()).includes('pas de surchauffe ni de tuque'));
+ ok('combat warm advice off from journal fever',(await p.locator('main h1 + p').innerText()).includes('pas de surchauffe ni de bonnet'));
  ok('kit migrated in UI',(await p.locator('[data-clr=kit]').innerText()).includes('2 / 11'));
  await h.click('Suivi');t=await h.main();
  ok('Suivi always reachable in Combat',JSON.stringify(await h.h1s())==='["Suivi"]');
