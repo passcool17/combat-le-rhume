@@ -68,7 +68,7 @@ export function References() {
                     <span className={cn(`clr-ref-b`, b.cls)} data-badge={r.level}>{b.label}</span>
                   </div>
                   <p className="mt-1 text-xs text-muted">
-                    {r.notPhysician ? <span className="clr-ref-b clr-ref-b-warn mr-1" data-clr="pas-medecin">PhD, pas médecin</span> : null}
+                    {r.notPhysician ? <span className="clr-ref-b clr-ref-b-warn mr-1" data-clr="pas-medecin">{r.notPhysicianLabel || `PhD, pas médecin`}</span> : null}
                     {r.credential}
                   </p>
                   <p className="mt-3 text-sm"><span className="font-medium">Conseil de l’appli : </span>{r.claim}</p>
