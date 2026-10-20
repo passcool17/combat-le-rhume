@@ -188,7 +188,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Oreilles`,
-        detail: `Peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Seulement dilué (moitié eau, moitié peroxyde 3 %), quelques gouttes. Laisser agir 5 minutes maximum, ou avant si étourdissement : arrêter dès qu’un étourdissement apparaît. Puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
+        detail: `Peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Même mélange que le gargarisme : 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau (50/50), quelques gouttes dans chaque oreille. Laisser agir 5 minutes maximum, ou avant si étourdissement : arrêter dès qu’un étourdissement apparaît. Puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
       },
     ],
   },
@@ -449,7 +449,7 @@ export const REMEDES = [
     caution: true,
     how: `Uniquement du peroxyde 3 % Food Grade (jamais le 35 %). Ne jamais exposer la bouteille au soleil : la lumière dégrade le produit.`,
     extra: [
-      `Oreilles : peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Seulement dilué (moitié eau, moitié peroxyde 3 %), quelques gouttes. Laisser agir 5 minutes maximum, ou avant si étourdissement : arrêter dès qu’un étourdissement apparaît. Puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
+      `Oreilles : peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Même mélange que le gargarisme : 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau (50/50), quelques gouttes dans chaque oreille. Laisser agir 5 minutes maximum, ou avant si étourdissement : arrêter dès qu’un étourdissement apparaît. Puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
       `Gargarisme : 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. Gargariser, recracher. Ne jamais avaler.`,
       `Arrêter en cas d’irritation. Usage court uniquement.`,
     ],
@@ -790,6 +790,10 @@ export const PREVENTION = [
   `Alimentation riche en légumes, ail et gingembre`,
   `Limiter le sucre et les produits ultra-transformés`,
 ];
+
+// Prévention réservée à l’adulte (cachée en profil Enfant, comme les autres usages du peroxyde).
+export const PREVENTION_OREILLES = `Oreilles au peroxyde, en prévention (adulte) : même mélange que le gargarisme, 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau (50/50). Quelques gouttes dans chaque oreille, 5 minutes maximum, ou avant si étourdissement. Puis pencher la tête pour vider. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement.`;
+export const preventionPour = (enfant) => (enfant ? PREVENTION : [...PREVENTION, PREVENTION_OREILLES]);
 
 export const PENDANT_MALADIE = [
   `Humidifier l’air de la chambre, surtout en hiver.`,

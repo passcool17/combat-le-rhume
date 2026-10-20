@@ -1,12 +1,14 @@
 import { Card } from "../components/ui.jsx";
 import { RefCard } from "./RefCard.jsx";
+import { usePrefs } from "../lib/stockage.js";
 import {
   PENDANT_MALADIE,
-  PREVENTION,
+  preventionPour,
   QUAND_CONSULTER,
 } from "../data/contenu.js";
 
 export function Conseils() {
+  const enfant = usePrefs((p) => p.audience) === `enfant`;
   return (
     <div className="space-y-4">
       <div>
@@ -30,8 +32,8 @@ export function Conseils() {
         <Card>
           <h2 className="text-xl">Prévention</h2>
           <ul className="mt-3 space-y-2">
-            {PREVENTION.map((e) => (
-              <li className="flex gap-2 text-sm" key={e}>
+            {preventionPour(enfant).map((e) => (
+              <li className="flex gap-2 text-sm" key={e} data-prevention={e.startsWith(`Oreilles`) ? `oreilles` : undefined}>
                 <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
                 <span>{e}</span>
               </li>
