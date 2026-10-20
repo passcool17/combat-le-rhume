@@ -17,7 +17,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('combat nav only Accueil+Remèdes+Suivi',JSON.stringify(await navLabels())==='["Accueil","Remèdes","Suivi"]');
  let t=await main();
  ok('remedes: no search',await p.getByPlaceholder('Rechercher un remède ou un symptôme…').count()===0);
- ok('remedes: 4 gestes cards',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel et citron/}).count()===4);
+ ok('remedes: 5 gestes cards',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel et citron|Double dose de vitamine C/}).count()===5);
  ok('remedes: keeps panel/consult/kit/warm',t.includes('J’ai mal à la gorge, je commence')&&t.includes('QUAND ARRÊTER ET CONSULTER')&&t.includes('Kit Combat')&&t.includes('même une tuque'));
  ok('remedes: mode switch',t.includes('CHANGER DE MODE')&&t.includes('Voir tous les remèdes'));
  await full('1-remedes');
@@ -33,7 +33,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await p.reload({waitUntil:'networkidle'});ok('reload keeps combat nav',JSON.stringify(await navLabels())==='["Accueil","Remèdes","Suivi"]');
  // start from accueil
  await click('J’ai mal à la gorge, je commence');t=await main();ok('home start opens protocol',t.includes('Jour 1 sur 3')&&(await p.locator('main h1').first().innerText())==='Mode Combat');
- await click('Accueil');ok('home shows day',(await main()).includes('Jour 1 sur 3')&&(await main()).includes('Gestes faits aujourd’hui : 0 sur 4'));
+ await click('Accueil');ok('home shows day',(await main()).includes('Jour 1 sur 3')&&(await main()).includes('Gestes faits aujourd’hui : 0 sur 5'));
  await click('Ouvrir mon protocole');await click('Faire le point dans Suivi');
  // fever hides warm in conseils
  await click('Soir');await p.getByRole('group',{name:'Fièvre'}).getByRole('button',{name:'Oui'}).click();await click(/^(Enregistrer|Mettre à jour) \(soir\)/);

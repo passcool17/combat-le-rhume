@@ -64,7 +64,7 @@ export function Remedes({ filter, onFilter }) {
           {stance === `combat`
             ? <CombatSubtitle />
             : stance === `soutien`
-              ? `Plantes, vitamines et le reste. Les quatre gestes du mal de gorge sont dans le mode Combat.`
+              ? `Plantes, vitamines et le reste. Les cinq gestes du mal de gorge sont dans le mode Combat.`
               : audience === `enfant`
                 ? `Doses réduites. Ce n’est pas une ordonnance : en cas de doute, demander un avis.`
                 : `Doses, durée et précautions. Les fiches ambre demandent plus de retenue.`}
