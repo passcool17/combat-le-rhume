@@ -6,7 +6,7 @@ export const PROTOCOLE_DU_JOUR = [
   {
     id: `tot`,
     title: `Frapper fort`,
-    detail: `Dès le mal de gorge : 1. spray povidone-iode 0,45 % · 2. peroxyde · 3. pastilles antiseptiques · 4. miel.`,
+    detail: `Dès le mal de gorge : 1. spray povidone-iode 0,45 % · 2. peroxyde 3 % Food Grade · 3. pastilles antiseptiques · 4. miel.`,
   },
   {
     id: `hydratation`,
@@ -184,7 +184,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Gargarisme au peroxyde`,
-        detail: `1 c. à soupe de peroxyde 3 % food grade + 1 c. à soupe d’eau. Gargariser quelques minutes, puis recracher. Ne jamais avaler. Garder la bouteille à l’abri du soleil.`,
+        detail: `1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. Gargariser quelques minutes, puis recracher. Ne jamais avaler. Garder la bouteille à l’abri du soleil.`,
       },
       {
         lead: `Oreilles`,
@@ -444,13 +444,13 @@ export const REMEDES = [
   {
     id: `peroxyde`,
     name: `Peroxyde d’hydrogène 3 %`,
-    kicker: `Food grade seulement`,
+    kicker: `3 % Food Grade seulement`,
     topics: [`gorge`],
     caution: true,
-    how: `Uniquement du peroxyde 3 % food grade. Ne jamais exposer la bouteille au soleil : la lumière dégrade le produit.`,
+    how: `Uniquement du peroxyde 3 % Food Grade (jamais le 35 %). Ne jamais exposer la bouteille au soleil : la lumière dégrade le produit.`,
     extra: [
       `Oreilles : peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Seulement dilué (moitié eau, moitié peroxyde 3 %), quelques gouttes, puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
-      `Gargarisme : 1 c. à soupe de peroxyde 3 % + 1 c. à soupe d’eau. Gargariser, recracher. Ne jamais avaler.`,
+      `Gargarisme : 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. Gargariser, recracher. Ne jamais avaler.`,
       `Arrêter en cas d’irritation. Usage court uniquement.`,
     ],
     tag: `Usage très prudent`,
@@ -733,8 +733,8 @@ export const LOGIQUE_COMBAT = [
     detail: `Le plus direct et le plus pratique dès les premiers signes. Action locale immédiate.`,
   },
   {
-    lead: `2. Peroxyde d’hydrogène`,
-    detail: `Gargarismes pour un contact prolongé. Puissant, moins pratique que le spray.`,
+    lead: `2. Peroxyde d’hydrogène 3 % Food Grade`,
+    detail: `1 c. à soupe + 1 c. à soupe d’eau, en gargarisme pour un contact prolongé. Recracher, ne pas avaler. Puissant, moins pratique que le spray.`,
   },
   {
     lead: `3. Pastilles antiseptiques`,
@@ -755,8 +755,8 @@ export const GORGE_GESTES = [
     detail: `Spray Betadine pour la gorge. Le plus direct dès les premiers signes. Souvent à partir de 6 ans : suivre l’étiquette.`,
   },
   {
-    lead: `2. Peroxyde`,
-    detail: `1 c. à soupe de peroxyde 3 % food grade + 1 c. à soupe d’eau. Contact prolongé. Recracher, ne jamais avaler. Bouteille à l’abri du soleil.`,
+    lead: `2. Peroxyde 3 % Food Grade`,
+    detail: `1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. Contact prolongé. Recracher, ne jamais avaler. Bouteille à l’abri du soleil.`,
   },
   {
     lead: `3. Pastilles antiseptiques`,
