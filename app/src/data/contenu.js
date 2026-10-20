@@ -21,7 +21,7 @@ export const PROTOCOLE_DU_JOUR = [
   {
     id: `immunite`,
     title: `Vitamine D`,
-    detail: `En priorité. Un supplément est souvent recommandé au Québec en automne et en hiver : demande conseil à ton pharmacien ou à ton médecin. Adulte : souvent 2 000 à 4 000 UI/jour, selon une prise de sang. En phase aiguë : zinc 15–30 mg et vitamine C 1–2 g.`,
+    detail: `En priorité. Un supplément est souvent recommandé au Québec en automne et en hiver : demande conseil à ton pharmacien ou à ton médecin. Adulte : 1 000 à 2 000 UI tous les jours (pas de grosses doses espacées), plafond 4 000 UI. En phase aiguë : zinc en pastilles et vitamine C 2 g par jour (voir les fiches).`,
   },
   {
     id: `cibles`,
@@ -56,9 +56,9 @@ export const PHASES = [
     label: `Premiers signes`,
     lines: [
       `Vitamine D en priorité, surtout l’automne et l’hiver au Québec.`,
-      `Zinc 15–30 mg dès les 24 premières heures, en pastilles si la gorge pique.`,
+      `Zinc en pastilles dans les 24 heures des premiers symptômes (adulte : voir la fiche Zinc).`,
       `Sureau ou échinacée, démarrés tout de suite.`,
-      `Vitamine C répartie dans la journée, et se coucher tôt.`,
+      `Vitamine C en 2 à 3 prises dans la journée, et se coucher tôt.`,
     ],
     filter: `fievre`,
   },
@@ -78,7 +78,7 @@ export const PHASES = [
     lines: [
       `Repas simples, bouillons, aliments fermentés ou probiotiques.`,
       `Ne pas reprendre le rythme d’un coup. Le sommeil reste prioritaire.`,
-      `Arrêter l’échinacée après 7 à 10 jours continus.`,
+      `Échinacée : jusqu’à 10 jours.`,
     ],
     filter: `tous`,
   },
@@ -124,11 +124,11 @@ export const SYMPTOMES = [
       },
       {
         lead: `Zinc`,
-        detail: `15–30 mg/jour en pastilles, dès le début.`,
+        detail: `En pastilles, dans les 24 heures des premiers symptômes (adulte : voir la fiche Zinc).`,
       },
       {
         lead: `Lavage nasal`,
-        detail: `Solution saline : ½ à 1 c. à café de sel dans 250 ml d’eau tiède, bouillie ou filtrée. Peroxyde dans le nez : jamais pur, seulement la recette « La plus forte » (adulte).`,
+        detail: `Solution saline : ½ à 1 c. à café de sel dans 250 ml d’eau tiède, bouillie ou filtrée, jusqu’à 6 fois par jour les 2 premiers jours. Peroxyde dans le nez : jamais pur, seulement la recette « La plus forte » (adulte).`,
         prepId: `sinus`,
       },
     ],
@@ -140,15 +140,15 @@ export const SYMPTOMES = [
     tips: [
       {
         lead: `Zinc`,
-        detail: `15–30 mg/jour dès les premières heures.`,
+        detail: `En pastilles, dès les premières heures (adulte : voir la fiche Zinc).`,
       },
       {
         lead: `Vitamine C`,
-        detail: `500 mg à 1 g, 2 à 3 fois par jour.`,
+        detail: `Adulte : 1 g par jour en soutien ; 2 g par jour en 2 à 3 prises dès les premiers symptômes. Pas plus de 2 g par jour.`,
       },
       {
         lead: `Échinacée`,
-        detail: `Selon le dosage, pendant 7 à 10 jours maximum.`,
+        detail: `Selon l’étiquette, prises augmentées pendant le rhume, jusqu’à 10 jours.`,
       },
       {
         lead: `Produits laitiers`,
@@ -167,7 +167,7 @@ export const SYMPTOMES = [
     tips: [
       {
         lead: `Gargarisme eau salée`,
-        detail: `½ c. à café de sel dans un verre d’eau tiède, 3 à 4 fois par jour.`,
+        detail: `½ c. à café de sel dans un verre d’eau tiède, 3 à 4 fois par jour, et jusqu’à 6 fois par jour les 2 premiers jours.`,
       },
       {
         lead: `Mélange ail-vinaigre-miel`,
@@ -176,7 +176,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Miel`,
-        detail: `1 c. à café pure, plusieurs fois par jour. Jamais d’ustensile en métal.`,
+        detail: `1 c. à soupe de miel seul, plusieurs fois par jour. Jamais d’ustensile en métal.`,
       },
       {
         lead: `Tisane sauge ou thym`,
@@ -184,7 +184,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Gargarisme au peroxyde`,
-        detail: `1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. Gargariser quelques minutes, puis recracher. Ne jamais avaler. Garder la bouteille à l’abri du soleil.`,
+        detail: `1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. 30 s en bouche + 30 s en gorge, puis recracher. 3 fois par jour, jusqu’à 5 jours. Ne jamais avaler. Garder la bouteille à l’abri du soleil.`,
       },
       {
         lead: `Oreilles`,
@@ -209,7 +209,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Miel au coucher`,
-        detail: `1 c. à café avant de dormir.`,
+        detail: `1 c. à soupe de miel seul, 30 min avant le coucher. Enfant de 1 à 5 ans : 2 c. à thé. Jamais avant 1 an.`,
       },
       {
         lead: `Air et voix`,
@@ -236,7 +236,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Sureau ou échinacée`,
-        detail: `Selon le dosage indiqué sur le produit.`,
+        detail: `Sureau (adulte) : 1 c. à soupe 4 fois par jour pendant 5 jours, dans les 48 premières heures. Échinacée : selon l’étiquette.`,
       },
       {
         lead: `Surveiller`,
@@ -259,7 +259,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Vitamine D`,
-        detail: `Selon les besoins, souvent 2 000 à 4 000 UI/jour en hiver.`,
+        detail: `Adulte : 1 000 à 2 000 UI tous les jours en hiver, plafond 4 000 UI.`,
       },
       {
         lead: `Zinc et vitamine C`,
@@ -287,7 +287,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Magnésium`,
-        detail: `200 à 400 mg le soir, si besoin.`,
+        detail: `200 à 350 mg le soir, si besoin. Pas plus de 350 mg en supplément.`,
       },
       {
         lead: `Vitamine C et curcuma`,
@@ -342,6 +342,7 @@ export const REMEDES = [
     how: `1 à 2 c. à soupe au réveil, dilué dans un peu d’eau tiède si besoin. Maximum 2 fois par jour.`,
     extra: [
       `Pendant la phase aiguë, 5 à 10 jours.`,
+      `Option : ail vieilli en gélules (2,56 g par jour dans une étude), selon l’étiquette.`,
       `Recette complète dans Préparations.`,
     ],
     tag: `Immunité · rhume · grippe`,
@@ -351,8 +352,8 @@ export const REMEDES = [
     name: `Échinacée`,
     kicker: `Dès les premiers signes`,
     topics: [`fievre`],
-    how: `Tisane, 1 à 2 tasses par jour, ou extrait selon l’emballage. Commencer dès les premiers symptômes.`,
-    extra: [`7 à 10 jours maximum en continu.`],
+    how: `Tisane, 1 à 2 tasses par jour, ou extrait selon l’étiquette, avec des prises augmentées pendant le rhume. Commencer dès les premiers symptômes.`,
+    extra: [`Jusqu’à 10 jours.`],
     tag: `Immunité · prévention`,
   },
   {
@@ -371,7 +372,7 @@ export const REMEDES = [
     name: `Lavage nasal`,
     kicker: `Congestion`,
     topics: [`congestion`],
-    how: `Solution saline, 1 à 3 fois par jour. Tête penchée, respirer par la bouche, ne pas forcer.`,
+    how: `Solution saline : jusqu’à 6 fois par jour les 2 premiers jours, puis 1 à 3 fois par jour. Tête penchée, respirer par la bouche, ne pas forcer.`,
     extra: [
       `Les recettes sont dans les préparations. Peroxyde dans le nez : jamais pur, seulement la recette « La plus forte » (adulte).`,
     ],
@@ -382,11 +383,19 @@ export const REMEDES = [
     name: `Zinc`,
     kicker: `Les 24 premières heures`,
     topics: [`fievre`, `gorge`],
-    how: `15 à 30 mg de zinc élémentaire par jour, en 2 ou 3 prises. À commencer dans les 24 premières heures.`,
+    adulteSeulement: true,
+    how: `Dose des études : pastilles de zinc d’environ 13 mg, 1 pastille toutes les 2 à 3 heures éveillé (≈ 75 à 90 mg par jour), dans les 24 heures des premiers symptômes. 5 à 7 jours maximum. Adulte seulement.`,
+    avertissement: [
+      `Dépasse la limite usuelle de 40 mg par jour : seulement pour une courte durée (5 à 7 jours maximum).`,
+      `Peut causer nausées et goût métallique. Carence en cuivre si prolongé.`,
+      `Jamais plus de 100 mg par jour : aucun bénéfice de plus.`,
+      `Demande avis au pharmacien si tu prends des médicaments ou en cas de grossesse.`,
+      `Jamais de zinc dans le nez (spray ou gel nasal) : risque de perte de l’odorat.`,
+    ],
     extra: [
-      `Ne pas dépasser 40 mg/jour sans avis médical.`,
       `Les pastilles sont utiles pour le mal de gorge.`,
     ],
+    extraEnfant: [`Jamais de zinc dans le nez (spray ou gel nasal).`],
     tag: `Immunité · premiers symptômes`,
   },
   {
@@ -408,10 +417,10 @@ export const REMEDES = [
     name: `Vitamines C et D`,
     kicker: `Soutien de fond`,
     topics: [`fievre`],
-    how: `Vitamine C : 500 mg à 1 g, 2 à 3 fois par jour pendant la phase aiguë.`,
+    how: `Vitamine C en soutien : 1 g par jour (par ex. 500 mg, 2 fois par jour). Au-delà de 2 g par jour : risque de diarrhée et de calculs rénaux.`,
     extra: [
       `Vitamine D, en priorité : un supplément est souvent recommandé au Québec en automne et en hiver ; demande conseil à ton pharmacien ou à ton médecin.`,
-      `Dose courante : 2 000 à 4 000 UI/jour. À adapter selon une prise de sang. Utile pour le système immunitaire.`,
+      `Vitamine D : 1 000 à 2 000 UI tous les jours, pas de grosses doses espacées. Plafond : 4 000 UI par jour. Utile pour le système immunitaire.`,
       `Soleil : visage et bras, sans lunettes, sans brûler. 30 minutes au minimum, une heure c’est mieux, surtout en été.`,
     ],
     tag: `Soutien de base`,
@@ -421,9 +430,9 @@ export const REMEDES = [
     name: `Double dose de vitamine C`,
     kicker: `Dès les premiers symptômes`,
     topics: [`fievre`, `gorge`],
-    how: `Dès les premiers symptômes, doubler sa dose habituelle (par ex. 500 mg → 1000 mg par jour), en 2 prises avec de l’eau, pendant la durée du rhume.`,
+    how: `Dès les premiers symptômes, doubler la dose : 2 g par jour (1 g → 2 g), en 2 à 3 prises avec de l’eau, pendant la durée du rhume.`,
     extra: [
-      `Ne pas dépasser 2000 mg par jour chez l’adulte (risque de maux de ventre, de diarrhée).`,
+      `Ne pas dépasser 2 g par jour chez l’adulte : au-delà, risque de diarrhée et de calculs rénaux.`,
       `Prudence en cas de calculs rénaux ou d’hémochromatose. Si tu prends des médicaments, demande à ton pharmacien.`,
     ],
     tag: `Vitamine C · premiers symptômes`,
@@ -450,7 +459,7 @@ export const REMEDES = [
     how: `Uniquement du peroxyde 3 % Food Grade (jamais le 35 %). Ne jamais exposer la bouteille au soleil : la lumière dégrade le produit.`,
     extra: [
       `Oreilles : peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Même mélange que le gargarisme : 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau (50/50), quelques gouttes dans chaque oreille. Laisser agir 5 minutes maximum, ou avant si étourdissement : arrêter dès qu’un étourdissement apparaît. Puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
-      `Gargarisme : 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. Gargariser, recracher. Ne jamais avaler.`,
+      `Gargarisme : 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. 30 s en bouche + 30 s en gorge, puis recracher. 3 fois par jour, jusqu’à 5 jours. Ne jamais avaler.`,
       `Arrêter en cas d’irritation. Usage court uniquement.`,
     ],
     tag: `Usage très prudent`,
@@ -471,7 +480,7 @@ export const REMEDES = [
     name: `Sureau noir`,
     kicker: `Dès les premiers signes`,
     topics: [`fievre`],
-    how: `Sirop : 1 c. à café à 1 c. à soupe, 2 à 4 fois par jour. Tisane : 2 à 3 tasses.`,
+    how: `Sirop (adulte) : 1 c. à soupe (15 ml), 4 fois par jour pendant 5 jours, à commencer dans les 48 premières heures. Tisane : 2 à 3 tasses.`,
     extra: [`L’effet est meilleur s’il est commencé tôt.`],
     tag: `Grippe · immunité`,
   },
@@ -480,7 +489,7 @@ export const REMEDES = [
     name: `Probiotiques`,
     kicker: `Après la phase aiguë`,
     topics: [],
-    how: `Aliments fermentés (kéfir, yaourt nature, choucroute, kimchi) ou un complément. Plutôt après la phase aiguë, ou en soutien intestinal.`,
+    how: `Aliments fermentés (kéfir, yaourt nature, choucroute, kimchi) ou un complément, selon l’étiquette. Plutôt après la phase aiguë, ou en soutien intestinal.`,
     extra: [`Utile en convalescence, et après une antibiothérapie.`],
     tag: `Immunité · convalescence`,
   },
@@ -524,7 +533,7 @@ export const REMEDES = [
     kicker: `Pour le mal de gorge`,
     topics: [`toux`, `gorge`],
     how: `Pour le mal de gorge, prendre seulement du miel : 1 cuillère à soupe de miel seul, avec une cuillère qui n’est pas en métal (bois, plastique ou céramique). Pas dans une tisane, pas de citron.`,
-    extra: [`Ne pas rincer la gorge ni boire juste après : laisser le miel agir dans la gorge.`, `Apaise la gorge et la toux, notamment la nuit.`],
+    extra: [`Ne pas rincer la gorge ni boire juste après : laisser le miel agir dans la gorge.`, `Pour la toux de nuit : 1 c. à soupe de miel seul, 30 min avant le coucher.`, `Apaise la gorge et la toux, notamment la nuit.`],
     tag: `Gorge · toux nocturne`,
   },
   {
@@ -547,10 +556,10 @@ export const DOSES_ENFANT = {
   echinacee: `Dose réduite, quelques jours seulement.`,
   pin: `Tisane légère, bien diluée.`,
   lavage: `Version douce, selon l’âge. Ne pas forcer.`,
-  zinc: `Selon le poids, avec un avis. Ne pas reprendre 15 à 30 mg.`,
+  zinc: `Pas la dose des études (réservée à l’adulte). Chez l’enfant : selon le poids, avec un avis du pharmacien.`,
   betadine: `À partir de 6 ans, sous surveillance : 1 vaporisation, jusqu’à 3 fois par jour. Pas avant.`,
   pastilles: `Selon l’âge indiqué sur la boîte. Pas les pastilles fortes d’adulte.`,
-  vitamines: `Selon l’âge. Ne pas donner 2 000 à 4 000 UI sans avis.`,
+  vitamines: `Selon l’âge. Ne pas donner la dose adulte de vitamine D sans avis.`,
   'vitamine-c-double': `Dose selon l’âge : demander au pharmacien avant de doubler.`,
   argent: `À éviter chez l’enfant.`,
   peroxyde: `À éviter, ou seulement avec un avis. Pas dans les oreilles d’un jeune enfant.`,
@@ -559,7 +568,7 @@ export const DOSES_ENFANT = {
   origan: `Déconseillée.`,
   reglisse: `Usage limité, et pas en continu.`,
   thym: `Tisane légère plutôt que le sirop concentré.`,
-  miel: `À partir de 1 an seulement. Jamais avant.`,
+  miel: `À partir de 1 an seulement. Jamais avant. De 1 à 5 ans : 2 c. à thé de miel seul, 30 min avant le coucher pour la toux de nuit.`,
   violette: `Teinture : 10 à 15 gouttes à partir de 2 ans. En dessous, tisane très légère.`,
 };
 
@@ -644,7 +653,7 @@ export const RECETTES = [
   {
     id: `sinus`,
     title: `Nettoyage des sinus`,
-    intro: `Le lavage nasal dégage les sinus, réduit la congestion et limite la prolifération des pathogènes. 1 à 3 fois par jour selon l’intensité.`,
+    intro: `Le lavage nasal dégage les sinus, réduit la congestion et limite la prolifération des pathogènes. Jusqu’à 6 fois par jour les 2 premiers jours, puis 1 à 3 fois par jour selon l’intensité.`,
     blocks: [
       {
         title: `Solution saline, la plus douce`,
@@ -748,7 +757,7 @@ export const LOGIQUE_COMBAT = [
   },
   {
     lead: `2. Peroxyde d’hydrogène 3 % Food Grade`,
-    detail: `1 c. à soupe + 1 c. à soupe d’eau, en gargarisme pour un contact prolongé. Recracher, ne pas avaler. Puissant, moins pratique que le spray.`,
+    detail: `1 c. à soupe + 1 c. à soupe d’eau, en gargarisme : 30 s en bouche + 30 s en gorge, 3 fois par jour, jusqu’à 5 jours. Recracher, ne pas avaler. Puissant, moins pratique que le spray.`,
   },
   {
     lead: `3. Pastilles antiseptiques`,
@@ -759,7 +768,7 @@ export const LOGIQUE_COMBAT = [
     detail: `Miel seul : 1 c. à soupe, cuillère pas en métal. Ne pas boire juste après : laisser agir. Un complément, pas la première ligne.`,
   },  {
     lead: `5. Double dose de vitamine C`,
-    detail: `Dès les premiers symptômes, doubler sa dose habituelle pendant la durée du rhume.`,
+    detail: `Dès les premiers symptômes, doubler la dose : 2 g par jour, en 2 à 3 prises, pendant la durée du rhume.`,
   },
 ];
 
@@ -770,7 +779,7 @@ export const GORGE_GESTES = [
   },
   {
     lead: `2. Peroxyde 3 % Food Grade`,
-    detail: `1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. Contact prolongé. Recracher, ne jamais avaler. Bouteille à l’abri du soleil.`,
+    detail: `1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. 30 s en bouche + 30 s en gorge, 3 fois par jour, jusqu’à 5 jours. Recracher, ne jamais avaler. Bouteille à l’abri du soleil.`,
   },
   {
     lead: `3. Pastilles antiseptiques`,
@@ -801,7 +810,7 @@ export const PENDANT_MALADIE = [
   `Dormir au chaud. Le corps doit rester bien couvert. Un bonnet la nuit limite les pertes de chaleur par la tête.`,
   `Rester au chaud et éviter les changements de température brusques.`,
   `Surveiller la température. Adapter le protocole en cas de mal de tête intense ou de frissons importants.`,
-  `Se laver le nez à l’eau salée plusieurs fois par jour.`,
+  `Se laver le nez à l’eau salée plusieurs fois par jour, jusqu’à 6 fois par jour les 2 premiers jours.`,
   `Limiter les contacts rapprochés pendant la phase contagieuse.`,
   `Miel : jamais d’instrument en métal (cuillère, mixeur). Bois, plastique ou verre, pour préserver les enzymes du miel cru.`,
   `Éviter l’alcool pendant la phase aiguë : il déshydrate et peut affaiblir les défenses.`,

@@ -14,7 +14,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  const card=p.locator('#remede-vitamine-c-double');
  ok('remedy card visible',await card.isVisible());
  const ct=(await card.innerText()).replace(/\s+/g,' ');
- ok('card dose text',ct.includes('500 mg → 1000 mg par jour')&&ct.includes('2000 mg par jour'));
+ ok('card dose text',ct.includes('doubler la dose : 2 g par jour (1 g → 2 g), en 2 à 3 prises')&&ct.includes('Ne pas dépasser 2 g par jour chez l’adulte : au-delà, risque de diarrhée et de calculs rénaux.')&&!/500 mg → 1000 mg|2000 mg/.test(ct));
  ok('card precautions (hémochromatose)',ct.includes('hémochromatose')&&ct.includes('pharmacien'));
  ok('precaution not duplicated',ct.split('hémochromatose').length===2);
  ok('logique 5.',(await p.locator('main').innerText()).includes('5. Double dose de vitamine C'));
