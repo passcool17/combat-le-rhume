@@ -413,7 +413,7 @@ export function Avertissement() {
       </p>
       {e ? (
         <p className="mt-2 text-muted">
-          Consulte si les symptômes persistent, s’aggravent, ou en cas de fièvre élevée — surtout chez les enfants, les personnes âgées ou les personnes fragiles. L’argent colloïdal n’est pas recommandé par voie interne (mise en garde de Santé Canada). Le peroxyde d’hydrogène demande une utilisation très prudente : jamais avalé, pas dans le nez.
+          Consulte si les symptômes persistent, s’aggravent, ou en cas de fièvre élevée — surtout chez les enfants, les personnes âgées ou les personnes fragiles. L’argent colloïdal n’est pas recommandé par voie interne (mise en garde de Santé Canada). Le peroxyde d’hydrogène demande une utilisation très prudente : jamais avalé ; dans le nez, seulement très dilué (recette « La plus forte », adulte).
         </p>
       ) : null}
       <button

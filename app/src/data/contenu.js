@@ -128,7 +128,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Lavage nasal`,
-        detail: `Solution saline : ½ à 1 c. à café de sel dans 250 ml d’eau tiède, bouillie ou filtrée. Pas de peroxyde dans le nez.`,
+        detail: `Solution saline : ½ à 1 c. à café de sel dans 250 ml d’eau tiède, bouillie ou filtrée. Peroxyde dans le nez : jamais pur, seulement la recette « La plus forte » (adulte).`,
         prepId: `sinus`,
       },
     ],
@@ -373,7 +373,7 @@ export const REMEDES = [
     topics: [`congestion`],
     how: `Solution saline, 1 à 3 fois par jour. Tête penchée, respirer par la bouche, ne pas forcer.`,
     extra: [
-      `La recette est dans les préparations. Pas de peroxyde dans le nez.`,
+      `Les recettes sont dans les préparations. Peroxyde dans le nez : jamais pur, seulement la recette « La plus forte » (adulte).`,
     ],
     tag: `Nez · sinus`,
   },
@@ -654,6 +654,15 @@ export const RECETTES = [
           `Optionnel : ½ c. à café de bicarbonate de soude, pour adoucir`,
         ],
         note: `Dissoudre. Pot neti, seringue ou flacon spray. Incliner la tête, faire passer d’une narine à l’autre, puis se moucher doucement.`,
+      },
+      {
+        title: `La plus forte`,
+        adulteOnly: true,
+        items: [
+          `¼ c. à café de peroxyde d’hydrogène 3 % Food Grade (jamais le 35 %)`,
+          `177 ml (¾ tasse) d’eau tiède, bouillie ou filtrée`,
+        ],
+        note: `Mélanger. Pot neti, seringue ou flacon spray. Incliner la tête, faire passer d’une narine à l’autre, puis se moucher doucement. Ne pas avaler. Adulte seulement.`,
       },
       {
         title: `Conseils d’usage`,

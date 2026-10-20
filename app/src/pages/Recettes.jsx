@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { RECETTES } from "../data/contenu.js";
 import { Card } from "../components/ui.jsx";
 import { cn } from "../lib/cn.js";
+import { usePrefs } from "../lib/stockage.js";
 
 export function Recettes({ openId }) {
   let [t, n] = useState(openId);
+  const enfant = usePrefs((p) => p.audience) === `enfant`;
   return (
     useEffect(() => {
       openId &&
@@ -70,7 +72,7 @@ export function Recettes({ openId }) {
                       ))}
                     </ol>
                   ) : null}
-                  {e.blocks?.map((e) => (
+                  {e.blocks?.filter((b) => !(enfant && b.adulteOnly)).map((e) => (
                     <div
                       className={cn(
                         `rounded-2xl px-4 py-3`,
@@ -79,6 +81,7 @@ export function Recettes({ openId }) {
                           : `bg-surface-2`,
                       )}
                       key={e.title}
+                      data-block={e.title}
                     >
                       <h3
                         className={cn(
