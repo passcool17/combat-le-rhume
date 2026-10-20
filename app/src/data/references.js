@@ -1,4 +1,4 @@
-// Généré à partir de combat-le-rhume-refs.json (publications X vérifiées). Ne pas ajouter d’entrée sans vérification.
+// Généré à partir de combat-le-rhume-refs.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
 export const REFERENCES = [
  {
   "n": 1,
@@ -329,6 +329,201 @@ export const REFERENCES = [
   "level": "direct",
   "supportNote": "appuie directement — MAIS pas médecin (Ph.D.)",
   "note": null
+ },
+ {
+  "n": 23,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "MD, 4X Board Certified (IM, Pulm, Sleep, Critical Care), co-fondateur MedCram, prof. Loma Linda/UCR",
+  "notPhysician": false,
+  "claim": "Fièvre bénéfique, ne pas la supprimer",
+  "quote": "I rarely use Tylenol in the hospital to treat fevers not because I’m particularly worried that Tylenol is harmful but that fevers are so beneficial.",
+  "gist": "Il traite rarement la fièvre à l’hôpital, non parce que l’acétaminophène serait dangereux, mais parce que la fièvre est très bénéfique.",
+  "date": "2025-09-27T04:33:44Z",
+  "url": "https://x.com/RogerSeheult/status/1971795368456474624",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 24,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "MD, 4X Board Certified (IM, Pulm, Sleep, Critical Care), co-fondateur MedCram, prof. Loma Linda/UCR",
+  "notPhysician": false,
+  "claim": "Importance de la fièvre pendant une infection",
+  "quote": "People calling me a quack for talking about the importance of fever during an infection even to the point of not treating it or even promoting it. They are the quacks for not reading enough scientific papers.",
+  "gist": "Il défend l’importance de la fièvre pendant une infection, au point de ne pas la traiter, ou même de la favoriser.",
+  "date": "2026-05-05T04:46:39Z",
+  "url": "https://x.com/RogerSeheult/status/2051523950572945535",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 25,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "MD, 4X Board Certified (IM, Pulm, Sleep, Critical Care), co-fondateur MedCram, prof. Loma Linda/UCR",
+  "notPhysician": false,
+  "claim": "Élever la température du corps → interféron (antiviral)",
+  "quote": "Heat used to raise core body temperature to stimulates the production of interferon.",
+  "gist": "La chaleur sert à élever la température interne du corps pour stimuler la production d’interféron (un antiviral).",
+  "date": "2024-02-16T16:14:23Z",
+  "url": "https://x.com/RogerSeheult/status/1758525239649300897",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 26,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "MD, 4X Board Certified (IM, Pulm, Sleep, Critical Care), co-fondateur MedCram, prof. Loma Linda/UCR",
+  "notPhysician": false,
+  "claim": "Température élevée freine la réplication virale",
+  "quote": "High body temperature shuts down SARS CoV2 replication. Paper: we’ve been talking about this since the pandemic. Try not to treat fevers.",
+  "gist": "Une température du corps élevée bloque la réplication du virus de la COVID-19 (article cité). Éviter de traiter la fièvre.",
+  "date": "2024-08-06T15:19:23Z",
+  "url": "https://x.com/RogerSeheult/status/1820842111018889356",
+  "level": "partiel",
+  "supportNote": "appuie (virus COVID, pas le rhume)",
+  "note": null
+ },
+ {
+  "n": 27,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "MD, 4X Board Certified (IM, Pulm, Sleep, Critical Care), co-fondateur MedCram, prof. Loma Linda/UCR",
+  "notPhysician": false,
+  "claim": "Bénéfice de la fièvre + limite de sécurité 40 °C",
+  "quote": "usually 104F is my limit (40C). Lower if heart rate is too high or seizures. It is an individual thing but there are benefits to fevers.",
+  "gist": "Sa limite est habituellement 40 °C (104 °F), plus bas si le cœur bat trop vite ou s’il y a des convulsions. La fièvre a des bienfaits.",
+  "date": "2023-09-11T04:24:45Z",
+  "url": "https://x.com/RogerSeheult/status/1701089371695550696",
+  "level": "direct",
+  "supportNote": "appuie + nuance de sécurité",
+  "note": null
+ },
+ {
+  "n": 28,
+  "name": "Ken D Berry MD",
+  "handle": "@KenDBerryMD",
+  "credential": "Board-Certified MD (bio), médecin de famille",
+  "notPhysician": false,
+  "claim": "Ne pas couper la fièvre",
+  "quote": "I would never take a fever-reducer and interfere with my bodies proper immune response",
+  "gist": "Il ne prendrait jamais d’antifièvre, pour ne pas nuire à la réponse immunitaire normale du corps (opinion personnelle).",
+  "date": "2020-03-12T23:07:45Z",
+  "url": "https://x.com/KenDBerryMD/status/1238240292765151232",
+  "level": "direct",
+  "supportNote": "appuie directement (opinion personnelle)",
+  "note": null
+ },
+ {
+  "n": 29,
+  "name": "Ken D Berry MD",
+  "handle": "@KenDBerryMD",
+  "credential": "Board-Certified MD (bio), médecin de famille",
+  "notPhysician": false,
+  "claim": "Ne pas traiter la fièvre virale",
+  "quote": "Treating a fever from a viral infection is just as dumb as putting ice on a sprained ankle...",
+  "gist": "Traiter la fièvre d’une infection virale serait aussi absurde que mettre de la glace sur une entorse (ton polémique).",
+  "date": "2024-08-06T17:19:54Z",
+  "url": "https://x.com/KenDBerryMD/status/1820872440961986836",
+  "level": "direct",
+  "supportNote": "appuie directement (ton polémique)",
+  "note": null
+ },
+ {
+  "n": 30,
+  "name": "Paul Saladino, MD",
+  "handle": "@paulsaladinomd",
+  "credential": "MD (nom de compte) ; bio sur l'alimentation animale",
+  "notPhysician": false,
+  "claim": "Protéines de choc thermique / chaleur contre les virus",
+  "quote": "Heat shock proteins do appear valuable in the setting of viral infections. Fever as the body’s natural sauna?",
+  "gist": "Les protéines de choc thermique semblent utiles contre les infections virales : la fièvre comme « sauna naturel » du corps.",
+  "date": "2020-03-18T13:38:16Z",
+  "url": "https://x.com/paulsaladinomd/status/1240271304021831681",
+  "level": "lien",
+  "supportNote": "lié",
+  "note": null
+ },
+ {
+  "n": 31,
+  "name": "Mark Hyman, M.D.",
+  "handle": "@drmarkhyman",
+  "credential": "M.D.",
+  "notPhysician": false,
+  "claim": "Chaleur (sauna) aide l'immunité contre les infections",
+  "quote": "Saunas also help your immune system fight infections and cancer and reduce inflammation.",
+  "gist": "Le sauna aide aussi le système immunitaire à combattre les infections et réduit l’inflammation (chaleur externe, pas la fièvre).",
+  "date": "2023-12-11T15:45:31Z",
+  "url": "https://x.com/drmarkhyman/status/1734237987024580697",
+  "level": "partiel",
+  "supportNote": "partiel (sauna, pas fièvre)",
+  "note": null
+ },
+ {
+  "n": 32,
+  "name": "George du Toit",
+  "handle": "@GoAllergy",
+  "credential": "Prof. d'allergologie pédiatrique, Evelina London (bio)",
+  "notPhysician": false,
+  "claim": "Fièvre utile contre l'infection",
+  "quote": "A possible reason why fevers are beneficial in fighting infection. Human studies needed.",
+  "gist": "Une raison possible pour laquelle la fièvre aide à combattre l’infection. Des études chez l’humain sont nécessaires.",
+  "date": "2015-01-12T07:06:14Z",
+  "url": "https://x.com/GoAllergy/status/554534803367026689",
+  "level": "partiel",
+  "supportNote": "partiel (prudent : « human studies needed »)",
+  "note": null
+ },
+ {
+  "n": 33,
+  "name": "Adj Prof Karen Price",
+  "handle": "@brookmanknight",
+  "credential": "Médecin généraliste, présidente RACGP 2020-22 (bio)",
+  "notPhysician": false,
+  "claim": "Ne pas abuser des antifièvre",
+  "quote": "anti fever meds. Don't guzzle them. Fever is not the enemy if you know what is causing it. All about reasonableness",
+  "gist": "Ne pas abuser des antifièvre : la fièvre n’est pas l’ennemie quand on en connaît la cause. Une question de bon sens.",
+  "date": "2016-03-15T20:31:31Z",
+  "url": "https://x.com/brookmanknight/status/709839467163455488",
+  "level": "partiel",
+  "supportNote": "partiel (grand public, nuancé)",
+  "note": null
+ },
+ {
+  "n": 34,
+  "name": "TM Smith, D.O. FAAEM",
+  "handle": "@RosenelliEM",
+  "credential": "D.O., médecin d'urgence (bio)",
+  "notPhysician": false,
+  "claim": "Fièvre bénéfique (évolution)",
+  "quote": "Fevers are beneficial and there is a reason why evolution has kept it around.",
+  "gist": "La fièvre est bénéfique, et il y a une raison pour laquelle l’évolution l’a conservée.",
+  "date": "2025-10-01T23:56:17Z",
+  "url": "https://x.com/RosenelliEM/status/1973537483393737083",
+  "level": "direct",
+  "supportNote": "appuie directement",
+  "note": null
+ },
+ {
+  "n": 35,
+  "name": "Joanne Balfe",
+  "handle": "@joannebalfe",
+  "credential": "Pédiatre irlandaise (bio)",
+  "notPhysician": false,
+  "claim": "Fièvre pas l'ennemie ; bien boire",
+  "quote": "“Fever is not the enemy , but dehydration is”. Sensible advice about use of ibuprofen in children",
+  "gist": "« La fièvre n’est pas l’ennemie, la déshydratation l’est. » Conseil sensé sur l’ibuprofène chez l’enfant.",
+  "date": "2019-02-16T10:56:15Z",
+  "url": "https://x.com/joannebalfe/status/1096724935551209472",
+  "level": "partiel",
+  "supportNote": "partiel (cite un conseil ; insiste sur l'hydratation)",
+  "note": null
  }
 ];
 
@@ -391,12 +586,25 @@ export const REF_GROUPS = [
  },
  {
   "id": "chaleur",
-  "title": "Chaleur et fièvre",
+  "title": "Chaleur du corps et fièvre",
   "items": [
    15,
    16,
    11,
-   18
+   18,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   34,
+   35
   ]
  },
  {
@@ -415,6 +623,188 @@ export const REF_GROUPS = [
    20
   ]
  }
+];
+
+// Études scientifiques (groupe « Chaleur du corps et fièvre »).
+export const ETUDES_CHALEUR = [
+ {
+  "n": 1,
+  "authors": "Evans SS, Repasky EA, Fisher DT.",
+  "title": "Fever and the thermal regulation of immunity: the immune system feels the heat.",
+  "journal": "Nat Rev Immunol",
+  "year": "2015",
+  "doi": "10.1038/nri3843",
+  "doiUrl": "https://doi.org/10.1038/nri3843",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25976513/",
+  "finding": "Revue : la fièvre est conservée depuis plus de 600 millions d'années, donne un avantage de survie pendant l'infection, et la chaleur stimule les réponses immunitaires innée et adaptative.",
+  "level": "direct",
+  "supportNote": "appuie directement (référence principale)"
+ },
+ {
+  "n": 2,
+  "authors": "Kluger MJ, Kozak W, Conn CA, Leon LR, Soszynski D.",
+  "title": "The adaptive value of fever.",
+  "journal": "Infect Dis Clin North Am",
+  "year": "1996",
+  "doi": "10.1016/s0891-5520(05)70282-8",
+  "doiUrl": "https://doi.org/10.1016/s0891-5520(05)70282-8",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/8698984/",
+  "finding": "Revue : « preuves écrasantes » que la fièvre est une réponse adaptative ; supprimer la fièvre augmente probablement la morbidité et la mortalité dans la plupart des infections.",
+  "level": "direct",
+  "supportNote": "appuie directement"
+ },
+ {
+  "n": 3,
+  "authors": "Foxman EF, Storer JA, Fitzgerald ME, Wasik BR, Hou L, Zhao H, Turner PE, Pyle AM, Iwasaki A.",
+  "title": "Temperature-dependent innate defense against the common cold virus limits viral replication at warm temperature in mouse airway cells.",
+  "journal": "Proc Natl Acad Sci U S A",
+  "year": "2015",
+  "doi": "10.1073/pnas.1411030112",
+  "doiUrl": "https://doi.org/10.1073/pnas.1411030112",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25561542/",
+  "finding": "Cellules de voies respiratoires de souris : le virus du rhume se multiplie mieux à 33-35 °C (nez) qu'à 37 °C ; à 37 °C la réponse antivirale (interférons) est bien plus forte.",
+  "level": "partiel",
+  "supportNote": "appuie (température normale du corps vs nez froid ; pas une étude de fièvre ; in vitro, souris)"
+ },
+ {
+  "n": 4,
+  "authors": "Foxman EF, Storer JA, Vanaja K, Levchenko A, Iwasaki A.",
+  "title": "Two interferon-independent double-stranded RNA-induced host defense strategies suppress the common cold virus at warm temperature.",
+  "journal": "Proc Natl Acad Sci U S A",
+  "year": "2016",
+  "doi": "10.1073/pnas.1601942113",
+  "doiUrl": "https://doi.org/10.1073/pnas.1601942113",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/27402752/",
+  "finding": "Cellules humaines : à 37 °C, deux autres défenses (mort des cellules infectées, RNase L) freinent davantage le virus du rhume qu'à température plus fraîche.",
+  "level": "partiel",
+  "supportNote": "appuie (in vitro)"
+ },
+ {
+  "n": 5,
+  "authors": "Graham NM, Burrell CJ, Douglas RM, Debelle P, Davies L.",
+  "title": "Adverse effects of aspirin, acetaminophen, and ibuprofen on immune function, viral shedding, and clinical status in rhinovirus-infected volunteers.",
+  "journal": "J Infect Dis",
+  "year": "1990",
+  "doi": "10.1093/infdis/162.6.1277",
+  "doiUrl": "https://doi.org/10.1093/infdis/162.6.1277",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/2172402/",
+  "finding": "Essai randomisé, 60 volontaires infectés par un rhinovirus : aspirine et acétaminophène ont diminué les anticorps neutralisants et augmenté les symptômes nasaux ; tendance (non significative) à une excrétion virale plus longue.",
+  "level": "direct",
+  "supportNote": "appuie directement (rhume chez l'humain)"
+ },
+ {
+  "n": 6,
+  "authors": "Stanley ED, Jackson GG, Panusarn C, Rubenis M, Dirda V.",
+  "title": "Increased virus shedding with aspirin treatment of rhinovirus infection.",
+  "journal": "JAMA",
+  "year": "1975",
+  "doi": "10.1001/jama.1975.03240240018017",
+  "doiUrl": "https://doi.org/10.1001/jama.1975.03240240018017",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/163931/",
+  "finding": "Deux essais en double aveugle : l'aspirine n'a pas réduit significativement le rhume mais a nettement augmenté l'excrétion du virus.",
+  "level": "direct",
+  "supportNote": "appuie (contre la suppression par aspirine)"
+ },
+ {
+  "n": 7,
+  "authors": "Doran TF, De Angelis C, Baumgardner RA, Mellits ED.",
+  "title": "Acetaminophen: more harm than good for chickenpox?",
+  "journal": "J Pediatr",
+  "year": "1989",
+  "doi": "10.1016/s0022-3476(89)80461-5",
+  "doiUrl": "https://doi.org/10.1016/s0022-3476(89)80461-5",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/2656959/",
+  "finding": "Essai randomisé, 72 enfants avec varicelle : sous acétaminophène, les croûtes mettent plus longtemps à se former (6,7 vs 5,6 jours), sans soulager les symptômes.",
+  "level": "partiel",
+  "supportNote": "appuie (varicelle, pas rhume)"
+ },
+ {
+  "n": 8,
+  "authors": "Plaisance KI, Kudaravalli S, Wasserman SS, Levine MM, Mackowiak PA.",
+  "title": "Effect of antipyretic therapy on the duration of illness in experimental influenza A, Shigella sonnei, and Rickettsia rickettsii infections.",
+  "journal": "Pharmacotherapy",
+  "year": "2000",
+  "doi": "10.1592/phco.20.19.1417.34865",
+  "doiUrl": "https://doi.org/10.1592/phco.20.19.1417.34865",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/11130213/",
+  "finding": "Volontaires : l'usage d'antipyrétiques était associé à une maladie plus longue dans la grippe A expérimentale.",
+  "level": "partiel",
+  "supportNote": "partiel (étude rétrospective observationnelle)"
+ },
+ {
+  "n": 9,
+  "authors": "Eyers S, Weatherall M, Shirtcliffe P, Perrin K, Beasley R.",
+  "title": "The effect on mortality of antipyretics in the treatment of influenza infection: systematic review and meta-analysis.",
+  "journal": "J R Soc Med",
+  "year": "2010",
+  "doi": "10.1258/jrsm.2010.090441",
+  "doiUrl": "https://doi.org/10.1258/jrsm.2010.090441",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/20929891/",
+  "finding": "Méta-analyse : chez l'animal grippé, les antipyrétiques augmentent le risque de décès (OR 1,34) ; aucune donnée humaine.",
+  "level": "partiel",
+  "supportNote": "partiel (animaux seulement)"
+ },
+ {
+  "n": 10,
+  "authors": "Earn DJ, Andrews PW, Bolker BM.",
+  "title": "Population-level effects of suppressing fever.",
+  "journal": "Proc Biol Sci",
+  "year": "2014",
+  "doi": "10.1098/rspb.2013.2570",
+  "doiUrl": "https://doi.org/10.1098/rspb.2013.2570",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/24452021/",
+  "finding": "Modèle : couper la fièvre augmenterait la transmission de la grippe (environ +5 % de cas et décès en saison grippale aux É.-U.).",
+  "level": "lien",
+  "supportNote": "lié (modélisation, données incomplètes)"
+ },
+ {
+  "n": 11,
+  "authors": "Schulman CI, Namias N, Doherty J, Manning RJ, Li P, Elhaddad A, Lasko D, Amortegui J, Dy CJ, Dlugasch L, Baracco G, Cohn SM.",
+  "title": "The effect of antipyretic therapy upon outcomes in critically ill patients: a randomized, prospective study.",
+  "journal": "Surg Infect (Larchmt)",
+  "year": "2005",
+  "doi": "10.1089/sur.2005.6.369",
+  "doiUrl": "https://doi.org/10.1089/sur.2005.6.369",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/16433601/",
+  "finding": "Essai randomisé en soins intensifs (trauma) : 7 décès dans le groupe « traitement agressif de la fièvre » vs 1 dans le groupe « permissif » (traitement seulement > 40 °C) ; p = 0,06, étude arrêtée tôt.",
+  "level": "partiel",
+  "supportNote": "partiel (non significatif, patients très malades)"
+ },
+ {
+  "n": 12,
+  "authors": "Section on Clinical Pharmacology and Therapeutics, Committee on Drugs, Sullivan JE, Farrar HC.",
+  "title": "Fever and antipyretic use in children.",
+  "journal": "Pediatrics",
+  "year": "2011",
+  "doi": "10.1542/peds.2010-3852",
+  "doiUrl": "https://doi.org/10.1542/peds.2010-3852",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/21357332/",
+  "finding": "Recommandation officielle de l'Académie américaine de pédiatrie : la fièvre est un mécanisme qui a des effets bénéfiques contre l'infection ; traiter pour le confort de l'enfant, pas pour normaliser la température ; bien hydrater.",
+  "level": "direct",
+  "supportNote": "appuie (source officielle grand public)"
+ },
+ {
+  "n": 13,
+  "authors": "Young P, Saxena M, Bellomo R, Freebairn R, Hammond N, van Haren F, Holliday M, Henderson S, Mackle D, McArthur C, McGuinness S, Myburgh J, Weatherall M, Webb S, Beasley R, HEAT Investigators, Australian and New Zealand Intensive Care Society Clinical Trials Group.",
+  "title": "Acetaminophen for Fever in Critically Ill Patients with Suspected Infection.",
+  "journal": "N Engl J Med",
+  "year": "2015",
+  "doi": "10.1056/nejmoa1508375",
+  "doiUrl": "https://doi.org/10.1056/nejmoa1508375",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/26436473/",
+  "finding": "NUANCE : essai HEAT, 700 patients en soins intensifs avec fièvre et infection : l'acétaminophène n'a ni aidé ni nui (jours hors soins intensifs et mortalité inchangés).",
+  "level": "nuance",
+  "supportNote": "nuance / neutre"
+ }
+];
+
+export const NUANCES_CHALEUR = [
+ "Ces études parlent de la fièvre produite par le corps (ou de 37 °C vs nez plus froid). Aucune ne teste le fait de se couvrir très chaudement la nuit pour un rhume : c'est une extrapolation.",
+ "Seuils de sécurité : Seheult fixe ~40 °C comme limite ; l'essai Schulman traitait à > 40 °C ; l'app dit déjà de se découvrir à ≥ 39 °C. Garder cette prudence.",
+ "Enfants (AAP 2011) : traiter pour le confort, surveiller l'état général, bien hydrater ; ne pas surchauffer un enfant (risque de coup de chaleur). Bébé < 3 mois avec fièvre = consulter.",
+ "Couper la fièvre ne change pas toujours l'issue : essai HEAT (NEJM 2015) neutre en soins intensifs.",
+ "Foxman 2015/2016 : cellules de souris/humaines en laboratoire, pas des personnes.",
+ "Consulter si fièvre ≥ 39-40 °C qui persiste, difficulté à respirer, raideur de nuque, confusion, convulsion, déshydratation, ou fièvre > 3 jours (811 / 911)."
 ];
 
 // Fiches remèdes → groupe de références

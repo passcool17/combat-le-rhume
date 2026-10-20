@@ -31,7 +31,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await clk('J’ai mal à la gorge, je commence');
  const pr=(await p.locator('[data-clr=protocole]').innerText()).replace(/\s+/g,' ');
  ok('protocol: plan d’attaque + phase + armes',pr.includes('PLAN D’ATTAQUE EN COURS')&&pr.includes('Jour 1 sur 3')&&pr.includes('JOUR 1 : FRAPPE IMMÉDIATE')&&pr.includes('Tes armes du jour')&&pr.includes('5. Double dose de vitamine C'));
- ok('night 1 assault kicker + content intact',pr.includes('L’ASSAUT DE CHALEUR')&&pr.includes('Nuit 1 : la plus importante — avoir très chaud')&&pr.includes('39 °C ou plus'));
+ ok('night 1 assault kicker + content intact',pr.includes('L’ASSAUT DE CHALEUR')&&pr.includes('Nuit 1 : la plus importante — faire monter la chaleur du corps')&&pr.includes('39 °C ou plus'));
  ok('axe combat (protocole)',JSON.stringify(await axe())==='[]'||await axe());
  if(theme==='clair'){await p.evaluate(()=>window.scrollTo(0,0));await p.waitForTimeout(200);await p.screenshot({path:S+(dn==='iphone13'?'percutant-combat.png':'percutant-combat-desktop.png')});
    if(dn==='iphone13'){await p.locator('[data-clr=protocole]').evaluate(e=>e.scrollIntoView({block:'start'}));await p.evaluate(()=>window.scrollBy(0,-230));await p.waitForTimeout(200);await p.screenshot({path:S+'percutant-combat-protocole.png'});}}
