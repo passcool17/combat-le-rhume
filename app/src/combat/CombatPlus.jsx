@@ -19,6 +19,8 @@ export const GESTES = [
     hint: 'Suivre le nombre indiqué sur le produit.' },
   { id: 'miel', short: 'Miel cru', act: '1 c. à café, sans ustensile en métal', every: 3,
     hint: 'Plusieurs fois par jour. Suivre l’étiquette.' },
+  { id: 'vitamine-c-double', short: 'Double dose de vitamine C', act: '1 prise avec de l’eau, 2 fois par jour', every: 12,
+    hint: 'Doubler sa dose habituelle (par ex. 500 mg → 1000 mg par jour), en 2 prises. Max 2000 mg par jour chez l’adulte.' },
 ];
 
 const PRECAUTIONS = {
@@ -33,6 +35,7 @@ const PRECAUTIONS = {
     peroxyde: ['Pas pour les jeunes enfants : retiré du profil Enfant.'],
     pastilles: ['Selon l’âge indiqué sur la boîte. Pas les pastilles fortes d’adulte.', 'Attention au risque d’étouffement chez les petits.'],
     miel: ['Jamais avant 1 an.'],
+    'vitamine-c-double': ['Chez l’enfant, la dose dépend de l’âge : demander au pharmacien avant de doubler.', 'Prudence en cas de calculs rénaux ou d’hémochromatose. Si l’enfant prend des médicaments, demande au pharmacien.'],
   },
 };
 
@@ -43,6 +46,7 @@ const KIT = [
   { id: 'pastilles-fortes', label: 'Pastilles antiseptiques fortes' },
   { id: 'pastilles-douces', label: 'Pastilles plus douces pour la suite' },
   { id: 'miel', label: 'Miel cru et cuillère en bois (pas de métal)' },
+  { id: 'vitamine-c', label: 'Vitamine C (comprimés)' },
   { id: 'citron', label: 'Citrons et tisanes' },
   { id: 'thermometre', label: 'Thermomètre' },
   { id: 'tuque', label: 'Tuque et vêtements chauds pour la nuit' },
@@ -149,12 +153,12 @@ function Btn({ children, variant = 'primary', className, ...rest }) {
 }
 
 const WARM_HOME = 'Combattre dès les premiers signes. La nuit, avoir très chaud, même avec une tuque — seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons.';
-const WARM_COMBAT = 'Les quatre gestes, dans l’ordre. La nuit, très chaud, même une tuque — seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons.';
+const WARM_COMBAT = 'Les cinq gestes, dans l’ordre. La nuit, très chaud, même une tuque — seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons.';
 
 function Subtitle() {
   const s = useStore();
   return assess(s).noWarm
-    ? 'Les quatre gestes, dans l’ordre. Fièvre, frissons ou mal de tête notés : pas de surchauffe ni de tuque la nuit. Voir « Quand arrêter et consulter ».'
+    ? 'Les cinq gestes, dans l’ordre. Fièvre, frissons ou mal de tête notés : pas de surchauffe ni de tuque la nuit. Voir « Quand arrêter et consulter ».'
     : WARM_COMBAT;
 }
 function HomeWarm() {
@@ -176,7 +180,7 @@ function Protocol({ audience }) {
       <Card className="clr-start" data-clr="protocole">
         <Kicker>Protocole de 3 jours</Kicker>
         <h2 className="mt-1 text-xl">Dès le premier mal de gorge</h2>
-        <p className="mt-2 text-sm text-muted">Les quatre gestes du jour, cochés au fur et à mesure, et un point matin et soir sur les symptômes. Tout reste dans cet appareil.</p>
+        <p className="mt-2 text-sm text-muted">Les cinq gestes du jour, cochés au fur et à mesure, et un point matin et soir sur les symptômes. Tout reste dans cet appareil.</p>
         <Btn className="clr-btn-big mt-4" onClick={() => set(() => ({ protocol: { start: Date.now(), audience } }))}>J’ai mal à la gorge, je commence</Btn>
         {last ? <p className="mt-3 text-xs text-muted">Dernier protocole : commencé le {fmtDate(last.start)}, {last.status === 'termine' ? 'terminé' : 'annulé'} le {fmtDate(last.end)}.</p> : null}
       </Card>
@@ -488,7 +492,7 @@ function HomeCombatInner({ onOpen, onAll, setStance }) {
   const now = useNow();
   const p = s.protocol;
   const done = p ? new Set(s.intakes.filter(i => i.t >= p.start && dayKey(i.t) === dayKey(now)).map(i => i.g)).size : 0;
-  const total = p && p.audience === 'enfant' ? 3 : 4;
+  const total = p && p.audience === 'enfant' ? 4 : 5;
   return (
     <div className="clr-panel" data-clr="accueil-combat">
       <Card>
@@ -499,7 +503,7 @@ function HomeCombatInner({ onOpen, onAll, setStance }) {
           <Btn className="clr-btn-big mt-4" onClick={onOpen}>Ouvrir mon protocole</Btn>
         </> : <>
           <h2 className="mt-1 text-xl">Dès le premier mal de gorge</h2>
-          <p className="mt-2 text-sm text-muted">Les quatre gestes du jour, un point matin et soir sur les symptômes, et le Kit Combat.</p>
+          <p className="mt-2 text-sm text-muted">Les cinq gestes du jour, un point matin et soir sur les symptômes, et le Kit Combat.</p>
           <Btn className="clr-btn-big mt-4" onClick={() => { set(() => ({ protocol: { start: Date.now(), audience: prefsAudience() } })); onOpen(); }}>J’ai mal à la gorge, je commence</Btn>
         </>}
       </Card>

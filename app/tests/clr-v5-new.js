@@ -29,7 +29,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  let t=await h.main();
  ok('onboarding h1',JSON.stringify(await h.h1s())==='["Combat le rhume, en bref"]');
  ok('onboarding 3 lines',await p.locator('[data-onboarding] ul li').count()===3);
- ok('onboarding 2 modes + 1 sentence each',t.includes('Mode Combat Dès le premier mal de gorge : quatre gestes, un point matin et soir, pendant 3 jours.')&&t.includes('Mode Soutien Pour la suite : vitamine D, zinc, plantes, hydratation et repos.'));
+ ok('onboarding 2 modes + 1 sentence each',t.includes('Mode Combat Dès le premier mal de gorge : cinq gestes, un point matin et soir, pendant 3 jours.')&&t.includes('Mode Soutien Pour la suite : vitamine D, zinc, plantes, hydratation et repos.'));
  ok('onboarding: chooser not yet shown',!t.includes('Choisis ton mode'));
  await audit(h,'onboarding');
  if(dn==='iphone13')await p.locator('[data-install] button[aria-label^=Masquer]').click().catch(()=>{});
@@ -99,7 +99,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  t=(await p.locator('[data-clr=consulter]').first().innerText()).replace(/\s+/g,' ');
  ok('combat logic reads unified data (fièvre du journal)',t.includes('Il vaut mieux consulter')&&t.includes('Fièvre'));
  ok('combat warm advice off from journal fever',(await p.locator('main h1 + p').innerText()).includes('pas de surchauffe ni de tuque'));
- ok('kit migrated in UI',(await p.locator('[data-clr=kit]').innerText()).includes('2 / 10'));
+ ok('kit migrated in UI',(await p.locator('[data-clr=kit]').innerText()).includes('2 / 11'));
  await h.click('Suivi');t=await h.main();
  ok('Suivi always reachable in Combat',JSON.stringify(await h.h1s())==='["Suivi"]');
  ok('Suivi merges journal + checks',t.includes('Note A')&&t.includes('Note B')&&t.includes('Matin : gorge 6/10')&&t.includes('Soir : gorge 4/10')&&await p.locator('[data-clr=point]').isVisible());

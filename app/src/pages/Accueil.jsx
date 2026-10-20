@@ -47,7 +47,7 @@ export function Onboarding({ onStart }) {
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
         <div className="rounded-2xl border border-line bg-surface-2 px-4 py-3">
           <p className="font-medium text-ink">Mode Combat</p>
-          <p className="mt-1 text-sm text-muted">Dès le premier mal de gorge : quatre gestes, un point matin et soir, pendant 3 jours.</p>
+          <p className="mt-1 text-sm text-muted">Dès le premier mal de gorge : cinq gestes, un point matin et soir, pendant 3 jours.</p>
         </div>
         <div className="rounded-2xl border border-primary/30 bg-primary-soft px-4 py-3">
           <p className="font-medium text-primary">Mode Soutien</p>

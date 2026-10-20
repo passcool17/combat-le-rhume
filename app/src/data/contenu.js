@@ -417,6 +417,18 @@ export const REMEDES = [
     tag: `Soutien de base`,
   },
   {
+    id: `vitamine-c-double`,
+    name: `Double dose de vitamine C`,
+    kicker: `Dès les premiers symptômes`,
+    topics: [`fievre`, `gorge`],
+    how: `Dès les premiers symptômes, doubler sa dose habituelle (par ex. 500 mg → 1000 mg par jour), en 2 prises avec de l’eau, pendant la durée du rhume.`,
+    extra: [
+      `Ne pas dépasser 2000 mg par jour chez l’adulte (risque de maux de ventre, de diarrhée).`,
+      `Prudence en cas de calculs rénaux ou d’hémochromatose. Si tu prends des médicaments, demande à ton pharmacien.`,
+    ],
+    tag: `Vitamine C · premiers symptômes`,
+  },
+  {
     id: `argent`,
     name: `Argent colloïdal`,
     kicker: `Mise en garde`,
@@ -539,6 +551,7 @@ export const DOSES_ENFANT = {
   betadine: `À partir de 6 ans, sous surveillance : 1 vaporisation, jusqu’à 3 fois par jour. Pas avant.`,
   pastilles: `Selon l’âge indiqué sur la boîte. Pas les pastilles fortes d’adulte.`,
   vitamines: `Selon l’âge. Ne pas donner 2 000 à 4 000 UI sans avis.`,
+  'vitamine-c-double': `Dose selon l’âge : demander au pharmacien avant de doubler.`,
   argent: `À éviter chez l’enfant.`,
   peroxyde: `À éviter, ou seulement avec un avis. Pas dans les oreilles d’un jeune enfant.`,
   sureau: `Dose réduite. Commencer très peu pour voir la tolérance.`,
@@ -712,7 +725,7 @@ export const SYMPTOMES_TYPIQUES = [
   },
 ];
 
-export const GESTES_COMBAT = [`betadine`, `peroxyde`, `pastilles`, `miel`];
+export const GESTES_COMBAT = [`betadine`, `peroxyde`, `pastilles`, `miel`, `vitamine-c-double`];
 
 export const LOGIQUE_COMBAT = [
   {
@@ -730,6 +743,9 @@ export const LOGIQUE_COMBAT = [
   {
     lead: `4. Miel cru`,
     detail: `Apaisant, antimicrobien doux. Un complément, pas la première ligne.`,
+  },  {
+    lead: `5. Double dose de vitamine C`,
+    detail: `Dès les premiers symptômes, doubler sa dose habituelle pendant la durée du rhume.`,
   },
 ];
 
