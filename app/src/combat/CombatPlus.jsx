@@ -168,6 +168,46 @@ function HomeWarm() {
     : WARM_HOME;
 }
 
+// ---------- nuit au chaud : nuit 1 la plus importante, nuits 2 et 3 si toujours pas de fièvre ----------
+function NightWarm({ day, audience, compact }) {
+  const s = useStore();
+  const a = assess(s);
+  if (!day || day > PROTOCOL_DAYS) return null;
+  const enfant = audience === 'enfant';
+  const first = day === 1;
+  const fever = a.flags.has('fievre');
+  if (a.noWarm) {
+    return (
+      <div className="clr-night off mt-4" data-clr="nuit-chaude" data-nuit={day} data-etat="pas-de-surchauffe" role="status">
+        <p className="clr-night-k">Nuit {day} sur {PROTOCOL_DAYS}</p>
+        <p className="clr-night-t">{fever ? 'Fièvre notée' : 'Frissons ou mal de tête notés'} : pas de surchauffe ni de tuque cette nuit.</p>
+        {compact ? null : <p className="mt-1 text-sm">Couvre-toi normalement, bois de l’eau. Voir « Quand arrêter et consulter ».</p>}
+      </div>
+    );
+  }
+  const title = enfant
+    ? (first ? 'Nuit 1 : la plus importante — bien au chaud, sans surchauffer' : `Nuit ${day} : encore bien au chaud`)
+    : (first ? 'Nuit 1 : la plus importante — avoir très chaud' : `Nuit ${day} : encore très chaud`);
+  return (
+    <div className={cx('clr-night mt-4', first && 'first')} data-clr="nuit-chaude" data-nuit={day} data-etat="chaud">
+      <p className="clr-night-k">{first ? 'Priorité de la nuit' : `Nuit ${day} sur ${PROTOCOL_DAYS}`}</p>
+      <p className="clr-night-t">{title}</p>
+      {first ? null : <p className="mt-1 text-sm font-medium">Si tu ne fais toujours pas de température (fièvre de 38 °C ou plus). Aucune fièvre notée depuis le début du protocole.</p>}
+      {compact ? null : <>
+        <ul className="clr-night-l mt-2">
+          {(enfant
+            ? ['Bien couvrir l’enfant, chambre confortable', 'Pyjama chaud et bas', 'Boisson tiède avant le coucher']
+            : ['Bien se couvrir : couvertures, tuque', 'Chambre chaude', 'Vêtements chauds et bas', 'Boisson chaude avant le coucher']
+          ).map(t => <li key={t} className="text-sm">{t}</li>)}
+        </ul>
+        <p className="clr-night-s mt-2 text-xs">{enfant
+          ? 'Ne pas surchauffer un enfant, jamais un bébé. Faire boire de l’eau. Le découvrir s’il a de la fièvre, s’il est étourdi ou s’il ne va pas bien.'
+          : 'Bois bien de l’eau. Découvre-toi si fièvre de 39 °C ou plus, étourdissements ou malaise. Pas pour les bébés ni les jeunes enfants.'}</p>
+      </>}
+    </div>
+  );
+}
+
 // ---------- protocole + checklist ----------
 function Protocol({ audience }) {
   const s = useStore();
@@ -181,6 +221,7 @@ function Protocol({ audience }) {
         <Kicker>Protocole de 3 jours</Kicker>
         <h2 className="mt-1 text-xl">Dès le premier mal de gorge</h2>
         <p className="mt-2 text-sm text-muted">Les cinq gestes du jour, cochés au fur et à mesure, et un point matin et soir sur les symptômes. Tout reste dans cet appareil.</p>
+        <p className="clr-night-hint mt-2 text-sm" data-clr="nuit-1-annonce">Nuit 1 : la plus importante — avoir très chaud, s’il n’y a pas de fièvre.</p>
         <Btn className="clr-btn-big mt-4" onClick={() => set(() => ({ protocol: { start: Date.now(), audience } }))}>J’ai mal à la gorge, je commence</Btn>
         {last ? <p className="mt-3 text-xs text-muted">Dernier protocole : commencé le {fmtDate(last.start)}, {last.status === 'termine' ? 'terminé' : 'annulé'} le {fmtDate(last.end)}.</p> : null}
       </Card>
@@ -201,6 +242,7 @@ function Protocol({ audience }) {
         <span className="clr-days" aria-hidden="true">{[1, 2, 3].map(d => <i key={d} className={cx(d < day && 'done', d === day && 'today')} />)}</span>
       </div>
       {over ? <p className="mt-3 text-sm text-ink">Fais le point avec le suivi ci-dessous. Si ça ne va pas mieux, consulte.</p> : null}
+      <NightWarm day={day} audience={p.audience || audience} />
       <Checklist audience={audience} now={now} />
       <div className="mt-4 flex flex-wrap gap-2">
         <Btn onClick={() => end('termine')}>Terminer</Btn>
@@ -315,10 +357,11 @@ function Symptoms() {
       <div className="clr-seg mt-3" role="group" aria-label="Moment">
         {['matin', 'soir'].map(v => <button key={v} type="button" aria-pressed={slot === v} className={cx(slot === v && 'on')} onClick={() => setSlot(v)}>{v === 'matin' ? 'Matin' : 'Soir'}</button>)}
       </div>
+      {slot === 'soir' ? <NightWarm day={protocolDay(s.protocol, now)} audience={s.protocol.audience} compact /> : null}
       <label className="mt-4 block text-sm font-medium" htmlFor="clr-gorge">Gorge : <span className="text-primary">{f.gorge}</span> / 10</label>
       <input id="clr-gorge" className="clr-range" type="range" min="0" max="10" step="1" value={f.gorge} onChange={e => setF({ ...f, gorge: Number(e.target.value) })} />
       <div className="flex justify-between text-xs text-muted"><span>0 : rien</span><span>10 : très douloureux</span></div>
-      <p className="mt-3 text-sm font-medium">Fièvre ?</p>
+      <p className="mt-3 text-sm font-medium">Fièvre (38 °C ou plus) ?</p>
       <div className="clr-seg mt-1" role="group" aria-label="Fièvre">
         <button type="button" aria-pressed={!f.fievre} className={cx(!f.fievre && 'on')} onClick={() => setF({ ...f, fievre: false })}>Non</button>
         <button type="button" aria-pressed={f.fievre} className={cx(f.fievre && 'on')} onClick={() => setF({ ...f, fievre: true })}>Oui</button>
@@ -500,6 +543,7 @@ function HomeCombatInner({ onOpen, onAll, setStance }) {
         {p ? <>
           <h2 className="mt-1 text-xl">{protocolDay(p, now) > PROTOCOL_DAYS ? 'Les 3 jours sont passés' : `Jour ${protocolDay(p, now)} sur ${PROTOCOL_DAYS}`}</h2>
           <p className="mt-1 text-sm text-muted">Gestes faits aujourd’hui : {done} sur {total}. Commencé le {fmtDate(p.start)} à {fmtTime(p.start)}.</p>
+          <NightWarm day={protocolDay(p, now)} audience={p.audience} compact />
           <Btn className="clr-btn-big mt-4" onClick={onOpen}>Ouvrir mon protocole</Btn>
         </> : <>
           <h2 className="mt-1 text-xl">Dès le premier mal de gorge</h2>

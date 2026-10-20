@@ -1,0 +1,42 @@
+const {chromium,devices}=require('playwright');
+const url=process.argv[2];let fail=0,n=0;const S='/workspace/apps/combat-le-rhume-shots/';const K='combat-le-rhume-suivi-v1';const DAY=864e5;
+(async()=>{const b=await chromium.launch({executablePath:'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
+for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13',devices['iPhone 13']]]){
+ const ctx=await b.newContext({...opt,locale:'fr-CA',timezoneId:'America/Toronto'});const p=await ctx.newPage();const errs=[];
+ p.on('console',m=>m.type()==='error'&&errs.push(m.text()));p.on('pageerror',e=>errs.push('pageerror '+e.message));
+ const ok=(k,v)=>{n++;console.log(v===true?'ok  ':'FAIL',dn,k);if(v!==true)fail++;};
+ const clk=async(nm,exact=true)=>{const l=p.getByRole('button',{name:nm,exact});for(let i=0;i<await l.count();i++)if(await l.nth(i).isVisible()){await l.nth(i).click();await p.waitForTimeout(300);return;}throw new Error('no '+nm);};
+ const hideBanner=async()=>{const h=p.getByRole('button',{name:'Masquer la bannière d’installation'});if(await h.count()&&await h.first().isVisible())await h.first().click();};
+ const night=()=>p.locator('[data-clr=protocole] [data-clr=nuit-chaude]');
+ const edit=async fn=>{await p.evaluate(([k,f,D])=>{const d=JSON.parse(localStorage.getItem(k));new Function('d','D',f)(d,D);localStorage.setItem(k,JSON.stringify(d));},[K,fn,DAY]);await p.reload({waitUntil:'networkidle'});await hideBanner();await clk('Remèdes');};
+ await p.goto(url,{waitUntil:'networkidle'});await clk('Commencer');await clk('Mode Combat');await hideBanner();
+ ok('before start: night-1 announcement',(await p.locator('[data-clr=nuit-1-annonce]').innerText()).includes('Nuit 1 : la plus importante'));
+ await clk('J’ai mal à la gorge, je commence');
+ ok('night 1 callout visible',await night().isVisible());
+ ok('night 1 emphasised + title',await night().getAttribute('data-nuit')==='1'&&(await night().getAttribute('class')).includes('first')&&(await night().innerText()).includes('Nuit 1 : la plus importante — avoir très chaud'));
+ const t1=(await night().innerText()).replace(/\s+/g,' ');
+ ok('night 1 items + safety',['Chambre chaude','Vêtements chauds et bas','Boisson chaude avant le coucher','39 °C ou plus','Pas pour les bébés'].every(x=>t1.includes(x)));
+ await night().evaluate(e=>e.scrollIntoView({block:'center'}));await p.waitForTimeout(200);
+ await p.screenshot({path:S+(dn==='iphone13'?'nuit-chaude.png':'nuit-chaude-desktop.png')});
+ await edit('d.protocol.start-=D;d.intakes=[];');
+ ok('night 2 no fever: reminder + condition',await night().getAttribute('data-nuit')==='2'&&await night().getAttribute('data-etat')==='chaud'&&(await night().innerText()).includes('Nuit 2 : encore très chaud')&&(await night().innerText()).includes('Si tu ne fais toujours pas de température'));
+ await night().evaluate(e=>e.scrollIntoView({block:'center'}));await p.waitForTimeout(200);await p.screenshot({path:S+'nuit-chaude-nuit2-'+dn+'.png'});
+ await edit('d.protocol.start-=D;');
+ ok('night 3 no fever: reminder',await night().getAttribute('data-nuit')==='3'&&(await night().innerText()).includes('Nuit 3 : encore très chaud'));
+ await edit('const t=Date.now();const k=new Date(t);const pad=x=>String(x).padStart(2,"0");d.checks.push({gorge:6,fievre:true,frissons:false,tete:"non",avaler:false,respirer:false,day:`${k.getFullYear()}-${pad(k.getMonth()+1)}-${pad(k.getDate())}`,slot:"matin",t});');
+ ok('night 3 with fever: no overheating',await night().getAttribute('data-etat')==='pas-de-surchauffe'&&(await night().innerText()).includes('Fièvre notée : pas de surchauffe')&&!(await night().innerText()).includes('encore très chaud'));
+ await night().evaluate(e=>e.scrollIntoView({block:'center'}));await p.waitForTimeout(200);await p.screenshot({path:S+'nuit-chaude-fievre-'+dn+'.png'});
+ await edit('d.checks=[];d.protocol.start-=D;');
+ ok('day 4: no night callout',await night().count()===0);
+ await edit('d.protocol.start=Date.now()-D;');
+ await clk('Suivi');await clk('Soir');
+ ok('evening point: compact reminder night 2',(await p.locator('[data-clr=point] [data-clr=nuit-chaude]').innerText()).includes('Nuit 2 : encore très chaud'));
+ ok('fever question labelled 38 °C',(await p.locator('[data-clr=point]').innerText()).includes('Fièvre (38 °C ou plus) ?'));
+ await clk('Accueil');ok('home combat: compact reminder',(await p.locator('[data-clr=accueil-combat] [data-clr=nuit-chaude]').innerText()).includes('Nuit 2'));
+ // Enfant
+ await clk('Remèdes');await clk('Annuler le protocole');await clk('Oui, annuler et effacer');await clk('Enfant');await clk('J’ai mal à la gorge, je commence');
+ const te=(await night().innerText()).replace(/\s+/g,' ');
+ ok('enfant night 1 wording',te.includes('bien au chaud, sans surchauffer')&&te.includes('Ne pas surchauffer un enfant')&&!te.includes('tuque'));
+ ok('0 console errors',errs.length===0||errs.join(' | '));
+ await ctx.close();}
+await b.close();console.log('checks',n,'failures',fail);})().catch(e=>{console.error(e);process.exit(1)});

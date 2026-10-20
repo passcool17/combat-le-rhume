@@ -50,3 +50,17 @@
 .clr-dots{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
 .clr-dots li{position:relative;padding-left:1rem}
 .clr-dots li:before{content:"";position:absolute;left:0;top:.55rem;width:.375rem;height:.375rem;border-radius:9999px;background:var(--color-caution)}
+
+/* Nuit au chaud (nuit 1 accentuée, nuits 2 et 3 si pas de fièvre) */
+.clr-night{border-radius:1rem;padding:.85rem .95rem;background:var(--color-primary-soft);border:1px solid var(--color-primary);color:var(--color-ink)}
+.clr-night.first{border-width:2px;background:var(--color-caution-soft);border-color:var(--color-caution)}
+.clr-night.off{background:var(--color-surface);border:1px dashed var(--color-line)}
+.clr-night-k{font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary)}
+.clr-night.first .clr-night-k{color:var(--color-caution)}
+.clr-night.off .clr-night-k{color:var(--color-muted)}
+.clr-night-t{margin-top:.15rem;font-family:var(--font-display);font-size:1.15rem;line-height:1.3;font-weight:600}
+.clr-night.first .clr-night-t{font-size:1.3rem}
+.clr-night-l{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem}
+.clr-night-l li{padding:.3rem .7rem;border-radius:9999px;background:var(--color-surface);border:1px solid var(--color-line)}
+.clr-night-s{color:var(--color-muted)}
+.clr-night-hint{font-weight:600;color:var(--color-caution)}
