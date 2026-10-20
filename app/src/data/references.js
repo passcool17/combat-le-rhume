@@ -3457,7 +3457,7 @@ export const NUANCES = {
   "Enfant : pas la dose des études ; selon le poids, avec un avis du pharmacien."
  ],
  "cuivre": [
-  "Besoin en cuivre (adulte) : 0,9 mg par jour (1 mg pendant la grossesse, 1,3 mg pendant l’allaitement). Les aliments suffisent en général : fruits de mer, noix, graines, cacao, céréales complètes, légumineuses.",
+  "Besoin en cuivre (adulte) : 0,9 mg par jour (1 mg pendant la grossesse, 1,3 mg pendant l’allaitement). Aliments les plus riches en cuivre : fruits de mer, graines et noix, abats, céréales de son, produits à grains entiers et chocolat.",
   "Limite supérieure (adulte) : 10 mg de cuivre par jour, tout compris (aliments et suppléments).",
   "Beaucoup de zinc pendant des semaines peut baisser le cuivre (dès environ 60 mg de zinc par jour pendant jusqu’à 10 semaines). La cure courte de zinc de l’appli (5 à 7 jours) reste bien en deçà."
  ],
