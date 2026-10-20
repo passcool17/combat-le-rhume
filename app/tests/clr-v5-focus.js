@@ -17,7 +17,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('combat nav only Accueil+Remèdes+Suivi',JSON.stringify(await navLabels())==='["Accueil","Remèdes","Suivi"]');
  let t=await main();
  ok('remedes: no search',await p.getByPlaceholder('Rechercher un remède ou un symptôme…').count()===0);
- ok('remedes: 5 gestes cards',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel et citron|Double dose de vitamine C/}).count()===5);
+ ok('remedes: 5 gestes cards',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel seul|Double dose de vitamine C/}).count()===5);
  ok('remedes: keeps panel/consult/kit/warm',t.includes('J’ai mal à la gorge, je commence')&&t.includes('QUAND ARRÊTER ET CONSULTER')&&t.includes('Kit Combat')&&t.includes('même une tuque'));
  ok('remedes: mode switch',t.includes('CHANGER DE MODE')&&t.includes('Voir tous les remèdes'));
  await full('1-remedes');

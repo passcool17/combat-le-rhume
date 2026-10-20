@@ -19,8 +19,8 @@ export const GESTES = [
     hint: 'Usage court. Suivre l’étiquette.' },
   { id: 'pastilles', short: 'Pastilles antiseptiques', act: '1 pastille', every: 3,
     hint: 'Suivre le nombre indiqué sur le produit.' },
-  { id: 'miel', short: 'Miel cru', act: '1 c. à café, sans ustensile en métal', every: 3,
-    hint: 'Plusieurs fois par jour. Suivre l’étiquette.' },
+  { id: 'miel', short: 'Miel cru', act: '1 c. à soupe de miel seul, cuillère pas en métal · ne pas boire juste après', every: 3,
+    hint: 'Miel seul, sans tisane ni citron. Plusieurs fois par jour.' },
   { id: 'vitamine-c-double', short: 'Double dose de vitamine C', act: '1 prise avec de l’eau, 2 fois par jour', every: 12,
     hint: 'Doubler sa dose habituelle (par ex. 500 mg → 1000 mg par jour), en 2 prises. Max 2000 mg par jour chez l’adulte.' },
 ];
@@ -47,11 +47,11 @@ const KIT = [
   { id: 'verre', label: 'Petit verre et cuillère à soupe pour le gargarisme' },
   { id: 'pastilles-fortes', label: 'Pastilles antiseptiques fortes' },
   { id: 'pastilles-douces', label: 'Pastilles plus douces pour la suite' },
-  { id: 'miel', label: 'Miel cru et cuillère en bois (pas de métal)' },
+  { id: 'miel', label: 'Miel cru et cuillère en bois, plastique ou céramique (pas de métal)' },
   { id: 'vitamine-c', label: 'Vitamine C (comprimés)' },
   { id: 'citron', label: 'Citrons et tisanes' },
   { id: 'thermometre', label: 'Thermomètre' },
-  { id: 'tuque', label: 'Tuque et vêtements chauds pour la nuit' },
+  { id: 'tuque', label: 'Tuque et bas pour la nuit' },
   { id: 'eau', label: 'De quoi boire 2,5 à 3 L par jour' },
 ];
 
@@ -188,23 +188,27 @@ function NightWarm({ day, audience, compact }) {
     );
   }
   const title = enfant
-    ? (first ? 'Nuit 1 : la plus importante — bien au chaud, sans surchauffer' : `Nuit ${day} : encore bien au chaud`)
-    : (first ? 'Nuit 1 : la plus importante — avoir très chaud' : `Nuit ${day} : encore très chaud`);
+    ? (first ? 'Nuit 1 : la plus importante — garder le corps bien au chaud, sans surchauffer' : `Nuit ${day} : garder le corps bien au chaud`)
+    : (first ? 'Nuit 1 : la plus importante — garder toute la chaleur de ton corps' : `Nuit ${day} : continuer de garder toute la chaleur`);
   return (
     <div className={cx('clr-night mt-4', first && 'first')} data-clr="nuit-chaude" data-nuit={day} data-etat="chaud">
       <p className="clr-night-k">{first ? <><span aria-hidden="true">🔥 </span>L’assaut de chaleur</> : `Nuit ${day} sur ${PROTOCOL_DAYS} · chaleur maintenue`}</p>
       <p className="clr-night-t">{title}</p>
+      <p className="clr-night-why mt-1 text-sm">{enfant
+        ? 'Le corps de l’enfant produit de la chaleur : bien le couvrir pour qu’il ne la perde pas, sans surchauffer.'
+        : 'Ton corps produit de la chaleur : fais ce qu’il faut pour ne pas la perdre. S’il monte en température, c’est exactement ce dont ton système immunitaire a besoin pour éliminer l’infection.'}</p>
       {first ? null : <p className="mt-1 text-sm font-medium">Si tu ne fais toujours pas de température (fièvre de 38 °C ou plus). Aucune fièvre notée depuis le début du protocole.</p>}
       {compact ? null : <>
         <ul className="clr-night-l mt-2">
           {(enfant
-            ? ['Bien couvrir l’enfant, chambre confortable', 'Pyjama chaud et bas', 'Boisson tiède avant le coucher']
-            : ['Bien se couvrir : couvertures, tuque', 'Chambre chaude', 'Vêtements chauds et bas', 'Boisson chaude avant le coucher']
+            ? ['Bien couvrir l’enfant : couvertures, sans surchauffer', 'Bas']
+            : ['Bien se couvrir : couvertures, tuque, pour ne pas perdre de chaleur', 'Bas']
           ).map(t => <li key={t} className="text-sm">{t}</li>)}
         </ul>
         <p className="clr-night-s mt-2 text-xs">{enfant
           ? 'Ne pas surchauffer un enfant, jamais un bébé. Faire boire de l’eau. Le découvrir s’il a de la fièvre, s’il est étourdi ou s’il ne va pas bien.'
           : 'Bois bien de l’eau. Découvre-toi si fièvre de 39 °C ou plus, étourdissements ou malaise. Pas pour les bébés ni les jeunes enfants.'}</p>
+        <button type="button" className="clr-ref-cta" data-ref-link="chaleur" onClick={() => useNav.getState().openReferences('chaleur')}>Références : Chaleur du corps</button>
       </>}
     </div>
   );
@@ -223,7 +227,7 @@ function Protocol({ audience }) {
         <Kicker><span aria-hidden="true">🎯 </span>Plan d’attaque · 3 jours</Kicker>
         <h2 className="mt-1 text-xl">Dès le premier mal de gorge, on attaque</h2>
         <p className="mt-2 text-sm text-muted">Tes cinq armes du jour, cochées au fur et à mesure, et un point matin et soir sur les symptômes. Tout reste dans cet appareil.</p>
-        <p className="clr-night-hint mt-2 text-sm" data-clr="nuit-1-annonce">Nuit 1 : la plus importante — avoir très chaud, s’il n’y a pas de fièvre.</p>
+        <p className="clr-night-hint mt-2 text-sm" data-clr="nuit-1-annonce">Nuit 1 : la plus importante — garder toute la chaleur de ton corps, s’il n’y a pas de fièvre.</p>
         <Btn className="clr-btn-big clr-pulse mt-4" onClick={() => set(() => ({ protocol: { start: Date.now(), audience } }))}>J’ai mal à la gorge, je commence</Btn>
         {last ? <p className="mt-3 text-xs text-muted">Dernier protocole : commencé le {fmtDate(last.start)}, {last.status === 'termine' ? 'terminé' : 'annulé'} le {fmtDate(last.end)}.</p> : null}
       </Card>

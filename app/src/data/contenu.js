@@ -16,7 +16,7 @@ export const PROTOCOLE_DU_JOUR = [
   {
     id: `repos`,
     title: `Au chaud la nuit`,
-    detail: `Tuque, couvertures, pièce chauffée. Seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons. Arrête si tu as trop chaud ou si tu te sens moins bien.`,
+    detail: `Tuque, couvertures, bas : garder toute la chaleur de ton corps. Seulement s’il n’y a pas de fièvre, de mal de tête ou de frissons. Arrête si tu as trop chaud ou si tu te sens moins bien.`,
   },
   {
     id: `immunite`,
@@ -520,11 +520,11 @@ export const REMEDES = [
   },
   {
     id: `miel`,
-    name: `Miel et citron`,
-    kicker: `Surtout le soir`,
+    name: `Miel seul`,
+    kicker: `Pour le mal de gorge`,
     topics: [`toux`, `gorge`],
-    how: `1 c. à café de miel cru — jamais avec un ustensile en métal — et un peu de jus de citron dans une tisane chaude, plusieurs fois par jour.`,
-    extra: [`Apaise la gorge et la toux, notamment la nuit.`],
+    how: `Pour le mal de gorge, prendre seulement du miel : 1 cuillère à soupe de miel seul, avec une cuillère qui n’est pas en métal (bois, plastique ou céramique). Pas dans une tisane, pas de citron.`,
+    extra: [`Ne pas rincer la gorge ni boire juste après : laisser le miel agir dans la gorge.`, `Apaise la gorge et la toux, notamment la nuit.`],
     tag: `Gorge · toux nocturne`,
   },
   {
@@ -742,7 +742,7 @@ export const LOGIQUE_COMBAT = [
   },
   {
     lead: `4. Miel cru`,
-    detail: `Apaisant, antimicrobien doux. Un complément, pas la première ligne.`,
+    detail: `Miel seul : 1 c. à soupe, cuillère pas en métal. Ne pas boire juste après : laisser agir. Un complément, pas la première ligne.`,
   },  {
     lead: `5. Double dose de vitamine C`,
     detail: `Dès les premiers symptômes, doubler sa dose habituelle pendant la durée du rhume.`,
@@ -764,7 +764,7 @@ export const GORGE_GESTES = [
   },
   {
     lead: `4. Miel cru`,
-    detail: `Complément apaisant. Jamais d’ustensile en métal.`,
+    detail: `Complément apaisant : 1 c. à soupe de miel seul, cuillère en bois, plastique ou céramique. Pas de tisane ni de citron, et ne pas boire juste après.`,
   },
 ];
 
