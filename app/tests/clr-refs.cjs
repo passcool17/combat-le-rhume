@@ -1,20 +1,26 @@
 const {chromium,devices}=require('playwright');const fs=require('fs');
 const AXE=fs.readFileSync(require.resolve('axe-core/axe.min.js'),'utf8');
 const J=JSON.parse(fs.readFileSync('/workspace/apps/combat-le-rhume-refs.json','utf8'));
-const C=J.chaleur_corps;const A=J.autres_refs;const XS=[...J.entries,...C.x_posts,...A.x_posts];const URLS=XS.map(e=>e.url).sort();
+const C=J.chaleur_corps;const A=J.autres_refs;
+// refs-plus : 31 publications X + 24 études ajoutées (combat-le-rhume-refs-new.json), groupe « Peroxyde »
+const NW=JSON.parse(fs.readFileSync('/workspace/apps/combat-le-rhume-refs-new.json','utf8'));const NP=NW.posts;const NE=NW.etudes;
+const XS=[...J.entries,...C.x_posts,...A.x_posts,...NP];const URLS=XS.map(e=>e.url).sort();
 const lv=s=>{s=s.toLowerCase();return s.startsWith('appuie directement')?'direct':s.startsWith('partiel')?'partiel':s.startsWith('lié')?'lien':null;};
 // niveaux des nouvelles publications « appuie (réserve) » décidés à l'ajout : X4 partiel, X5 direct
 // chaleur : 12 études (HEAT retiré, demande de l'utilisateur : rien qui contredise l'appli)
 const ELV=['direct','direct','partiel','partiel','direct','direct','partiel','partiel','partiel','lien','partiel','direct'];
 // autres_refs X1–X7 : décidés à l'ajout (« appuie (réserve) » → partiel, « en lien » → lien)
-const LV=XS.map((e,i)=>({25:'partiel',26:'direct',35:'direct',36:'partiel',37:'partiel',38:'partiel',39:'partiel',40:'partiel',41:'lien'})[i]??lv(e.support));
+const LV=XS.map((e,i)=>i>=42?e.level:({25:'partiel',26:'direct',35:'direct',36:'partiel',37:'partiel',38:'partiel',39:'partiel',40:'partiel',41:'lien'})[i]??lv(e.support));
 const GID={'Vitamine C':'vitamine-c','Miel':'miel','Zinc':'zinc','Sureau':'sureau','Échinacée':'echinacee','Vitamine D':'vitamine-d','Sommeil et repos':'sommeil','Rinçage et gargarisme':'rincage','Sprays et kit':'sprays','Gingembre/ail/liquides':'gingembre','Chaleur du corps et fièvre':'chaleur'};
 // autres : 21 études. Retirées : Hemilä 2013 Cochrane (i0), Karsch-Völk 2014 (i10), Satomura 2005 dans Sprays (i19).
 // Gardées avec seulement leur partie qui appuie l'appli : Nault 2024 (i7), King 2015 (i16), Satomura 2005 eau (i18), Lissiman 2014 ail (i20).
 const FIX={7:"Cochrane 2024, 34 études/8526 personnes : le zinc pourrait réduire la durée du rhume.",16:"Cochrane : le rinçage nasal salin a peut-être des bénéfices (moins de sécrétions et de nez bouché chez l'enfant dans un essai plus grand).",18:"Essai randomisé au Japon : se gargariser à l'eau a réduit les infections des voies respiratoires supérieures d'environ 36 %.",20:"Cochrane : un seul essai (146 personnes) — moins de rhumes avec l'ail (24 vs 65)."};
 const AE=A.etudes.map((e,i)=>FIX[i]?{...e,finding_fr:FIX[i]}:e).filter((e,i)=>![0,10,19].includes(i));
 const AELV=['partiel','direct','direct','direct','direct','direct','partiel','direct','direct','direct','direct','partiel','direct','direct','partiel','direct','direct','partiel','direct','lien','direct'];
-const ET=[...C.etudes.slice(0,12).map((e,i)=>({...e,n:i+1,g:'chaleur',lv:ELV[i]})),...AE.map((e,i)=>({...e,n:13+i,g:GID[e.groupe],lv:AELV[i]}))];
+// Cochrane retirées (conclusion non concluante) : rinçage nasal salin CD006821 et ail CD006206. Gardées : miel CD007094, zinc CD014914.
+const GONE=['10.1002/14651858.cd006821.pub3','10.1002/14651858.cd006206.pub4'];
+const ET=[...C.etudes.slice(0,12).map((e,i)=>({...e,n:i+1,g:'chaleur',lv:ELV[i]})),...AE.map((e,i)=>({...e,n:13+i,g:GID[e.groupe],lv:AELV[i]}))].filter(x=>!GONE.some(d=>(x.doi_url||'').toLowerCase().endsWith(d)))
+ .concat(NE.map((e,i)=>({title:e.title,journal:e.journal,year:e.year,finding_fr:e.finding,authors:e.authors,doi_url:e.doiUrl,url:e.pubmed,n:34+i,g:e.group,lv:e.level})));
 const SAFE=x=>/^(Seuils de sécurité|Enfants \(AAP|Consulter si)/.test(x);
 const NUX={zinc:[A.nuances[2]],chaleur:C.nuances.filter(SAFE)};
 const url=process.argv[2];let fail=0,n=0;const S='/workspace/apps/combat-le-rhume-shots/';
@@ -30,28 +36,30 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  // sans mode : lien du pied de page
  await p.locator('[data-clr=lien-references]').click();await p.waitForTimeout(400);
  ok('footer link opens view',(await p.locator('main h1').first().innerText())==='Références');
- ok('42 X entries (22 + 13 chaleur + 7 autres)',await p.locator('[data-ref]').count()===42&&XS.length===42);
+ ok('73 X entries (22 + 13 chaleur + 7 autres + 31 refs-plus)',await p.locator('[data-ref]').count()===73&&XS.length===73);
  const hrefs=(await p.locator('[data-ref] a').evaluateAll(as=>as.map(a=>a.getAttribute('href')))).sort();
- ok('42 x.com/status links = JSON exactly',hrefs.length===42&&hrefs.every(h=>/^https:\/\/x\.com\/[^/]+\/status\/\d+$/.test(h))&&JSON.stringify(hrefs)===JSON.stringify(URLS)||hrefs);
+ ok('73 x.com/status links = JSON exactly',hrefs.length===73&&hrefs.every(h=>/^https:\/\/x\.com\/[^/]+\/status\/\d+$/.test(h))&&JSON.stringify(hrefs)===JSON.stringify(URLS)||hrefs);
  ok('Seheult 16 URL',hrefs.includes('https://x.com/RogerSeheult/status/1747687008888369397'));
  ok('pushback posts absent',!hrefs.some(h=>J.contradicting_or_nuance.some(c=>c.url===h)));
  const attrs=await p.locator('[data-ref] a').evaluateAll(as=>as.map(a=>[a.target,a.rel,a.textContent.trim()]));
  ok('links target _blank + noopener + label',attrs.every(([t,r,x])=>t==='_blank'&&r.includes('noopener')&&x==='Voir la publication sur X'));
  const badges=await p.locator('[data-ref]').evaluateAll(ls=>ls.map(l=>[+l.dataset.ref,l.querySelector('[data-badge]')?.dataset.badge,l.querySelector('[data-badge]')?.textContent]));
- ok('badges present + match support level',badges.length===42&&badges.every(([i,lv,t])=>lv===LV[i-1]&&({direct:'Appuie directement',partiel:'Appuie en partie',lien:'En lien'})[lv]===t)||badges);
- ok('Rhonda Patrick: PhD, pas médecin',(await p.locator('[data-ref="22"] [data-clr=pas-medecin]').innerText())==='PhD, pas médecin'&&await p.locator('[data-clr=pas-medecin]').count()===1);
+ ok('badges present + match support level',badges.length===73&&badges.every(([i,lv,t])=>lv===LV[i-1]&&({direct:'Appuie directement',partiel:'Appuie en partie',lien:'En lien'})[lv]===t)||badges);
+ ok('Rhonda Patrick: PhD, pas médecin',(await p.locator('[data-ref="22"] [data-clr=pas-medecin]').innerText())==='PhD, pas médecin'&&await p.locator('[data-clr=pas-medecin]').count()===8);
+ const pm=await p.locator('[data-ref]').evaluateAll(ls=>ls.filter(l=>l.querySelector('[data-clr=pas-medecin]')).map(l=>[+l.dataset.ref,l.querySelector('[data-clr=pas-medecin]').textContent]));
+ ok('non-médecins étiquetés honnêtement',JSON.stringify(pm.filter(x=>x[0]>42).map(x=>x[1]).sort())===JSON.stringify(['Association de pédiatres','Chiropraticien, pas médecin','Fondation, pas un médecin','Hôpital, pas un médecin','Hôpital, pas un médecin','Hôpital, pas un médecin','Hôpital, pas un médecin'])&&NP.filter(x=>x.notPhysician).length===7||pm);
  const notes=await p.locator('[data-ref]').evaluateAll(ls=>ls.filter(l=>l.querySelector('[data-clr=ref-note]')).map(l=>+l.dataset.ref));
 ok('no Mercola/McCullough notes',notes.length===0&&await p.locator('[data-clr=ref-note]').count()===0||notes);
  const t=(await p.locator('main').innerText()).replace(/\s+/g,' ');
  const grp=await p.locator('[data-ref]').evaluateAll(ls=>Object.fromEntries(ls.map(l=>[+l.dataset.ref,l.closest('[data-ref-group]').dataset.refGroup])));
  ok('7 autres X posts in their tagged group',A.x_posts.every((e,i)=>grp[36+i]===GID[e.groupe])||grp);
- const nx=await p.locator('[data-ref]').evaluateAll(ls=>ls.filter(l=>+l.dataset.ref>35).map(l=>[l.querySelector('a').getAttribute('href'),l.innerText]));
+ const nx=await p.locator('[data-ref]').evaluateAll(ls=>ls.filter(l=>+l.dataset.ref>35&&+l.dataset.ref<=42).map(l=>[l.querySelector('a').getAttribute('href'),l.innerText]));
  ok('autres X: URL, nom, qualification (idem résolu), extrait',nx.length===7&&nx.every(([h,tx],i)=>h===A.x_posts[i].url&&tx.includes(A.x_posts[i].name)&&tx.replace(/\s+/g,' ').includes(A.x_posts[i].excerpt.replace(/\s+/g,' '))&&!/\bidem\b/i.test(tx))||nx.map(x=>x[0]));
-ok('intro',t.includes('Publications publiques de médecins sur X')&&t.includes('ne remplacent pas un avis médical')&&t.includes('42 publications et 33 études scientifiques'));
+ok('intro',t.includes('Publications publiques de médecins sur X')&&t.includes('ne remplacent pas un avis médical')&&t.includes('73 publications et 55 études scientifiques'));
  const et=await p.locator('[data-etude]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.etude,doi:l.querySelector('[data-doi]')?.getAttribute('href')??null,pm:l.querySelector('[data-pubmed]').getAttribute('href'),b:l.querySelector('[data-badge]').dataset.badge,bt:l.querySelector('[data-badge]').textContent,t:l.innerText,tg:[...l.querySelectorAll('a')].every(a=>a.target==='_blank'&&a.rel.includes('noopener'))})));
 const BT={direct:'Appuie directement',partiel:'Appuie en partie',lien:'En lien'};
  const byN=Object.fromEntries(et.map(e=>[e.n,e]));
- ok('33 études (12 + 21), DOI + PubMed links = JSON exactly',et.length===33&&ET.length===33&&ET.every(x=>{const e=byN[x.n];return e&&e.doi===(x.doi_url??null)&&e.pm===x.url&&e.tg&&e.t.includes(x.title)&&e.t.includes(x.journal)&&e.t.includes(String(x.year))&&e.t.includes(x.finding_fr)&&e.t.includes(x.authors);})||et.map(e=>e.n));
+ ok('55 études (12 + 21 − 2 Cochrane + 24), DOI + PubMed links = JSON exactly',et.length===55&&ET.length===55&&ET.every(x=>{const e=byN[x.n];return e&&e.doi===(x.doi_url??null)&&e.pm===x.url&&e.tg&&e.t.includes(x.title)&&e.t.includes(x.journal)&&e.t.includes(String(x.year))&&e.t.includes(x.finding_fr)&&e.t.includes(x.authors);})||et.map(e=>e.n));
  ok('Sanu & Eccles 2008: PubMed only',byN[31].doi===null&&byN[31].pm==='https://pubmed.ncbi.nlm.nih.gov/19145994/'&&byN[31].t.includes('Sanu'));
  ok('études badges (aucune « Nuance »)',ET.every(x=>byN[x.n].b===x.lv&&byN[x.n].bt===BT[x.lv])&&!et.some(e=>e.b==='nuance')||et.map(e=>e.n+e.b));
  const eg=await p.locator('[data-etude]').evaluateAll(ls=>Object.fromEntries(ls.map(l=>[+l.dataset.etude,l.closest('[data-ref-group]').dataset.refGroup])));
@@ -59,17 +67,21 @@ const BT={direct:'Appuie directement',partiel:'Appuie en partie',lien:'En lien'}
  ok('Satomura 2005 only in Rinçage, water finding only',et.filter(e=>e.t.includes('Satomura')).length===1&&eg[29]==='rincage'&&byN[29].t.includes('environ 36 %')&&!/iode/i.test(byN[29].t));
  ok('Hemilä 2013 Cochrane vit. C absent',!et.some(e=>e.t.includes(A.etudes[0].title))&&!et.some(e=>e.doi===A.etudes[0].doi_url));
  ok('Johnson & Eccles 2005 in Chaleur',eg[33]==='chaleur'&&byN[33].doi==='https://doi.org/10.1093/fampra/cmi072'||byN[33]);
- ok('Chaleur group: 14 études, 17 X',await p.locator('#ref-chaleur [data-etude]').count()===13&&(await p.locator('#ref-chaleur-t').innerText())==='Chaleur du corps et fièvre'&&await p.locator('#ref-chaleur [data-ref]').count()===17);
- ok('Rinçage et gargarisme group',(await p.locator('#ref-rincage-t').innerText())==='Rinçage et gargarisme'&&await p.locator('#ref-rincage [data-etude]').count()===3);
+ ok('Chaleur group: 14 études, 17 X',await p.locator('#ref-chaleur [data-etude]').count()===17&&(await p.locator('#ref-chaleur-t').innerText())==='Chaleur du corps et fièvre'&&await p.locator('#ref-chaleur [data-ref]').count()===20);
+ ok('Rinçage et gargarisme group',(await p.locator('#ref-rincage-t').innerText())==='Rinçage et gargarisme'&&await p.locator('#ref-rincage [data-etude]').count()===6&&await p.locator('#ref-rincage [data-ref]').count()===10);
+ ok('Peroxyde group: 4 X + 3 études',(await p.locator('#ref-peroxyde-t').innerText())==='Peroxyde'&&await p.locator('#ref-peroxyde [data-ref]').count()===4&&await p.locator('#ref-peroxyde [data-etude]').count()===3);
+ const npx=await p.locator('[data-ref]').evaluateAll(ls=>ls.filter(l=>+l.dataset.ref>42).map(l=>({n:+l.dataset.ref,h:l.querySelector('a').getAttribute('href'),g:l.closest('[data-ref-group]').dataset.refGroup,t:l.innerText.replace(/\s+/g,' ')})));
+ ok('31 nouvelles publications : URL, groupe, nom, handle, résumé, citation',npx.length===31&&NP.every((x,i)=>{const e=npx.find(y=>y.n===43+i);return e&&e.h===x.url&&e.g===x.group&&e.t.includes(x.name)&&e.t.includes(x.handle)&&e.t.includes(x.gist.replace(/\s+/g,' '))&&e.t.includes(x.quote.replace(/\s+/g,' ').slice(0,60));})||npx.map(x=>x.n+x.g));
+ ok('Cochrane saline + ail retirées ; miel + zinc gardées',!et.some(e=>/cd006821|cd006206/i.test(e.doi||''))&&et.some(e=>/cd007094/i.test(e.doi||''))&&et.some(e=>/cd014914/i.test(e.doi||'')));
  const nu=await p.locator('[data-securite]').evaluateAll(ds=>Object.fromEntries(ds.map(d=>[d.dataset.securite,[...d.querySelectorAll('li')].map(l=>l.textContent)])));
  ok('safety boxes per group = JSON exactly (safety only)',JSON.stringify(Object.keys(nu).sort())===JSON.stringify(Object.keys(NUX).sort())&&Object.entries(NUX).every(([g,a])=>JSON.stringify(nu[g])===JSON.stringify(a))||nu);
  const allT=(await p.locator('main').textContent());
  ok('no Cochrane onset / povidone-iode comparison text',!/début du rhume : pas d|seulement au début|povidone-iode n'a pas fait mieux|aucune preuve solide trouvée contre le rhume|rapport 0,89/i.test(allT));
  const toc=await p.locator('[data-otp]').textContent();
- ok('sommaire counts include études',toc.includes('Chaleur du corps et fièvre (30)')&&toc.includes('Échinacée (2)')&&toc.includes('Rinçage et gargarisme (3)')||toc);
+ ok('sommaire counts include études',toc.includes('Chaleur du corps et fièvre (37)')&&toc.includes('Échinacée (2)')&&toc.includes('Rinçage et gargarisme (16)')&&toc.includes('Peroxyde (7)')||toc);
  ok('nothing contradicting the app',t.includes('bien documenté')&&!/\bHEAT\b|Nuance/.test(await p.locator('main').textContent())&&!/extrapolation|doubler exactement|Karsch|résultats contradictoires|preuves faibles|preuves insuffisantes|ne change pas toujours l|n'aide sans doute pas|faible qualité|ne parle pas du rhume ni de se couvrir|pas de « suer »/i.test(await p.locator('main').textContent()));
  ok('Karsch-Völk + HEAT absent',!hrefs.includes(A.etudes[10].url)&&!et.some(e=>e.pm===A.etudes[10].url||e.pm===C.etudes[12].url));
- ok('11 groups',await p.locator('[data-ref-group]').count()===11);
+ ok('12 groups',await p.locator('[data-ref-group]').count()===12);
  ok('each entry: name, handle, claim, date',await p.locator('[data-ref]').evaluateAll(ls=>ls.every(l=>l.querySelector('h3')&&/@\w+/.test(l.innerText)&&l.innerText.includes('Conseil de l’appli')&&l.innerText.includes('Publié le'))));
  ok('axe références (sans mode)',await axe());
  // Mode Combat : carte remède → groupe ; Conseils → carte
@@ -81,8 +93,9 @@ const BT={direct:'Appuie directement',partiel:'Appuie en partie',lien:'En lien'}
  ok('axe références (Combat)',await axe());
  if(true){await p.evaluate(()=>window.scrollTo(0,0));await p.waitForTimeout(300);await p.screenshot({path:S+(dn==='iphone13'?'references.png':'references-desktop.png')});
    await p.locator('#ref-chaleur').evaluate(e=>e.scrollIntoView({block:'start'}));await p.evaluate(()=>window.scrollBy(0,-(document.querySelector('header').offsetHeight+8)));await p.waitForTimeout(200);await p.screenshot({path:S+(dn==='iphone13'?'chaleur-refs.png':'chaleur-refs-desktop.png')});
-   await p.locator('#ref-chaleur-etudes').evaluate(e=>e.scrollIntoView({block:'start'}));await p.evaluate(()=>window.scrollBy(0,-(document.querySelector('header').offsetHeight+8)));await p.waitForTimeout(200);await p.screenshot({path:S+'chaleur-etudes-'+dn+'.png'});}
- await clk('Conseils');ok('Conseils (Combat) has Références card',await p.locator('[data-clr=carte-references]').isVisible()&&(await p.locator('[data-clr=carte-references]').innerText()).includes('42 publications publiques de médecins sur X et 33 études scientifiques'));
+   await p.locator('#ref-peroxyde').evaluate(e=>e.scrollIntoView({block:'start'}));await p.evaluate(()=>window.scrollBy(0,-(document.querySelector('header').offsetHeight+8)));await p.waitForTimeout(200);await p.screenshot({path:S+'peroxyde-refs-'+dn+'.png'});
+  await p.locator('#ref-chaleur-etudes').evaluate(e=>e.scrollIntoView({block:'start'}));await p.evaluate(()=>window.scrollBy(0,-(document.querySelector('header').offsetHeight+8)));await p.waitForTimeout(200);await p.screenshot({path:S+'chaleur-etudes-'+dn+'.png'});}
+ await clk('Conseils');ok('Conseils (Combat) has Références card',await p.locator('[data-clr=carte-references]').isVisible()&&(await p.locator('[data-clr=carte-references]').innerText()).includes('73 publications publiques de médecins sur X et 55 études scientifiques'));
  await clk('Voir les références');ok('Conseils card opens refs',(await p.locator('main h1').first().innerText())==='Références');
  await clk('Accueil');await clk('Mode Soutien');await hide();await clk('Conseils');
  ok('Conseils (Soutien) has Références card',await p.locator('[data-clr=carte-references]').isVisible());
