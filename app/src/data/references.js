@@ -1,4 +1,4 @@
-// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json combat-le-rhume-argent-final.json et combat-le-rhume-refs-grippe-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
+// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json combat-le-rhume-argent-final.json combat-le-rhume-refs-grippe-final.json et combat-le-rhume-quercetine-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
 export const REFERENCES = [
  {
   "n": 1,
@@ -1658,6 +1658,102 @@ export const REFERENCES = [
   "level": "direct",
   "supportNote": "appuie directement (repos et liquides)",
   "note": null
+ },
+ {
+  "n": 110,
+  "name": "Roger Seheult, MD",
+  "handle": "@RogerSeheult",
+  "credential": "Interniste et pneumologue, 4 certifications (médecine interne, pneumologie, sommeil, soins intensifs) ; professeur à Loma Linda (bio).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Quercétine en hiver, comme ionophore du zinc",
+  "quote": "Definitely worthwhile. I take Quercetin myself when I’m at risk (winter)",
+  "gist": "À la question sur la quercétine comme ionophore du zinc : ça vaut vraiment la peine. Il en prend lui-même en hiver, quand il est à risque.",
+  "date": "2024-01-21T18:03:40Z",
+  "url": "https://x.com/RogerSeheult/status/1749130654963712210",
+  "level": "direct",
+  "supportNote": "appuie directement (réponse à une question sur la quercétine et le zinc)",
+  "note": null
+ },
+ {
+  "n": 111,
+  "name": "Dr. Dennis Walker",
+  "handle": "@drdenwalker",
+  "credential": "Se dit médecin dans sa bio (« physician ») ; titre non vérifié dans un registre de médecins.",
+  "notPhysician": true,
+  "notPhysicianLabel": "MD non vérifié",
+  "claim": "Quercétine 500 mg avec le zinc, contre le rhume et la grippe",
+  "quote": "Know this combination: Quercetin transports zinc into the cell, where the zinc becomes lethal to many viruses. Quercetin (with bromelain and vitamin C) 500 mg. #quercetin #Zinc #cold #Flu",
+  "gist": "La quercétine fait entrer le zinc dans les cellules, où le zinc devient mortel pour beaucoup de virus. Quercétine 500 mg, avec bromélaïne et vitamine C.",
+  "date": "2026-09-01T13:00:51Z",
+  "url": "https://x.com/drdenwalker/status/2094772475296989376",
+  "level": "direct",
+  "supportNote": "appuie directement (avec le zinc, dose de 500 mg)",
+  "note": null
+ },
+ {
+  "n": 112,
+  "name": "Jim Bennie, MD",
+  "handle": "@JimBennieMD",
+  "credential": "MD, médecin de famille et médecin du sommeil (bio).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Quercétine avec du zinc pour prévenir et traiter les infections respiratoires",
+  "quote": "Solgar Quercetin Complex, and one that I recommend my patients take with Solgar Zinc Picolinate to help prevent and treat all URI's.",
+  "gist": "Il recommande à ses patients une quercétine (approuvée par ConsumerLab) avec du zinc pour prévenir et traiter les infections des voies respiratoires hautes.",
+  "date": "2022-05-13T18:10:35Z",
+  "url": "https://x.com/JimBennieMD/status/1525176694515982336",
+  "level": "direct",
+  "supportNote": "appuie directement (avec le zinc)",
+  "note": null
+ },
+ {
+  "n": 113,
+  "name": "Jude A. Pierre, MD",
+  "handle": "@judeapierremd",
+  "credential": "MD (bio : accompagne des médecins).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "Quercétine, zinc, vitamines D3 et C contre les infections virales",
+  "quote": "Great to see research on supplements that I have been recommending to my patients/family/friends for months. Quercetin/zinc/vitamins D3 and C should be considered to help fight viral infections and boost your own immune system.",
+  "gist": "Il recommande depuis des mois à ses patients la quercétine avec le zinc et les vitamines D3 et C pour aider à combattre les infections virales et renforcer l’immunité.",
+  "date": "2021-02-18T04:45:37Z",
+  "url": "https://x.com/judeapierremd/status/1362261966438293505",
+  "level": "direct",
+  "supportNote": "appuie directement (avec le zinc)",
+  "note": null
+ },
+ {
+  "n": 114,
+  "name": "Dr David",
+  "handle": "@Pharm_Obi",
+  "credential": "Se dit pharmacien dans la publication (« As a pharmacist ») ; titre non vérifié.",
+  "notPhysician": true,
+  "notPhysicianLabel": "Pharmacien, pas médecin",
+  "claim": "Quercétine et zinc pour l’immunité",
+  "quote": "As a pharmacist, I recommend the following evidence-based essentials for immune support: […] Elemental Zinc: Crucial for immune cell function Quercetin: Anti-inflammatory & antiviral properties",
+  "gist": "Comme pharmacien, il recommande pour l’immunité le zinc et la quercétine, qui a des propriétés anti-inflammatoires et antivirales.",
+  "date": "2024-11-04T05:37:47Z",
+  "url": "https://x.com/Pharm_Obi/status/1853310653554901494",
+  "level": "partiel",
+  "supportNote": "appuie en partie (immunité en général)",
+  "note": null
+ },
+ {
+  "n": 115,
+  "name": "Peter A. McCullough, MD, MPH",
+  "handle": "@P_McCulloughMD",
+  "credential": "MD, MPH, interniste et cardiologue (bio : « Physician-scientist »).",
+  "notPhysician": false,
+  "notPhysicianLabel": null,
+  "claim": "La quercétine cible le virus de la grippe aviaire",
+  "quote": "The authors suggest, “compounds such as aloe emodin, quercetin, curcumin, and epicatechin gallate all possess potential to be drug development targets due to their high binding affinity and binding region specificity.”",
+  "gist": "Il relaie une analyse : la quercétine fait partie des composés naturels qui ciblent et perturbent l’infection par la grippe aviaire.",
+  "date": "2024-12-24T03:13:19Z",
+  "url": "https://x.com/P_McCulloughMD/status/1871393691757142518",
+  "level": "partiel",
+  "supportNote": "appuie en partie (analyse en laboratoire, grippe aviaire)",
+  "note": null
  }
 ];
 
@@ -1695,6 +1791,18 @@ export const REF_GROUPS = [
   "id": "cuivre",
   "title": "Cuivre",
   "items": []
+ },
+ {
+  "id": "quercetine",
+  "title": "Quercétine",
+  "items": [
+   110,
+   111,
+   112,
+   113,
+   114,
+   115
+  ]
  },
  {
   "id": "miel",
@@ -3435,6 +3543,146 @@ export const ETUDES = [
   "level": "direct",
   "supportNote": "appuie directement",
   "group": "cuivre"
+ },
+ {
+  "n": 115,
+  "authors": "Nieman DC, Henson DA, Gross SJ, Jenkins DP, Davis JM, Murphy EA, Carmichael MD, Dumke CL, Utter AC, McAnulty SR, McAnulty LS, Mayer EP.",
+  "title": "Quercetin reduces illness but not immune perturbations after intensive exercise.",
+  "journal": "Med Sci Sports Exerc",
+  "year": "2007",
+  "doi": "10.1249/mss.0b013e318076b566",
+  "doiUrl": "https://doi.org/10.1249/mss.0b013e318076b566",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/17805089/",
+  "finding": "Essai à double insu chez 40 cyclistes entraînés : 1 000 mg de quercétine par jour pendant 3 semaines. Infections des voies respiratoires hautes dans les 2 semaines après un effort intense : 1 sur 20 avec la quercétine contre 9 sur 20 avec le placebo.",
+  "level": "direct",
+  "supportNote": "appuie directement (essai randomisé)",
+  "group": "quercetine"
+ },
+ {
+  "n": 116,
+  "authors": "Heinz SA, Henson DA, Austin MD, Jin F, Nieman DC.",
+  "title": "Quercetin supplementation and upper respiratory tract infection: A randomized community clinical trial.",
+  "journal": "Pharmacol Res",
+  "year": "2010",
+  "doi": "10.1016/j.phrs.2010.05.001",
+  "doiUrl": "https://doi.org/10.1016/j.phrs.2010.05.001",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/20478383/",
+  "finding": "Essai randomisé à double insu (1 002 adultes, 12 semaines) : chez les 40 ans et plus en bonne forme physique, 1 000 mg de quercétine par jour ont réduit de 36 % la gravité des infections des voies respiratoires hautes et de 31 % les jours de maladie.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (40 ans et plus en bonne forme)",
+  "group": "quercetine"
+ },
+ {
+  "n": 117,
+  "authors": "Davis JM, Murphy EA, McClellan JL, Carmichael MD, Gangemi JD.",
+  "title": "Quercetin reduces susceptibility to influenza infection following stressful exercise.",
+  "journal": "Am J Physiol Regul Integr Comp Physiol",
+  "year": "2008",
+  "doi": "10.1152/ajpregu.90319.2008",
+  "doiUrl": "https://doi.org/10.1152/ajpregu.90319.2008",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/18579649/",
+  "finding": "Grippe chez la souris : 7 jours de quercétine ont annulé la hausse de grippe causée par un effort épuisant (moins de maladie, de symptômes et de décès).",
+  "level": "partiel",
+  "supportNote": "appuie en partie (chez l’animal)",
+  "group": "quercetine"
+ },
+ {
+  "n": 118,
+  "authors": "Wu W, Li R, Li X, He J, Jiang S, Liu S, Yang J.",
+  "title": "Quercetin as an Antiviral Agent Inhibits Influenza A Virus (IAV) Entry.",
+  "journal": "Viruses",
+  "year": "2015",
+  "doi": "10.3390/v8010006",
+  "doiUrl": "https://doi.org/10.3390/v8010006",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/26712783/",
+  "finding": "En laboratoire, la quercétine bloque l’entrée de plusieurs souches de grippe A (H1N1, H3N2, H5N1) dans les cellules.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "quercetine"
+ },
+ {
+  "n": 119,
+  "authors": "Ganesan S, Faris AN, Comstock AT, Wang Q, Nanua S, Hershenson MB, Sajjan US.",
+  "title": "Quercetin inhibits rhinovirus replication in vitro and in vivo.",
+  "journal": "Antiviral Res",
+  "year": "2012",
+  "doi": "10.1016/j.antiviral.2012.03.005",
+  "doiUrl": "https://doi.org/10.1016/j.antiviral.2012.03.005",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/22465313/",
+  "finding": "Rhinovirus, principal virus du rhume : la quercétine freine l’entrée et la multiplication du virus dans les cellules des voies respiratoires et chez la souris, et améliore la fonction pulmonaire.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire et chez la souris)",
+  "group": "quercetine"
+ },
+ {
+  "n": 120,
+  "authors": "Dabbagh-Bazarbachi H, Clergeaud G, Quesada IM, Ortiz M, O'Sullivan CK, O'Sullivan CK, Fernández-Larrea JB.",
+  "title": "Zinc ionophore activity of quercetin and epigallocatechin-gallate: from Hepa 1-6 cells to a liposome model.",
+  "journal": "J Agric Food Chem",
+  "year": "2014",
+  "doi": "10.1021/jf5014633",
+  "doiUrl": "https://doi.org/10.1021/jf5014633",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25050823/",
+  "finding": "La quercétine agit comme ionophore du zinc : avec le zinc, elle fait entrer rapidement le zinc dans les cellules et à travers des membranes.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (en laboratoire)",
+  "group": "quercetine"
+ },
+ {
+  "n": 121,
+  "authors": "Di Pierro F, Derosa G, Maffioli P, Bertuccioli A, Togni S, Riva A, Allegrini P, Khan A, Khan S, Khan BA, Altaf N, Zahid M, Ujjan ID, Nigar R, Khushk MI, Phulpoto M, Lail A, Devrajani BR, Ahmed S.",
+  "title": "Possible Therapeutic Effects of Adjuvant Quercetin Supplementation Against Early-Stage COVID-19 Infection: A Prospective, Randomized, Controlled, and Open-Label Study.",
+  "journal": "Int J Gen Med",
+  "year": "2021",
+  "doi": "10.2147/ijgm.s318720",
+  "doiUrl": "https://doi.org/10.2147/ijgm.s318720",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34135619/",
+  "finding": "Essai randomisé (152 patients COVID-19 au début) : quercétine phytosome 1 000 mg par jour pendant 30 jours. Moins d’hospitalisations, moins d’oxygène, moins de soins intensifs et moins de décès ; très bonne tolérance.",
+  "level": "direct",
+  "supportNote": "appuie directement (COVID-19, virus respiratoire)",
+  "group": "quercetine"
+ },
+ {
+  "n": 122,
+  "authors": "Di Pierro F, Iqtadar S, Khan A, Ullah Mumtaz S, Masud Chaudhry M, Bertuccioli A, Derosa G, Maffioli P, Togni S, Riva A, Allegrini P, Khan S.",
+  "title": "Potential Clinical Benefits of Quercetin in the Early Stage of COVID-19: Results of a Second, Pilot, Randomized, Controlled and Open-Label Clinical Trial.",
+  "journal": "Int J Gen Med",
+  "year": "2021",
+  "doi": "10.2147/ijgm.s318949",
+  "doiUrl": "https://doi.org/10.2147/ijgm.s318949",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34194240/",
+  "finding": "Essai randomisé (42 patients COVID-19 légère) : après 1 semaine, 16 patients sur 21 étaient négatifs avec la quercétine contre 2 sur 21 ; symptômes diminués chez 12 contre 4.",
+  "level": "direct",
+  "supportNote": "appuie directement (COVID-19, virus respiratoire)",
+  "group": "quercetine"
+ },
+ {
+  "n": 123,
+  "authors": "Di Pierro F, Khan A, Iqtadar S, Mumtaz SU, Chaudhry MNA, Bertuccioli A, Derosa G, Maffioli P, Togni S, Riva A, Allegrini P, Recchia M, Zerbinati N.",
+  "title": "Quercetin as a possible complementary agent for early-stage COVID-19: Concluding results of a randomized clinical trial.",
+  "journal": "Front Pharmacol",
+  "year": "2022",
+  "doi": "10.3389/fphar.2022.1096853",
+  "doiUrl": "https://doi.org/10.3389/fphar.2022.1096853",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/36712674/",
+  "finding": "Essai randomisé (100 patients COVID-19 au début) : quercétine phytosome 500 mg 3 fois par jour la 1re semaine, puis 2 fois par jour. Après 1 semaine : 34 négatifs contre 12, symptômes disparus chez 26 contre 12 ; aucun effet indésirable.",
+  "level": "direct",
+  "supportNote": "appuie directement (COVID-19, virus respiratoire)",
+  "group": "quercetine"
+ },
+ {
+  "n": 124,
+  "authors": "Shohan M, Nashibi R, Mahmoudian-Sani MR, Abolnezhadian F, Ghafourian M, Alavi SM, Sharhani A, Khodadadi A.",
+  "title": "The therapeutic efficacy of quercetin in combination with antiviral drugs in hospitalized COVID-19 patients: A randomized controlled trial.",
+  "journal": "Eur J Pharmacol",
+  "year": "2022",
+  "doi": "10.1016/j.ejphar.2021.174615",
+  "doiUrl": "https://doi.org/10.1016/j.ejphar.2021.174615",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34863994/",
+  "finding": "Essai randomisé (60 patients COVID-19 à l’hôpital) : 1 000 mg de quercétine par jour pendant 7 jours en plus des antiviraux. Sortie plus tôt et baisse des marqueurs d’inflammation (CRP, LDH) ; sécuritaire.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (patients hospitalisés)",
+  "group": "quercetine"
  }
 ];
 
@@ -3452,7 +3700,7 @@ export const NUANCES = {
  "zinc": [
   "Zinc, dose des études (adulte seulement) : pastilles d’environ 13 mg toutes les 2 à 3 heures éveillé (≈ 75 à 90 mg par jour), dans les 24 heures des premiers symptômes, 5 à 7 jours maximum.",
   "Cette dose dépasse la limite usuelle de 40 mg par jour : seulement pour une courte durée. Peut causer nausées et goût métallique ; carence en cuivre si prolongé. Jamais plus de 100 mg par jour : aucun bénéfice de plus.",
-  "Cure courte (5 à 7 jours) : le zinc à forte dose bloque l’absorption du cuivre seulement s’il est pris pendant des semaines. Ensuite, mange des aliments riches en cuivre (noix, graines, cacao, fruits de mer, légumineuses).",
+  "Cure courte (5 à 7 jours) : le zinc à forte dose bloque l’absorption du cuivre seulement s’il est pris pendant des semaines. Ensuite, mange des aliments riches en cuivre (fruits de mer, graines et noix, abats, céréales de son, grains entiers et chocolat).",
   "Demander avis au pharmacien si tu prends des médicaments ou en cas de grossesse. Jamais de zinc dans le nez (spray ou gel nasal) : risque de perte de l’odorat.",
   "Enfant : pas la dose des études ; selon le poids, avec un avis du pharmacien."
  ],
@@ -3460,6 +3708,11 @@ export const NUANCES = {
   "Besoin en cuivre (adulte) : 0,9 mg par jour (1 mg pendant la grossesse, 1,3 mg pendant l’allaitement). Aliments les plus riches en cuivre : fruits de mer, graines et noix, abats, céréales de son, produits à grains entiers et chocolat.",
   "Limite supérieure (adulte) : 10 mg de cuivre par jour, tout compris (aliments et suppléments).",
   "Beaucoup de zinc pendant des semaines peut baisser le cuivre (dès environ 60 mg de zinc par jour pendant jusqu’à 10 semaines). La cure courte de zinc de l’appli (5 à 7 jours) reste bien en deçà."
+ ],
+ "quercetine": [
+  "Quercétine (adulte seulement) : 500 mg 2 fois par jour avec un repas, avec les pastilles de zinc. Santé Canada : pas plus de 600 mg par prise ni 1 200 mg par jour ; au-delà de 12 semaines, demander avis.",
+  "Utilisée sans problème jusqu’à 1 g par jour pendant 12 semaines. Pas pendant la grossesse ni l’allaitement. Pas en cas de problème de reins : elle pourrait l’aggraver.",
+  "Interactions possibles : certains antibiotiques (quinolones), cyclosporine, anticoagulants comme la warfarine, et d’autres médicaments transformés par le foie. Si tu prends des médicaments, demande au pharmacien."
  ],
  "miel": [
   "Miel : jamais avant 1 an. De 1 à 5 ans : 2 c. à thé ; adulte : 1 c. à soupe, 30 min avant le coucher pour la toux de nuit."
@@ -3504,6 +3757,20 @@ export const SOURCES_OFFICIELLES = {
   {
    "label": "NIH Office of Dietary Supplements : cuivre (besoins, limite de 10 mg, zinc)",
    "url": "https://ods.od.nih.gov/factsheets/Copper-HealthProfessional/"
+  }
+ ],
+ "quercetine": [
+  {
+   "label": "Santé Canada : monographie Quercétine (adulte, 600 mg par prise, 1 200 mg par jour, 12 semaines)",
+   "url": "https://webprod.hc-sc.gc.ca/nhpid-bdipsn/dbImages/mono_quercetin_english.pdf"
+  },
+  {
+   "label": "Susan G. Komen (fiche NatMed Pro) : sécurité jusqu’à 1 g par jour 12 semaines, grossesse, reins, interactions",
+   "url": "https://www.komen.org/breast-cancer/survivorship/complementary-therapies/quercetin/"
+  },
+  {
+   "label": "Memorial Sloan Kettering : quercétine, interactions (warfarine, médicaments du foie)",
+   "url": "https://www.mskcc.org/cancer-care/integrative-medicine/herbs/quercetin"
   }
  ]
 };

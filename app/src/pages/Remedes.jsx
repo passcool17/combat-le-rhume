@@ -29,7 +29,7 @@ export function Remedes({ filter, onFilter }) {
           let a = GESTES_COMBAT.includes(n.id);
           return (r && !a) ||
             (r && audience === `enfant` && n.id === `peroxyde`) ||
-            (audience === `enfant` && n.id === `argent`) ||
+            (audience === `enfant` && (n.id === `argent` || n.id === `quercetine`)) ||
             (stance === `soutien` && a) ||
             (i && !favorites.includes(n.id)) ||
             (!r && filter === `prudence` && !n.caution) ||
