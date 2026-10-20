@@ -7,6 +7,9 @@ npm i -D playwright axe-core && npx playwright install chromium
 SWV='clr-*' node tests/clr-v5-combat.js http://localhost:4173/combat-le-rhume/ local   # Mode Combat (40 vérifications)
 node tests/clr-v5-focus.js  http://localhost:4173/combat-le-rhume/ local               # Mode Combat concentré (20)
 node tests/clr-v5-new.js    http://localhost:4173/combat-le-rhume/ local               # accueil, Suivi, replis, installation, partage, axe, 44 px, h1, hauteurs
+node tests/clr-accueil-refs.cjs http://localhost:4173/combat-le-rhume/                     # Accueil : bloc Références (148 vérifications, 3 modes, clair/sombre)
+node tests/clr-sinus-forte.cjs  http://localhost:4173/combat-le-rhume/                     # Recettes : sinus « La plus forte » (60 vérifications)
+node tests/clr-oreilles.cjs     http://localhost:4173/combat-le-rhume/                     # Oreilles : 5 minutes maximum (10 vérifications)
 ```
 
 `SHOTS=/chemin/prefixe_` change l’emplacement des captures.

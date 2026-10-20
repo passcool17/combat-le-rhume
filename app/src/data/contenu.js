@@ -6,7 +6,7 @@ export const PROTOCOLE_DU_JOUR = [
   {
     id: `tot`,
     title: `Frapper fort`,
-    detail: `Dès le mal de gorge : 1. spray povidone-iode 0,45 % · 2. peroxyde · 3. pastilles antiseptiques · 4. miel.`,
+    detail: `Dès le mal de gorge : 1. spray povidone-iode 0,45 % · 2. peroxyde 3 % Food Grade · 3. pastilles antiseptiques · 4. miel.`,
   },
   {
     id: `hydratation`,
@@ -128,7 +128,7 @@ export const SYMPTOMES = [
       },
       {
         lead: `Lavage nasal`,
-        detail: `Solution saline : ½ à 1 c. à café de sel dans 250 ml d’eau tiède, bouillie ou filtrée. Pas de peroxyde dans le nez.`,
+        detail: `Solution saline : ½ à 1 c. à café de sel dans 250 ml d’eau tiède, bouillie ou filtrée. Peroxyde dans le nez : jamais pur, seulement la recette « La plus forte » (adulte).`,
         prepId: `sinus`,
       },
     ],
@@ -184,11 +184,11 @@ export const SYMPTOMES = [
       },
       {
         lead: `Gargarisme au peroxyde`,
-        detail: `1 c. à soupe de peroxyde 3 % food grade + 1 c. à soupe d’eau. Gargariser quelques minutes, puis recracher. Ne jamais avaler. Garder la bouteille à l’abri du soleil.`,
+        detail: `1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. Gargariser quelques minutes, puis recracher. Ne jamais avaler. Garder la bouteille à l’abri du soleil.`,
       },
       {
         lead: `Oreilles`,
-        detail: `Peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Seulement dilué (moitié eau, moitié peroxyde 3 %), quelques gouttes, puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
+        detail: `Peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Seulement dilué (moitié eau, moitié peroxyde 3 %), quelques gouttes. Laisser agir 5 minutes maximum, ou avant si étourdissement : arrêter dès qu’un étourdissement apparaît. Puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
       },
     ],
   },
@@ -373,7 +373,7 @@ export const REMEDES = [
     topics: [`congestion`],
     how: `Solution saline, 1 à 3 fois par jour. Tête penchée, respirer par la bouche, ne pas forcer.`,
     extra: [
-      `La recette est dans les préparations. Pas de peroxyde dans le nez.`,
+      `Les recettes sont dans les préparations. Peroxyde dans le nez : jamais pur, seulement la recette « La plus forte » (adulte).`,
     ],
     tag: `Nez · sinus`,
   },
@@ -444,13 +444,13 @@ export const REMEDES = [
   {
     id: `peroxyde`,
     name: `Peroxyde d’hydrogène 3 %`,
-    kicker: `Food grade seulement`,
+    kicker: `3 % Food Grade seulement`,
     topics: [`gorge`],
     caution: true,
-    how: `Uniquement du peroxyde 3 % food grade. Ne jamais exposer la bouteille au soleil : la lumière dégrade le produit.`,
+    how: `Uniquement du peroxyde 3 % Food Grade (jamais le 35 %). Ne jamais exposer la bouteille au soleil : la lumière dégrade le produit.`,
     extra: [
-      `Oreilles : peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Seulement dilué (moitié eau, moitié peroxyde 3 %), quelques gouttes, puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
-      `Gargarisme : 1 c. à soupe de peroxyde 3 % + 1 c. à soupe d’eau. Gargariser, recracher. Ne jamais avaler.`,
+      `Oreilles : peroxyde dans les oreilles : prudence. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement. Seulement dilué (moitié eau, moitié peroxyde 3 %), quelques gouttes. Laisser agir 5 minutes maximum, ou avant si étourdissement : arrêter dès qu’un étourdissement apparaît. Puis pencher la tête pour vider. Demande d’abord conseil à un pharmacien.`,
+      `Gargarisme : 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. Gargariser, recracher. Ne jamais avaler.`,
       `Arrêter en cas d’irritation. Usage court uniquement.`,
     ],
     tag: `Usage très prudent`,
@@ -652,8 +652,22 @@ export const RECETTES = [
           `1 tasse (250 ml) d’eau tiède, bouillie ou filtrée`,
           `½ à 1 c. à café de sel non iodé, ou sel de mer fin`,
           `Optionnel : ½ c. à café de bicarbonate de soude, pour adoucir`,
+          `Pour une bouteille de rince-sinus de 6 oz (177 ml) : ⅓ à ⅔ c. à café de sel, ⅓ c. à café de bicarbonate (optionnel)`,
         ],
         note: `Dissoudre. Pot neti, seringue ou flacon spray. Incliner la tête, faire passer d’une narine à l’autre, puis se moucher doucement.`,
+      },
+      {
+        title: `La plus forte`,
+        adulteOnly: true,
+        intro: `La solution saline + du peroxyde. Pour 1 tasse (250 ml), ou une bouteille de rince-sinus de 6 oz (177 ml).`,
+        items: [
+          `1 tasse (250 ml) d’eau tiède, bouillie ou filtrée`,
+          `½ à 1 c. à café de sel non iodé, ou sel de mer fin`,
+          `Optionnel : ½ c. à café de bicarbonate de soude, pour adoucir`,
+          `½ c. à café de peroxyde d’hydrogène 3 % Food Grade (jamais le 35 %)`,
+          `Pour une bouteille de rince-sinus de 6 oz (177 ml) : ⅓ à ⅔ c. à café de sel, ⅓ c. à café de bicarbonate (optionnel) et ¼ c. à café de peroxyde 3 % Food Grade`,
+        ],
+        note: `Mélanger. Pot neti, seringue ou flacon spray. Incliner la tête, faire passer d’une narine à l’autre, puis se moucher doucement. Ne pas avaler. Adulte seulement.`,
       },
       {
         title: `Conseils d’usage`,
@@ -733,8 +747,8 @@ export const LOGIQUE_COMBAT = [
     detail: `Le plus direct et le plus pratique dès les premiers signes. Action locale immédiate.`,
   },
   {
-    lead: `2. Peroxyde d’hydrogène`,
-    detail: `Gargarismes pour un contact prolongé. Puissant, moins pratique que le spray.`,
+    lead: `2. Peroxyde d’hydrogène 3 % Food Grade`,
+    detail: `1 c. à soupe + 1 c. à soupe d’eau, en gargarisme pour un contact prolongé. Recracher, ne pas avaler. Puissant, moins pratique que le spray.`,
   },
   {
     lead: `3. Pastilles antiseptiques`,
@@ -755,8 +769,8 @@ export const GORGE_GESTES = [
     detail: `Spray Betadine pour la gorge. Le plus direct dès les premiers signes. Souvent à partir de 6 ans : suivre l’étiquette.`,
   },
   {
-    lead: `2. Peroxyde`,
-    detail: `1 c. à soupe de peroxyde 3 % food grade + 1 c. à soupe d’eau. Contact prolongé. Recracher, ne jamais avaler. Bouteille à l’abri du soleil.`,
+    lead: `2. Peroxyde 3 % Food Grade`,
+    detail: `1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau. Contact prolongé. Recracher, ne jamais avaler. Bouteille à l’abri du soleil.`,
   },
   {
     lead: `3. Pastilles antiseptiques`,

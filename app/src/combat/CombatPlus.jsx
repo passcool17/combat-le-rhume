@@ -15,7 +15,7 @@ const PHASE_NAMES = ['Frappe immédiate', 'Pression constante', 'On tient la lig
 export const GESTES = [
   { id: 'betadine', short: 'Spray povidone-iode 0,45 %', act: '1 vaporisation au fond de la gorge', every: 8,
     hint: 'L’appli indique jusqu’à 3 fois par jour. Suivre l’étiquette.' },
-  { id: 'peroxyde', short: 'Gargarisme au peroxyde 3 %', act: 'Gargariser, recracher', every: 8,
+  { id: 'peroxyde', short: 'Gargarisme au peroxyde 3 % Food Grade', act: '1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau · gargariser, recracher, ne pas avaler', every: 8,
     hint: 'Usage court. Suivre l’étiquette.' },
   { id: 'pastilles', short: 'Pastilles antiseptiques', act: '1 pastille', every: 3,
     hint: 'Suivre le nombre indiqué sur le produit.' },
@@ -28,7 +28,7 @@ export const GESTES = [
 const PRECAUTIONS = {
   adulte: {
     betadine: ['À éviter en cas d’allergie à l’iode, de problème de thyroïde, de grossesse ou d’allaitement.', 'Recracher l’excédent. Arrêter si ça irrite.'],
-    peroxyde: ['Peroxyde 3 % food grade seulement : recracher, ne jamais avaler.', 'Pas pour les jeunes enfants. Pas en même temps que le spray.'],
+    peroxyde: ['Peroxyde 3 % Food Grade seulement (jamais le 35 %) : recracher, ne jamais avaler.', 'Pas pour les jeunes enfants. Pas en même temps que le spray.'],
     pastilles: ['Suivre le nombre indiqué sur la boîte. Ne pas dépasser.'],
     miel: ['Jamais avant 1 an.'],
   },
@@ -43,7 +43,7 @@ const PRECAUTIONS = {
 
 const KIT = [
   { id: 'spray', label: 'Spray povidone-iode 0,45 % (flacon de 50 ml)' },
-  { id: 'peroxyde', label: 'Peroxyde d’hydrogène 3 % food grade, bouteille à l’abri de la lumière' },
+  { id: 'peroxyde', label: 'Peroxyde d’hydrogène 3 % Food Grade, bouteille à l’abri de la lumière' },
   { id: 'verre', label: 'Petit verre et cuillère à soupe pour le gargarisme' },
   { id: 'pastilles-fortes', label: 'Pastilles antiseptiques fortes' },
   { id: 'pastilles-douces', label: 'Pastilles plus douces pour la suite' },

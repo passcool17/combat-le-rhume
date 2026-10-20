@@ -19,6 +19,7 @@ import { Button, Card, Kicker, OnThisPage, Section } from "../components/ui.jsx"
 import { cn } from "../lib/cn.js";
 import { Check } from "../components/icones.jsx";
 import { HomeCombat, HomeWarm } from "../combat/CombatPlus.jsx";
+import { HomeRefs } from "./HomeRefs.jsx";
 
 const BTN_LINK = `mt-3 inline-flex min-h-11 items-center text-sm font-medium text-primary`;
 
@@ -174,6 +175,7 @@ export function Accueil() {
           </p>
         )}
       </Card>
+      <HomeRefs />
       {stance === `combat` ? (
         <HomeCombat onOpen={() => openRemedies(`gorge`)} onAll={() => openRemedies(`tous`)} />
       ) : stance ? (
@@ -411,7 +413,7 @@ export function Avertissement() {
       </p>
       {e ? (
         <p className="mt-2 text-muted">
-          Consulte si les symptômes persistent, s’aggravent, ou en cas de fièvre élevée — surtout chez les enfants, les personnes âgées ou les personnes fragiles. L’argent colloïdal n’est pas recommandé par voie interne (mise en garde de Santé Canada). Le peroxyde d’hydrogène demande une utilisation très prudente : jamais avalé, pas dans le nez.
+          Consulte si les symptômes persistent, s’aggravent, ou en cas de fièvre élevée — surtout chez les enfants, les personnes âgées ou les personnes fragiles. L’argent colloïdal n’est pas recommandé par voie interne (mise en garde de Santé Canada). Le peroxyde d’hydrogène demande une utilisation très prudente : jamais avalé ; dans le nez, seulement très dilué (recette « La plus forte », adulte).
         </p>
       ) : null}
       <button
