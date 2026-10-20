@@ -56,6 +56,7 @@ const KIT = [
   { id: 'tuque', label: 'Double couverture, bas et bonnet pour la nuit' },
   { id: 'eau', label: 'De quoi boire 2,5 à 3 L par jour' },
   { id: 'argent', label: 'Optionnel (adulte) : argent colloïdal environ 15 ppm, avec numéro NPN ou DIN, pour le gargarisme ou le nez' },
+  { id: 'quercetine', label: 'Optionnel (adulte) : quercétine 500 mg, avec numéro NPN, à prendre avec le zinc' },
 ];
 
 const RED_FLAGS = [
@@ -475,7 +476,7 @@ function Kit() {
   const s = useStore();
   const has = new Set(s.kit);
   const enfant = usePrefs(e => e.audience) === 'enfant';
-  const items = KIT.filter(k => !(enfant && k.id === 'argent'));
+  const items = KIT.filter(k => !(enfant && (k.id === 'argent' || k.id === 'quercetine')));
   const tog = id => set(s0 => ({ kit: s0.kit.includes(id) ? s0.kit.filter(k => k !== id) : [...s0.kit, id] }));
   return (
     <Card data-clr="kit">
@@ -537,7 +538,7 @@ export function ZincAvertissement() {
 const ARGENT = REMEDES.find(r => r.id === 'argent');
 export function SecuriteBox({ id, items }) {
   return (
-    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${id === 'argent' ? 'argent colloïdal' : id}`}>
+    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine' })[id] || id}`}>
       <p className="text-xs font-medium text-caution uppercase tracking-wide">Sécurité</p>
       <ul>{items.map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
     </div>
@@ -559,12 +560,31 @@ function ArgentRenfort({ audience }) {
   );
 }
 
+// ---------- renfort optionnel : quercétine avec le zinc (adulte seulement, caché en profil Enfant) ----------
+const QUERCETINE = REMEDES.find(r => r.id === 'quercetine');
+function QuercetineRenfort({ audience }) {
+  if (audience === 'enfant') return null;
+  const g = REF_GROUP_META.find(x => x.id === 'quercetine');
+  return (
+    <Card caution data-clr="quercetine-combat">
+      <Kicker><span aria-hidden="true">🛡️ </span>Renfort optionnel · avec le zinc</Kicker>
+      <h2 className="mt-1 text-xl">Quercétine</h2>
+      <p className="mt-2 text-sm text-ink" data-clr="quercetine-dose">{QUERCETINE.how}</p>
+      <p className="mt-2 text-sm text-ink" data-clr="quercetine-zinc">{QUERCETINE.extra[0]}</p>
+      <p className="mt-2 text-sm text-muted">Optionnel : ne remplace pas les cinq gestes. Adulte seulement.</p>
+      <SecuriteBox id="quercetine" items={QUERCETINE.securite} />
+      <p><button type="button" className="clr-ref-cta mt-2" data-ref-link="quercetine" onClick={() => useNav.getState().openReferences('quercetine')}>Références : {g.title} ({g.count})</button></p>
+    </Card>
+  );
+}
+
 function Panel({ audience, setStance }) {
   const s = useStore();
   return (
     <div className="clr-panel" data-clr="panel">
       <Protocol audience={audience} />
       <ZincRenfort audience={audience} />
+      <QuercetineRenfort audience={audience} />
       <ArgentRenfort audience={audience} />
       <Consult setStance={setStance} />
       {s.protocol ? <CheckSummary /> : null}

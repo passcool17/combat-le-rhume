@@ -6,12 +6,13 @@ const NB=x=>x.replace(/[\u00a0\u202f]/g,' ').replace(/\s+/g,' ');
 // Anciennes doses : plus nulle part (sources et pages)
 const OLD=[/15\s*[–-]\s*30 mg/,/15 à 30 mg/,/2 000 à 4 000/,/500 mg → 1000 mg/,/2000 mg/,/200 à 400 mg/,/500 mg à 1 g, 2 à 3 fois/,/1 c\. à café à 1 c\. à soupe, 2 à 4 fois/,/7 à 10 jours (maximum|continus)/,/Ne pas dépasser 40 mg/,/vitamine C 1\s*[–-]\s*2 g/,/Gargariser quelques minutes/,/1 c\. à café avant de dormir/,/1 c\. à café pure/,/selon une prise de sang/,/Selon le dosage, pendant/];
 const SRC=['data/contenu.js','data/references.js','combat/CombatPlus.jsx','pages/Accueil.jsx','lib/outils.js','pages/Remedes.jsx'].map(f=>fs.readFileSync(path.join(__dirname,'..','src',f),'utf8')).join('\n');
-const ZCU='Cure courte (5 à 7 jours) : le zinc à forte dose bloque l’absorption du cuivre seulement s’il est pris pendant des semaines. Ensuite, mange des aliments riches en cuivre (noix, graines, cacao, fruits de mer, légumineuses).';
+const ZCU='Cure courte (5 à 7 jours) : le zinc à forte dose bloque l’absorption du cuivre seulement s’il est pris pendant des semaines. Ensuite, mange des aliments riches en cuivre (fruits de mer, graines et noix, abats, céréales de son, grains entiers et chocolat).';
 const ZDOSE='Dose des études : pastilles de zinc d’environ 13 mg, 1 pastille toutes les 2 à 3 heures éveillé (≈ 75 à 90 mg par jour), dans les 24 heures des premiers symptômes. 5 à 7 jours maximum. Adulte seulement.';
 const ZAV=['Dépasse la limite usuelle de 40 mg par jour : seulement pour une courte durée (5 à 7 jours maximum).','Peut causer nausées et goût métallique. Carence en cuivre si prolongé.','Jamais plus de 100 mg par jour : aucun bénéfice de plus.','Demande avis au pharmacien si tu prends des médicaments ou en cas de grossesse.','Jamais de zinc dans le nez (spray ou gel nasal) : risque de perte de l’odorat.'];
 // remède → textes attendus sur la fiche (liste complète, sans mode)
 const CARDS={
  zinc:[ZDOSE,...ZAV],
+ quercetine:['Dose des études : 500 mg de quercétine, 2 fois par jour avec un repas (1 000 mg par jour), en même temps que les pastilles de zinc, pendant 5 à 7 jours. Adulte seulement.','Pas plus de 600 mg par prise ni 1 200 mg par jour, avec un repas. Au-delà de 12 semaines, demande avis (Santé Canada).'],
  vitamines:['Vitamine C en soutien : 1 g par jour (par ex. 500 mg, 2 fois par jour). Au-delà de 2 g par jour : risque de diarrhée et de calculs rénaux.','Vitamine D : 1 000 à 2 000 UI tous les jours, pas de grosses doses espacées. Plafond : 4 000 UI par jour.'],
  'vitamine-c-double':['Dès les premiers symptômes, doubler la dose : 2 g par jour (1 g → 2 g), en 2 à 3 prises avec de l’eau, pendant la durée du rhume ou de la grippe.','Ne pas dépasser 2 g par jour chez l’adulte : au-delà, risque de diarrhée et de calculs rénaux.','hémochromatose'],
  sureau:['Sirop (adulte) : 1 c. à soupe (15 ml), 4 fois par jour pendant 5 jours, à commencer dans les 48 premières heures.'],

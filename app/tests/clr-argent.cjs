@@ -73,7 +73,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  const ac=p.locator('[data-clr=argent-combat]');ok('combat : renfort argent visible',await ac.isVisible());
  const at=NB(await ac.innerText());ok('combat : renfort optionnel, doses, Sécurité',at.toUpperCase().includes('RENFORT OPTIONNEL · GORGE ET NEZ')&&at.includes(HOW)&&at.includes(NEZ)&&at.includes('Optionnel : ne remplace pas les cinq gestes. Adulte seulement.')&&SEC.every(x=>at.includes(x))||at);
  ok('combat : cinq gestes (argent en renfort, pas un 6e geste)',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel seul|Double dose de vitamine C/}).count()===5&&!(await p.locator('#remede-argent').count()));
- const kt=NB(await p.locator('[data-clr=kit]').innerText());ok('kit : argent optionnel (12 éléments)',kt.includes('Optionnel (adulte) : argent colloïdal environ 15 ppm, avec numéro NPN ou DIN, pour le gargarisme ou le nez')&&kt.includes('0 / 12')||kt);
+ const kt=NB(await p.locator('[data-clr=kit]').innerText());ok('kit : argent optionnel (13 éléments, avec la quercétine)',kt.includes('Optionnel (adulte) : argent colloïdal environ 15 ppm, avec numéro NPN ou DIN, pour le gargarisme ou le nez')&&kt.includes('0 / 13')||kt);
  await ac.locator('[data-ref-link=argent]').click();await p.waitForTimeout(600);
  const top=await p.locator('#ref-argent').evaluate(e=>e.getBoundingClientRect().top);ok('combat : renfort → Références Argent colloïdal',(await p.locator('main h1').first().innerText())==='Références'&&top>=0&&top<400||top);
  // Références

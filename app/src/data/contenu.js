@@ -42,7 +42,7 @@ export const PILIERS_SOUTIEN = [
   },
   {
     title: `Soutien ciblé`,
-    detail: `Vitamine D d’abord, surtout l’automne et l’hiver au Québec. Zinc et vitamine C pendant la maladie, mélange ail-vinaigre-miel. Argent colloïdal : en gargarisme ou dans le nez seulement (environ 15 ppm, adulte), jamais avalé.`,
+    detail: `Vitamine D d’abord, surtout l’automne et l’hiver au Québec. Zinc et vitamine C pendant la maladie, avec la quercétine (500 mg 2 fois par jour, adulte), mélange ail-vinaigre-miel. Argent colloïdal : en gargarisme ou dans le nez seulement (environ 15 ppm, adulte), jamais avalé.`,
   },
   {
     title: `Hydratation & repos`,
@@ -396,8 +396,30 @@ export const REMEDES = [
       `Les pastilles sont utiles pour le mal de gorge.`,
     ],
     extraEnfant: [`Jamais de zinc dans le nez (spray ou gel nasal).`],
-    cuivre: `Cure courte (5 à 7 jours) : le zinc à forte dose bloque l’absorption du cuivre seulement s’il est pris pendant des semaines. Ensuite, mange des aliments riches en cuivre (noix, graines, cacao, fruits de mer, légumineuses).`,
+    cuivre: `Cure courte (5 à 7 jours) : le zinc à forte dose bloque l’absorption du cuivre seulement s’il est pris pendant des semaines. Ensuite, mange des aliments riches en cuivre (fruits de mer, graines et noix, abats, céréales de son, grains entiers et chocolat).`,
     tag: `Immunité · premiers symptômes`,
+  },
+  {
+    id: `quercetine`,
+    name: `Quercétine`,
+    kicker: `Avec le zinc · adulte`,
+    topics: [`fievre`, `gorge`],
+    caution: true,
+    adulteSeulement: true,
+    how: `Dose des études : 500 mg de quercétine, 2 fois par jour avec un repas (1 000 mg par jour), en même temps que les pastilles de zinc, pendant 5 à 7 jours. Adulte seulement.`,
+    extra: [
+      `Avec le zinc : la quercétine aide le zinc à entrer dans les cellules (démontré en laboratoire).`,
+      `Souvent vendue avec de la vitamine C et de la bromélaïne, qui aident son absorption. La forme phytosome est jusqu’à 20 fois mieux absorbée.`,
+      `En prévention (hiver, efforts intenses) : même dose, jusqu’à 12 semaines.`,
+      `Aliments riches en quercétine : oignons, pommes, thé noir ou vert, agrumes, raisins rouges, cerises, framboises.`,
+    ],
+    securite: [
+      `Pas plus de 600 mg par prise ni 1 200 mg par jour, avec un repas. Au-delà de 12 semaines, demande avis (Santé Canada).`,
+      `Pas si tu as un problème de reins : la quercétine pourrait l’aggraver.`,
+      `Peut interagir avec certains antibiotiques (quinolones), la cyclosporine, les anticoagulants comme la warfarine et d’autres médicaments. Si tu prends des médicaments, demande au pharmacien.`,
+      `Adulte seulement (dose établie pour 18 ans et plus). Pas pendant la grossesse ni l’allaitement.`,
+    ],
+    tag: `Avec le zinc · adulte`,
   },
   {
     id: `betadine`,
@@ -570,6 +592,7 @@ export const DOSES_ENFANT = {
   vitamines: `Selon l’âge. Ne pas donner la dose adulte de vitamine D sans avis.`,
   'vitamine-c-double': `Dose selon l’âge : demander au pharmacien avant de doubler.`,
   argent: `À éviter chez l’enfant.`,
+  quercetine: `À éviter chez l’enfant.`,
   peroxyde: `À éviter, ou seulement avec un avis. Pas dans les oreilles d’un jeune enfant.`,
   sureau: `Dose réduite. Commencer très peu pour voir la tolérance.`,
   probiotiques: `Selon le produit et l’âge. Préférer un aliment fermenté doux.`,
@@ -810,7 +833,9 @@ export const PREVENTION = [
 
 // Prévention réservée à l’adulte (cachée en profil Enfant, comme les autres usages du peroxyde).
 export const PREVENTION_OREILLES = `Oreilles au peroxyde, en prévention (adulte) : même mélange que le gargarisme, 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau (50/50). Quelques gouttes dans chaque oreille, 5 minutes maximum, ou avant si étourdissement. Puis pencher la tête pour vider. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement.`;
-export const preventionPour = (enfant) => (enfant ? PREVENTION : [...PREVENTION, PREVENTION_OREILLES]);
+// Prévention réservée à l’adulte : quercétine (cachée en profil Enfant).
+export const PREVENTION_QUERCETINE = `Quercétine, en prévention (adulte) : 500 mg 2 fois par jour avec un repas en hiver ou pendant les efforts intenses, jusqu’à 12 semaines.`;
+export const preventionPour = (enfant) => (enfant ? PREVENTION : [...PREVENTION, PREVENTION_QUERCETINE, PREVENTION_OREILLES]);
 
 export const PENDANT_MALADIE = [
   `Humidifier l’air de la chambre, surtout en hiver.`,
