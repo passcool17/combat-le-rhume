@@ -480,6 +480,30 @@ export const REMEDES = [
     tag: `Grippe · mucus · adulte`,
   },
   {
+    id: `astragale`,
+    name: `Astragale`,
+    kicker: `Saison des rhumes et grippes · adulte`,
+    topics: [`fievre`],
+    caution: true,
+    adulteSeulement: true,
+    how: `Santé Canada : 2 à 4,8 g de racine séchée par jour (gélules, teinture ou tisane), pour l’adulte de 18 ans et plus. En pratique : 2 à 4 g par jour, ou une décoction de 10 à 15 g de tranches mijotées 20 à 25 minutes, à boire en 2 tasses par jour, pendant la saison des rhumes et grippes.`,
+    extra: [
+      `Racine d’astragale (Astragalus membranaceus, huang qi 黄芪) : utilisée en médecine chinoise pour renforcer les défenses, et en phytothérapie pour aider à garder un système immunitaire en santé (Santé Canada).`,
+      `Décoction : 10 à 15 g de tranches séchées (environ 5 à 8 tranches) dans l’eau, à feu doux 20 à 25 minutes. Filtrer et boire en 2 tasses dans la journée.`,
+      `Gélules ou teinture : choisis un produit avec un numéro NPN de Santé Canada.`,
+    ],
+    securite: [
+      `Maladie auto-immune (lupus, polyarthrite rhumatoïde, sclérose en plaques, etc.) : pas d’astragale, car elle stimule l’immunité.`,
+      `Immunosuppresseurs (cyclosporine, tacrolimus, mycophénolate, cyclophosphamide, après une greffe) : ne pas en prendre, l’astragale peut contrer leur effet.`,
+      `Lithium : l’astragale peut réduire son élimination et augmenter son taux dans le sang. Évite-la ou parles-en au médecin.`,
+      `Grossesse et allaitement : à éviter.`,
+      `Enfants et adolescents : pas d’astragale. La dose de Santé Canada vise l’adulte de 18 ans et plus.`,
+      `Achète seulement la racine d’A. membranaceus ou d’A. mongholicus, d’une source fiable : d’autres espèces d’Astragalus sont toxiques.`,
+      `Diabète ou hypertension sous traitement : parles-en au médecin ou au pharmacien avant.`,
+    ],
+    tag: `Immunité · prévention · adulte`,
+  },
+  {
     id: `betadine`,
     name: `Spray Betadine 0,45 %`,
     kicker: `Priorité n°1`,
@@ -676,6 +700,7 @@ export const DOSES_ENFANT = {
   argent: `À éviter chez l’enfant.`,
   quercetine: `À éviter chez l’enfant.`,
   nac: `Jamais avant 2 ans. Enfant : seulement sur avis médical. La dose de 600 mg est pour l’adulte.`,
+  astragale: `Pas chez l’enfant ni l’adolescent : la dose de Santé Canada vise l’adulte de 18 ans et plus.`,
   girofle: `À éviter chez l’enfant. L’huile essentielle de girofle avalée est très toxique : toujours hors de portée.`,
   peroxyde: `À éviter, ou seulement avec un avis. Pas dans les oreilles d’un jeune enfant.`,
   sureau: `Dose réduite. Commencer très peu pour voir la tolérance.`,
@@ -919,7 +944,9 @@ export const PREVENTION = [
 export const PREVENTION_OREILLES = `Oreilles au peroxyde, en prévention (adulte) : même mélange que le gargarisme, 1 c. à soupe de peroxyde 3 % Food Grade + 1 c. à soupe d’eau (50/50). Quelques gouttes dans chaque oreille, 5 minutes maximum, ou avant si étourdissement. Puis pencher la tête pour vider. Jamais si le tympan est perforé, s’il y a un tube (drain), une douleur ou un écoulement.`;
 // Prévention réservée à l’adulte : quercétine (cachée en profil Enfant).
 export const PREVENTION_QUERCETINE = `Quercétine, en prévention (adulte) : 500 mg 2 fois par jour avec un repas en hiver ou pendant les efforts intenses, jusqu’à 12 semaines.`;
-export const preventionPour = (enfant) => (enfant ? PREVENTION : [...PREVENTION, PREVENTION_QUERCETINE, PREVENTION_OREILLES]);
+// Prévention réservée à l’adulte : astragale (cachée en profil Enfant).
+export const PREVENTION_ASTRAGALE = `Astragale, en prévention (adulte) : 2 à 4 g de racine séchée par jour, ou une décoction de 10 à 15 g de tranches mijotées 20 à 25 minutes, en 2 tasses par jour, pendant la saison des rhumes et grippes.`;
+export const preventionPour = (enfant) => (enfant ? PREVENTION : [...PREVENTION, PREVENTION_QUERCETINE, PREVENTION_ASTRAGALE, PREVENTION_OREILLES]);
 
 export const PENDANT_MALADIE = [
   `Humidifier l’air de la chambre, surtout en hiver.`,
