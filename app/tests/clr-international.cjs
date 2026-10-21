@@ -65,7 +65,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('filtre : bouton « Voir seulement l’international (122) »',NB(await fb.innerText())==='Voir seulement l’international (122)'&&await fb.getAttribute('aria-pressed')==='false');
  await fb.click();await p.waitForTimeout(400);
  ok('filtre actif : 24 publications + 98 études, rien d’autre',await fb.getAttribute('aria-pressed')==='true'&&await p.locator('[data-ref]').count()===TOT.ip&&await p.locator('[data-etude]').count()===TOT.ie&&await p.locator('[data-ref]:not([data-intl]),[data-etude]:not([data-intl])').count()===0);
- const gs=await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup));const want=[...new Set([...F.posts,...F.etudes].map(x=>x.group)),'astragale'];
+ const gs=await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup));const want=[...new Set([...F.posts,...F.etudes].map(x=>x.group)),'astragale','vitamines-b'];
  ok('filtre actif : seulement les thèmes avec des références internationales',gs.length===want.length&&want.every(g=>gs.includes(g))||gs);
  ok('filtre actif : sommaire avec les nombres internationaux (Vitamine D et K2 26)',(await p.locator('[data-otp]').textContent()).includes('Vitamine D et K2 (26)'));
  ok('axe (filtre actif)',await axe());
