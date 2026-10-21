@@ -75,7 +75,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  // 6. kit
  await p.getByLabel('Thermomètre').check();await p.getByLabel('Citrons et tisanes').check();
  await p.reload({waitUntil:'networkidle'});await combat();
- ok('kit persists',await p.getByLabel('Thermomètre').isChecked()&&await p.getByLabel('Citrons et tisanes').isChecked()&&(await txt('[data-clr=kit]')).includes('2 / 16')); // kit adulte : 16 éléments (quercétine, argent, clou de girofle, NAC et astragale optionnels)
+ ok('kit persists',await p.getByLabel('Thermomètre').isChecked()&&await p.getByLabel('Citrons et tisanes').isChecked()&&(await txt('[data-clr=kit]')).includes('2 / 18')); // kit adulte : 18 éléments (quercétine, argent, clou de girofle, NAC, astragale, vitamines B et K2 optionnels)
  await shot('7-kit','[data-clr=kit]');
  // offline
  await p.waitForTimeout(1500);await p.reload({waitUntil:'networkidle'});await ctx.setOffline(true);await p.reload();await p.waitForTimeout(1000);await combat();
