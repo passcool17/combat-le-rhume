@@ -59,6 +59,7 @@ const KIT = [
   { id: 'quercetine', label: 'Optionnel (adulte) : quercétine 500 mg, avec numéro NPN, à prendre avec le zinc' },
   { id: 'girofle', label: 'Optionnel (adulte) : clous de girofle entiers, à mâcher ou en infusion pour la gorge' },
   { id: 'nac', label: 'Optionnel (adulte) : NAC 600 mg, avec numéro NPN, à prendre avec un repas' },
+  { id: 'astragale', label: 'Optionnel (adulte) : racine d’astragale, en gélules avec numéro NPN ou en tranches séchées pour la décoction' },
 ];
 
 const RED_FLAGS = [
@@ -478,7 +479,7 @@ function Kit() {
   const s = useStore();
   const has = new Set(s.kit);
   const enfant = usePrefs(e => e.audience) === 'enfant';
-  const items = KIT.filter(k => !(enfant && (k.id === 'argent' || k.id === 'quercetine' || k.id === 'girofle' || k.id === 'nac')));
+  const items = KIT.filter(k => !(enfant && (k.id === 'argent' || k.id === 'quercetine' || k.id === 'girofle' || k.id === 'nac' || k.id === 'astragale')));
   const tog = id => set(s0 => ({ kit: s0.kit.includes(id) ? s0.kit.filter(k => k !== id) : [...s0.kit, id] }));
   return (
     <Card data-clr="kit">
@@ -540,7 +541,7 @@ export function ZincAvertissement() {
 const ARGENT = REMEDES.find(r => r.id === 'argent');
 export function SecuriteBox({ id, items }) {
   return (
-    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine', girofle: 'clou de girofle', nac: 'NAC' })[id] || id}`}>
+    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine', girofle: 'clou de girofle', nac: 'NAC', astragale: 'astragale' })[id] || id}`}>
       <p className="text-xs font-medium text-caution uppercase tracking-wide">Sécurité</p>
       <ul>{items.map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
     </div>

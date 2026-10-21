@@ -62,15 +62,16 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await h.click('Conseils');await audit(h,'conseils');
  await h.click('Remèdes');
  const rsecs=await p.locator('main [data-section]').count();
- ok('remedes: collapsible cards (Soutien: 17, avec Quercétine, Clou de girofle, NAC et Gingembre)',rsecs===17||rsecs);
+ ok('remedes: collapsible cards (Soutien: 18, avec Quercétine, Clou de girofle, NAC, Gingembre et Astragale)',rsecs===18||rsecs);
  ok('remedes: collapsed by default',await p.$$eval('main [data-section] > div button[aria-expanded]',bs=>bs.every(b=>b.getAttribute('aria-expanded')==='false')));
  M.remedesHeight=await p.evaluate(()=>[document.documentElement.scrollHeight,innerHeight,+(document.documentElement.scrollHeight/innerHeight).toFixed(2)]);
  // 14 fiches repliées depuis l’ajout de la Quercétine (15 avec le Clou de girofle) : limite portée de 3 à 3,25 écrans
  // 17 fiches avec la NAC et le Gingembre (iPhone 13 : 3,47 écrans) : limite portée à 3,5 écrans
- ok('remedes ≤ 3,5 screens',M.remedesHeight[2]<=3.5||M.remedesHeight);
+ // 18 fiches avec l’Astragale (iPhone 13 : 3,65 écrans) : limite portée à 3,75 écrans
+ ok('remedes ≤ 3,75 screens',M.remedesHeight[2]<=3.75||M.remedesHeight);
  await p.screenshot({path:S+`${dn}-remedes-replie.png`,fullPage:false});
  await audit(h,'remedes-collapsed');
- await h.click(/^Sur cette page/);ok('remedes menu',await p.locator('#sur-cette-page button').count()===17);
+ await h.click(/^Sur cette page/);ok('remedes menu',await p.locator('#sur-cette-page button').count()===18);
  await p.locator('#sur-cette-page button',{hasText:'Thym'}).click();await p.waitForTimeout(900);
  ok('remedes menu opens Thym',await p.locator('#remede-thym button[aria-expanded]').getAttribute('aria-expanded')==='true');
  await p.getByPlaceholder('Rechercher un remède ou un symptôme…').fill('sureau');await p.waitForTimeout(200);
@@ -102,7 +103,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  t=(await p.locator('[data-clr=consulter]').first().innerText()).replace(/\s+/g,' ');
  ok('combat logic reads unified data (fièvre du journal)',t.includes('Il vaut mieux consulter')&&t.includes('Fièvre'));
  ok('combat warm advice off from journal fever',(await p.locator('main h1 + p').innerText()).includes('pas de surchauffe ni de bonnet'));
- ok('kit migrated in UI',(await p.locator('[data-clr=kit]').innerText()).includes('2 / 15'));
+ ok('kit migrated in UI',(await p.locator('[data-clr=kit]').innerText()).includes('2 / 16'));
  await h.click('Suivi');t=await h.main();
  ok('Suivi always reachable in Combat',JSON.stringify(await h.h1s())==='["Suivi"]');
  ok('Suivi merges journal + checks',t.includes('Note A')&&t.includes('Note B')&&t.includes('Matin : gorge 6/10')&&t.includes('Soir : gorge 4/10')&&await p.locator('[data-clr=point]').isVisible());

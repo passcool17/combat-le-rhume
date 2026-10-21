@@ -1,4 +1,4 @@
-// Références internationales (branche references-internationales) : 21 publications X en 10 langues + 70 études de 19 pays,
+// Références internationales (branche references-internationales ; totaux mis à jour avec l’astragale) : 21 publications X en 10 langues + 70 études de 19 pays,
 // traduites en français, drapeau + pays (+ langue d’origine pour les publications), thème du remède principal,
 // indicateur et filtre « International » dans Références, nouveaux totaux sur l’accueil et dans Références.
 // usage : node tests/clr-international.cjs http://localhost:4173/combat-le-rhume/
@@ -10,8 +10,9 @@ const SRC=JSON.parse(fs.readFileSync('/workspace/apps/combat-le-rhume-multilingu
 const F=JSON.parse(fs.readFileSync('/workspace/apps/combat-le-rhume-multilingue-final.json','utf8'));
 const LANG={de:'allemand',es:'espagnol',pt:'portugais',it:'italien',zh:'chinois',ja:'japonais',ko:'coréen',hi:'hindi',ar:'arabe',ru:'russe'};
 const LBL={'@rodrigomnutri':'Nutritionniste, pas médecin','@drrctripathy':'Praticien ayurvédique, pas médecin','@rialive24':'Agence de presse, pas un médecin'};
-const BAD=/mitig|contradi|nuanc|pas d.effet|aucun effet|non significati|incertain/i;
-const TOT={posts:166,etudes:234,medecins:31,intl:91,langues:10,pays:19};
+const BAD=/mitigé|contradi|nuanc|pas d.effet|aucun effet|non significati|incertain/i;
+// Depuis l’astragale (clr-astragale) : +6 publications et +18 études ; 1 publication (chinois) et 16 études de pays non anglophones s’ajoutent à l’international (Iran et Turquie : 21 pays).
+const TOT={posts:172,etudes:252,medecins:31,intl:108,langues:10,pays:21,ip:22,ie:86};
 (async()=>{const b=await chromium.launch({executablePath:'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
  {const ok=(k,v)=>{n++;console.log(v===true?'ok  ':'FAIL','src',k,v===true?'':JSON.stringify(v).slice(0,300));if(v!==true)fail++;};
   ok('JSON final : 21 publications + 70 études, toutes celles de la source',F.posts.length===21&&F.etudes.length===70&&SRC.posts.every(p=>F.posts.some(x=>x.url===p.url))&&SRC.studies.every(e=>F.etudes.some(x=>x.pubmed===e.pubmed)));
@@ -31,21 +32,21 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  // Accueil
  const ac=p.locator('[data-clr=accueil-references]');
  const st=await ac.locator('[data-stat]').evaluateAll(ls=>Object.fromEntries(ls.map(l=>[l.dataset.stat,+l.querySelector('.clr-refs-stat-n').textContent])));
- ok('accueil : 166 publications, 31 médecins, 234 études',st.x===TOT.posts&&st.medecins===TOT.medecins&&st.etudes===TOT.etudes||st);
+ ok('accueil : 172 publications, 31 médecins, 252 études',st.x===TOT.posts&&st.medecins===TOT.medecins&&st.etudes===TOT.etudes||st);
  const ai=NB(await ac.locator('[data-clr=accueil-international]').innerText());
- ok('accueil : « 🌍 Dont 91 références internationales : 10 langues, 19 pays »',ai.includes('Dont 91 références internationales : 10 langues, 19 pays, traduites en français.')||ai);
- ok('accueil : pied « 166 publications et 234 études »',NB(await ac.innerText()).includes('166 publications et 234 études'));
+ ok('accueil : « 🌍 Dont 108 références internationales : 10 langues, 21 pays »',ai.includes('Dont 108 références internationales : 10 langues, 21 pays, traduites en français.')||ai);
+ ok('accueil : pied « 172 publications et 252 études »',NB(await ac.innerText()).includes('172 publications et 252 études'));
  if(dn==='iphone13')await shotAt(ac,'intl-accueil.png');
  await ac.locator('[data-clr=accueil-references-btn]').click();await p.waitForTimeout(500);
  ok('Références ouvertes',(await p.locator('main h1').first().innerText())==='Références');
  const main=NB(await p.locator('main').innerText());
- ok('Références : 166 publications et 234 études',main.includes('166 publications et 234 études scientifiques'));
+ ok('Références : 172 publications et 252 études',main.includes('172 publications et 252 études scientifiques'));
  const ic=NB(await p.locator('[data-clr=ref-international]').innerText());
- ok('indicateur : 🌍 Références de 10 langues, 21 publications, 70 études de 19 pays',ic.includes('Références de 10 langues')&&ic.includes('21 publications de médecins en 10 langues et 70 études de 19 pays, traduites en français')||ic);
- ok('19 thèmes, aucun nouveau',await p.locator('[data-ref-group]').count()===19);
+ ok('indicateur : 🌍 Références de 10 langues, 22 publications, 86 études de 21 pays',ic.includes('Références de 10 langues')&&ic.includes('22 publications de médecins en 10 langues et 86 études de 21 pays, traduites en français')||ic);
+ ok('20 thèmes (seul ajout : Astragale)',await p.locator('[data-ref-group]').count()===20);
  // publications
  const rs=await p.locator('[data-ref][data-intl]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.ref,g:l.closest('[data-ref-group]').dataset.refGroup,h:l.querySelector('a[href*="x.com"]').getAttribute('href'),pays:l.querySelector('[data-clr=pays]')?.innerText,tr:l.querySelector('[data-clr=traduction]')?.innerText,lb:l.querySelector('[data-clr=pas-medecin]')?.textContent,b:l.querySelector('[data-badge]').dataset.badge,lang:l.querySelector('blockquote').getAttribute('lang'),t:l.innerText})));
- ok('21 publications internationales',rs.length===21||rs.length);
+ ok('22 publications internationales (21 + 1 astragale en chinois)',rs.length===TOT.ip||rs.length);
  ok('publications : thème, URL, drapeau + pays + langue d’origine',F.posts.every(x=>{const r=rs.find(y=>y.n===x.n);return r&&r.g===x.group&&r.h===x.url&&NB(r.pays)===NB(`${x.flag} ${x.country} · publication en ${LANG[x.lang]}`)&&r.lang===x.lang;})||rs.map(r=>[r.n,r.pays]));
  ok('publications : citation d’origine + traduction + résumé en français',F.posts.every(x=>{const r=rs.find(y=>y.n===x.n);return NB(r.t).includes(NB(x.quote))&&NB(r.tr)===NB('Traduction : « '+x.quoteFr+' »')&&NB(r.t).includes(NB(x.gist));})||rs.map(r=>r.n));
  ok('publications : étiquettes honnêtes (MD non vérifié, nutritionniste, ayurvédique, agence de presse)',F.posts.every(x=>rs.find(y=>y.n===x.n).lb===(LBL[x.handle]||'MD non vérifié'))||rs.map(r=>[r.n,r.lb]));
@@ -53,22 +54,22 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('exemples : Suisse (allemand), Russie (agence), Corée du Sud',rs.some(r=>NB(r.pays)==='🇨🇭 Suisse · publication en allemand')&&rs.some(r=>NB(r.pays)==='🇷🇺 Russie · publication en russe'&&r.lb==='Agence de presse, pas un médecin')&&rs.some(r=>NB(r.pays)==='🇰🇷 Corée du Sud · publication en coréen'));
  // études
  const es=await p.locator('[data-etude][data-intl]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.etude,g:l.closest('[data-ref-group]').dataset.refGroup,pays:l.querySelector('[data-clr=pays]')?.innerText,doi:l.querySelector('[data-doi]')?.getAttribute('href')??null,pm:l.querySelector('[data-pubmed]').getAttribute('href'),b:l.querySelector('[data-badge]').dataset.badge,t:l.innerText})));
- ok('70 études internationales',es.length===70||es.length);
+ ok('86 études internationales (70 + 16 astragale)',es.length===TOT.ie||es.length);
  ok('études : thème, drapeau + pays, DOI/PubMed, résumé en français, niveau',F.etudes.every(x=>{const e=es.find(y=>y.n===x.n);return e&&e.g===x.group&&NB(e.pays)===NB(`${x.flag} ${x.country}${x.countryNote?` (${x.countryNote})`:''}${x.pubLang?` · article en ${x.pubLang}`:''}`)&&e.doi===x.doiUrl&&e.pm===x.pubmed&&e.b===x.level&&NB(e.t).includes(NB(x.finding))&&e.t.includes(x.title);})||es.map(e=>[e.n,e.pays]));
  ok('études russes : « article en russe », 2 sans DOI (PubMed seulement)',es.filter(e=>/article en russe/.test(e.pays)).length===4&&F.etudes.filter(x=>!x.doi).length===2);
  ok('rien de nuancé ni contradictoire (ajouts affichés)',!BAD.test([...rs,...es].map(x=>x.t).join(' '))||[...rs,...es].map(x=>x.t).join(' ').match(BAD));
  if(dn==='iphone13'){await shotAt(p.locator('[data-ref][data-intl]').filter({hasText:'@Dr_GIVER'}).first(),'intl-refs.png');}
  // filtre International
  const fb=p.locator('[data-clr=filtre-international]');
- ok('filtre : bouton « Voir seulement l’international (91) »',NB(await fb.innerText())==='Voir seulement l’international (91)'&&await fb.getAttribute('aria-pressed')==='false');
+ ok('filtre : bouton « Voir seulement l’international (108) »',NB(await fb.innerText())==='Voir seulement l’international (108)'&&await fb.getAttribute('aria-pressed')==='false');
  await fb.click();await p.waitForTimeout(400);
- ok('filtre actif : 21 publications + 70 études, rien d’autre',await fb.getAttribute('aria-pressed')==='true'&&await p.locator('[data-ref]').count()===21&&await p.locator('[data-etude]').count()===70&&await p.locator('[data-ref]:not([data-intl]),[data-etude]:not([data-intl])').count()===0);
- const gs=await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup));const want=[...new Set([...F.posts,...F.etudes].map(x=>x.group))];
+ ok('filtre actif : 22 publications + 86 études, rien d’autre',await fb.getAttribute('aria-pressed')==='true'&&await p.locator('[data-ref]').count()===TOT.ip&&await p.locator('[data-etude]').count()===TOT.ie&&await p.locator('[data-ref]:not([data-intl]),[data-etude]:not([data-intl])').count()===0);
+ const gs=await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup));const want=[...new Set([...F.posts,...F.etudes].map(x=>x.group)),'astragale'];
  ok('filtre actif : seulement les thèmes avec des références internationales',gs.length===want.length&&want.every(g=>gs.includes(g))||gs);
  ok('filtre actif : sommaire avec les nombres internationaux (Vitamine D 20)',(await p.locator('[data-otp]').textContent()).includes('Vitamine D (20)'));
  ok('axe (filtre actif)',await axe());
  await fb.click();await p.waitForTimeout(400);
- ok('filtre désactivé : 166 publications + 234 études',await fb.getAttribute('aria-pressed')==='false'&&await p.locator('[data-ref]').count()===166&&await p.locator('[data-etude]').count()===234);
+ ok('filtre désactivé : 172 publications + 252 études',await fb.getAttribute('aria-pressed')==='false'&&await p.locator('[data-ref]').count()===TOT.posts&&await p.locator('[data-etude]').count()===TOT.etudes);
  const toc=NB(await p.locator('[data-otp]').textContent());ok('sommaire complet : Vitamine D (43), Rinçage et gargarisme (35), Gingembre, ail et liquides (30)',['Vitamine D (43)','Rinçage et gargarisme (35)','Gingembre, ail et liquides (30)'].every(x=>toc.includes(x))||toc);
  ok('0 console errors',errs.length===0||errs);
  await ctx.close();}

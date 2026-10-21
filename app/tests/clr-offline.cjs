@@ -12,6 +12,10 @@ function serve(dir){return new Promise(res=>{const s=http.createServer((q,r)=>{l
   r.writeHead(200,{'Content-Type':TYPES[path.extname(f)]||'application/octet-stream','Cache-Control':'max-age=600'});r.end(fs.readFileSync(f));});
   s.listen(0,'127.0.0.1',()=>res(s));});}
 function copySite(dst){for(const p of ['assets','icons','index.html','404.html','sw.js','manifest.webmanifest','favicon.svg','og.jpg','robots.txt','sitemap.xml'])fs.cpSync(path.join(ROOT,p),path.join(dst,p),{recursive:true});}
+// Totaux attendus lus dans refs-meta.js (les mêmes que l’accueil).
+const META=fs.readFileSync(path.join(ROOT,'app/src/data/refs-meta.js'),'utf8');const num=k=>+META.match(new RegExp(k+' = (\\d+)'))[1];
+const INTLM=JSON.parse(META.match(/INTL_META = (\{.*?\});/)[1]);const NGROUPS=JSON.parse(META.match(/REF_GROUP_META = (\[.*?\]);/)[1]).length;
+const STATS=[num('REF_COUNT'),num('MEDECIN_COUNT'),num('ETUDE_COUNT')];
 let fail=0,n=0;
 (async()=>{const b=await chromium.launch({executablePath:process.env.CHROME||'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
  let srv=null,url=process.argv[2];if(!url){srv=await serve(ROOT);url=`http://127.0.0.1:${srv.address().port}/combat-le-rhume/`;}
@@ -51,8 +55,8 @@ let fail=0,n=0;
   ok('Accueil : « Choisis ton mode »',(await h1())==='Choisis ton mode');
   const ac=p.locator('[data-clr=accueil-references]');
   const st=await ac.locator('[data-stat]').evaluateAll(ls=>ls.map(l=>+l.querySelector('.clr-refs-stat-n').textContent));
-  ok('Accueil : bloc Références 166 / 31 / 234',JSON.stringify(st)==='[166,31,234]'||st);
-  ok('Accueil : ligne 🌍 internationale',(await ac.locator('[data-clr=accueil-international]').innerText()).includes('91 références internationales'));
+  ok(`Accueil : bloc Références ${STATS.join(' / ')}`,JSON.stringify(st)===JSON.stringify(STATS)||st);
+  ok(`Accueil : ligne 🌍 internationale (${INTLM.posts+INTLM.etudes})`,(await ac.locator('[data-clr=accueil-international]').innerText()).includes(`${INTLM.posts+INTLM.etudes} références internationales`));
   ok('Accueil : « ✓ Disponible hors ligne » (hors ligne aussi)',await pret.isVisible());
   await p.evaluate(()=>document.fonts.ready);
   ok('polices Outfit + Fraunces chargées hors ligne',await p.evaluate(()=>document.fonts.check('400 16px Outfit')&&document.fonts.check('600 16px Outfit')&&document.fonts.check('650 20px Fraunces')&&document.fonts.check('italic 560 20px Fraunces')&&[...document.fonts].some(f=>f.family.includes('Outfit')&&f.status==='loaded')&&[...document.fonts].some(f=>f.family.includes('Fraunces')&&f.status==='loaded')));
@@ -63,7 +67,7 @@ let fail=0,n=0;
   for(const [t,re] of Object.entries(want)){await tab(t);const m=await p.locator('main').innerText();ok(`${t} : section affichée hors ligne`,re.test(await h1()+' '+m)&&m.length>300||[await h1(),m.length]);}
   await clk('Conseils');ok('Conseils : affichés hors ligne',(await p.locator('main').innerText()).length>300);
   await tab('Accueil');await p.locator('[data-clr=accueil-references-btn]').click();await p.waitForFunction(()=>document.querySelector('main h1')?.innerText==='Références');
-  ok('Références : 19 thèmes hors ligne',await p.locator('[data-ref-group]').count()===19);
+  ok(`Références : ${NGROUPS} thèmes hors ligne`,await p.locator('[data-ref-group]').count()===NGROUPS);
   ok('Références : publications et études affichées',await p.locator('[data-ref]').count()>=150&&await p.locator('[data-etude]').count()>=200||[await p.locator('[data-ref]').count(),await p.locator('[data-etude]').count()]);
   // lien externe hors ligne → petit message, pas de page cassée
   const pages0=ctx.pages().length;const lien=p.locator('main a[href^="https://x.com"]').first();await lien.scrollIntoViewIfNeeded();

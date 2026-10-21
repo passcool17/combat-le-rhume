@@ -20,11 +20,13 @@ const precision = (s) => {
 const byN = Object.fromEntries(REFERENCES.map((r) => [r.n, r]));
 const etudesDe = (id) => ETUDES.filter((e) => e.group === id);
 const countOf = (g) => g.items.length + etudesDe(g.id).length;
-const LANGUES = { de: `allemand`, es: `espagnol`, pt: `portugais`, it: `italien`, zh: `chinois`, ja: `japonais`, ko: `coréen`, hi: `hindi`, ar: `arabe`, ru: `russe` };
-const INTL_POSTS = REFERENCES.filter((r) => r.country).length;
-const INTL_ETUDES = ETUDES.filter((e) => e.country).length;
-const INTL_LANGUES = new Set(REFERENCES.filter((r) => r.lang).map((r) => r.lang)).size;
-const INTL_PAYS = new Set([...REFERENCES, ...ETUDES].filter((x) => x.country).map((x) => x.country)).size;
+const LANGUES = { en: `anglais`, de: `allemand`, es: `espagnol`, pt: `portugais`, it: `italien`, zh: `chinois`, ja: `japonais`, ko: `coréen`, hi: `hindi`, ar: `arabe`, ru: `russe` };
+// International : pays + langue autre que l’anglais (publications) ou pays non anglophone (études). Les fiches d’autres pays anglophones gardent leur drapeau.
+const estIntl = (x) => !!x.country && x.intl !== false;
+const INTL_POSTS = REFERENCES.filter(estIntl).length;
+const INTL_ETUDES = ETUDES.filter(estIntl).length;
+const INTL_LANGUES = new Set(REFERENCES.filter(estIntl).map((r) => r.lang)).size;
+const INTL_PAYS = new Set([...REFERENCES, ...ETUDES].filter(estIntl).map((x) => x.country)).size;
 function Pays({ x, post }) {
   if (!x.country) return null;
   return (
@@ -40,8 +42,8 @@ export function References() {
   const stance = usePrefs((e) => e.stance);
   const anchor = useNav((n) => n.refAnchor);
   const [intl, setIntl] = useState(false);
-  const itemsDe = (g) => (intl ? g.items.filter((n) => byN[n].country) : g.items);
-  const etudesVues = (id) => (intl ? etudesDe(id).filter((e) => e.country) : etudesDe(id));
+  const itemsDe = (g) => (intl ? g.items.filter((n) => estIntl(byN[n])) : g.items);
+  const etudesVues = (id) => (intl ? etudesDe(id).filter(estIntl) : etudesDe(id));
   const groupes = REF_GROUPS.filter((g) => !intl || itemsDe(g).length + etudesVues(g.id).length);
   useEffect(() => {
     if (!anchor) return;
@@ -64,7 +66,7 @@ export function References() {
         <ul className="mt-2 space-y-2 text-sm text-ink">
           <li>Le rôle de la chaleur du corps et de la fièvre contre l’infection est bien documenté : {REF_GROUPS.find((g) => g.id === `chaleur`).items.length} publications et {etudesDe(`chaleur`).length} études dans <a className="clr-ref-a" href="#ref-chaleur" onClick={jump(`ref-chaleur`)}>Chaleur du corps et fièvre</a>.</li>
           <li>Badges : <span className="clr-ref-b clr-ref-b-direct">Appuie directement</span> <span className="clr-ref-b clr-ref-b-partiel">Appuie en partie</span> <span className="clr-ref-b clr-ref-b-lien">En lien</span></li>
-          <li className="text-muted">Citations dans leur langue d’origine, avec un résumé en français (et une traduction pour les autres langues que l’anglais). Dates à l’heure de Toronto.</li>
+          <li className="text-muted">Citations dans leur langue d’origine, avec un résumé en français et une traduction pour les langues autres que l’anglais (et pour les publications sur l’astragale). Dates à l’heure de Toronto.</li>
         </ul>
       </Card>
       <Card className="clr-ref-intl p-4" data-clr="ref-international">
@@ -84,7 +86,7 @@ export function References() {
               const b = BADGES[r.level];
               const p = precision(r.supportNote);
               return (
-                <li key={n} className="rounded-[var(--radius-card)] border border-line bg-surface p-4" data-ref={n} data-intl={r.country ? `` : undefined}>
+                <li key={n} className="rounded-[var(--radius-card)] border border-line bg-surface p-4" data-ref={n} data-intl={estIntl(r) ? `` : undefined}>
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div className="min-w-0">
                       <h3 className="text-base font-semibold text-ink">{r.name}</h3>
@@ -147,7 +149,7 @@ function GroupExtra({ id, etudes }) {
             const b = BADGES[e.level];
             const p = precision(e.supportNote);
             return (
-              <li key={e.n} id={`ref-etude-${e.n}`} className="scroll-mt-40 rounded-[var(--radius-card)] border border-line bg-surface p-4" data-etude={e.n} data-intl={e.country ? `` : undefined}>
+              <li key={e.n} id={`ref-etude-${e.n}`} className="scroll-mt-40 rounded-[var(--radius-card)] border border-line bg-surface p-4" data-etude={e.n} data-intl={estIntl(e) ? `` : undefined}>
                 <div className="flex flex-wrap items-start justify-between gap-2">
                   <p lang="en" className="min-w-0 flex-1 text-base font-semibold text-ink">{e.title}</p>
                   <span className={cn(`clr-ref-b`, b.cls)} data-badge={e.level}>{b.label}</span>
