@@ -46,7 +46,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await p.goto(url,{waitUntil:'networkidle'});await hide();await clk('Commencer');await hide();
  // Accueil : nouveaux totaux
  const home=NB(await p.locator('main').innerText());
- ok('accueil : 172 publications et 252 études (avec les références internationales)',home.includes('172 publications et 252 études')||home.slice(0,600));
+ ok('accueil : 182 publications et 268 études (avec les références internationales)',home.includes('182 publications et 268 études')||home.slice(0,600));
  await clk('Remèdes');await hide();await openAll();
  // NAC
  const nac=p.locator('#remede-nac');ok('fiche NAC présente',await nac.count()===1);
@@ -89,7 +89,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('combat : renfort NAC juste après le clou de girofle',await p.locator('[data-clr=panel] > *').evaluateAll(cs=>{const i=cs.findIndex(c=>c.dataset.clr==='girofle-combat');return i>=0&&cs[i+1]?.dataset.clr==='nac-combat';}));
  ok('combat : cinq gestes (NAC en renfort, pas un 6e geste)',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel seul|Double dose de vitamine C/}).count()===5);
  ok('combat : miel seul sans gingembre ni NAC',!/gingembre|NAC|échinacée/i.test(await p.locator('main').evaluate(m=>[...m.querySelectorAll('h2')].filter(h=>/Miel seul/.test(h.textContent)).map(h=>h.closest('section,article,div').innerText).join(' '))));
- const kt=NB(await p.locator('[data-clr=kit]').innerText());ok('kit : NAC optionnelle (16 éléments, avec l’astragale)',kt.includes(KITN)&&kt.includes('0 / 16')||kt);
+ const kt=NB(await p.locator('[data-clr=kit]').innerText());ok('kit : NAC optionnelle (18 éléments, avec l’astragale, les vitamines B et la K2)',kt.includes(KITN)&&kt.includes('0 / 18')||kt);
  if(dn==='iphone13'){await shotCard(nc,'nac-combat.png');}
  await nc.locator('[data-ref-link=nac]').click();await p.waitForTimeout(600);
  const top=await p.locator('#ref-nac').evaluate(e=>e.getBoundingClientRect().top);ok('combat : renfort → Références NAC',(await p.locator('main h1').first().innerText())==='Références'&&top>=0&&top<400||top);
@@ -109,7 +109,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
   ok('références : sommaire '+GT[g]+' ('+(tp+te+INTL[g])+', avec '+INTL[g]+' internationales)',(await p.locator('[data-otp]').textContent()).includes(GT[g]+' ('+(tp+te+INTL[g])+')'));
  }
  ok('références : De Flora 1997 appuie directement',(await p.locator('#ref-nac [data-etude]:not([data-intl])').filter({hasText:'De Flora'}).locator('[data-badge]').getAttribute('data-badge'))==='direct');
- ok('références : 172 publications et 252 études',NB(await p.locator('main').innerText()).includes('172 publications et 252 études'));
+ ok('références : 182 publications et 268 études',NB(await p.locator('main').innerText()).includes('182 publications et 268 études'));
  if(dn==='iphone13'){await shotAt(p.locator('#ref-nac'),'nac-refs.png');}
  // Profil Enfant
  await clk('Accueil');await clk('Mode Combat');await hide();await clk('Enfant');await p.waitForTimeout(300);
