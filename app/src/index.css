@@ -124,6 +124,7 @@ html.mode-combat .clr-pulse{animation:clr-pulse 2.2s ease-out infinite}
 .clr-ref-b-lien{background:var(--color-surface-2);color:var(--color-ink);border-color:var(--color-line)}
 .clr-ref-b-warn{background:var(--color-caution-soft);color:var(--color-caution);border-color:var(--color-caution)}
 .clr-ref-q{border-left:3px solid var(--color-line);padding-left:.7rem;color:var(--color-muted);font-style:italic}
+.clr-ref-pays{color:var(--color-ink);font-weight:500}
 .clr-ref-note{border-radius:.75rem;background:var(--color-caution-soft);color:var(--color-ink);padding:.5rem .7rem}
 .clr-ref-link{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 1rem;border-radius:9999px;border:1px solid var(--color-primary);color:var(--color-primary);font-size:.85rem;font-weight:600;text-decoration:none}
 .clr-ref-a{color:var(--color-primary);font-weight:600;text-decoration:underline}

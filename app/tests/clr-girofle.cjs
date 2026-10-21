@@ -15,6 +15,7 @@ const MIEL='Pour le mal de gorge, prendre seulement du miel : 1 cuillère à sou
 const LBL={'@zizelle_':'Pharmacienne, pas médecin','@dravinash23':'Praticien ayurvédique, pas médecin','@drkmhpvtltd':'Hôpital, pas un médecin','@drjoshaxe':'Chiropraticien, pas médecin'};
 const OFF=N6.sources.map(o=>o.url);
 const BAD=/hydroxychloroquin|ivermectin|vaccin|cigarette|Barbara O/i;
+// Les références internationales (clr-international) s’ajoutent aux thèmes : les vérifications du groupe portent sur les éléments non internationaux ([data-intl] exclus) ; les totaux affichés les comptent.
 (async()=>{const b=await chromium.launch({executablePath:'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
  {const ok=(k,v)=>{n++;console.log(v===true?'ok  ':'FAIL','src',k,v===true?'':JSON.stringify(v).slice(0,300));if(v!==true)fail++;};
   const rd=f=>fs.readFileSync(path.join(__dirname,'..',f),'utf8');
@@ -41,7 +42,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  const sc=(await card.locator('[data-clr=girofle-securite] li').allInnerTexts()).map(NB);
  ok('fiche : Sécurité (5 lignes exactes)',JSON.stringify(sc)===JSON.stringify(SEC)||sc);
  ok('fiche : Sécurité étiquetée',(await card.locator('[data-clr=girofle-securite]').getAttribute('aria-label'))==='Sécurité : clou de girofle');
- ok('fiche : lien Références Clou de girofle (17)',(await card.locator('[data-ref-link=girofle]').innerText()).includes('Clou de girofle (17)'));
+ ok('fiche : lien Références Clou de girofle (18 avec 1 étude internationale)',(await card.locator('[data-ref-link=girofle]').innerText()).includes('Clou de girofle (18)'));
  ok('fiche miel seul inchangée',NB(await p.locator('#remede-miel').innerText()).includes(MIEL));
  if(dn==='iphone13'){const st=await p.addStyleTag({content:'nav.fixed,[data-clr=install]{visibility:hidden!important}'});await shotAt(card,'girofle-fiche.png');await st.evaluate(e=>e.remove());await p.evaluate(()=>window.scrollTo(0,0));}
  for(const f of ['Gorge','Prudence']){await clk(f);ok('filtre '+f+' : fiche clou de girofle',await p.locator('#remede-girofle').count()===1);}
@@ -60,18 +61,18 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await gc.locator('[data-ref-link=girofle]').click();await p.waitForTimeout(600);
  const top=await p.locator('#ref-girofle').evaluate(e=>e.getBoundingClientRect().top);ok('combat : renfort → Références Clou de girofle',(await p.locator('main h1').first().innerText())==='Références'&&top>=0&&top<400||top);
  // Références
- ok('références : groupe Clou de girofle (6 X + 11 études)',(await p.locator('#ref-girofle-t').innerText())==='Clou de girofle'&&await p.locator('#ref-girofle [data-ref]').count()===6&&await p.locator('#ref-girofle [data-etude]').count()===11);
- const rs=await p.locator('#ref-girofle [data-ref]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.ref,h:l.querySelector('a[href*="x.com"]').getAttribute('href'),lb:l.querySelector('[data-clr=pas-medecin]')?.textContent??null,t:l.innerText})));
+ ok('références : groupe Clou de girofle (6 X + 11 études)',(await p.locator('#ref-girofle-t').innerText())==='Clou de girofle'&&await p.locator('#ref-girofle [data-ref]:not([data-intl])').count()===6&&await p.locator('#ref-girofle [data-etude]:not([data-intl])').count()===11);
+ const rs=await p.locator('#ref-girofle [data-ref]:not([data-intl])').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.ref,h:l.querySelector('a[href*="x.com"]').getAttribute('href'),lb:l.querySelector('[data-clr=pas-medecin]')?.textContent??null,t:l.innerText})));
  ok('références : 6 publications X, citations, étiquettes honnêtes',rs.length===6&&rs.every(r=>{const x=N6.posts.find(y=>y.n===r.n);return x&&r.h===x.url&&r.lb===(LBL[x.handle]??null)&&NB(r.t).includes(NB(x.quote))&&NB(r.t).includes(NB(x.gist));})||rs.map(r=>[r.n,r.lb]));
- ok('références : Alvina Jalil appuie directement (mal de gorge)',(await p.locator('#ref-girofle [data-ref]').filter({hasText:'Alvina Jalil'}).locator('[data-badge]').getAttribute('data-badge'))==='direct');
+ ok('références : Alvina Jalil appuie directement (mal de gorge)',(await p.locator('#ref-girofle [data-ref]:not([data-intl])').filter({hasText:'Alvina Jalil'}).locator('[data-badge]').getAttribute('data-badge'))==='direct');
  ok('références : rien sur HCQ, ivermectine, vaccins, cigarettes',!BAD.test(NB(await p.locator('#ref-girofle').innerText())));
- const es=await p.locator('#ref-girofle [data-etude]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.etude,doi:l.querySelector('[data-doi]')?.getAttribute('href'),pm:l.querySelector('[data-pubmed]').getAttribute('href'),b:l.querySelector('[data-badge]').dataset.badge,t:l.innerText})));
+ const es=await p.locator('#ref-girofle [data-etude]:not([data-intl])').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.etude,doi:l.querySelector('[data-doi]')?.getAttribute('href'),pm:l.querySelector('[data-pubmed]').getAttribute('href'),b:l.querySelector('[data-badge]').dataset.badge,t:l.innerText})));
  ok('références : 11 études, DOI + PubMed + résumé + niveau',es.length===11&&N6.etudes.every(x=>{const e=es.find(y=>y.n===x.n);return e&&e.doi===x.doiUrl&&e.pm===x.pubmed&&e.b===x.level&&NB(e.t).includes(NB(x.finding))&&e.t.includes(x.title);})||es.map(e=>e.n));
  ok('références : grippe A (Dai 2013) et coronavirus 229E',es.some(e=>e.t.includes('Dai JP')&&e.t.includes('grippe A'))&&es.some(e=>e.t.includes('229E')));
  const sx=(await p.locator('[data-securite=girofle] li').allInnerTexts()).map(NB);ok('références : Sécurité clou de girofle',JSON.stringify(sx)===JSON.stringify(N6.nuances.map(NB))||sx);
  const of=await p.locator('[data-securite=girofle] [data-clr=sources-officielles] a').evaluateAll(as=>as.map(a=>[a.getAttribute('href'),a.target,a.rel]));
  ok('références : 4 sources officielles (EMA, Santé Canada ×2, MedlinePlus), nouvel onglet',of.length===4&&JSON.stringify(of.map(x=>x[0]))===JSON.stringify(OFF)&&of.every(x=>x[1]==='_blank'&&x[2].includes('noopener'))||of);
- ok('références : sommaire Clou de girofle (17)',(await p.locator('[data-otp]').textContent()).includes('Clou de girofle (17)'));
+ ok('références : sommaire Clou de girofle (18)',(await p.locator('[data-otp]').textContent()).includes('Clou de girofle (18)'));
  if(dn==='iphone13'){await shotAt(p.locator('#ref-girofle'),'girofle-refs.png');}
  // Profil Enfant : tout est caché
  await clk('Accueil');await clk('Mode Combat');await hide();await clk('Enfant');await p.waitForTimeout(300);
