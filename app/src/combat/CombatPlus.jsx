@@ -58,6 +58,7 @@ const KIT = [
   { id: 'argent', label: 'Optionnel (adulte) : argent colloïdal environ 15 ppm, avec numéro NPN ou DIN, pour le gargarisme ou le nez' },
   { id: 'quercetine', label: 'Optionnel (adulte) : quercétine 500 mg, avec numéro NPN, à prendre avec le zinc' },
   { id: 'girofle', label: 'Optionnel (adulte) : clous de girofle entiers, à mâcher ou en infusion pour la gorge' },
+  { id: 'nac', label: 'Optionnel (adulte) : NAC 600 mg, avec numéro NPN, à prendre avec un repas' },
 ];
 
 const RED_FLAGS = [
@@ -477,7 +478,7 @@ function Kit() {
   const s = useStore();
   const has = new Set(s.kit);
   const enfant = usePrefs(e => e.audience) === 'enfant';
-  const items = KIT.filter(k => !(enfant && (k.id === 'argent' || k.id === 'quercetine' || k.id === 'girofle')));
+  const items = KIT.filter(k => !(enfant && (k.id === 'argent' || k.id === 'quercetine' || k.id === 'girofle' || k.id === 'nac')));
   const tog = id => set(s0 => ({ kit: s0.kit.includes(id) ? s0.kit.filter(k => k !== id) : [...s0.kit, id] }));
   return (
     <Card data-clr="kit">
@@ -539,7 +540,7 @@ export function ZincAvertissement() {
 const ARGENT = REMEDES.find(r => r.id === 'argent');
 export function SecuriteBox({ id, items }) {
   return (
-    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine', girofle: 'clou de girofle' })[id] || id}`}>
+    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine', girofle: 'clou de girofle', nac: 'NAC' })[id] || id}`}>
       <p className="text-xs font-medium text-caution uppercase tracking-wide">Sécurité</p>
       <ul>{items.map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
     </div>
@@ -597,6 +598,24 @@ function GirofleRenfort({ audience }) {
   );
 }
 
+// ---------- renfort optionnel : NAC pendant la saison des rhumes et grippes (adulte seulement, caché en profil Enfant) ----------
+const NAC = REMEDES.find(r => r.id === 'nac');
+function NacRenfort({ audience }) {
+  if (audience === 'enfant') return null;
+  const g = REF_GROUP_META.find(x => x.id === 'nac');
+  return (
+    <Card caution data-clr="nac-combat">
+      <Kicker><span aria-hidden="true">🛡️ </span>Renfort optionnel · grippe</Kicker>
+      <h2 className="mt-1 text-xl">NAC (N‑acétylcystéine)</h2>
+      <p className="mt-2 text-sm text-ink" data-clr="nac-dose">{NAC.how}</p>
+      <p className="mt-2 text-sm text-ink" data-clr="nac-canada">{NAC.extra[1]}</p>
+      <p className="mt-2 text-sm text-muted">Optionnel : ne remplace pas les cinq gestes. Adulte seulement.</p>
+      <SecuriteBox id="nac" items={NAC.securite} />
+      <p><button type="button" className="clr-ref-cta mt-2" data-ref-link="nac" onClick={() => useNav.getState().openReferences('nac')}>Références : {g.title} ({g.count})</button></p>
+    </Card>
+  );
+}
+
 function Panel({ audience, setStance }) {
   const s = useStore();
   return (
@@ -606,6 +625,7 @@ function Panel({ audience, setStance }) {
       <QuercetineRenfort audience={audience} />
       <ArgentRenfort audience={audience} />
       <GirofleRenfort audience={audience} />
+      <NacRenfort audience={audience} />
       <Consult setStance={setStance} />
       {s.protocol ? <CheckSummary /> : null}
       <Kit />

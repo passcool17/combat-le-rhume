@@ -56,7 +56,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('combat : renfort juste après l’argent colloïdal',await p.locator('[data-clr=panel] > *').evaluateAll(cs=>{const i=cs.findIndex(c=>c.dataset.clr==='argent-combat');return i>=0&&cs[i+1]?.dataset.clr==='girofle-combat';}));
  ok('combat : cinq gestes (clou de girofle en renfort, pas un 6e geste)',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel seul|Double dose de vitamine C/}).count()===5);
  ok('combat : pas de girofle dans les gestes',!/girofle/i.test(await p.locator('main').evaluate(m=>[...m.querySelectorAll('h2')].filter(h=>/Miel seul|Spray Betadine|Pastilles antiseptiques/.test(h.textContent)).map(h=>h.closest('section,article,div').innerText).join(' '))));
- const kt=NB(await p.locator('[data-clr=kit]').innerText());ok('kit : clou de girofle optionnel (14 éléments)',kt.includes(KITG)&&kt.includes('0 / 14')||kt);
+ const kt=NB(await p.locator('[data-clr=kit]').innerText());ok('kit : clou de girofle optionnel (15 éléments, avec la NAC)',kt.includes(KITG)&&kt.includes('0 / 15')||kt);
  await gc.locator('[data-ref-link=girofle]').click();await p.waitForTimeout(600);
  const top=await p.locator('#ref-girofle').evaluate(e=>e.getBoundingClientRect().top);ok('combat : renfort → Références Clou de girofle',(await p.locator('main h1').first().innerText())==='Références'&&top>=0&&top<400||top);
  // Références

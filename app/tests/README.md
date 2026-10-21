@@ -14,6 +14,7 @@ node tests/clr-doses.cjs        http://localhost:4173/combat-le-rhume/          
 node tests/clr-argent.cjs       http://localhost:4173/combat-le-rhume/                     # Argent colloïdal : gargarisme/nez ~15 ppm, jamais avalé, Sécurité, caché en Enfant, Combat (renfort optionnel + kit), Références ; titre « Combat le rhume et la grippe » (88 vérifications)
 node tests/clr-quercetine.cjs   http://localhost:4173/combat-le-rhume/                     # Quercétine : fiche (dose, avec le zinc, Sécurité), cachée en Enfant, Combat (renfort optionnel + kit), Soutien, prévention, thème Références (77 vérifications)
 node tests/clr-girofle.cjs      http://localhost:4173/combat-le-rhume/                     # Clou de girofle : fiche (mâcher, gargarisme, infusion, bain de bouche 1 à 5 %, Sécurité), filtre Gorge, cachée en Enfant, Combat (renfort optionnel + kit, miel seul inchangé), thème Références (75 vérifications)
+node tests/clr-nac-echinacee-gingembre.cjs http://localhost:4173/combat-le-rhume/          # NAC (fiche adulte, Sécurité, cachée en Enfant, renfort Combat + kit 15), Échinacée renforcée (tisane gardée, extrait standardisé, prévention, Sécurité), fiche Gingembre (dès 6 ans, Sécurité), miel seul inchangé, Références (groupe NAC, ajouts Échinacée/Gingembre, Sécurité) (148 vérifications)
 ```
 
 `SHOTS=/chemin/prefixe_` change l’emplacement des captures.

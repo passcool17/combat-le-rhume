@@ -62,7 +62,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('combat : renfort juste après le zinc',await p.locator('[data-clr=panel] > *').evaluateAll(cs=>{const i=cs.findIndex(c=>c.dataset.clr==='zinc-combat');return i>=0&&cs[i+1]?.dataset.clr==='quercetine-combat';}));
  ok('combat : ligne cuivre ODS dans la carte zinc',NB(await p.locator('[data-clr=zinc-combat] [data-clr=zinc-cuivre]').innerText()).includes(ZCU));
  ok('combat : cinq gestes (quercétine en renfort, pas un 6e geste)',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel seul|Double dose de vitamine C/}).count()===5);
- const kt=NB(await p.locator('[data-clr=kit]').innerText());ok('kit : quercétine optionnelle (14 éléments)',kt.includes(KITQ)&&kt.includes('0 / 14')||kt);
+ const kt=NB(await p.locator('[data-clr=kit]').innerText());ok('kit : quercétine optionnelle (15 éléments)',kt.includes(KITQ)&&kt.includes('0 / 15')||kt);
  await qc.locator('[data-ref-link=quercetine]').click();await p.waitForTimeout(600);
  const top=await p.locator('#ref-quercetine').evaluate(e=>e.getBoundingClientRect().top);ok('combat : renfort → Références Quercétine',(await p.locator('main h1').first().innerText())==='Références'&&top>=0&&top<400||top);
  // Références
