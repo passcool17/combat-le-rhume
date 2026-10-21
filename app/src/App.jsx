@@ -7,6 +7,7 @@ import { Accueil } from "./pages/Accueil.jsx";
 import { Remedes } from "./pages/Remedes.jsx";
 import { Conseils } from "./pages/Conseils.jsx";
 import { UpdateToast } from "./components/UpdateToast.jsx";
+import { DisponibleHorsLigne, LienHorsLigne } from "./components/HorsLigne.jsx";
 
 // Vues moins fréquentes : chargées à la demande (puis préchargées au repos, et toutes en cache hors ligne).
 const loaders = {
@@ -143,6 +144,7 @@ export function App() {
       <main className="mx-auto max-w-5xl px-4 pt-5 pb-28 md:pb-16">
         <InstallBanner />
         <UpdateToast />
+        <LienHorsLigne />
         <Suspense fallback={<p className="py-10 text-center text-sm text-muted" role="status">Chargement…</p>}>
         {tab === `accueil` ? <Accueil /> : null}
         {tab === `symptomes` && !combatHidden ? <Symptomes onPrep={openRecipe} onPlants={() => setTab(`plantes`)} /> : null}
@@ -161,6 +163,7 @@ export function App() {
         </Suspense>
         <p className="mt-3 flex flex-wrap items-center justify-center gap-x-2 text-center text-xs text-muted">
           <span>Guide éducatif. Ton suivi ne quitte pas cet appareil.</span>
+          <DisponibleHorsLigne />
           {tab === `references` ? null : (
             <button type="button" className="clr-ref-cta text-xs" data-clr="lien-references" onClick={() => openReferences(null)}>
               Références
