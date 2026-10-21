@@ -526,9 +526,53 @@ export const REMEDES = [
     extra: [
       `Vitamine D, en priorité : un supplément est souvent recommandé au Québec en automne et en hiver ; demande conseil à ton pharmacien ou à ton médecin.`,
       `Vitamine D : 1 000 à 2 000 UI tous les jours, pas de grosses doses espacées. Plafond : 4 000 UI par jour. Utile pour le système immunitaire.`,
+      `Vitamine K2 avec la vitamine D (adulte) : 90 à 120 µg de MK-7 par jour, avec le repas où tu prends ta vitamine D, pour aider le calcium à aller dans les os plutôt que dans les artères. Au Canada, 120 µg par jour au maximum dans les produits de santé naturels ; il existe des produits D3 + K2.`,
       `Soleil : visage et bras, sans lunettes, sans brûler. 30 minutes au minimum, une heure c’est mieux, surtout en été.`,
     ],
+    // Profil Enfant : sans la K2 (adulte seulement).
+    extraEnfant: [
+      `Vitamine D, en priorité : un supplément est souvent recommandé au Québec en automne et en hiver ; demande conseil à ton pharmacien ou à ton médecin.`,
+      `Vitamine D : 1 000 à 2 000 UI tous les jours, pas de grosses doses espacées. Plafond : 4 000 UI par jour. Utile pour le système immunitaire.`,
+      `Soleil : visage et bras, sans lunettes, sans brûler. 30 minutes au minimum, une heure c’est mieux, surtout en été.`,
+    ],
+    // Sécurité de la vitamine K2 : adulte seulement (cachée en profil Enfant).
+    securiteTitre: `Sécurité · vitamine K2`,
+    securiteAdulte: true,
+    securite: [
+      `Warfarine ou autre antivitamine K (acénocoumarol) : pas de K2 sans l’accord du médecin. Même à petite dose (10 à 20 µg par jour), la MK-7 change l’effet de la warfarine (INR).`,
+      `Autre anticoagulant (apixaban, rivaroxaban, dabigatran) : Santé Canada demande l’avis du médecin ou du pharmacien avant de prendre de la vitamine K, à toute dose.`,
+      `Dialyse ou insuffisance rénale : parles-en au néphrologue avant (vitamine D, calcium et anticoagulants y sont souvent ajustés).`,
+      `Grossesse et allaitement : pas de K2 en supplément, seulement dans les aliments, sauf avis médical.`,
+      `Enfants : pas de K2 en supplément sans avis.`,
+      `Garde la dose de vitamine D de l’appli (1 000 à 2 000 UI, plafond 4 000 UI) : la K2 ne permet pas de dépasser ce plafond.`,
+    ],
     tag: `Soutien de base`,
+  },
+  {
+    id: `vitamines-b`,
+    name: `Vitamines B (complexe B méthylé)`,
+    kicker: `Soutien de fond · adulte`,
+    topics: [`fievre`],
+    caution: true,
+    adulteSeulement: true,
+    how: `B12 (méthylcobalamine) : 250 à 1 000 µg par jour. Folate : 400 µg par jour (méthylfolate ou acide folique), jamais plus de 1 000 µg d’acide folique. B6 : 10 mg par jour au maximum au total, en additionnant tous les produits. Ou un complexe B méthylé avec un numéro NPN de Santé Canada. Adulte seulement.`,
+    extra: [
+      `Les vitamines B6, B9 (folate) et B12 sont nécessaires au système immunitaire : un manque l’affaiblit, et le corriger le rétablit.`,
+      `B12 : comprimé à croquer ou sublingual. Surtout utile après 50 ans, chez les végétaliens et sous metformine ou inhibiteur de la pompe à protons.`,
+      `B6 : 1,3 à 1,7 mg par jour suffisent. Additionne la B6 de tous tes produits (multivitamines, magnésium-B6, etc.) pour rester à 10 mg ou moins.`,
+    ],
+    securite: [
+      `B6 et nerfs : à 10 mg par jour ou plus, risque d’atteinte des nerfs (engourdissements, picotements, douleur aux mains et aux pieds). Arrête et consulte si ces symptômes apparaissent (Santé Canada).`,
+      `Folate et B12 : beaucoup d’acide folique (plus de 1 000 µg par jour) peut masquer un manque de B12 pendant que les nerfs s’abîment. Fais vérifier ta B12 avant de prendre beaucoup de folate.`,
+      `Reins : de fortes doses de vitamines B (folate 2,5 mg, B6 25 mg, B12 1 mg) ont accéléré la baisse de la fonction rénale chez des diabétiques atteints de néphropathie (JAMA 2010). Problème de reins : demande l’avis du médecin.`,
+      `Neuropathie optique de Leber : évite la cyanocobalamine (prends la méthylcobalamine).`,
+      `Allergie au cobalt : attention, la B12 contient du cobalt.`,
+      `Metformine et inhibiteurs de la pompe à protons (oméprazole, pantoprazole, etc.) : ils abaissent la B12. Parles-en au pharmacien.`,
+      `Grossesse : 400 µg d’acide folique par jour sont recommandés avant et pendant la grossesse. Pas de fortes doses de B6 sans avis.`,
+      `Enfants : doses adaptées à l’âge seulement (limites plus basses pour la B6), avec le pharmacien.`,
+      `Phénytoïne ou méthotrexate : le folate peut baisser l’effet de la phénytoïne et interférer avec le méthotrexate. Parles-en au médecin.`,
+    ],
+    tag: `Immunité · soutien · adulte`,
   },
   {
     id: `vitamine-c-double`,
@@ -700,6 +744,7 @@ export const DOSES_ENFANT = {
   argent: `À éviter chez l’enfant.`,
   quercetine: `À éviter chez l’enfant.`,
   nac: `Jamais avant 2 ans. Enfant : seulement sur avis médical. La dose de 600 mg est pour l’adulte.`,
+  'vitamines-b': `Doses adaptées à l’âge seulement (limites plus basses pour la B6), avec le pharmacien.`,
   astragale: `Pas chez l’enfant ni l’adolescent : la dose de Santé Canada vise l’adulte de 18 ans et plus.`,
   girofle: `À éviter chez l’enfant. L’huile essentielle de girofle avalée est très toxique : toujours hors de portée.`,
   peroxyde: `À éviter, ou seulement avec un avis. Pas dans les oreilles d’un jeune enfant.`,
@@ -946,7 +991,10 @@ export const PREVENTION_OREILLES = `Oreilles au peroxyde, en prévention (adulte
 export const PREVENTION_QUERCETINE = `Quercétine, en prévention (adulte) : 500 mg 2 fois par jour avec un repas en hiver ou pendant les efforts intenses, jusqu’à 12 semaines.`;
 // Prévention réservée à l’adulte : astragale (cachée en profil Enfant).
 export const PREVENTION_ASTRAGALE = `Astragale, en prévention (adulte) : 2 à 4 g de racine séchée par jour, ou une décoction de 10 à 15 g de tranches mijotées 20 à 25 minutes, en 2 tasses par jour, pendant la saison des rhumes et grippes.`;
-export const preventionPour = (enfant) => (enfant ? PREVENTION : [...PREVENTION, PREVENTION_QUERCETINE, PREVENTION_ASTRAGALE, PREVENTION_OREILLES]);
+// Prévention réservée à l’adulte : vitamines B et vitamine K2 (cachées en profil Enfant).
+export const PREVENTION_VITAMINES_B = `Vitamines B, en prévention (adulte) : B12 250 à 1 000 µg et folate 400 µg par jour, B6 10 mg par jour au maximum au total, ou un complexe B méthylé avec un numéro NPN.`;
+export const PREVENTION_K2 = `Vitamine K2, avec la vitamine D (adulte) : 90 à 120 µg de MK-7 par jour, au repas où tu prends ta vitamine D.`;
+export const preventionPour = (enfant) => (enfant ? PREVENTION : [...PREVENTION, PREVENTION_K2, PREVENTION_VITAMINES_B, PREVENTION_QUERCETINE, PREVENTION_ASTRAGALE, PREVENTION_OREILLES]);
 
 export const PENDANT_MALADIE = [
   `Humidifier l’air de la chambre, surtout en hiver.`,

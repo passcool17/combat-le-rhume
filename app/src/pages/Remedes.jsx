@@ -29,7 +29,7 @@ export function Remedes({ filter, onFilter }) {
           let a = GESTES_COMBAT.includes(n.id);
           return (r && !a) ||
             (r && audience === `enfant` && n.id === `peroxyde`) ||
-            (audience === `enfant` && (n.id === `argent` || n.id === `quercetine` || n.id === `girofle` || n.id === `nac` || n.id === `astragale`)) ||
+            (audience === `enfant` && (n.id === `argent` || n.id === `quercetine` || n.id === `girofle` || n.id === `nac` || n.id === `astragale` || n.id === `vitamines-b`)) ||
             (stance === `soutien` && a) ||
             (i && !favorites.includes(n.id)) ||
             (!r && filter === `prudence` && !n.caution) ||
@@ -210,7 +210,7 @@ export function Remedes({ filter, onFilter }) {
                   {x}
                 </p>
               ))}
-              {e.securite && (audience !== `enfant` || !e.adulteSeulement) ? <SecuriteBox id={e.id} items={e.securite} /> : null}
+              {e.securite && (audience !== `enfant` || !(e.adulteSeulement || e.securiteAdulte)) ? <SecuriteBox id={e.id} items={e.securite} titre={e.securiteTitre} /> : null}
               {e.href ? (
                 <a href={e.href} target="_blank" rel="noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-primary">
                   Voir sur Amazon
