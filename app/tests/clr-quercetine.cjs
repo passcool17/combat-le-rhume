@@ -17,6 +17,7 @@ const ZCU='Cure courte (5 à 7 jours) : le zinc à forte dose bloque l’absorpt
 const LBL={'@drdenwalker':'MD non vérifié','@Pharm_Obi':'Pharmacien, pas médecin'};
 const OFF=N5.sources.map(o=>o.url);
 const BAD=/hydroxychloroquin|ivermectin|vaccin|Önal|biy-2104-16|Zelenko|shedding/i;
+// Les références internationales (clr-international) s’ajoutent aux thèmes : les vérifications du groupe portent sur les éléments non internationaux ([data-intl] exclus) ; les totaux affichés les comptent.
 (async()=>{const b=await chromium.launch({executablePath:'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
  {const ok=(k,v)=>{n++;console.log(v===true?'ok  ':'FAIL','src',k,v===true?'':JSON.stringify(v).slice(0,300));if(v!==true)fail++;};
   const rd=f=>fs.readFileSync(path.join(__dirname,'..',f),'utf8');
@@ -43,7 +44,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  const sc=(await card.locator('[data-clr=quercetine-securite] li').allInnerTexts()).map(NB);
  ok('fiche : Sécurité (4 lignes exactes)',JSON.stringify(sc)===JSON.stringify(SEC)||sc);
  ok('fiche : Sécurité étiquetée',(await card.locator('[data-clr=quercetine-securite]').getAttribute('aria-label'))==='Sécurité : quercétine');
- ok('fiche : lien Références Quercétine (16)',(await card.locator('[data-ref-link=quercetine]').innerText()).includes('Quercétine (16)'));
+ ok('fiche : lien Références Quercétine (21 avec 5 études internationales)',(await card.locator('[data-ref-link=quercetine]').innerText()).includes('Quercétine (21)'));
  ok('fiche zinc : ligne cuivre (liste NIH ODS)',NB(await p.locator('#remede-zinc [data-clr=zinc-cuivre]').innerText()).includes(ZCU));
  if(dn==='iphone13'){const st=await p.addStyleTag({content:'nav.fixed,[data-clr=install]{visibility:hidden!important}'});await shotAt(card,'quercetine-fiche.png');await st.evaluate(e=>e.remove());await p.evaluate(()=>window.scrollTo(0,0));}
  for(const f of ['Fièvre','Gorge','Prudence']){await clk(f);ok('filtre '+f+' : fiche quercétine',await p.locator('#remede-quercetine').count()===1);}
@@ -66,17 +67,17 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await qc.locator('[data-ref-link=quercetine]').click();await p.waitForTimeout(600);
  const top=await p.locator('#ref-quercetine').evaluate(e=>e.getBoundingClientRect().top);ok('combat : renfort → Références Quercétine',(await p.locator('main h1').first().innerText())==='Références'&&top>=0&&top<400||top);
  // Références
- ok('références : groupe Quercétine (6 X + 10 études)',(await p.locator('#ref-quercetine-t').innerText())==='Quercétine'&&await p.locator('#ref-quercetine [data-ref]').count()===6&&await p.locator('#ref-quercetine [data-etude]').count()===10);
- const rs=await p.locator('#ref-quercetine [data-ref]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.ref,h:l.querySelector('a[href*="x.com"]').getAttribute('href'),lb:l.querySelector('[data-clr=pas-medecin]')?.textContent??null,t:l.innerText})));
+ ok('références : groupe Quercétine (6 X + 10 études)',(await p.locator('#ref-quercetine-t').innerText())==='Quercétine'&&await p.locator('#ref-quercetine [data-ref]:not([data-intl])').count()===6&&await p.locator('#ref-quercetine [data-etude]:not([data-intl])').count()===10);
+ const rs=await p.locator('#ref-quercetine [data-ref]:not([data-intl])').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.ref,h:l.querySelector('a[href*="x.com"]').getAttribute('href'),lb:l.querySelector('[data-clr=pas-medecin]')?.textContent??null,t:l.innerText})));
  ok('références : 6 publications X, citations, étiquettes honnêtes',rs.length===6&&rs.every(r=>{const x=N5.posts.find(y=>y.n===r.n);return x&&r.h===x.url&&r.lb===(LBL[x.handle]??null)&&NB(r.t).includes(NB(x.quote))&&NB(r.t).includes(NB(x.gist));})||rs.map(r=>[r.n,r.lb]));
  ok('références : rien sur HCQ, ivermectine, vaccins, Önal 2021',!BAD.test(NB(await p.locator('#ref-quercetine').innerText())));
- const es=await p.locator('#ref-quercetine [data-etude]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.etude,doi:l.querySelector('[data-doi]')?.getAttribute('href'),pm:l.querySelector('[data-pubmed]').getAttribute('href'),b:l.querySelector('[data-badge]').dataset.badge,t:l.innerText})));
+ const es=await p.locator('#ref-quercetine [data-etude]:not([data-intl])').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.etude,doi:l.querySelector('[data-doi]')?.getAttribute('href'),pm:l.querySelector('[data-pubmed]').getAttribute('href'),b:l.querySelector('[data-badge]').dataset.badge,t:l.innerText})));
  ok('références : 10 études, DOI + PubMed + résumé + niveau',es.length===10&&N5.etudes.every(x=>{const e=es.find(y=>y.n===x.n);return e&&e.doi===x.doiUrl&&e.pm===x.pubmed&&e.b===x.level&&NB(e.t).includes(NB(x.finding))&&e.t.includes(x.title);})||es.map(e=>e.n));
  ok('références : Nieman 2007 appuie directement',es.find(e=>e.t.includes('Nieman DC'))?.b==='direct');
  const sx=(await p.locator('[data-securite=quercetine] li').allInnerTexts()).map(NB);ok('références : Sécurité quercétine',JSON.stringify(sx)===JSON.stringify(N5.nuances.map(NB))||sx);
  const of=await p.locator('[data-securite=quercetine] [data-clr=sources-officielles] a').evaluateAll(as=>as.map(a=>[a.getAttribute('href'),a.target,a.rel]));
  ok('références : 3 sources officielles, nouvel onglet',JSON.stringify(of.map(x=>x[0]))===JSON.stringify(OFF)&&of.every(x=>x[1]==='_blank'&&x[2].includes('noopener'))||of);
- ok('références : sommaire Quercétine (16)',(await p.locator('[data-otp]').textContent()).includes('Quercétine (16)'));
+ ok('références : sommaire Quercétine (21)',(await p.locator('[data-otp]').textContent()).includes('Quercétine (21)'));
  if(dn==='iphone13'){await shotAt(p.locator('#ref-quercetine'),'quercetine-refs.png');}
  // Profil Enfant : tout est caché
  await clk('Accueil');await clk('Mode Combat');await hide();await clk('Enfant');await p.waitForTimeout(300);

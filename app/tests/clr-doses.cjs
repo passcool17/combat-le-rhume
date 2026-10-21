@@ -46,7 +46,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await clk('Remèdes');await hide();await openAll();
  for(const [id,xs] of Object.entries(CARDS)){const c=p.locator('#remede-'+id);const t=(await c.count())?NB(await c.innerText()):'';const miss=xs.filter(x=>!t.includes(x));ok('fiche '+id,miss.length===0||miss);}
  const za=await p.locator('#remede-zinc [data-clr=zinc-avertissement] li').allInnerTexts();ok('fiche zinc : Avertissement (5 lignes)',JSON.stringify(za.map(NB))===JSON.stringify(ZAV)||za);
- ok('fiche zinc : lien Références Zinc (21)',(await p.locator('#remede-zinc [data-ref-link=zinc]').innerText()).includes('Zinc (21)'));
+ ok('fiche zinc : lien Références Zinc (27, avec 6 études internationales)',(await p.locator('#remede-zinc [data-ref-link=zinc]').innerText()).includes('Zinc (27)'));
  ok('fiche zinc : ligne cuivre (cure courte, aliments riches en cuivre)',NB(await p.locator('#remede-zinc [data-clr=zinc-cuivre]').innerText()).includes(ZCU));
  ok('fiche thym : lien Références Thym',await p.locator('#remede-thym [data-ref-link=thym]').count()===1);
  noOld('remèdes',await main());

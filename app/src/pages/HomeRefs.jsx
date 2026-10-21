@@ -1,6 +1,6 @@
 // Bloc Références mis en avant sur l’accueil (les deux modes, thèmes clair et sombre).
 import { useNav } from "../lib/nav.js";
-import { ETUDE_COUNT, MEDECIN_COUNT, REF_COUNT, REF_GROUP_META, REF_HIGHLIGHTS } from "../data/refs-meta.js";
+import { ETUDE_COUNT, INTL_META, MEDECIN_COUNT, REF_COUNT, REF_GROUP_META, REF_HIGHLIGHTS } from "../data/refs-meta.js";
 
 const initiales = (nom) =>
   nom
@@ -32,6 +32,7 @@ export function HomeRefs() {
           </li>
         ))}
       </ul>
+      <p className="clr-refs-intl mt-3 text-sm text-ink" data-clr="accueil-international"><span aria-hidden="true">🌍 </span>Dont {INTL_META.posts + INTL_META.etudes} références internationales : {INTL_META.langues} langues, {INTL_META.pays} pays, traduites en français.</p>
       <p className="mt-4 text-xs font-semibold tracking-widest text-primary uppercase">Ce qu’ils disent <span className="font-normal normal-case tracking-normal text-muted md:hidden">· glisse pour voir les {REF_HIGHLIGHTS.length}</span></p>
       <ul className="clr-refs-quotes mt-2" aria-label="Publications mises en avant">
         {REF_HIGHLIGHTS.map((h) => (

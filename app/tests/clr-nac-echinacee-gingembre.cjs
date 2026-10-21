@@ -21,7 +21,8 @@ const MIEL='Pour le mal de gorge, prendre seulement du miel : 1 cuillère à sou
 const LBL={'@MedCramVideos':'Chaîne médicale (Roger Seheult, MD)','@BostonTox':'MD non vérifié','@DrDavidBilstrom':'MD non vérifié','@AleksandragMD':'MD non vérifié','@DocFoster':'MD non vérifié','@drwillcole':'Chiropraticien, pas médecin','@drjoshaxe':'Chiropraticien, pas médecin','@DoctaMoe':'Naturopathe (ND), pas médecin','@DrDianaND':'Naturopathe (ND), pas médecin'};
 const BAD=/hydroxychloroquin|ivermectin|vaccin|cigarette|mitig|Cochrane|contredi/i;
 const GT={nac:'NAC (N-acétylcystéine)',echinacee:'Échinacée',gingembre:'Gingembre, ail et liquides'};
-const NEW={nac:[12,12],echinacee:[8,13],gingembre:[4,6]};const TOT={nac:[12,12],echinacee:[9,20],gingembre:[9,12]};
+// références internationales ajoutées ensuite (clr-international) : comptées dans les totaux affichés, exclues des vérifications du groupe
+const INTL={nac:6,echinacee:5,gingembre:9};const NEW={nac:[12,12],echinacee:[8,13],gingembre:[4,6]};const TOT={nac:[12,12],echinacee:[9,20],gingembre:[9,12]};
 (async()=>{const b=await chromium.launch({executablePath:'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
  {const ok=(k,v)=>{n++;console.log(v===true?'ok  ':'FAIL','src',k,v===true?'':JSON.stringify(v).slice(0,300));if(v!==true)fail++;};
   const rd=f=>fs.readFileSync(path.join(process.env.APPDIR||path.join(__dirname,'..'),f),'utf8');const c=rd('src/data/contenu.js');
@@ -45,7 +46,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await p.goto(url,{waitUntil:'networkidle'});await hide();await clk('Commencer');await hide();
  // Accueil : nouveaux totaux
  const home=NB(await p.locator('main').innerText());
- ok('accueil : 145 publications et 164 études',home.includes('145 publications et 164 études')||home.slice(0,600));
+ ok('accueil : 166 publications et 234 études (avec les références internationales)',home.includes('166 publications et 234 études')||home.slice(0,600));
  await clk('Remèdes');await hide();await openAll();
  // NAC
  const nac=p.locator('#remede-nac');ok('fiche NAC présente',await nac.count()===1);
@@ -57,14 +58,14 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  const ns=(await nac.locator('[data-clr=nac-securite] li').allInnerTexts()).map(NB);
  ok('NAC : Sécurité (8 lignes exactes : asthme, ulcère, nitroglycérine/antibiotiques, grossesse, reins, coagulation, 2 ans, effets)',JSON.stringify(ns)===JSON.stringify(NAC_SEC)||ns);
  ok('NAC : Sécurité étiquetée',(await nac.locator('[data-clr=nac-securite]').getAttribute('aria-label'))==='Sécurité : NAC');
- ok('NAC : lien Références NAC (24)',(await nac.locator('[data-ref-link=nac]').innerText()).includes('NAC (N-acétylcystéine) (24)'));
+ ok('NAC : lien Références NAC (30)',(await nac.locator('[data-ref-link=nac]').innerText()).includes('NAC (N-acétylcystéine) (30)'));
  // Échinacée
  const ech=p.locator('#remede-echinacee');const et=NB(await ech.innerText());
  ok('échinacée : ligne tisane conservée',et.includes(ECH_TISANE)||et);
  ok('échinacée : extrait standardisé 4 000 mg / Echinilin, 10 jours, prévention 2 400 mg en cycles de 2 mois',ECH_EXTRA.every(x=>et.includes(x))||et);
  const es=(await ech.locator('[data-clr=echinacee-securite] li').allInnerTexts()).map(NB);
  ok('échinacée : Sécurité (Astéracées, auto-immun, enfants, grossesse, durée, effets)',JSON.stringify(es)===JSON.stringify(ECH_SEC)||es);
- ok('échinacée : lien Références Échinacée (29)',(await ech.locator('[data-ref-link=echinacee]').innerText()).includes('Échinacée (29)'));
+ ok('échinacée : lien Références Échinacée (34)',(await ech.locator('[data-ref-link=echinacee]').innerText()).includes('Échinacée (34)'));
  // Gingembre
  const gin=p.locator('#remede-gingembre');ok('fiche gingembre présente',await gin.count()===1);
  const gt=NB(await gin.innerText());
@@ -72,7 +73,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('gingembre : max 3 g de racine séchée, dès 6 ans',gt.includes(GIN_MAX)||gt);
  const gs=(await gin.locator('[data-clr=gingembre-securite] li').allInnerTexts()).map(NB);
  ok('gingembre : Sécurité (anticoagulants, calculs biliaires, grossesse, diabète/tension, effets)',JSON.stringify(gs)===JSON.stringify(GIN_SEC)||gs);
- ok('gingembre : lien Références Gingembre (21)',(await gin.locator('[data-ref-link=gingembre]').innerText()).includes('Gingembre, ail et liquides (21)'));
+ ok('gingembre : lien Références Gingembre (30)',(await gin.locator('[data-ref-link=gingembre]').innerText()).includes('Gingembre, ail et liquides (30)'));
  const mt=NB(await p.locator('#remede-miel').innerText());ok('fiche miel seul inchangée, sans gingembre',mt.includes(MIEL)&&!/gingembre/i.test(mt)||mt);
  if(dn==='iphone13'){await shotCard(nac,'nac-fiche.png');await shotCard(ech,'echinacee-fiche.png');await shotCard(gin,'gingembre-fiche.png');}
  const has=async id=>await p.locator('#remede-'+id).count()===1;
@@ -95,7 +96,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  // Références
  for(const g of ['nac','echinacee','gingembre']){
   const [np,ne]=NEW[g];const [tp,te]=TOT[g];
-  ok('références : groupe '+GT[g]+' ('+tp+' X + '+te+' études)',(await p.locator('#ref-'+g+'-t').innerText())===GT[g]&&await p.locator('#ref-'+g+' [data-ref]').count()===tp&&await p.locator('#ref-'+g+' [data-etude]').count()===te||[await p.locator('#ref-'+g+' [data-ref]').count(),await p.locator('#ref-'+g+' [data-etude]').count()]);
+  ok('références : groupe '+GT[g]+' ('+tp+' X + '+te+' études)',(await p.locator('#ref-'+g+'-t').innerText())===GT[g]&&await p.locator('#ref-'+g+' [data-ref]:not([data-intl])').count()===tp&&await p.locator('#ref-'+g+' [data-etude]:not([data-intl])').count()===te||[await p.locator('#ref-'+g+' [data-ref]:not([data-intl])').count(),await p.locator('#ref-'+g+' [data-etude]:not([data-intl])').count()]);
   const P=N7.posts.filter(x=>x.group===g),E=N7.etudes.filter(x=>x.group===g);
   ok('références '+g+' : '+np+' nouvelles publications, '+ne+' nouvelles études',P.length===np&&E.length===ne);
   const rs=await p.locator('#ref-'+g+' [data-ref]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.ref,h:l.querySelector('a[href*="x.com"]').getAttribute('href'),lb:l.querySelector('[data-clr=pas-medecin]')?.textContent??null,b:l.querySelector('[data-badge]').dataset.badge,t:l.innerText})));
@@ -103,12 +104,12 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
   const ee=await p.locator('#ref-'+g+' [data-etude]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.etude,doi:l.querySelector('[data-doi]')?.getAttribute('href'),pm:l.querySelector('[data-pubmed]').getAttribute('href'),b:l.querySelector('[data-badge]').dataset.badge,t:l.innerText})));
   ok('références '+g+' : études DOI + PubMed + résumé + niveau',E.every(x=>{const e=ee.find(y=>y.n===x.n);return e&&e.doi===x.doiUrl&&e.pm===x.pubmed&&e.b===x.level&&NB(e.t).includes(NB(x.finding))&&e.t.includes(x.title);})||ee.filter(e=>e.n>135).map(e=>e.n));
   const sx=(await p.locator('[data-securite='+g+'] li').allInnerTexts()).map(NB);ok('références '+g+' : Sécurité',JSON.stringify(sx)===JSON.stringify(N7.nuances[g].map(NB))||sx);
-  const nt2=await p.locator('#ref-'+g+' [data-ref],#ref-'+g+' [data-etude]').evaluateAll(ls=>ls.filter(l=>+(l.dataset.ref||0)>121||+(l.dataset.etude||0)>135).map(l=>l.innerText).join(' '));
+  const nt2=await p.locator('#ref-'+g+' [data-ref],#ref-'+g+' [data-etude]').evaluateAll(ls=>ls.filter(l=>(+(l.dataset.ref||0)>121||+(l.dataset.etude||0)>135)&&!l.hasAttribute('data-intl')).map(l=>l.innerText).join(' '));
   ok('références '+g+' : nouveaux ajouts sans rien de nuancé ni contradictoire',!BAD.test(NB(nt2))&&!BAD.test(N7.nuances[g].join(' '))||NB(nt2).match(BAD));
-  ok('références : sommaire '+GT[g]+' ('+(tp+te)+')',(await p.locator('[data-otp]').textContent()).includes(GT[g]+' ('+(tp+te)+')'));
+  ok('références : sommaire '+GT[g]+' ('+(tp+te+INTL[g])+', avec '+INTL[g]+' internationales)',(await p.locator('[data-otp]').textContent()).includes(GT[g]+' ('+(tp+te+INTL[g])+')'));
  }
- ok('références : De Flora 1997 appuie directement',(await p.locator('#ref-nac [data-etude]').filter({hasText:'De Flora'}).locator('[data-badge]').getAttribute('data-badge'))==='direct');
- ok('références : 145 publications et 164 études',NB(await p.locator('main').innerText()).includes('145 publications et 164 études'));
+ ok('références : De Flora 1997 appuie directement',(await p.locator('#ref-nac [data-etude]:not([data-intl])').filter({hasText:'De Flora'}).locator('[data-badge]').getAttribute('data-badge'))==='direct');
+ ok('références : 166 publications et 234 études',NB(await p.locator('main').innerText()).includes('166 publications et 234 études'));
  if(dn==='iphone13'){await shotAt(p.locator('#ref-nac'),'nac-refs.png');}
  // Profil Enfant
  await clk('Accueil');await clk('Mode Combat');await hide();await clk('Enfant');await p.waitForTimeout(300);
