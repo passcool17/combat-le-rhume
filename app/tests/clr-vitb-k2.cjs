@@ -23,7 +23,7 @@ const PREVK='Vitamine K2, avec la vitamine D (adulte) : 90 à 120 µg de MK-7 pa
 const MIEL='Pour le mal de gorge, prendre seulement du miel : 1 cuillère à soupe de miel seul, avec une cuillère qui n’est pas en métal (bois, plastique ou céramique). Pas dans une tisane, pas de citron.';
 const LANG={en:'anglais',es:'espagnol'};
 const BAD=/mitigé|contradi|nuanc|pas d.effet|aucun effet|non significati|incertain|preuves? (faible|insuffisant)|Cochrane|faible à modérée/i;
-const TOT={posts:182,etudes:268,medecins:32,intl:122,langues:10,pays:26};
+const TOT={posts:187,etudes:279,medecins:34,intl:130,langues:10,pays:26};
 const PB=F.posts.filter(x=>x.group==='vitamines-b'),PK=F.posts.filter(x=>x.group==='vitamine-d'),EB=F.etudes.filter(x=>x.group==='vitamines-b'),EK=F.etudes.filter(x=>x.group==='vitamine-d');
 (async()=>{const b=await chromium.launch({executablePath:'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
  {const ok=(k,v)=>{n++;console.log(v===true?'ok  ':'FAIL','src',k,v===true?'':JSON.stringify(v).slice(0,300));if(v!==true)fail++;};
@@ -54,8 +54,8 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await p.goto(url,{waitUntil:'networkidle'});await hide();await clk('Commencer');await hide();
  const ac=p.locator('[data-clr=accueil-references]');
  const st=await ac.locator('[data-stat]').evaluateAll(ls=>Object.fromEntries(ls.map(l=>[l.dataset.stat,+l.querySelector('.clr-refs-stat-n').textContent])));
- ok('accueil : 182 publications, 32 médecins (Florence Comite comptée MD), 268 études',st.x===TOT.posts&&st.medecins===TOT.medecins&&st.etudes===TOT.etudes||st);
- ok('accueil : « 🌍 Dont 122 références internationales : 10 langues, 26 pays »',NB(await ac.locator('[data-clr=accueil-international]').innerText()).includes('Dont 122 références internationales : 10 langues, 26 pays, traduites en français.'));
+ ok('accueil : 187 publications, 34 médecins (Florence Comite comptée MD), 279 études',st.x===TOT.posts&&st.medecins===TOT.medecins&&st.etudes===TOT.etudes||st);
+ ok('accueil : « 🌍 Dont 130 références internationales : 10 langues, 26 pays »',NB(await ac.locator('[data-clr=accueil-international]').innerText()).includes('Dont 130 références internationales : 10 langues, 26 pays, traduites en français.'));
  await clk('Accueil');await p.locator('.clr-choice-soutien button').first().click();await p.waitForTimeout(400);await hide();
  await clk('Remèdes');await hide();await openAll();
  const card=p.locator('#remede-vitamines-b');ok('Soutien : fiche Vitamines B présente',await card.count()===1);
@@ -87,13 +87,13 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await p.locator('.clr-choice-combat button').first().click().catch(async()=>{await clk('Mode Combat');});await p.waitForTimeout(400);await hide();
  await clk('Remèdes');await hide();
  const kt=NB(await p.locator('[data-clr=kit]').innerText());
- ok('kit : complexe B méthylé + K2 optionnels (18 éléments)',kt.includes(KITB)&&kt.includes(KITK)&&kt.includes('0 / 18')||kt);
+ ok('kit : complexe B méthylé + K2 optionnels (19 éléments)',kt.includes(KITB)&&kt.includes(KITK)&&kt.includes('0 / 19')||kt);
  ok('combat : cinq gestes inchangés, pas de fiche vitamines B',await p.locator('main h2').filter({hasText:/Spray Betadine|Peroxyde d’hydrogène 3 %|Pastilles antiseptiques|Miel seul|Double dose de vitamine C/}).count()===5&&await p.locator('#remede-vitamines-b').count()===0);
  await clk('Accueil');await p.locator('[data-clr=accueil-references-btn]').click().catch(async()=>{await p.locator('[data-clr=lien-references]').click();});await p.waitForTimeout(600);
  ok('Références ouvertes',(await p.locator('main h1').first().innerText())==='Références');
  const main=NB(await p.locator('main').innerText());
- ok('Références : 182 publications et 268 études',main.includes('182 publications et 268 études scientifiques'));
- ok('Références : 21 thèmes, Vitamines B juste après Vitamine D et K2',await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup)).then(a=>a.length===21&&a[a.indexOf('vitamine-d')+1]==='vitamines-b'));
+ ok('Références : 187 publications et 279 études',main.includes('187 publications et 279 études scientifiques'));
+ ok('Références : 22 thèmes, Vitamines B juste après Vitamine D et K2',await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup)).then(a=>a.length===22&&a[a.indexOf('vitamine-d')+1]==='vitamines-b'));
  const otp=await p.locator('[data-otp]').textContent();
  ok('Références : titres « Vitamines B » et « Vitamine D et K2 » + sommaire (16) et (53)',(await p.locator('#ref-vitamines-b-t').innerText())==='Vitamines B'&&(await p.locator('#ref-vitamine-d-t').innerText())==='Vitamine D et K2'&&otp.includes('Vitamines B (16)')&&otp.includes('Vitamine D et K2 (53)'));
  const grab=async g=>({rs:await g.locator('[data-ref]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.ref,h:l.querySelector('a[href*="x.com"]').getAttribute('href'),lb:l.querySelector('[data-clr=pas-medecin]')?.textContent??null,b:l.querySelector('[data-badge]').dataset.badge,pays:l.querySelector('[data-clr=pays]')?.innerText,tr:l.querySelector('[data-clr=traduction]')?.innerText,lang:l.querySelector('blockquote').getAttribute('lang'),intl:l.hasAttribute('data-intl'),t:l.innerText}))),
@@ -120,7 +120,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('Références : sources officielles (Santé Canada B6, NIH ODS B12, EFSA ; Santé Canada vitamine K, Theuwissen 2013)',F.sources['vitamines-b'].every(()=>true)&&await gB.locator('[data-clr=sources-officielles] a').count()===3&&(await Promise.all(F.sources['vitamine-d'].map(o=>gD.locator(`[data-clr=sources-officielles] a[href="${o.url}"]`).count()))).every(c=>c===1));
  ok('Références vitamines B/K2 : rien de nuancé ni contradictoire (textes en français)',!BAD.test(NB([...B.rs,...D.rs.filter(r=>PK.some(x=>x.n===r.n))].map(r=>r.t.replace(/« [^»]*»/g,'')).join(' ')+' '+F.etudes.map(e=>e.finding).join(' '))));
  const ic=NB(await p.locator('[data-clr=ref-international]').innerText());
- ok('indicateur international : 24 publications, 98 études de 26 pays',ic.includes('24 publications de médecins en 10 langues et 98 études de 26 pays')&&ic.includes('(122)')||ic);
+ ok('indicateur international : 24 publications, 106 études de 26 pays',ic.includes('24 publications de médecins en 10 langues et 106 études de 26 pays')&&ic.includes('(130)')||ic);
  if(dn==='iphone13')await shotAt(gB,'vitb-refs.png');
  ok('axe Références',await axe());
  await clk('Enfant');await p.waitForTimeout(300);

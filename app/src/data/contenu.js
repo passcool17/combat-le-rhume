@@ -575,6 +575,29 @@ export const REMEDES = [
     tag: `Immunité · soutien · adulte`,
   },
   {
+    id: `nmn`,
+    name: `NMN (nicotinamide mononucléotide)`,
+    kicker: `Soutien de fond · adulte`,
+    topics: [`fievre`],
+    caution: true,
+    adulteSeulement: true,
+    how: `250 mg par jour, jusqu’à 500 mg par jour, le matin ou en début d’après-midi. Choisis un produit avec un numéro NPN de Santé Canada. Adulte seulement.`,
+    extra: [
+      `Le NMN est un précurseur du NAD+, un cofacteur important du métabolisme de l’énergie (Santé Canada). Le NAD+ aide les cellules à produire de l’énergie et à se réparer, y compris les cellules du système immunitaire.`,
+      `Énergie et récupération : chez l’humain, 250 à 600 mg par jour ont fait monter le NAD+ dans le sang, avec moins de fatigue, une marche plus rapide et une meilleure endurance à l’effort.`,
+      `Pris l’après-midi, 250 mg par jour ont le plus réduit la somnolence et la fatigue chez des personnes âgées (essai de 12 semaines).`,
+    ],
+    securite: [
+      `Santé Canada : 1 200 mg par jour au maximum et 600 mg par prise.`,
+      `Durée : à 250 mg par jour ou moins, demande l’avis d’un professionnel de la santé pour continuer au-delà de 12 semaines ; au-dessus de 250 mg par jour, au-delà de 8 semaines (Santé Canada).`,
+      `Diabète : demande l’avis du médecin avant (Santé Canada). Le NMN peut changer la sensibilité à l’insuline : surveille ta glycémie si tu prends un médicament pour le diabète.`,
+      `Grossesse ou allaitement : demande l’avis d’un professionnel de la santé avant (Santé Canada).`,
+      `Enfants : pas de NMN. Santé Canada l’autorise seulement pour les adultes de 18 ans et plus.`,
+      `Dans les études chez l’humain, le NMN a été bien toléré jusqu’à 900 mg par jour pendant 60 jours et 1 250 mg par jour pendant 4 semaines. Reste quand même à la dose de l’appli.`,
+    ],
+    tag: `Énergie · immunité · adulte`,
+  },
+  {
     id: `vitamine-c-double`,
     name: `Double dose de vitamine C`,
     kicker: `Dès les premiers symptômes`,
@@ -745,6 +768,7 @@ export const DOSES_ENFANT = {
   quercetine: `À éviter chez l’enfant.`,
   nac: `Jamais avant 2 ans. Enfant : seulement sur avis médical. La dose de 600 mg est pour l’adulte.`,
   'vitamines-b': `Doses adaptées à l’âge seulement (limites plus basses pour la B6), avec le pharmacien.`,
+  nmn: `Pas de NMN chez l’enfant : Santé Canada l’autorise seulement pour les adultes de 18 ans et plus.`,
   astragale: `Pas chez l’enfant ni l’adolescent : la dose de Santé Canada vise l’adulte de 18 ans et plus.`,
   girofle: `À éviter chez l’enfant. L’huile essentielle de girofle avalée est très toxique : toujours hors de portée.`,
   peroxyde: `À éviter, ou seulement avec un avis. Pas dans les oreilles d’un jeune enfant.`,
@@ -994,7 +1018,9 @@ export const PREVENTION_ASTRAGALE = `Astragale, en prévention (adulte) : 2 à 4
 // Prévention réservée à l’adulte : vitamines B et vitamine K2 (cachées en profil Enfant).
 export const PREVENTION_VITAMINES_B = `Vitamines B, en prévention (adulte) : B12 250 à 1 000 µg et folate 400 µg par jour, B6 10 mg par jour au maximum au total, ou un complexe B méthylé avec un numéro NPN.`;
 export const PREVENTION_K2 = `Vitamine K2, avec la vitamine D (adulte) : 90 à 120 µg de MK-7 par jour, au repas où tu prends ta vitamine D.`;
-export const preventionPour = (enfant) => (enfant ? PREVENTION : [...PREVENTION, PREVENTION_K2, PREVENTION_VITAMINES_B, PREVENTION_QUERCETINE, PREVENTION_ASTRAGALE, PREVENTION_OREILLES]);
+export const PREVENTION_NMN = `NMN, en prévention (adulte) : 250 mg par jour (jusqu’à 500 mg) avec un numéro NPN ; demande l’avis d’un professionnel de la santé au-delà de 12 semaines (8 semaines au-dessus de 250 mg).`;
+
+export const preventionPour = (enfant) => (enfant ? PREVENTION : [...PREVENTION, PREVENTION_K2, PREVENTION_VITAMINES_B, PREVENTION_NMN, PREVENTION_QUERCETINE, PREVENTION_ASTRAGALE, PREVENTION_OREILLES]);
 
 export const PENDANT_MALADIE = [
   `Humidifier l’air de la chambre, surtout en hiver.`,
