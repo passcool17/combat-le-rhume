@@ -46,7 +46,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await p.goto(url,{waitUntil:'networkidle'});await hide();await clk('Commencer');await hide();
  // Accueil : nouveaux totaux
  const home=NB(await p.locator('main').innerText());
- ok('accueil : 187 publications et 279 études (avec les références internationales)',home.includes('187 publications et 279 études')||home.slice(0,600));
+ ok('accueil : 191 publications et 290 études (avec les références internationales)',home.includes('191 publications et 290 études')||home.slice(0,600));
  await clk('Remèdes');await hide();await openAll();
  // NAC
  const nac=p.locator('#remede-nac');ok('fiche NAC présente',await nac.count()===1);
@@ -109,7 +109,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
   ok('références : sommaire '+GT[g]+' ('+(tp+te+INTL[g])+', avec '+INTL[g]+' internationales)',(await p.locator('[data-otp]').textContent()).includes(GT[g]+' ('+(tp+te+INTL[g])+')'));
  }
  ok('références : De Flora 1997 appuie directement',(await p.locator('#ref-nac [data-etude]:not([data-intl])').filter({hasText:'De Flora'}).locator('[data-badge]').getAttribute('data-badge'))==='direct');
- ok('références : 187 publications et 279 études',NB(await p.locator('main').innerText()).includes('187 publications et 279 études'));
+ ok('références : 191 publications et 290 études',NB(await p.locator('main').innerText()).includes('191 publications et 290 études'));
  if(dn==='iphone13'){await shotAt(p.locator('#ref-nac'),'nac-refs.png');}
  // Profil Enfant
  await clk('Accueil');await clk('Mode Combat');await hide();await clk('Enfant');await p.waitForTimeout(300);
