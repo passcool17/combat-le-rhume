@@ -60,6 +60,7 @@ const KIT = [
   { id: 'girofle', label: 'Optionnel (adulte) : clous de girofle entiers, à mâcher ou en infusion pour la gorge' },
   { id: 'nac', label: 'Optionnel (adulte) : NAC 600 mg, avec numéro NPN, à prendre avec un repas' },
   { id: 'vitamines-b', label: 'Optionnel (adulte) : complexe B méthylé avec numéro NPN (B6 : 10 mg par jour au maximum au total)' },
+  { id: 'nmn', label: 'Optionnel (adulte) : NMN 250 mg, avec numéro NPN, le matin' },
   { id: 'k2', label: 'Optionnel (adulte) : vitamine K2 (MK-7) 90 à 120 µg, à prendre avec la vitamine D (pas avec la warfarine)' },
   { id: 'astragale', label: 'Optionnel (adulte) : racine d’astragale, en gélules avec numéro NPN ou en tranches séchées pour la décoction' },
 ];
@@ -481,7 +482,7 @@ function Kit() {
   const s = useStore();
   const has = new Set(s.kit);
   const enfant = usePrefs(e => e.audience) === 'enfant';
-  const items = KIT.filter(k => !(enfant && (k.id === 'argent' || k.id === 'quercetine' || k.id === 'girofle' || k.id === 'nac' || k.id === 'astragale' || k.id === 'vitamines-b' || k.id === 'k2')));
+  const items = KIT.filter(k => !(enfant && (k.id === 'argent' || k.id === 'quercetine' || k.id === 'girofle' || k.id === 'nac' || k.id === 'astragale' || k.id === 'vitamines-b' || k.id === 'nmn' || k.id === 'k2')));
   const tog = id => set(s0 => ({ kit: s0.kit.includes(id) ? s0.kit.filter(k => k !== id) : [...s0.kit, id] }));
   return (
     <Card data-clr="kit">
@@ -543,7 +544,7 @@ export function ZincAvertissement() {
 const ARGENT = REMEDES.find(r => r.id === 'argent');
 export function SecuriteBox({ id, items, titre = 'Sécurité' }) {
   return (
-    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine', girofle: 'clou de girofle', nac: 'NAC', astragale: 'astragale', 'vitamines-b': 'vitamines B', vitamines: 'vitamine K2' })[id] || id}`}>
+    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine', girofle: 'clou de girofle', nac: 'NAC', astragale: 'astragale', 'vitamines-b': 'vitamines B', nmn: 'NMN', vitamines: 'vitamine K2' })[id] || id}`}>
       <p className="text-xs font-medium text-caution uppercase tracking-wide">{titre}</p>
       <ul>{items.map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
     </div>
