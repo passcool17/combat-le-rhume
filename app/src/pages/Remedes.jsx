@@ -7,6 +7,9 @@ import {
   LOGIQUE_COMBAT,
   REMEDES,
   TOUX_CONSEIL,
+  ASPIRINE_ENFANT,
+  MEDICAMENTS_INFO,
+  MEDICAMENTS_INFO_INTRO,
 } from "../data/contenu.js";
 import { Card, OnThisPage, Section } from "../components/ui.jsx";
 import { Search, Star } from "../components/icones.jsx";
@@ -29,7 +32,7 @@ export function Remedes({ filter, onFilter }) {
           let a = GESTES_COMBAT.includes(n.id);
           return (r && !a) ||
             (r && audience === `enfant` && n.id === `peroxyde`) ||
-            (audience === `enfant` && (n.id === `argent` || n.id === `quercetine` || n.id === `girofle` || n.id === `nac` || n.id === `astragale` || n.id === `vitamines-b` || n.id === `nmn` || n.id === `creatine`)) ||
+            (audience === `enfant` && (n.id === `argent` || n.id === `quercetine` || n.id === `girofle` || n.id === `nac` || n.id === `astragale` || n.id === `vitamines-b` || n.id === `nmn` || n.id === `creatine` || n.id === `aspirine`)) ||
             (stance === `soutien` && a) ||
             (i && !favorites.includes(n.id)) ||
             (!r && filter === `prudence` && !n.caution) ||
@@ -229,6 +232,14 @@ export function Remedes({ filter, onFilter }) {
           ))}
         </div>
       )}
+      {stance !== `combat` && audience === `enfant` && !i && (filter === `tous` || filter === `fievre` || filter === `gorge` || filter === `prudence`) ? (
+        <Card caution data-clr="aspirine-enfant">
+          <p className="text-xs font-medium tracking-widest text-caution uppercase">Important · enfant et ado</p>
+          <h2 className="mt-1 text-lg">Pas d’aspirine</h2>
+          <p className="mt-2 text-sm">{ASPIRINE_ENFANT}</p>
+        </Card>
+      ) : null}
+      {stance !== `combat` && audience !== `enfant` && !i && filter === `tous` ? <MedicamentsInfo query={n} /> : null}
       {stance === `combat` ? <CombatModeSwitch onAll={() => onFilter(`tous`)} /> : null}
       {filter === `toux` && stance !== `combat` ? (
         <Card>
@@ -237,5 +248,54 @@ export function Remedes({ filter, onFilter }) {
         </Card>
       ) : null}
     </div>
+  );
+}
+
+// ---------- Médicaments dont on parle — sur ordonnance : fiches d’information seulement (pas de dose, pas de kit, pas de prévention ; cachées en Enfant et en Combat) ----------
+function MedicamentsInfo({ query }) {
+  let t = normaliser(query.trim()),
+    items = MEDICAMENTS_INFO.filter((e) => !t || normaliser(`${e.name} ${e.kicker} ${e.quoi} ${e.statut}`).includes(t));
+  if (!items.length) return null;
+  return (
+    <section className="space-y-3" data-clr="medicaments-info" aria-labelledby="medicaments-info-titre">
+      <div>
+        <p className="text-xs font-medium tracking-widest text-caution uppercase">Information · pas un remède</p>
+        <h2 id="medicaments-info-titre" className="mt-1 text-xl">Médicaments dont on parle — sur ordonnance</h2>
+        <p className="mt-1 text-sm text-muted">{MEDICAMENTS_INFO_INTRO}</p>
+      </div>
+      <div className="grid items-start gap-3 md:grid-cols-2">
+        {items.map((e) => {
+          let g = e.ref ? REF_GROUP_META.find((x) => x.id === e.ref) : null;
+          return (
+            <Section id={`info-${e.id}`} key={e.id} caution kicker={e.kicker} kickerClassName="tracking-wide text-caution" title={e.name} titleClassName="text-xl" forceOpen={!!query.trim()}>
+              <p className="text-sm">{e.quoi}</p>
+              <p className="mt-2 text-sm" data-clr={`${e.id}-statut`}><span className="font-medium">Statut : </span>{e.statut.replace(/^Au Canada : /, `Au Canada, `)}</p>
+              <p className="mt-3 text-xs font-medium tracking-wide text-primary uppercase">Ce qu’avancent ses défenseurs</p>
+              <ul className="mt-1 list-disc space-y-1 pl-5">
+                {e.arguments.map((x) => <li className="text-sm text-muted" key={x}>{x}</li>)}
+              </ul>
+              <p className="mt-3 rounded-lg bg-caution-soft px-3 py-2 text-sm font-medium text-caution" data-clr={`${e.id}-dose`}>{e.dose}</p>
+              <p className="mt-2 text-sm text-muted" data-clr={`${e.id}-essais`}><span className="font-medium text-ink">Les grands essais : </span>{e.essais}</p>
+              <SecuriteBox id={e.id} items={e.securite} />
+              <p className="mt-3 text-sm font-semibold">Sources</p>
+              <ul data-clr={`${e.id}-sources`}>
+                {e.sources.map((x) => (
+                  <li key={x.url}><a className="clr-ref-a flex min-h-11 items-center py-1 text-sm" href={x.url} target="_blank" rel="noopener noreferrer" aria-label={`${x.label} (nouvel onglet)`}>{x.label}</a></li>
+                ))}
+              </ul>
+              {g ? (
+                <p>
+                  <button type="button" className="clr-ref-cta mt-1" data-ref-link={g.id} onClick={() => useNav.getState().openReferences(g.id)}>
+                    Références : {g.title} ({g.count})
+                  </button>
+                </p>
+              ) : (
+                <p className="mt-2 text-xs text-muted">Pas de thème Références : aucune étude chez l’humain ne l’appuie contre le rhume ou la grippe.</p>
+              )}
+            </Section>
+          );
+        })}
+      </div>
+    </section>
   );
 }

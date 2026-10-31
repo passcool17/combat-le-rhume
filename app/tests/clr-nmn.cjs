@@ -12,7 +12,7 @@ const SEC=['Santé Canada : 1 200 mg par jour au maximum et 600 mg par prise.','
 const KIT='Optionnel (adulte) : NMN 250 mg, avec numéro NPN, le matin';
 const PREV='NMN, en prévention (adulte) : 250 mg par jour (jusqu’à 500 mg) avec un numéro NPN ; demande l’avis d’un professionnel de la santé au-delà de 12 semaines (8 semaines au-dessus de 250 mg).';
 const BAD=/mitigé|contradi|nuanc|pas d.effet|aucun effet|non significati|incertain|preuves? (faible|insuffisant)|Cochrane|faible à modérée/i;
-const TOT={posts:191,etudes:290,medecins:34};
+const TOT={posts:197,etudes:309,medecins:37};
 (async()=>{const b=await chromium.launch({executablePath:'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
  {const ok=(k,v)=>{n++;console.log(v===true?'ok  ':'FAIL','src',k,v===true?'':JSON.stringify(v).slice(0,300));if(v!==true)fail++;};
   ok('JSON final : 5 publications + 11 études, groupe nmn, URL/PMID uniques',F.posts.length===5&&F.etudes.length===11&&[...F.posts,...F.etudes].every(x=>x.group==='nmn')&&new Set(F.posts.map(x=>x.url)).size===5&&new Set(F.etudes.map(x=>x.pubmed)).size===11);
@@ -37,8 +37,8 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await p.goto(url,{waitUntil:'networkidle'});await hide();await clk('Commencer');await hide();
  const ac=p.locator('[data-clr=accueil-references]');
  const st=await ac.locator('[data-stat]').evaluateAll(ls=>Object.fromEntries(ls.map(l=>[l.dataset.stat,+l.querySelector('.clr-refs-stat-n').textContent])));
- ok('accueil : 191 publications, 34 médecins, 290 études',st.x===TOT.posts&&st.medecins===TOT.medecins&&st.etudes===TOT.etudes||st);
- ok('accueil : « Dont 138 références internationales : 10 langues, 28 pays »',NB(await ac.locator('[data-clr=accueil-international]').innerText()).includes('Dont 138 références internationales : 10 langues, 28 pays, traduites en français.'));
+ ok('accueil : 197 publications, 37 médecins, 290 études',st.x===TOT.posts&&st.medecins===TOT.medecins&&st.etudes===TOT.etudes||st);
+ ok('accueil : « Dont 152 références internationales : 11 langues, 32 pays »',NB(await ac.locator('[data-clr=accueil-international]').innerText()).includes('Dont 152 références internationales : 11 langues, 32 pays, traduites en français.'));
  await clk('Accueil');await p.locator('.clr-choice-soutien button').first().click();await p.waitForTimeout(400);await hide();
  await clk('Remèdes');await hide();await openAll();
  const card=p.locator('#remede-nmn');ok('Soutien : fiche NMN présente, juste après Vitamines B',await card.count()===1&&await p.locator('[id^=remede-]').evaluateAll(l=>{const a=l.map(x=>x.id).filter(i=>!i.endsWith('-contenu'));return a[a.indexOf('remede-vitamines-b')+1]==='remede-nmn';}));
@@ -63,8 +63,8 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('combat : pas de fiche NMN',await p.locator('#remede-nmn').count()===0);
  await clk('Accueil');await p.locator('[data-clr=accueil-references-btn]').click().catch(async()=>{await p.locator('[data-clr=lien-references]').click();});await p.waitForTimeout(600);
  ok('Références ouvertes',(await p.locator('main h1').first().innerText())==='Références');
- ok('Références : 191 publications et 290 études',NB(await p.locator('main').innerText()).includes('191 publications et 290 études scientifiques'));
- ok('Références : 23 thèmes, NMN juste après Vitamines B',await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup)).then(a=>a.length===23&&a[a.indexOf('vitamines-b')+1]==='nmn'));
+ ok('Références : 197 publications et 309 études',NB(await p.locator('main').innerText()).includes('197 publications et 309 études scientifiques'));
+ ok('Références : 26 thèmes, NMN juste après Vitamines B',await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup)).then(a=>a.length===26&&a[a.indexOf('vitamines-b')+1]==='nmn'));
  ok('Références : titre « NMN » + sommaire (16)',(await p.locator('#ref-nmn-t').innerText())==='NMN'&&(await p.locator('[data-otp]').textContent()).includes('NMN (16)'));
  const g=p.locator('#ref-nmn');
  const rs=await g.locator('[data-ref]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.ref,h:l.querySelector('a[href*="x.com"]').getAttribute('href'),lb:l.querySelector('[data-clr=pas-medecin]')?.textContent??null,b:l.querySelector('[data-badge]').dataset.badge,pays:l.querySelector('[data-clr=pays]')?.innerText,tr:l.querySelector('[data-clr=traduction]')?.innerText,lang:l.querySelector('blockquote').getAttribute('lang'),intl:l.hasAttribute('data-intl'),t:l.innerText})));
@@ -80,7 +80,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('Références : sources officielles Santé Canada',(await Promise.all(F.sources.nmn.map(o=>g.locator(`[data-clr=sources-officielles] a[href="${o.url}"]`).count()))).every(c=>c===1));
  ok('Références NMN : rien de nuancé (textes en français)',!BAD.test(NB(rs.map(r=>r.t.replace(/« [^»]*»/g,'')).join(' ')+' '+es.map(e=>e.t).join(' '))));
  const ic=NB(await p.locator('[data-clr=ref-international]').innerText());
- ok('indicateur international : 24 publications, 114 études de 28 pays (138)',ic.includes('24 publications de médecins en 10 langues et 114 études de 28 pays')&&ic.includes('(138)')||ic);
+ ok('indicateur international : 26 publications, 126 études de 32 pays (152)',ic.includes('26 publications de médecins en 11 langues et 126 études de 32 pays')&&ic.includes('(152)')||ic);
  if(dn==='iphone13')await shotAt(g,'nmn-refs.png');
  ok('axe Références',await axe());
  await clk('Enfant');await p.waitForTimeout(300);

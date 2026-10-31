@@ -544,7 +544,7 @@ export function ZincAvertissement() {
 const ARGENT = REMEDES.find(r => r.id === 'argent');
 export function SecuriteBox({ id, items, titre = 'Sécurité' }) {
   return (
-    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine', girofle: 'clou de girofle', nac: 'NAC', astragale: 'astragale', 'vitamines-b': 'vitamines B', nmn: 'NMN', creatine: 'créatine', vitamines: 'vitamine K2' })[id] || id}`}>
+    <div className="clr-prec mt-3" data-clr={`${id}-securite`} role="note" aria-label={`Sécurité : ${({ argent: 'argent colloïdal', quercetine: 'quercétine', girofle: 'clou de girofle', nac: 'NAC', astragale: 'astragale', 'vitamines-b': 'vitamines B', nmn: 'NMN', creatine: 'créatine', vitamines: 'vitamine K2', aspirine: 'aspirine', hydroxychloroquine: 'hydroxychloroquine', ivermectine: 'ivermectine', fenbendazole: 'fenbendazole' })[id] || id}`}>
       <p className="text-xs font-medium text-caution uppercase tracking-wide">{titre}</p>
       <ul>{items.map(t => <li key={t} className="text-sm">{t}</li>)}</ul>
     </div>

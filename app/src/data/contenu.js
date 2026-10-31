@@ -621,6 +621,31 @@ export const REMEDES = [
     tag: `Énergie · récupération · adulte`,
   },
   {
+    id: `aspirine`,
+    name: `Aspirine : fièvre, courbatures et mal de gorge`,
+    kicker: `Soulagement · adulte`,
+    topics: [`fievre`, `gorge`],
+    caution: true,
+    adulteSeulement: true,
+    how: `Aspirine (AAS, acide acétylsalicylique) : 325 à 650 mg toutes les 4 à 6 heures au besoin, au plus 4 000 mg par jour, avec un grand verre d’eau ou de lait (250 mL). Prends la plus petite dose qui te soulage. Adulte de 18 ans et plus (Santé Canada).`,
+    extra: [
+      `Pour soulager la fièvre, les courbatures, le mal de tête et le mal de gorge d’un rhume ou d’une grippe. Elle ne raccourcit pas le rhume.`,
+      `Dans les essais contre placebo, 500 à 1 000 mg ont fait baisser la fièvre et soulagé le mal de gorge, aussi bien que l’acétaminophène.`,
+      `Consulte si la douleur dure plus de 5 jours ou la fièvre plus de 3 jours (Santé Canada).`,
+    ],
+    securite: [
+      `Jamais chez l’enfant ou l’ado de moins de 18 ans qui a la varicelle, un rhume ou la grippe sans l’avis d’un médecin : risque de syndrome de Reye, rare mais grave (Santé Canada).`,
+      `Pas d’aspirine si tu as un ulcère à l’estomac, des saignements ou un trouble de la coagulation. Arrête et consulte si tes selles sont noires ou si tu vomis du sang (Santé Canada).`,
+      `Tu prends un anticoagulant (« éclaircit le sang ») ou un autre anti-inflammatoire comme l’ibuprofène : demande d’abord à ton médecin ou ton pharmacien (Santé Canada).`,
+      `Asthme : demande d’abord un avis. Pas d’aspirine si l’aspirine ou un anti-inflammatoire t’a déjà donné une crise d’asthme (Santé Canada).`,
+      `Grossesse ou allaitement : demande d’abord un avis. Jamais au dernier trimestre de la grossesse (Santé Canada).`,
+      `Pas d’aspirine si tu es allergique aux salicylates ou à un anti-inflammatoire (AINS) comme l’ibuprofène ou le naproxène (Santé Canada).`,
+      `Pas plus de 5 jours pour la douleur ou 3 jours pour la fièvre sans l’avis d’un professionnel. Demande aussi un avis si tu as 60 ans ou plus, une maladie du foie ou des reins, ou si tu bois 3 verres d’alcool ou plus par jour (Santé Canada).`,
+      `Arrête et consulte si tes oreilles bourdonnent ou si tu entends moins bien (Santé Canada).`,
+    ],
+    tag: `Fièvre · douleurs · adulte`,
+  },
+  {
     id: `vitamine-c-double`,
     name: `Double dose de vitamine C`,
     kicker: `Dès les premiers symptômes`,
@@ -793,6 +818,7 @@ export const DOSES_ENFANT = {
   'vitamines-b': `Doses adaptées à l’âge seulement (limites plus basses pour la B6), avec le pharmacien.`,
   nmn: `Pas de NMN chez l’enfant : Santé Canada l’autorise seulement pour les adultes de 18 ans et plus.`,
   creatine: `Pas de créatine chez l’enfant : Santé Canada l’autorise seulement pour les adultes de 18 ans et plus.`,
+  aspirine: `Pas d’aspirine chez l’enfant ou l’ado de moins de 18 ans qui a la varicelle, un rhume ou la grippe : risque de syndrome de Reye, rare mais grave (Santé Canada). Pour la fièvre, demande au pharmacien un produit et une dose pour son âge.`,
   astragale: `Pas chez l’enfant ni l’adolescent : la dose de Santé Canada vise l’adulte de 18 ans et plus.`,
   girofle: `À éviter chez l’enfant. L’huile essentielle de girofle avalée est très toxique : toujours hors de portée.`,
   peroxyde: `À éviter, ou seulement avec un avis. Pas dans les oreilles d’un jeune enfant.`,
@@ -1097,3 +1123,81 @@ export const PLANTES_RECETTES = {
 };
 
 export const SYMPTOMES_PRINCIPAUX = [`fievre`, `toux`, `nez-bouche`];
+
+export const ASPIRINE_ENFANT = `Pas d’aspirine (AAS) chez l’enfant ou l’ado de moins de 18 ans qui a la varicelle, un rhume ou la grippe : risque de syndrome de Reye, rare mais grave, qui touche le foie et le cerveau (Santé Canada). Vérifie aussi les étiquettes : certains produits contre le rhume contiennent de l’AAS ou des salicylates. Pour la fièvre, demande au pharmacien un produit et une dose pour son âge.`;
+
+export const MEDICAMENTS_INFO_INTRO = `Des médicaments dont on parle beaucoup contre les virus. Ce ne sont pas des remèdes à prendre toi-même : ces fiches t’informent. Dose et suivi : seulement avec ton médecin.`;
+
+export const MEDICAMENTS_INFO = [
+  {
+    id: `ivermectine`,
+    name: `Ivermectine`,
+    kicker: `Sur ordonnance · info`,
+    quoi: `Un antiparasitaire (contre les vers et la gale) utilisé depuis les années 1980. Ses découvreurs ont reçu le prix Nobel de médecine en 2015.`,
+    statut: `Au Canada : sur ordonnance seulement, homologuée contre des vers parasites, pas contre le rhume, la grippe ou la COVID-19. Santé Canada demande de ne pas la prendre pour prévenir ou traiter la COVID-19 (avis 2021).`,
+    arguments: [
+      `En laboratoire, elle freine fortement le virus du COVID-19 (Australie, 2020), mais à des concentrations plus fortes que celles du sang chez l’humain.`,
+      `Quelques petits essais (Bangladesh, Israël) ont trouvé moins de virus ou une guérison un peu plus rapide, et des médecins comme Pierre Kory la défendent.`,
+    ],
+    dose: `Dose et suivi : seulement avec ton médecin.`,
+    essais: `Les grands essais contre placebo n’ont pas montré de bénéfice net : TOGETHER (NEJM 2022), ACTIV-6 (JAMA 2022) et PRINCIPLE (2024, guérison environ 2 jours plus tôt, sans effet sur les hospitalisations).`,
+    securite: [
+      `Jamais de produit pour animaux (chevaux, bétail) : beaucoup plus concentré, il peut causer vomissements, diarrhée, baisse de pression, convulsions, coma et même la mort (Santé Canada).`,
+      `Une surdose est toxique : vomissements, diarrhée, étourdissements, réactions allergiques, convulsions. Les centres antipoison ont reçu plus d’appels pour l’ivermectine à l’été 2021 (Santé Canada).`,
+      `Sans examen ni suivi médical, risque d’interactions avec tes autres médicaments et d’effets secondaires : seulement avec un médecin qui te suit (Santé Canada).`,
+    ],
+    ref: `ivermectine`,
+    sources: [
+      { label: `Santé Canada : avis sur l’ivermectine (2021)`, url: `https://recalls-rappels.canada.ca/fr/avis-rappel/ivermectine-n-est-pas-homologuee-pour-prevention-ni-pour-traitement-covid-19-et-peut` },
+    ],
+  },
+  {
+    id: `hydroxychloroquine`,
+    name: `Hydroxychloroquine`,
+    kicker: `Sur ordonnance · info`,
+    quoi: `Un médicament contre la malaria, aussi utilisé contre le lupus et la polyarthrite rhumatoïde (Plaquenil).`,
+    statut: `Au Canada : sur ordonnance seulement, pour la malaria, le lupus et la polyarthrite, pas pour le rhume, la grippe ou la COVID-19. Santé Canada demande de la prendre seulement sous la supervision d’un médecin (avis 2020).`,
+    arguments: [
+      `En laboratoire, elle freine le virus du COVID-19, et la chloroquine freine les virus de la grippe A.`,
+      `Des études d’observation (Marseille, Detroit) ont trouvé moins de décès chez les patients traités tôt, souvent avec l’azithromycine. Didier Raoult en est le défenseur le plus connu.`,
+    ],
+    dose: `Dose et suivi : seulement avec ton médecin.`,
+    essais: `Les grands essais à l’hôpital n’ont pas montré moins de décès : RECOVERY (NEJM 2020) et Solidarity de l’OMS (NEJM 2021). L’étude de Marseille de mars 2020 a été rétractée.`,
+    securite: [
+      `Troubles graves du rythme du cœur (allongement du QT), parfois mortels, surtout à forte dose ou avec l’azithromycine (Santé Canada).`,
+      `Baisse du sucre dans le sang (hypoglycémie), parfois grave (Santé Canada).`,
+      `Les yeux : à long terme ou à forte dose, elle peut abîmer la rétine pour de bon ; un examen des yeux est prévu avant et pendant le traitement (monographie de Plaquenil).`,
+      `Aussi foie, reins, étourdissements, convulsions. Les enfants y sont très sensibles : même une petite dose peut être dangereuse (Santé Canada).`,
+    ],
+    ref: `hydroxychloroquine`,
+    sources: [
+      { label: `Santé Canada : avis sur la chloroquine et l’hydroxychloroquine (2020)`, url: `https://recalls-rappels.canada.ca/fr/avis-rappel/chloroquine-et-hydroxychloroquine-peuvent-entrainer-graves-effets-secondaires-ces` },
+      { label: `Monographie de Plaquenil (Sanofi Canada)`, url: `https://www.sanofi.com/assets/countries/canada/docs/products/prescription-products/plaquenil-fr.pdf` },
+    ],
+  },
+  {
+    id: `fenbendazole`,
+    name: `Fenbendazole`,
+    kicker: `Vétérinaire · info`,
+    quoi: `Un vermifuge pour animaux (par exemple bovins, porcs et dindons), vendu sous les noms Panacur et Safe-Guard.`,
+    statut: `Au Canada : produit vétérinaire seulement. Il n’a jamais été homologué pour l’humain.`,
+    arguments: [
+      `On en parle surtout en ligne, à partir de témoignages et d’études en laboratoire sur des cellules.`,
+    ],
+    dose: `Dose et suivi : seulement avec ton médecin. Aucune dose pour l’humain n’existe.`,
+    essais: `Aucun essai chez l’humain sur le rhume ou la grippe.`,
+    securite: [
+      `Produit vétérinaire : pas fabriqué ni contrôlé pour l’humain (Santé Canada, base de données des produits pharmaceutiques).`,
+      `Des atteintes du foie ont été rapportées chez des personnes qui en prenaient par elles-mêmes (trois cas publiés en 2026).`,
+      `Pas homologué pour l’humain : aucune dose ni sécurité établie.`,
+    ],
+    ref: null,
+    sources: [
+      { label: `Santé Canada : produits au fenbendazole, tous vétérinaires`, url: `https://health-products.canada.ca/dpd-bdpp/search-fast-recherche-rapide?lang=fra&no=0113905004` },
+      { label: `ACIA : fenbendazole, espèces animales approuvées`, url: `https://inspection.canada.ca/en/animal-health/livestock-feeds/medicating-ingredients/fenbendazole` },
+      { label: `Cas d’atteinte du foie : Krishnan et al., World J Clin Cases 2026`, url: `https://pubmed.ncbi.nlm.nih.gov/41608149/` },
+      { label: `Cas d’atteinte du foie : ACG Case Rep J 2026`, url: `https://pubmed.ncbi.nlm.nih.gov/42383214/` },
+      { label: `Cas d’atteinte du foie (fenbendazole vétérinaire et ivermectine) : Cureus 2026`, url: `https://pubmed.ncbi.nlm.nih.gov/42299164/` },
+    ],
+  },
+];
