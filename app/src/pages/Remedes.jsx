@@ -29,7 +29,7 @@ export function Remedes({ filter, onFilter }) {
           let a = GESTES_COMBAT.includes(n.id);
           return (r && !a) ||
             (r && audience === `enfant` && n.id === `peroxyde`) ||
-            (audience === `enfant` && (n.id === `argent` || n.id === `quercetine` || n.id === `girofle` || n.id === `nac` || n.id === `astragale` || n.id === `vitamines-b` || n.id === `nmn`)) ||
+            (audience === `enfant` && (n.id === `argent` || n.id === `quercetine` || n.id === `girofle` || n.id === `nac` || n.id === `astragale` || n.id === `vitamines-b` || n.id === `nmn` || n.id === `creatine`)) ||
             (stance === `soutien` && a) ||
             (i && !favorites.includes(n.id)) ||
             (!r && filter === `prudence` && !n.caution) ||

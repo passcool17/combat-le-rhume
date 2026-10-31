@@ -1,4 +1,4 @@
-// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json combat-le-rhume-argent-final.json combat-le-rhume-refs-grippe-final.json et combat-le-rhume-quercetine-final.json et combat-le-rhume-girofle-final.json et combat-le-rhume-nac-echinacee-gingembre-final.json et combat-le-rhume-multilingue-final.json et combat-le-rhume-astragale-final.json et combat-le-rhume-vitb-k2-final.json et combat-le-rhume-nmn-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
+// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json combat-le-rhume-argent-final.json combat-le-rhume-refs-grippe-final.json et combat-le-rhume-quercetine-final.json et combat-le-rhume-girofle-final.json et combat-le-rhume-nac-echinacee-gingembre-final.json et combat-le-rhume-multilingue-final.json et combat-le-rhume-astragale-final.json et combat-le-rhume-vitb-k2-final.json et combat-le-rhume-nmn-final.json et combat-le-rhume-creatine-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
 export const REFERENCES = [
  {
   "n": 1,
@@ -3092,6 +3092,90 @@ export const REFERENCES = [
   "country": "Australie",
   "flag": "🇦🇺",
   "intl": false
+ },
+ {
+  "n": 188,
+  "name": "Darren Candow, PhD",
+  "handle": "@darrencandow",
+  "credential": "Professeur de kinésiologie à l’University of Regina (Saskatchewan), chercheur sur la créatine (PhD), vice-président de l’International Society of Sports Nutrition (ISSN). Titre confirmé hors de X : uregina.ca.",
+  "notPhysician": true,
+  "notPhysicianLabel": "Chercheur (PhD), pas médecin",
+  "claim": "Créatine et fatigue post-virale",
+  "quote": "Potential of creatine for post-viral fatigue syndrome and COVID-19 related issues.",
+  "quoteFr": "Le potentiel de la créatine contre le syndrome de fatigue post-virale et les problèmes liés au COVID-19.",
+  "gist": "Il partage la revue d’Ostojic (Nutrients 2021) : la créatine est une piste pour retrouver de l’énergie après un virus.",
+  "date": "2021-02-04T12:03:44Z",
+  "url": "https://x.com/darrencandow/status/1357298793524330496",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue, fatigue après un virus)",
+  "note": null,
+  "lang": "en",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "intl": false
+ },
+ {
+  "n": 189,
+  "name": "Darren Candow, PhD",
+  "handle": "@darrencandow",
+  "credential": "Professeur de kinésiologie à l’University of Regina (Saskatchewan), chercheur sur la créatine (PhD), vice-président de l’International Society of Sports Nutrition (ISSN). Titre confirmé hors de X : uregina.ca.",
+  "notPhysician": true,
+  "notPhysicianLabel": "Chercheur (PhD), pas médecin",
+  "claim": "Fatigue post-virale : la mise à jour",
+  "quote": "Creatine and post-viral fatigue syndrome: an update",
+  "quoteFr": "Créatine et syndrome de fatigue post-virale : une mise à jour",
+  "gist": "Il partage la revue de 2025 dont il est coauteur : la créatine peut soulager la fatigue après un virus et améliorer l’énergie des cellules.",
+  "date": "2025-06-07T16:08:13Z",
+  "url": "https://x.com/darrencandow/status/1931382700902064467",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue 2025, fatigue après un virus)",
+  "note": null,
+  "lang": "en",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "intl": false
+ },
+ {
+  "n": 190,
+  "name": "Jose Antonio, PhD",
+  "handle": "@JoseAntonioPhD",
+  "credential": "Chercheur en sciences du sport (PhD) à la Nova Southeastern University (Floride), cofondateur et PDG de l’International Society of Sports Nutrition (ISSN).",
+  "notPhysician": true,
+  "notPhysicianLabel": "Chercheur (PhD), pas médecin",
+  "claim": "Créatine contre la fatigue post-virale",
+  "quote": "Creatine in Post-Viral Fatigue Syndrome",
+  "quoteFr": "La créatine dans le syndrome de fatigue post-virale",
+  "gist": "Il signale la revue de 2021 sur la créatine pour la fatigue qui suit une infection virale.",
+  "date": "2021-02-04T19:20:39Z",
+  "url": "https://x.com/JoseAntonioPhD/status/1357408748625625090",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue, fatigue après un virus)",
+  "note": null,
+  "lang": "en",
+  "country": "États-Unis",
+  "flag": "🇺🇸",
+  "intl": false
+ },
+ {
+  "n": 191,
+  "name": "Matthew Halma",
+  "handle": "@MatthewHalma",
+  "credential": "Biophysicien canadien (MSc ; doctorat en biophysique à la VU Amsterdam), directeur de l’Open Source Medicine Foundation (Tallinn, Estonie).",
+  "notPhysician": true,
+  "notPhysicianLabel": "Biophysicien (chercheur), pas médecin",
+  "claim": "COVID long : moins de fatigue avec la créatine",
+  "quote": "Creatine: a study from the Novi Sad group found significant effects on body aches, concentration and fatigue in long COVID. Very promising data.",
+  "quoteFr": "Créatine : une étude du groupe de Novi Sad a trouvé des effets significatifs sur les courbatures, la concentration et la fatigue dans le COVID long. Des données très prometteuses.",
+  "gist": "Il cite l’essai serbe contre placebo : avec la créatine, moins de fatigue, de courbatures et de troubles de concentration après le COVID.",
+  "date": "2026-10-17T18:22:38Z",
+  "url": "https://x.com/MatthewHalma/status/2111523295690633351",
+  "level": "partiel",
+  "supportNote": "appuie en partie (essai chez l’humain, fatigue post-COVID)",
+  "note": null,
+  "lang": "en",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "intl": false
  }
 ];
 
@@ -3292,6 +3376,16 @@ export const REF_GROUPS = [
    185,
    186,
    187
+  ]
+ },
+ {
+  "id": "creatine",
+  "title": "Créatine",
+  "items": [
+   188,
+   189,
+   190,
+   191
   ]
  },
  {
@@ -7790,6 +7884,207 @@ export const ETUDES = [
   "countryNote": null,
   "pubLang": null,
   "group": "nmn"
+ },
+ {
+  "n": 282,
+  "authors": "Slankamenac J, Ranisavljev M, Todorovic N et al.",
+  "title": "Effects of six-month creatine supplementation on patient- and clinician-reported outcomes, and tissue creatine levels in patients with post-COVID-19 fatigue syndrome.",
+  "journal": "Food Sci Nutr",
+  "year": "2023",
+  "doi": "10.1002/fsn3.3597",
+  "doiUrl": "https://doi.org/10.1002/fsn3.3597",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/37970399/",
+  "finding": "Essai en double aveugle contre placebo, 6 mois (4 g par jour) chez des adultes avec une fatigue post-COVID : moins de fatigue dès 3 mois, puis moins de perte du goût, de difficultés à respirer, de courbatures, de maux de tête et de troubles de concentration.",
+  "level": "direct",
+  "supportNote": "appuie directement (essai contre placebo, fatigue post-virale)",
+  "country": "Serbie",
+  "flag": "🇷🇸",
+  "countryNote": null,
+  "pubLang": null,
+  "group": "creatine"
+ },
+ {
+  "n": 283,
+  "authors": "Slankamenac J, Ranisavljev M, Todorovic N et al.",
+  "title": "Eight-Week Creatine-Glucose Supplementation Alleviates Clinical Features of Long COVID.",
+  "journal": "J Nutr Sci Vitaminol (Tokyo)",
+  "year": "2024",
+  "doi": "10.3177/jnsv.70.174",
+  "doiUrl": "https://doi.org/10.3177/jnsv.70.174",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38684388/",
+  "finding": "COVID long, 8 semaines (8 g par jour) en double aveugle : la créatine fait monter la créatine du cerveau ; avec du glucose, moins de courbatures, de troubles respiratoires et de concentration, de maux de tête et de malaise.",
+  "level": "direct",
+  "supportNote": "appuie directement (essai chez l’humain, COVID long)",
+  "country": "Serbie",
+  "flag": "🇷🇸",
+  "countryNote": null,
+  "pubLang": null,
+  "group": "creatine"
+ },
+ {
+  "n": 284,
+  "authors": "Slankamenac J, Ranisavljev M, Todorovic N et al.",
+  "title": "Creatine supplementation combined with breathing exercises reduces respiratory discomfort and improves creatine status in patients with long-COVID.",
+  "journal": "J Postgrad Med",
+  "year": "2024",
+  "doi": "10.4103/jpgm.jpgm_650_23",
+  "doiUrl": "https://doi.org/10.4103/jpgm.jpgm_650_23",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/38099612/",
+  "finding": "COVID long, 3 mois : 4 g de créatine par jour avec des exercices de respiration font monter la créatine des tissus et allongent l’effort avant l’épuisement (+54 secondes) par rapport aux exercices seuls.",
+  "level": "direct",
+  "supportNote": "appuie directement (essai chez l’humain, énergie à l’effort)",
+  "country": "Serbie",
+  "flag": "🇷🇸",
+  "countryNote": null,
+  "pubLang": null,
+  "group": "creatine"
+ },
+ {
+  "n": 285,
+  "authors": "Dos Santos MSC, Dorna MS, Costa AF et al.",
+  "title": "Creatine supplementation on fatigue related to post-COVID-19 condition-fatigue study: a randomized controlled trial.",
+  "journal": "Front Nutr",
+  "year": "2026",
+  "doi": "10.3389/fnut.2026.1731306",
+  "doiUrl": "https://doi.org/10.3389/fnut.2026.1731306",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41958909/",
+  "finding": "Essai randomisé chez 67 adultes avec des séquelles du COVID, 4 semaines à 6 g par jour : moins de fatigue et une main plus forte (+4,4 kgf), avec peu d’effets indésirables, légers et passagers.",
+  "level": "direct",
+  "supportNote": "appuie directement (essai randomisé, fatigue post-COVID)",
+  "country": "Brésil",
+  "flag": "🇧🇷",
+  "countryNote": null,
+  "pubLang": null,
+  "group": "creatine"
+ },
+ {
+  "n": 286,
+  "authors": "Godlewska BR, Sylvester AL, Emir UE et al.",
+  "title": "Six-Week Supplementation with Creatine in Myalgic Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS): A Magnetic Resonance Spectroscopy Feasibility Study at 3 Tesla.",
+  "journal": "Nutrients",
+  "year": "2024",
+  "doi": "10.3390/nu16193308",
+  "doiUrl": "https://doi.org/10.3390/nu16193308",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/39408275/",
+  "finding": "Encéphalomyélite myalgique (syndrome de fatigue chronique), 6 semaines : la créatine fait monter la créatine du cerveau, baisse la fatigue et améliore la vitesse de réaction ; bien tolérée.",
+  "level": "direct",
+  "supportNote": "appuie directement (fatigue chronique chez l’humain)",
+  "country": "Royaume-Uni",
+  "flag": "🇬🇧",
+  "countryNote": null,
+  "pubLang": null,
+  "intl": false,
+  "group": "creatine"
+ },
+ {
+  "n": 287,
+  "authors": "Bassit RA, Curi R, Costa Rosa LF",
+  "title": "Creatine supplementation reduces plasma levels of pro-inflammatory cytokines and PGE2 after a half-ironman competition.",
+  "journal": "Amino Acids",
+  "year": "2008",
+  "doi": "10.1007/s00726-007-0582-4",
+  "doiUrl": "https://doi.org/10.1007/s00726-007-0582-4",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/17917696/",
+  "finding": "Triathlètes, 20 g par jour pendant 5 jours avant un demi-Ironman (double aveugle) : la créatine réduit les cytokines de l’inflammation et la PGE2 dans le sang après l’effort.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (inflammation après un gros effort)",
+  "country": "Brésil",
+  "flag": "🇧🇷",
+  "countryNote": null,
+  "pubLang": null,
+  "group": "creatine"
+ },
+ {
+  "n": 288,
+  "authors": "Santos RV, Bassit RA, Caperuto EC et al.",
+  "title": "The effect of creatine supplementation upon inflammatory and muscle soreness markers after a 30km race.",
+  "journal": "Life Sci",
+  "year": "2004",
+  "doi": "10.1016/j.lfs.2003.11.036",
+  "doiUrl": "https://doi.org/10.1016/j.lfs.2003.11.036",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/15306159/",
+  "finding": "Coureurs, 4 prises de 5 g par jour pendant 5 jours avant une course de 30 km : moins de TNF-α (−33,7 %), de PGE2 (−60,9 %) et de CK (−19 %), donc moins d’inflammation et de dommages aux cellules, sans effet indésirable.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (inflammation et récupération)",
+  "country": "Brésil",
+  "flag": "🇧🇷",
+  "countryNote": null,
+  "pubLang": null,
+  "group": "creatine"
+ },
+ {
+  "n": 289,
+  "authors": "Ostojic SM",
+  "title": "Diagnostic and Pharmacological Potency of Creatine in Post-Viral Fatigue Syndrome.",
+  "journal": "Nutrients",
+  "year": "2021",
+  "doi": "10.3390/nu13020503",
+  "doiUrl": "https://doi.org/10.3390/nu13020503",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/33557013/",
+  "finding": "Revue : la fatigue post-virale s’accompagne souvent d’un manque de créatine dans le cerveau et les muscles ; la créatine en complément agit sur la fatigue rapportée par les patients et les médecins.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue, fatigue post-virale)",
+  "country": "Serbie",
+  "flag": "🇷🇸",
+  "countryNote": null,
+  "pubLang": null,
+  "group": "creatine"
+ },
+ {
+  "n": 290,
+  "authors": "Ostojic SM, Candow DG, Tarnopolsky MA",
+  "title": "Creatine and post-viral fatigue syndrome: an update.",
+  "journal": "J Int Soc Sports Nutr",
+  "year": "2025",
+  "doi": "10.1080/15502783.2025.2517278",
+  "doiUrl": "https://doi.org/10.1080/15502783.2025.2517278",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/40481620/",
+  "finding": "Revue 2025 : des études récentes montrent que la créatine peut soulager la fatigue post-virale et améliorer l’énergie des cellules.",
+  "level": "partiel",
+  "supportNote": "appuie en partie (revue 2025, fatigue post-virale)",
+  "country": "Norvège",
+  "flag": "🇳🇴",
+  "countryNote": "coauteurs en Serbie et au Canada",
+  "pubLang": null,
+  "group": "creatine"
+ },
+ {
+  "n": 291,
+  "authors": "Di Biase S, Ma X, Wang X et al.",
+  "title": "Creatine uptake regulates CD8 T cell antitumor immunity.",
+  "journal": "J Exp Med",
+  "year": "2019",
+  "doi": "10.1084/jem.20182044",
+  "doiUrl": "https://doi.org/10.1084/jem.20182044",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/31628186/",
+  "finding": "Chez la souris (contexte animal) : les lymphocytes T CD8, des globules blancs de défense, captent la créatine comme une « batterie » d’énergie ; la créatine en complément renforce leur action.",
+  "level": "lien",
+  "supportNote": "contexte animal (énergie des cellules de défense)",
+  "country": "États-Unis",
+  "flag": "🇺🇸",
+  "countryNote": null,
+  "pubLang": null,
+  "intl": false,
+  "group": "creatine"
+ },
+ {
+  "n": 292,
+  "authors": "Samborska B, Roy DG, Rahbani JF et al.",
+  "title": "Creatine transport and creatine kinase activity is required for CD8+ T cell immunity.",
+  "journal": "Cell Rep",
+  "year": "2022",
+  "doi": "10.1016/j.celrep.2022.110446",
+  "doiUrl": "https://doi.org/10.1016/j.celrep.2022.110446",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/35235777/",
+  "finding": "Chez la souris (contexte animal) : le transport de la créatine est nécessaire pour que les lymphocytes T CD8 se multiplient en réponse à une infection.",
+  "level": "lien",
+  "supportNote": "contexte animal (cellules de défense et infection)",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "countryNote": null,
+  "pubLang": null,
+  "intl": false,
+  "group": "creatine"
  }
 ];
 
@@ -7852,6 +8147,10 @@ export const NUANCES = {
  "nmn": [
   "NMN (adulte) : 250 mg par jour, jusqu’à 500 mg, le matin ou en début d’après-midi, avec un produit qui a un numéro NPN. Le NMN est un précurseur du NAD+, un cofacteur important du métabolisme de l’énergie (Santé Canada).",
   "Santé Canada : 18 ans et plus ; 1 200 mg par jour au maximum et 600 mg par prise ; au-delà de 12 semaines (250 mg par jour ou moins) ou de 8 semaines (plus de 250 mg par jour), demander l’avis d’un professionnel de la santé. Grossesse, allaitement ou diabète : avis avant de commencer."
+ ],
+ "creatine": [
+  "Créatine (adulte) : créatine monohydrate, 3 à 5 g par jour pendant au moins 4 semaines, sans phase de charge, avec un produit qui a un numéro NPN (Santé Canada). Pour retrouver de l’énergie après un virus, pas pour soigner le rhume ou la grippe.",
+  "Santé Canada : 18 ans et plus ; prise de poids possible ; grossesse, allaitement ou trouble des reins : demander l’avis d’un professionnel de la santé avant. Pas de créatine déjà mélangée en liquide (instable)."
  ],
  "argent": [
   "Argent colloïdal : gargarisme ou nez seulement, environ 15 ppm, adulte. Ne jamais avaler : pris par la bouche de façon prolongée, l’argent s’accumule et colore la peau, les yeux et les ongles en bleu-gris, de façon permanente (argyrie).",
@@ -7976,6 +8275,16 @@ export const SOURCES_OFFICIELLES = {
   {
    "label": "Santé Canada : exemple de NMN homologué (NPN 80121612)",
    "url": "https://health-products.canada.ca/lnhpd-bdpsnh/info?licence=80121612&lang=fr"
+  }
+ ],
+ "creatine": [
+  {
+   "label": "Santé Canada : monographie de la créatine monohydratée, 2024",
+   "url": "https://webprod.hc-sc.gc.ca/nhpid-bdipsn/atReq?atid=creatine.mono&lang=fra"
+  },
+  {
+   "label": "Santé Canada : exemple de créatine homologuée (NPN 80142339)",
+   "url": "https://health-products.canada.ca/lnhpd-bdpsnh/info?licence=80142339&lang=fr"
   }
  ]
 };
