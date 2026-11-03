@@ -1,4 +1,4 @@
-// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json combat-le-rhume-argent-final.json combat-le-rhume-refs-grippe-final.json et combat-le-rhume-quercetine-final.json et combat-le-rhume-girofle-final.json et combat-le-rhume-nac-echinacee-gingembre-final.json et combat-le-rhume-multilingue-final.json et combat-le-rhume-astragale-final.json et combat-le-rhume-vitb-k2-final.json et combat-le-rhume-nmn-final.json et combat-le-rhume-creatine-final.json et combat-le-rhume-aspmed-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
+// Généré à partir de combat-le-rhume-refs.json, combat-le-rhume-refs-new.json combat-le-rhume-refs-new2.json combat-le-rhume-argent-final.json combat-le-rhume-refs-grippe-final.json et combat-le-rhume-quercetine-final.json et combat-le-rhume-girofle-final.json et combat-le-rhume-nac-echinacee-gingembre-final.json et combat-le-rhume-multilingue-final.json et combat-le-rhume-astragale-final.json et combat-le-rhume-vitb-k2-final.json et combat-le-rhume-nmn-final.json et combat-le-rhume-creatine-final.json et combat-le-rhume-aspmed-final.json et combat-le-rhume-dmso-final.json (publications X et études vérifiées). Ne pas ajouter d’entrée sans vérification.
 export const REFERENCES = [
  {
   "n": 1,
@@ -3300,6 +3300,69 @@ export const REFERENCES = [
   "country": "États-Unis",
   "flag": "🇺🇸",
   "intl": false
+ },
+ {
+  "n": 198,
+  "name": "A Midwestern Doctor",
+  "handle": "@MidwesternDoc",
+  "credential": "Compte anonyme ; se présente comme médecin du Midwest américain et auteur du Substack « The Forgotten Side of Medicine ». Identité et diplôme non vérifiables.",
+  "notPhysician": true,
+  "notPhysicianLabel": "Anonyme, MD non vérifié",
+  "claim": "Un vaporisateur nasal au DMSO pour les sinus",
+  "quote": "DMSO has been studied for sinus problems since the 1960s, but few people know about it.",
+  "quoteFr": "Le DMSO est étudié pour les problèmes de sinus depuis les années 1960, mais peu de gens le savent.",
+  "gist": "Il raconte le témoignage d’un youtubeur qui dit avoir « complètement dégagé » ses sinus avec un vaporisateur nasal au DMSO, et dit que le DMSO est étudié pour les sinus depuis les années 1960.",
+  "date": "2026-10-28T21:44:58Z",
+  "url": "https://x.com/MidwesternDoc/status/2115560481540775989",
+  "level": "partiel",
+  "supportNote": "appuie en partie (sinus, témoignage ; pas un essai sur le rhume)",
+  "note": null,
+  "lang": "en",
+  "country": "États-Unis",
+  "flag": "🇺🇸",
+  "intl": false
+ },
+ {
+  "n": 199,
+  "name": "A Midwestern Doctor",
+  "handle": "@MidwesternDoc",
+  "credential": "Compte anonyme ; se présente comme médecin du Midwest américain et auteur du Substack « The Forgotten Side of Medicine ». Identité et diplôme non vérifiables.",
+  "notPhysician": true,
+  "notPhysicianLabel": "Anonyme, MD non vérifié",
+  "claim": "Les essais de Merck sur les sinus",
+  "quote": "Merck investigated DMSO in 4,000 patients across multiple conditions. Sinusitis was among those where benefit was reported.",
+  "quoteFr": "Merck a étudié le DMSO chez 4 000 patients pour plusieurs maladies. La sinusite faisait partie de celles où un bienfait a été rapporté.",
+  "gist": "Il cite d’anciens essais de Merck (années 1960) où un bienfait aurait été rapporté contre la sinusite, et un récit de DMSO dilué appliqué dans le nez.",
+  "date": "2026-10-28T21:47:56Z",
+  "url": "https://x.com/MidwesternDoc/status/2115561228751769821",
+  "level": "partiel",
+  "supportNote": "appuie en partie (sinusite, récit historique)",
+  "note": null,
+  "lang": "en",
+  "country": "États-Unis",
+  "flag": "🇺🇸",
+  "intl": false
+ },
+ {
+  "n": 200,
+  "name": "A Midwestern Doctor",
+  "handle": "@MidwesternDoc",
+  "credential": "Compte anonyme ; se présente comme médecin du Midwest américain et auteur du Substack « The Forgotten Side of Medicine ». Identité et diplôme non vérifiables.",
+  "notPhysician": true,
+  "notPhysicianLabel": "Anonyme, MD non vérifié",
+  "claim": "Le nez, porte d’entrée des virus",
+  "quote": "Many respiratory viruses initially replicate in the nose and throat, giving us another reason to pay attention to this neglected area.",
+  "quoteFr": "Beaucoup de virus respiratoires se multiplient d’abord dans le nez et la gorge, une raison de plus de s’intéresser à cette zone négligée.",
+  "gist": "Il relie les soins du nez et de la gorge aux infections respiratoires et présente son article sur le DMSO et les sinus.",
+  "date": "2026-10-28T21:50:13Z",
+  "url": "https://x.com/MidwesternDoc/status/2115561803199504516",
+  "level": "partiel",
+  "supportNote": "appuie en partie (lien indirect avec les virus respiratoires)",
+  "note": null,
+  "lang": "en",
+  "country": "États-Unis",
+  "flag": "🇺🇸",
+  "intl": false
  }
 ];
 
@@ -3533,6 +3596,15 @@ export const REF_GROUPS = [
    195,
    196,
    197
+  ]
+ },
+ {
+  "id": "dmso",
+  "title": "DMSO (diméthylsulfoxyde)",
+  "items": [
+   198,
+   199,
+   200
   ]
  },
  {
@@ -8581,6 +8653,99 @@ export const ETUDES = [
   "pubLang": null,
   "intl": false,
   "group": "hydroxychloroquine"
+ },
+ {
+  "n": 312,
+  "authors": "Jeng PH, Tsai MW, Huang SH et al.",
+  "title": "Dimethyl Sulfoxide Modulates T Cell-Mediated Immunity to Attenuate Influenza A Virus Infection.",
+  "journal": "J Inflamm Res",
+  "year": "2026",
+  "doi": "10.2147/jir.s626876",
+  "doiUrl": "https://doi.org/10.2147/jir.s626876",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42763701/",
+  "finding": "Chez la souris infectée par la grippe A (H1N1) : le DMSO sous la peau (0,22 g/kg par jour, jours 1 à 7) améliore la survie, baisse le virus dans les poumons (2,2 × 10³ au lieu de 4,3 × 10⁴) et l’inflammation.",
+  "level": "lien",
+  "supportNote": "contexte de laboratoire (grippe, chez la souris)",
+  "country": "Taïwan",
+  "flag": "🇹🇼",
+  "countryNote": null,
+  "pubLang": null,
+  "group": "dmso"
+ },
+ {
+  "n": 313,
+  "authors": "Aguilar JS, Roy D, Ghazal P et al.",
+  "title": "Dimethyl sulfoxide blocks herpes simplex virus-1 productive infection in vitro acting at different stages with positive cooperativity. Application of micro-array analysis.",
+  "journal": "BMC Infect Dis",
+  "year": "2002",
+  "doi": "10.1186/1471-2334-2-9",
+  "doiUrl": "https://doi.org/10.1186/1471-2334-2-9",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/12052246/",
+  "finding": "En laboratoire : le DMSO bloque le virus de l’herpès (HSV-1) à des concentrations de 0,7 à 2 %.",
+  "level": "lien",
+  "supportNote": "contexte de laboratoire (herpès, pas un virus du rhume)",
+  "country": "États-Unis",
+  "flag": "🇺🇸",
+  "countryNote": null,
+  "pubLang": null,
+  "intl": false,
+  "group": "dmso"
+ },
+ {
+  "n": 314,
+  "authors": "Huang SH, Wu CH, Chen SJ et al.",
+  "title": "Immunomodulatory effects and potential clinical applications of dimethyl sulfoxide.",
+  "journal": "Immunobiology",
+  "year": "2020",
+  "doi": "10.1016/j.imbio.2020.151906",
+  "doiUrl": "https://doi.org/10.1016/j.imbio.2020.151906",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/31987604/",
+  "finding": "Revue : le DMSO agit sur le système immunitaire (inflammation, lymphocytes), surtout en laboratoire et chez l’animal.",
+  "level": "lien",
+  "supportNote": "contexte de laboratoire (revue)",
+  "country": "Taïwan",
+  "flag": "🇹🇼",
+  "countryNote": null,
+  "pubLang": null,
+  "group": "dmso"
+ },
+ {
+  "n": 315,
+  "authors": "Karim M, Boikess RS, Schwartz RA et al.",
+  "title": "Dimethyl sulfoxide (DMSO): a solvent that may solve selected cutaneous clinical challenges.",
+  "journal": "Arch Dermatol Res",
+  "year": "2023",
+  "doi": "10.1007/s00403-022-02494-1",
+  "doiUrl": "https://doi.org/10.1007/s00403-022-02494-1",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/36459193/",
+  "finding": "Revue : aux États-Unis, le DMSO est approuvé par la FDA seulement contre la cystite interstitielle et pour conserver les organes à greffer ; ailleurs, il est vendu comme solvant. Peu toxique à faible concentration.",
+  "level": "lien",
+  "supportNote": "contexte (statut officiel, revue)",
+  "country": "États-Unis",
+  "flag": "🇺🇸",
+  "countryNote": null,
+  "pubLang": null,
+  "intl": false,
+  "group": "dmso"
+ },
+ {
+  "n": 316,
+  "authors": "Perez-Marrero R, Emerson LE, Feltis JT",
+  "title": "A controlled study of dimethyl sulfoxide in interstitial cystitis.",
+  "journal": "J Urol",
+  "year": "1988",
+  "doi": "10.1016/s0022-5347(17)41478-9",
+  "doiUrl": "https://doi.org/10.1016/s0022-5347(17)41478-9",
+  "pubmed": "https://pubmed.ncbi.nlm.nih.gov/3288775/",
+  "finding": "Essai croisé chez 33 patients avec une cystite interstitielle : le DMSO à 50 % dans la vessie améliore 53 % des patients (selon eux) au lieu de 18 % avec de l’eau salée. C’est la base de l’usage approuvé.",
+  "level": "lien",
+  "supportNote": "usage approuvé (vessie), pas le rhume ni la grippe",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "countryNote": "Université Queen’s, Kingston (Ontario)",
+  "pubLang": null,
+  "intl": false,
+  "group": "dmso"
  }
 ];
 
@@ -8659,6 +8824,10 @@ export const NUANCES = {
  "hydroxychloroquine": [
   "Sur ordonnance au Canada, contre la malaria, le lupus et la polyarthrite. Santé Canada demande de la prendre seulement sous la supervision d’un médecin (cœur, sucre dans le sang).",
   "Les grands essais à l’hôpital (RECOVERY, Solidarity de l’OMS) n’ont pas montré moins de décès. Didier Raoult lui-même écrit qu’elle ne marche plus sur Omicron (2023)."
+ ],
+ "dmso": [
+  "Au Canada, le DMSO est un médicament sur ordonnance seulement (RIMSO-50), mis dans la vessie contre la cystite interstitielle. Il n’est homologué pour aucun autre usage, ni le rhume ni la grippe (Santé Canada).",
+  "Le DMSO vendu hors pharmacie peut être de qualité industrielle et contenir des contaminants ; sur la peau, il fait aussi entrer dans le sang ce qui s’y trouve (Défense nationale du Canada)."
  ],
  "argent": [
   "Argent colloïdal : gargarisme ou nez seulement, environ 15 ppm, adulte. Ne jamais avaler : pris par la bouche de façon prolongée, l’argent s’accumule et colore la peau, les yeux et les ongles en bleu-gris, de façon permanente (argyrie).",
@@ -8815,6 +8984,20 @@ export const SOURCES_OFFICIELLES = {
   {
    "label": "Santé Canada : la chloroquine et l’hydroxychloroquine peuvent entraîner de graves effets secondaires (avis 2020)",
    "url": "https://recalls-rappels.canada.ca/fr/avis-rappel/chloroquine-et-hydroxychloroquine-peuvent-entrainer-graves-effets-secondaires-ces"
+  }
+ ],
+ "dmso": [
+  {
+   "label": "Santé Canada : RIMSO-50 (diméthylsulfoxyde), base de données des produits pharmaceutiques",
+   "url": "https://health-products.canada.ca/dpd-bdpp/info?code=3769&lang=fra"
+  },
+  {
+   "label": "Monographie de RIMSO-50 (Mylan, 2014)",
+   "url": "https://pdf.hres.ca/dpd_pm/00024764.PDF"
+  },
+  {
+   "label": "Défense nationale du Canada : fiche sur le DMSO (en anglais)",
+   "url": "https://www.canada.ca/content/dam/dnd-mdn/documents/health/nutrition/supplement-fact-sheet-dmso.pdf"
   }
  ]
 };

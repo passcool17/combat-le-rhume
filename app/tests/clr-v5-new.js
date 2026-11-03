@@ -63,7 +63,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await h.click('Remèdes');
  const rsecs=await p.locator('main [data-section]').count();
  // 22 fiches avec l’aspirine + 3 fiches « Médicaments dont on parle — sur ordonnance » (ivermectine, hydroxychloroquine, fenbendazole)
- ok('remedes: collapsible cards (Soutien: 22 fiches, avec Créatine et Aspirine, + 3 fiches d’info sur ordonnance)',rsecs===25||rsecs);
+ ok('remedes: collapsible cards (Soutien: 22 fiches, avec Créatine et Aspirine, + 4 fiches d’info sur ordonnance, avec le DMSO)',rsecs===26||rsecs);
  ok('remedes: collapsed by default',await p.$$eval('main [data-section] > div button[aria-expanded]',bs=>bs.every(b=>b.getAttribute('aria-expanded')==='false')));
  M.remedesHeight=await p.evaluate(()=>[document.documentElement.scrollHeight,innerHeight,+(document.documentElement.scrollHeight/innerHeight).toFixed(2)]);
  // 14 fiches repliées depuis l’ajout de la Quercétine (15 avec le Clou de girofle) : limite portée de 3 à 3,25 écrans

@@ -1176,6 +1176,33 @@ export const MEDICAMENTS_INFO = [
     ],
   },
   {
+    id: `dmso`,
+    name: `DMSO (diméthylsulfoxyde)`,
+    kicker: `Sur ordonnance · info`,
+    quoi: `Un liquide tiré du bois (sous-produit des pâtes et papiers), surtout utilisé comme solvant industriel. Il traverse la peau très vite.`,
+    statut: `Au Canada : sur ordonnance seulement, sous le nom RIMSO-50, mis directement dans la vessie contre la cystite interstitielle. Il n’est homologué pour aucun autre usage, ni le rhume ni la grippe (Santé Canada). Le DMSO vendu en ligne ou en magasin est souvent un solvant, pas un médicament.`,
+    arguments: [
+      `Chez la souris grippée (H1N1), le DMSO a amélioré la survie et baissé le virus dans les poumons (étude de Taïwan, 2026). En laboratoire, il bloque aussi le virus de l’herpès.`,
+      `En ligne, on en parle surtout pour les sinus (vaporisateur nasal), à partir de témoignages et d’anciens essais des années 1960.`,
+    ],
+    dose: `Dose et suivi : seulement avec ton médecin. La seule dose homologuée est pour la vessie (50 mL de RIMSO-50 à l’hôpital ou en clinique), pas pour le rhume.`,
+    essais: `Aucun essai chez l’humain sur le rhume ou la grippe. L’usage approuvé vient d’un essai canadien (Kingston, 1988) sur la vessie. Dans un grand essai sur l’arthrose du genou (775 personnes), la solution de DMSO seule (sans médicament) n’a pas fait mieux que le placebo.`,
+    securite: [
+      `Il passe la peau très vite et emporte avec lui ce qui s’y trouve (crème, insectifuge, pesticide). Le DMSO de qualité industrielle peut contenir des contaminants dangereux (Défense nationale du Canada).`,
+      `Goût et odeur d’ail : dans la bouche quelques minutes après, et dans l’haleine et sur la peau jusqu’à 72 heures (monographie de RIMSO-50).`,
+      `Il peut renforcer l’effet d’autres médicaments pris en même temps, et libérer de l’histamine (réactions allergiques possibles) (monographie de RIMSO-50).`,
+      `Grossesse : sécurité pour le bébé non établie ; des malformations ont été vues chez l’animal à forte dose. Pendant le traitement, examens des yeux, du foie et des reins tous les 6 mois (monographie de RIMSO-50).`,
+    ],
+    ref: `dmso`,
+    sources: [
+      { label: `Santé Canada : RIMSO-50 (diméthylsulfoxyde), sur ordonnance`, url: `https://health-products.canada.ca/dpd-bdpp/info?code=3769&lang=fra` },
+      { label: `Monographie de RIMSO-50 (Mylan, 2014)`, url: `https://pdf.hres.ca/dpd_pm/00024764.PDF` },
+      { label: `Défense nationale du Canada : fiche sur le DMSO (en anglais)`, url: `https://www.canada.ca/content/dam/dnd-mdn/documents/health/nutrition/supplement-fact-sheet-dmso.pdf` },
+      { label: `FDA : étiquette de RIMSO-50 (DailyMed, en anglais)`, url: `https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=58b25d79-78f2-4953-b0c6-61658dc4ef0d` },
+      { label: `Essai sur l’arthrose du genou : Simon et al., Pain 2009`, url: `https://pubmed.ncbi.nlm.nih.gov/19380203/` },
+    ],
+  },
+  {
     id: `fenbendazole`,
     name: `Fenbendazole`,
     kicker: `Vétérinaire · info`,

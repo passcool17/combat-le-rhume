@@ -18,7 +18,7 @@ const MIEL='Pour le mal de gorge, prendre seulement du miel : 1 cuillère à sou
 const LANG={en:'anglais',zh:'chinois'};
 const BAD=/mitigé|contradi|nuanc|pas d.effet|aucun effet|non significati|incertain|preuves? (faible|insuffisant)|Cochrane|faible à modérée/i;
 // Totaux mis à jour avec les vitamines B et la K2 (clr-vitb-k2) ; le groupe Astragale est inchangé.
-const TOT={posts:197,etudes:309,medecins:37,intl:152,langues:11,pays:32,groupe:24};
+const TOT={posts:200,etudes:314,medecins:37,intl:154,langues:11,pays:32,groupe:24};
 (async()=>{const b=await chromium.launch({executablePath:'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
  {const ok=(k,v)=>{n++;console.log(v===true?'ok  ':'FAIL','src',k,v===true?'':JSON.stringify(v).slice(0,300));if(v!==true)fail++;};
   const app=process.env.APPDIR||path.join(__dirname,'..');const rd=f=>fs.readFileSync(path.join(app,f),'utf8');const c=rd('src/data/contenu.js');
@@ -48,8 +48,8 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  // Accueil : nouveaux totaux
  const ac=p.locator('[data-clr=accueil-references]');
  const st=await ac.locator('[data-stat]').evaluateAll(ls=>Object.fromEntries(ls.map(l=>[l.dataset.stat,+l.querySelector('.clr-refs-stat-n').textContent])));
- ok('accueil : 197 publications, 37 médecins, 290 études',st.x===TOT.posts&&st.medecins===TOT.medecins&&st.etudes===TOT.etudes||st);
- ok('accueil : « 🌍 Dont 152 références internationales : 11 langues, 32 pays »',NB(await ac.locator('[data-clr=accueil-international]').innerText()).includes('Dont 152 références internationales : 11 langues, 32 pays, traduites en français.'));
+ ok('accueil : 200 publications, 37 médecins, 290 études',st.x===TOT.posts&&st.medecins===TOT.medecins&&st.etudes===TOT.etudes||st);
+ ok('accueil : « 🌍 Dont 154 références internationales : 11 langues, 32 pays »',NB(await ac.locator('[data-clr=accueil-international]').innerText()).includes('Dont 154 références internationales : 11 langues, 32 pays, traduites en français.'));
  // Fiche (sans mode, puis Soutien)
  await clk('Accueil');await p.locator('.clr-choice-soutien button').first().click();await p.waitForTimeout(400);await hide();
  await clk('Remèdes');await hide();await openAll();
@@ -85,8 +85,8 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await clk('Accueil');await p.locator('[data-clr=accueil-references-btn]').click().catch(async()=>{await p.locator('[data-clr=lien-references]').click();});await p.waitForTimeout(600);
  ok('Références ouvertes',(await p.locator('main h1').first().innerText())==='Références');
  const main=NB(await p.locator('main').innerText());
- ok('Références : 197 publications et 309 études',main.includes('197 publications et 309 études scientifiques'));
- ok('Références : 26 thèmes, Astragale juste après la NAC',await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup)).then(a=>a.length===26&&a[a.indexOf('nac')+1]==='astragale'));
+ ok('Références : 200 publications et 314 études',main.includes('200 publications et 314 études scientifiques'));
+ ok('Références : 27 thèmes, Astragale juste après la NAC',await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup)).then(a=>a.length===27&&a[a.indexOf('nac')+1]==='astragale'));
  ok('Références : titre « Astragale » + sommaire Astragale (24)',(await p.locator('#ref-astragale-t').innerText())==='Astragale'&&(await p.locator('[data-otp]').textContent()).includes('Astragale (24)'));
  const g=p.locator('#ref-astragale');
  const rs=await g.locator('[data-ref]').evaluateAll(ls=>ls.map(l=>({n:+l.dataset.ref,h:l.querySelector('a[href*="x.com"]').getAttribute('href'),lb:l.querySelector('[data-clr=pas-medecin]')?.textContent??null,b:l.querySelector('[data-badge]').dataset.badge,pays:l.querySelector('[data-clr=pays]')?.innerText,tr:l.querySelector('[data-clr=traduction]')?.innerText,lang:l.querySelector('blockquote').getAttribute('lang'),intl:l.hasAttribute('data-intl'),t:l.innerText})));
@@ -105,7 +105,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('Références : 2 sources officielles (Santé Canada, NCCIH)',await g.locator('[data-clr=sources-officielles] a[href="https://webprod.hc-sc.gc.ca/nhpid-bdipsn/dbImages/mono_astragalus_english.pdf"]').count()===1&&await g.locator('[data-clr=sources-officielles] a[href="https://www.nccih.nih.gov/health/astragalus"]').count()===1);
  ok('Références astragale : rien de nuancé ni contradictoire (textes en français)',!BAD.test(NB([...rs.map(r=>r.t.replace(r.t.match(/« [^»]*»/)?.[0]||'','')),...F.etudes.map(e=>e.finding)].join(' '))));
  const ic=NB(await p.locator('[data-clr=ref-international]').innerText());
- ok('indicateur international : 26 publications, 126 études de 32 pays',ic.includes('26 publications de médecins en 11 langues et 126 études de 32 pays')||ic);
+ ok('indicateur international : 26 publications, 128 études de 32 pays',ic.includes('26 publications de médecins en 11 langues et 128 études de 32 pays')||ic);
  if(dn==='iphone13')await shotAt(g,'astragale-refs.png');
  ok('axe Références',await axe());
  // Profil Enfant
