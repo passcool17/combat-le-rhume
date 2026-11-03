@@ -13,7 +13,7 @@ const HOW='Aspirine (AAS, acide acétylsalicylique) : 325 à 650 mg toutes les 4
 const SECKEYS=[/Reye/,/ulcère.*saignements/,/anticoagulant/,/Asthme/,/Grossesse.*dernier trimestre/,/allergique aux salicylates.*AINS/,/Pas plus de 5 jours.*3 jours/,/oreilles bourdonnent/];
 const GR={aspirine:{posts:0,etudes:8},ivermectine:{posts:3,etudes:4},hydroxychloroquine:{posts:3,etudes:7}};
 const SRC={ivermectine:['https://recalls-rappels.canada.ca/fr/avis-rappel/ivermectine-n-est-pas-homologuee-pour-prevention-ni-pour-traitement-covid-19-et-peut'],hydroxychloroquine:['https://recalls-rappels.canada.ca/fr/avis-rappel/chloroquine-et-hydroxychloroquine-peuvent-entrainer-graves-effets-secondaires-ces','https://www.sanofi.com/assets/countries/canada/docs/products/prescription-products/plaquenil-fr.pdf'],fenbendazole:['https://health-products.canada.ca/dpd-bdpp/search-fast-recherche-rapide?lang=fra&no=0113905004','https://inspection.canada.ca/en/animal-health/livestock-feeds/medicating-ingredients/fenbendazole','https://pubmed.ncbi.nlm.nih.gov/41608149/','https://pubmed.ncbi.nlm.nih.gov/42383214/','https://pubmed.ncbi.nlm.nih.gov/42299164/']};
-const TOT={posts:197,etudes:309,medecins:37,themes:26};
+const TOT={posts:200,etudes:314,medecins:37,themes:27};
 (async()=>{const b=await chromium.launch({executablePath:'/home/box/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome'});
  {const ok=(k,v)=>{n++;console.log(v===true?'ok  ':'FAIL','src',k,v===true?'':JSON.stringify(v).slice(0,300));if(v!==true)fail++;};
   ok('JSON final : comptes par thème',Object.entries(GR).every(([g,c])=>F.posts.filter(p=>p.group===g).length===c.posts&&F.etudes.filter(e=>e.group===g).length===c.etudes));
@@ -40,8 +40,8 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  await p.goto(url,{waitUntil:'networkidle'});await hide();await clk('Commencer');await hide();
  const ac=p.locator('[data-clr=accueil-references]');
  const st=await ac.locator('[data-stat]').evaluateAll(ls=>Object.fromEntries(ls.map(l=>[l.dataset.stat,+l.querySelector('.clr-refs-stat-n').textContent])));
- ok('accueil : 197 publications, 37 médecins, 309 études',st.x===TOT.posts&&st.medecins===TOT.medecins&&st.etudes===TOT.etudes||st);
- ok('accueil : « Dont 152 références internationales : 11 langues, 32 pays »',NB(await ac.locator('[data-clr=accueil-international]').innerText()).includes('Dont 152 références internationales : 11 langues, 32 pays, traduites en français.'));
+ ok('accueil : 200 publications, 37 médecins, 314 études',st.x===TOT.posts&&st.medecins===TOT.medecins&&st.etudes===TOT.etudes||st);
+ ok('accueil : « Dont 154 références internationales : 11 langues, 32 pays »',NB(await ac.locator('[data-clr=accueil-international]').innerText()).includes('Dont 154 références internationales : 11 langues, 32 pays, traduites en français.'));
  await clk('Remèdes');await hide();await openAll();
  const card=p.locator('#remede-aspirine');ok('fiche aspirine présente, juste après créatine',await card.count()===1&&await p.locator('[id^=remede-]').evaluateAll(l=>{const a=l.map(x=>x.id).filter(i=>!i.endsWith('-contenu'));return a[a.indexOf('remede-creatine')+1]==='remede-aspirine';}));
  const t=NB(await card.innerText());
@@ -58,7 +58,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('filtre Gorge : pas de section info',await p.locator('[data-clr=medicaments-info]').count()===0);await clk('Tous');await openAll();
  const info=p.locator('[data-clr=medicaments-info]');
  ok('section « Médicaments dont on parle — sur ordonnance »',await info.count()===1&&(await info.locator('h2').first().innerText())==='Médicaments dont on parle — sur ordonnance');
- ok('section : 3 fiches dans l’ordre',JSON.stringify(await info.locator('section[id^=info-]').evaluateAll(l=>l.map(x=>x.id)))===JSON.stringify(['info-ivermectine','info-hydroxychloroquine','info-fenbendazole']));
+ ok('section : 4 fiches dans l’ordre (DMSO ajouté)',JSON.stringify(await info.locator('section[id^=info-]').evaluateAll(l=>l.map(x=>x.id)))===JSON.stringify(['info-ivermectine','info-hydroxychloroquine','info-dmso','info-fenbendazole']));
  const T=async id=>NB(await p.locator('#info-'+id).innerText());
  for(const id of ['ivermectine','hydroxychloroquine','fenbendazole']){const x=await T(id);
   ok(id+' : « Dose et suivi : seulement avec ton médecin. », aucune dose en mg',x.includes('Dose et suivi : seulement avec ton médecin.')&&!/\d\s?(mg|µg|g)\b/.test(x.replace(/Santé Canada.*$/,''))||x);
@@ -79,8 +79,8 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
  ok('combat : ni fiche aspirine ni section info',await card.count()===0&&await p.locator('[data-clr=medicaments-info]').count()===0);
  await clk('Accueil');await p.locator('[data-clr=accueil-references-btn]').click().catch(async()=>{await p.locator('[data-clr=lien-references]').click();});await p.waitForTimeout(600);
  ok('Références ouvertes',(await p.locator('main h1').first().innerText())==='Références');
- ok('Références : 197 publications et 309 études',NB(await p.locator('main').innerText()).includes('197 publications et 309 études scientifiques'));
- ok('Références : 26 thèmes, Aspirine, Ivermectine, Hydroxychloroquine après Créatine',await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup)).then(a=>a.length===TOT.themes&&a.slice(a.indexOf('creatine'),a.indexOf('creatine')+4).join()==='creatine,aspirine,ivermectine,hydroxychloroquine'));
+ ok('Références : 200 publications et 314 études',NB(await p.locator('main').innerText()).includes('200 publications et 314 études scientifiques'));
+ ok('Références : 27 thèmes, Aspirine, Ivermectine, Hydroxychloroquine après Créatine',await p.locator('[data-ref-group]').evaluateAll(g=>g.map(x=>x.dataset.refGroup)).then(a=>a.length===TOT.themes&&a.slice(a.indexOf('creatine'),a.indexOf('creatine')+4).join()==='creatine,aspirine,ivermectine,hydroxychloroquine'));
  for(const [gid,ti,c] of [['aspirine','Aspirine',8],['ivermectine','Ivermectine',7],['hydroxychloroquine','Hydroxychloroquine',10]]){
   ok(`Références : « ${ti} » + sommaire (${c})`,(await p.locator(`#ref-${gid}-t`).innerText())===ti&&(await p.locator('[data-otp]').textContent()).includes(`${ti} (${c})`));
   const g=p.locator('#ref-'+gid);
@@ -95,7 +95,7 @@ for(const [dn,opt] of [['desktop',{viewport:{width:1280,height:720}}],['iphone13
   ok(ti+' : sources officielles',(await Promise.all(F.sources[gid].map(o=>g.locator(`[data-clr=sources-officielles] a[href="${o.url}"]`).count()))).every(c=>c===1));
   if(dn==='iphone13')await shotAt(g,`${gid}-refs.png`);}
  const ic=NB(await p.locator('[data-clr=ref-international]').innerText());
- ok('indicateur international : 26 publications, 126 études de 32 pays (152)',ic.includes('26 publications de médecins en 11 langues et 126 études de 32 pays')&&ic.includes('(152)')||ic);
+ ok('indicateur international : 26 publications, 128 études de 32 pays (154)',ic.includes('26 publications de médecins en 11 langues et 128 études de 32 pays')&&ic.includes('(154)')||ic);
  ok('axe Références',await axe());
  await clk('Enfant');await p.waitForTimeout(300);
  await clk('Accueil');await p.locator('.clr-choice-soutien button').first().click().catch(()=>{});await p.waitForTimeout(400);await hide();
